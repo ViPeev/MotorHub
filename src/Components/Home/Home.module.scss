@@ -1,0 +1,88 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+main {
+  @include dimensions(auto, 100%);
+  margin-top: 2rem;
+  overflow: hidden;
+  display:flex;
+  flex-direction: column;
+  align-content: space-between;
+
+  .divider{
+    @include dimensions(120vw,5rem);
+    background-color: $bg-color-3;
+    transform: rotate(5deg) translateX(-5%);
+    z-index: -3;
+  }
+}
+section {
+  @include dimensions(80%, 70vh);
+  margin: auto;
+}
+
+.adverts {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: repeat(3 1fr);
+  grid-template-areas:
+    "main second"
+    "main third"
+    "main fourth";
+  box-shadow:$shadow;
+  color:$font-color-3;
+  font-family: $text-font;
+  font-size:0.7rem;
+  
+  &  figure{
+    @include dimensions(100%, 100%);
+    position:relative;
+    transition: $transition;
+    overflow: hidden;
+  }
+  & figcaption {
+    @include dimensions(100%,max-content);
+    padding:5%;
+    position:absolute;
+    bottom:-100%;
+    transition: $transition;
+    background-color: $backdrop-color;
+
+    h4 {
+      font-weight:700;
+      margin-bottom: 2px;
+    }
+  }
+
+
+  & img {
+    @include dimensions(100%, 100%);
+  }
+
+  & figure:hover {
+    transform: scale(1.3);
+    z-index:2;
+
+    & figcaption{
+      bottom: 0;
+    }
+  }
+
+  & figure:nth-child(1) {
+    grid-area: main;
+  }
+  & figure:nth-child(1):hover {
+    transform: scale(1.03);
+  }
+
+  & figure:nth-child(2) {
+    grid-area: second;
+  }
+  & figure:nth-child(3) {
+    grid-area: third;
+  }
+  & figure:nth-child(4) {
+    grid-area: fourth;
+  }
+}
+
