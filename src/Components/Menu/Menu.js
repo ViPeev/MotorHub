@@ -1,21 +1,28 @@
-import { useState } from "react";
 import "./Menu.scss";
+import { createPortal } from "react-dom";
+import PageNav from "../Navigation/PageNav";
+import UserNav from "../Navigation/UserNav";
 
-export default function Menu() {
-  const [display, setDisplay] = useState(true);
+const body = document.querySelector("body");
 
-  const displayHandler = (e) => {
-    if(e.target == e.currentTarget){
-        setDisplay((prev) => !prev);
-    };
+export default function Menu({ display, displayHandler }) {
+  const hideMenu = (e) => {
+    if (e.target === e.currentTarget) {
+      displayHandler();
+    }
   };
 
-  return display ? (
-    <div className="backdrop" onClick={displayHandler}>
-      <aside>
-        <a href="#">Login</a>
-        <a href="#">Register</a>
-      </aside>
-    </div>
-  ) : null;
+  return display
+    ? createPortal(
+        <div className="backdrop" onClick={hideMenu}>
+          <aside className="sidebar fade-in-right">
+            <UserNav />
+            <div className="nav-controls">
+              <PageNav />
+            </div>
+          </aside>
+        </div>,
+        body
+      )
+    : null;
 }

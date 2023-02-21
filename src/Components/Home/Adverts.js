@@ -1,3 +1,4 @@
+import { memo } from "react";
 import kodiaq from "./images/kodiaq.jpg";
 import rrsport from "./images/rr-sport.jpg";
 import fiat500 from "./images/f500.jpg";
@@ -5,7 +6,7 @@ import ioniq from "./images/ioniq5.jpg";
 import styles from "./Home.module.scss";
 // extraordinary electric experience
 
-export default function Advert() {
+export default memo(function Advert() {
   return (
     <section className={styles.adverts}>
       <figure>
@@ -42,4 +43,4 @@ export default function Advert() {
       </figure>
     </section>
   );
-}
+});

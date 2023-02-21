@@ -1,7 +1,25 @@
-@import 'resets';
-@import 'variables';
+@import "resets";
+@import "variables";
+
+body {
+  box-sizing: border-box;
+  background-color: $bg-color-1;
+  color: $font-color-3;
+  overflow-x: hidden;
+}
+
+main {
+  height:max-content;
+  min-height: 100vh;
+}
 
 header {
   background: $nav-bg-color;
-  color:white;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color:$font-color-3;
+  font-family: $link-font
 }

@@ -2,24 +2,91 @@
 @import "../../styles/variables.scss";
 
 .backdrop {
-    @include dimensions(100vw,100%);
-    
-    display:flex;
-    flex-direction: row;
-    justify-content: end;
-    
-    background-color: $backdrop-color;
+  @include dimensions(100vw, 100vh);
 
-    position:absolute;
-    inset:0;
-    z-index:5;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
 
-    & aside {
-        @include dimensions(15%,100%);
-        display:inline-flex;
-        flex-direction: column;
+  background-color: $backdrop-color;
 
-        position:fixed;
-        border:solid 1px red;
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+
+  & .sidebar {
+    @include dimensions(18%, 100%);
+    position: fixed;
+    padding-top: 1rem;
+
+    background-color: $bg-color-2;
+    box-shadow: $shadow-2;
+
+    & > * {
+      @include dimensions(80%, max-content);
+
+      margin: 0.7rem 0 0 -1rem;
+      padding: 0.7rem;
+
+      background-color: inherit;
+      box-shadow: $shadow-2;
+
+      & li {
+        padding: 0.5rem;
+        border-radius: 30px;
+        transition: $transition;
+
+        &:hover {
+          padding-left: 1rem;
+          box-shadow: $shadow-2;
+          background: $gradient-blue;
+
+          & > a {
+            color: inherit;
+          }
+        }
+      }
     }
+
+    a {
+      @include dimensions(100%, 100%);
+      display: inline-block;
+
+      color: $font-color-2;
+      font-family: $text-font;
+      font-weight: 600;
+
+      transition: $transition;
+    }
+  }
+}
+
+.fade-in-right {
+  -webkit-animation: fade-in-right 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-right 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@-webkit-keyframes fade-in-right {
+  0% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-right {
+  0% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
 }

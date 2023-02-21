@@ -3,19 +3,21 @@
 
 header {
   @include dimensions(100%, 3.5rem);
-  box-shadow:$shadow;
-  font-family: $link-font;
 
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+
+  background: $nav-bg-color;
+
+  box-shadow: $shadow;
 
   & nav {
     @include dimensions(60%, 100%);
   }
 
   & ul {
-    @include dimensions(100%,100%);
+    @include dimensions(100%, 100%);
 
     display: flex;
     flex-direction: row;
@@ -27,7 +29,7 @@ header {
     }
 
     & li:not(li:first-child) {
-      &:before{
+      &:before {
         content: "";
         background-color: $bg-color-1;
 
@@ -48,23 +50,23 @@ header {
   }
 
   & button {
-    all:unset;
+    all: unset;
 
-    @include dimensions(auto,30%);
-    margin-right:2rem;
-    padding:0.5rem;
+    @include dimensions(auto, 30%);
+    margin-right: 2rem;
+    padding: 0.5rem;
 
-    border:solid 1px white;
+    border: solid 1px white;
     border-radius: 50%;
-    outline:solid 2px rgba(255, 255, 255, 0);
+    outline: solid 2px rgba(255, 255, 255, 0);
     outline-offset: 3px;
-    
-    transition:$transition;
-    cursor:pointer;
+
+    transition: $transition;
+    cursor: pointer;
   }
-  
-  & button:hover{
-    outline-color: rgb(255, 255, 255);
+
+  & button:hover {
+    outline-color: inherit;
   }
 
   img {
@@ -72,9 +74,3 @@ header {
     filter: invert(150%);
   }
 }
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
