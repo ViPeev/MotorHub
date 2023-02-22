@@ -1,0 +1,76 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.form-wrapper {
+  @include dimensions(100%, 15rem);
+
+  & form {
+    @include dimensions(70%, max-content);
+    background: $font-color-3;
+    padding: 2rem;
+    margin: 2rem auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: $shadow-2;
+    border-radius: 20px;
+
+    & > .input-group {
+      @include dimensions(25%, 40%);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      font-family: $link-font;
+
+      label {
+        color: $font-color-1;
+        font-weight: 800;
+        margin: 0.5rem 0;
+      }
+
+      .custom-select {
+        @include dimensions(100%, 40%);
+        position: relative;
+
+        & img {
+          @include dimensions(15px, 15px);
+          position: absolute;
+          pointer-events: none;
+
+          transform: translateY(-50%);
+          top: 50%;
+          right: 1.5rem;
+          filter: invert(100%);
+        }
+
+        select {
+          @include dimensions(100%, 100%);
+
+          overflow: auto;
+          padding: 1rem;
+
+          appearance: none;
+          border: none;
+          outline: none;
+          cursor: pointer;
+
+          position: relative;
+
+          color: $font-color-3;
+          background: $nav-bg-color-light;
+          font-family: $text-font;
+          font-size: 1rem;
+
+          &:hover,
+          &:focus {
+            box-shadow: $shadow-inset;
+          }
+        }
+      }
+    }
+  }
+}

@@ -18,7 +18,7 @@ main {
   }
 
   section {
-    @include dimensions(80%, 70vh);
+    @include dimensions(80%, max-content);
     margin: auto;
   }
 }
