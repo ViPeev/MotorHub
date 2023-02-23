@@ -4,7 +4,6 @@ import rrsport from "./images/rr-sport.jpg";
 import fiat500 from "./images/f500.jpg";
 import ioniq from "./images/ioniq5.jpg";
 import styles from "./Home.module.scss";
-// extraordinary electric experience
 
 export default memo(function Advert() {
   return (

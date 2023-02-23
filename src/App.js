@@ -5,7 +5,7 @@ import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
 import Catalogue from "./Components/Catalogue/Catalogue";
 import NotFound from "./Components/404/404";
-import "./styles/App.scss";
+import "./main-styles/App.scss";
 
 function App() {
   return (

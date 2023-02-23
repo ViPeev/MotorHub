@@ -11,11 +11,11 @@ body {
 main {
   height:max-content;
   min-height: 100vh;
+  margin-top:2rem;
 }
 
 header {
   background: $nav-bg-color;
-  color: white;
 }
 
 a {

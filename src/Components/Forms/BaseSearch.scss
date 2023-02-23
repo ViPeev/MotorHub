@@ -21,55 +21,73 @@
 
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       align-content: center;
       font-family: $link-font;
 
-      label {
-        color: $font-color-1;
-        font-weight: 800;
-        margin: 0.5rem 0;
+      button {
+        all: unset;
+
+        @include dimensions(70%, max-content);
+
+        margin-top: 2rem;
+        padding: 1rem;
+
+        border-radius: 5px;
+        background-color: $nav-bg-color-light;
+        box-shadow: $shadow-2;
+
+        text-align: center;
+        color: $font-color-3;
+        font-family: $text-font;
+        font-weight: 700;
+        cursor: pointer;
       }
 
-      .custom-select {
-        @include dimensions(100%, 40%);
+      label {
+        margin: 0.5rem 0;
+
+        color: $font-color-1;
+        font-weight: 800;
+      }
+    }
+
+    .custom-select {
+      @include dimensions(100%, 40%);
+      position: relative;
+
+      & img {
+        @include dimensions(15px, 15px);
+        position: absolute;
+        pointer-events: none;
+
+        transform: translateY(-50%);
+        top: 50%;
+        right: 1rem;
+        filter: invert(100%);
+      }
+      select {
+        @include dimensions(100%, 100%);
+
+        overflow: auto;
+        padding: 1rem;
+
+        appearance: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
         position: relative;
 
-        & img {
-          @include dimensions(15px, 15px);
-          position: absolute;
-          pointer-events: none;
+        color: $font-color-3;
+        background: $nav-bg-color-light;
+        font-family: $text-font;
+        font-size: 1rem;
+      }
 
-          transform: translateY(-50%);
-          top: 50%;
-          right: 1.5rem;
-          filter: invert(100%);
-        }
-
-        select {
-          @include dimensions(100%, 100%);
-
-          overflow: auto;
-          padding: 1rem;
-
-          appearance: none;
-          border: none;
-          outline: none;
-          cursor: pointer;
-
-          position: relative;
-
-          color: $font-color-3;
-          background: $nav-bg-color-light;
-          font-family: $text-font;
-          font-size: 1rem;
-
-          &:hover,
-          &:focus {
-            box-shadow: $shadow-inset;
-          }
-        }
+      select:hover,
+      select:focus{
+        box-shadow: $shadow-inset;
       }
     }
   }

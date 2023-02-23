@@ -1,14 +1,15 @@
-import "./Menu.scss";
 import { createPortal } from "react-dom";
 import PageNav from "../Navigation/PageNav";
 import UserNav from "../Navigation/UserNav";
+import "./Menu.scss";
 
 const body = document.querySelector("body");
 
-export default function Menu({ display, displayHandler }) {
+export default function Menu({ display, clickHandler }) {
+  
   const hideMenu = (e) => {
     if (e.target === e.currentTarget) {
-      displayHandler();
+      clickHandler();
     }
   };
 

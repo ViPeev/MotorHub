@@ -1,7 +1,15 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Menu from "../Menu/Menu";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+function Button({ clickHandler }) {
+  return (
+    <button onClick={clickHandler}>
+      <FontAwesomeIcon icon={faBars} />
+    </button>
+  );
+}
 
 export default function Toggler() {
   const [display, setDisplay] = useState(false);
@@ -12,10 +20,8 @@ export default function Toggler() {
 
   return (
     <>
-      <button onClick={displayHandler}>
-        <FontAwesomeIcon icon={faBars} />
-      </button>
-      <Menu display={display} displayHandler={displayHandler} />
+      <Button clickHandler={displayHandler} />
+      <Menu display={display} clickHandler={displayHandler} />
     </>
   );
 }

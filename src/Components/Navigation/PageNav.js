@@ -6,6 +6,8 @@ export default function PageNav() {
     textUnderlineOffset: "6px",
   };
 
+  const setActiveStyles = ({ isActive }) => (isActive ? active : undefined);
+
   return (
     <ul>
       <li>
@@ -14,34 +16,22 @@ export default function PageNav() {
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to={"/cars"}
-          style={({ isActive }) => (isActive ? active : undefined)}
-        >
+        <NavLink to={"/cars"} style={setActiveStyles}>
           Cars for sale
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to={"/sell"}
-          style={({ isActive }) => (isActive ? active : undefined)}
-        >
+        <NavLink to={"/sell"} style={setActiveStyles}>
           Sell your car
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to={"/news"}
-          style={({ isActive }) => (isActive ? active : undefined)}
-        >
+        <NavLink to={"/news"} style={setActiveStyles}>
           News
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to={"/forum"}
-          style={({ isActive }) => (isActive ? active : undefined)}
-        >
+        <NavLink to={"/forum"} style={setActiveStyles}>
           Forum
         </NavLink>
       </li>

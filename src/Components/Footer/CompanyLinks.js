@@ -1,25 +1,6 @@
 import { Link } from "react-router-dom";
 
-const links = [
-  {
-    link: "/about",
-    content: "About Us",
-  },
-  {
-    link: "/contact",
-    content: "Contact us",
-  },
-  {
-    link: "/tos",
-    content: "Terms of Service",
-  },
-  {
-    link: "/privacy",
-    content: "Privacy Policy",
-  },
-];
-
-export default function CompanyLinks() {
+export default function CompanyLinks({ links }) {
   return (
     <div className="col company">
       <h3>Company</h3>
