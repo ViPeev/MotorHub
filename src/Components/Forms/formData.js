@@ -914,6 +914,7 @@ const cars = {
   ],
 };
 
+const makes = Object.keys(cars);
 const fuel = [
   "Petrol",
   "Diesel",
@@ -922,7 +923,6 @@ const fuel = [
   "Electric",
   "LPG",
 ];
-
 const condition = ["Used", "New", "Damaged"];
 const priceFrom = [
   500, 1000, 2000, 3000, 4000, 5000, 10000, 20000, 50000, 75000, 100000, 200000,
@@ -932,5 +932,36 @@ const priceUp = [
   1000000,
 ];
 const power = [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000];
+const formData = {
+  make: "all",
+  model: "all",
+  fuelType: "all",
+  condition: "all",
+  maxPower: "all",
+  priceFrom: "all",
+  priceUpTo: "all",
+};
 
-export default { cars, fuel, condition, priceFrom, priceUp, power };
+const extendedFormData = {
+  ...formData,
+  transmission: "all",
+  cubicCapacity: "all",
+  color: "all",
+  location: "all",
+  yearFrom: "all",
+  yearUpTo: "all",
+  maxMileage: "all",
+  modification: "",
+};
+
+export default {
+  makes,
+  cars,
+  fuel,
+  condition,
+  priceFrom,
+  priceUp,
+  power,
+  formData,
+  extendedFormData,
+};

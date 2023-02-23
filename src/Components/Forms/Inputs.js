@@ -1,4 +1,4 @@
-import caret from "./images/caret-down-solid.svg";
+import caret from "../../assets/icons/caret-down-solid.svg";
 
 function Options({ data, symbol }) {
   return (
@@ -14,16 +14,24 @@ function Options({ data, symbol }) {
   );
 }
 
-function Select({ label, value, changeHandler, options, firstOption, symbol }) {
+function Select({
+  label,
+  value,
+  name,
+  changeHandler,
+  options,
+  firstOption,
+  symbol,
+}) {
   return (
     <div className="input-group">
-      <label htmlFor={value}>{label}</label>
+      <label htmlFor={name}>{label}</label>
       <div className="custom-select">
-        <select name={value} id={value} onChange={changeHandler}>
+        <select value={value} name={name} id={name} onChange={changeHandler}>
           <option value="all">{firstOption}</option>
           {options ? (
             <>
-              <Options data={options} symbol={symbol}/>
+              <Options data={options} symbol={symbol} />
               {firstOption === "All" ? (
                 <option value="other">Other</option>
               ) : null}

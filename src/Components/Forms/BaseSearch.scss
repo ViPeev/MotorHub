@@ -28,19 +28,24 @@
       button {
         all: unset;
 
-        @include dimensions(70%, max-content);
-
+        @include dimensions(50%, max-content);
+        max-width: 100px;
         margin-top: 2rem;
-        padding: 1rem;
 
         border-radius: 5px;
         background-color: $nav-bg-color-light;
         box-shadow: $shadow-2;
+        padding: 0.5rem 0;
 
         text-align: center;
         color: $font-color-3;
         font-family: $text-font;
         cursor: pointer;
+
+        & img {
+          @include dimensions(25%, 25%);
+          filter: invert(100%);
+        }
       }
 
       label {
@@ -84,7 +89,7 @@
       }
 
       select:hover,
-      select:focus{
+      select:focus {
         box-shadow: $shadow-inset;
       }
     }

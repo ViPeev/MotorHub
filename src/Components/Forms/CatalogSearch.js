@@ -1,14 +1,18 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
 import { Select } from "./Inputs";
 import data from "./formData";
-import "./BaseSearch.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
+import { useLocation } from "react-router-dom";
 
-export default function HomeSearch() {
-  const [formData, setFormData] = useState(data.formData);
+export default function AdvancedSearch({}) {
+  const location = useLocation();
 
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState(() => {
+    const incomingData = location.state?.data;
+    return incomingData
+      ? { ...data.extendedFormData, ...incomingData }
+      : data.extendedFormData;
+  });
 
   const changeHandler = (e) => {
     setFormData((data) => {
@@ -18,7 +22,6 @@ export default function HomeSearch() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    navigate("/cars", { state: { data: formData } });
   };
 
   return (
