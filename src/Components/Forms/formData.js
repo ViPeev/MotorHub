@@ -115,7 +115,7 @@ const cars = {
     "X5M",
     "X6M",
   ],
-  Bugatti: ["EB110", "Veyron", "Chiron", "Other"],
+  Bugatti: ["EB110", "Veyron", "Chiron"],
   Cadillac: ["ATS", "BLS", "CT6", "CTS", "Deville", "Eldorado", "Escalade"],
   Chevrolet: [
     "Avalanche",
@@ -172,7 +172,7 @@ const cars = {
     "Xsara",
     "Xsara Picasso",
   ],
-  Dacia: ["Dokker", "Duster", "Logan", "Sandero", "Jogger", "Lodgy", "Other"],
+  Dacia: ["Dokker", "Duster", "Logan", "Sandero", "Jogger", "Lodgy"],
   Dodge: [
     "Avenger",
     "Caliber",
@@ -374,7 +374,7 @@ const cars = {
     "Venga",
     "XCeed",
   ],
-  Koenigsegg: ["Agera", "CCR", "CCXR", "Gemera", "Regera", "Jesko", "Other"],
+  Koenigsegg: ["Agera", "CCR", "CCXR", "Gemera", "Regera", "Jesko"],
   Lada: [
     "110",
     "111",
@@ -440,7 +440,7 @@ const cars = {
     "RC Series",
     "RX Series",
   ],
-  Lincoln: ["Aviator", "Continental", "LS", "Navigator", "Town Car", "Other"],
+  Lincoln: ["Aviator", "Continental", "LS", "Navigator", "Town Car"],
   Lotus: [
     "Cortina",
     "Elan",

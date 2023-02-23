@@ -1,5 +1,5 @@
-@import "../../styles/mixins.scss";
-@import "../../styles/variables.scss";
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
 
 .form-wrapper {
   @include dimensions(100%, 15rem);
@@ -40,15 +40,12 @@
         text-align: center;
         color: $font-color-3;
         font-family: $text-font;
-        font-weight: 700;
         cursor: pointer;
       }
 
       label {
         margin: 0.5rem 0;
-
         color: $font-color-1;
-        font-weight: 800;
       }
     }
 
@@ -66,6 +63,7 @@
         right: 1rem;
         filter: invert(100%);
       }
+
       select {
         @include dimensions(100%, 100%);
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Select } from "./Inputs";
 import data from "./formData";
 import "./BaseSearch.scss";
@@ -6,24 +7,37 @@ import "./BaseSearch.scss";
 const makes = Object.keys(data.cars);
 
 export default function HomeSearch() {
-  const [make, setMake] = useState("all");
+  const [formData, setFormData] = useState({
+    make: "all",
+    model: "all",
+    fuelType: "all",
+    condition: "all",
+    maxPower: "all",
+    priceFrom: "all",
+    priceUpTo: "all",
+  });
 
-  const makeChangeHandler = (e) => {
-    setMake(e.target.value);
-  };
+  const navigate = useNavigate();
 
   const changeHandler = (e) => {
-    console.log(e.target.value);
+    setFormData((data) => {
+      return { ...data, [e.target.name]: e.target.value };
+    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate("/cars", { state: { data: formData } });
   };
 
   return (
     <section>
       <div className="form-wrapper">
-        <form>
+        <form onSubmit={submitHandler}>
           <Select
             label="Make"
             value="make"
-            changeHandler={makeChangeHandler}
+            changeHandler={changeHandler}
             options={makes}
             firstOption="All"
           />
@@ -31,7 +45,7 @@ export default function HomeSearch() {
             label="Model"
             value="model"
             changeHandler={changeHandler}
-            options={data.cars[make]}
+            options={data.cars[formData.make]}
             firstOption="All"
           />
           <Select
@@ -50,7 +64,7 @@ export default function HomeSearch() {
           />
           <Select
             label="Power"
-            value="power"
+            value="maxPower"
             changeHandler={changeHandler}
             options={data.power}
             firstOption="Any"
