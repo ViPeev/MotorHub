@@ -64,4 +64,21 @@ function InputField({ label, value, name, changeHandler, type }) {
   );
 }
 
-export { Select, InputField };
+function SortSelect({ label, value, name, changeHandler, options}) {
+  return (
+    <form>
+      <label htmlFor={name}>{label} : </label>
+      <select value={value} name={name} id={name} onChange={changeHandler}>
+        {options.map((current) => {
+          return (
+            <option key={current.value} value={current.value}>
+              {current.name}
+            </option>
+          );
+        })}
+      </select>
+    </form>
+  );
+}
+
+export { Select, InputField, SortSelect };

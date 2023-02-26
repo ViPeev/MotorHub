@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import image from "./images/404.gif";
+import image from "../../assets/images/404.gif";
 import styles from "./404.module.scss";
 
 export default function NotFound() {

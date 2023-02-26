@@ -6,6 +6,7 @@ import Home from "./Components/Home/Home";
 import Catalogue from "./Components/Catalogue/Catalogue";
 import NotFound from "./Components/404/404";
 import "./main-styles/App.scss";
+import CarDetails from "./Components/Details/CarDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cars" element={<Catalogue />} />
           <Route path="/sell" element={<main>sell</main>} />
+          <Route path="/details/:id" element={<CarDetails />} />
           <Route path="/news" element={<main>news</main>} />
           <Route path="/forum" element={<main>forum</main>} />
           <Route path="/register" element={<main>register</main>} />

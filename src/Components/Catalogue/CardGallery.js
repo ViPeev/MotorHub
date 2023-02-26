@@ -30,15 +30,15 @@ export default function CardGallery({ images }) {
   return (
     <div className={styles.gallery}>
       <div ref={galleryRef}>
-        {images.map((current,index) => {
-            return <img key={index} src={current} alt="car" />
+        {images.map((current, index) => {
+          return <img key={index} src={current} alt="car" />;
         })}
       </div>
       <button className={styles["button-backward"]} onClick={moveLeft}>
         <img src={angleLeft} alt="Prev" />
       </button>
       <button className={styles["button-forward"]} onClick={moveRight}>
-      <img src={angleRight} alt="Next" />
+        <img src={angleRight} alt="Next" />
       </button>
     </div>
   );

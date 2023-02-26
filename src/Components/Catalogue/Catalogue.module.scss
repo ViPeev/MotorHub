@@ -8,22 +8,23 @@
 
 .card-container {
   @include dimensions(100%, max-content);
+  margin: auto;
   display: flex;
   flex-flow: row wrap;
-  align-content: space-between;
-  justify-content: center;
+  align-content:space-between;
+  justify-content:center;
   column-gap: 1rem;
   row-gap: 1rem;
-  margin: 3rem 0;
 }
 
 .link-wrapper {
-  @include dimensions(20%, max-content);
+  @include dimensions(18rem, max-content);
   display: inline-block;
   padding-bottom: 1rem;
+
   box-shadow: $shadow-2;
   color: $font-color-2;
-  background-color: rgba(119, 136, 153, 0.095);
+  background-color: $bg-color-4;
   border-radius: 25px;
   overflow: hidden;
   transition: $transition;
@@ -65,35 +66,39 @@
     @include dimensions(100%, max-content);
     display: flex;
     flex-direction: row;
-    background-color: white;
+    
     transition: $transition;
 
     & img {
       @include dimensions(100%, 100%);
+      object-fit: cover;
     }
   }
 
   button {
     position: absolute;
     top: 50%;
-    border: none;
-    transform: translateY(-50%);
-    background-color: rgba(119, 136, 153, 0.304);
     padding: 0.5rem;
+    transform: translateY(-50%);
+
+    background-color: rgba(83, 96, 109, 0.446);
+    border: none;
+
     cursor: pointer;
     transition: $transition;
 
     & img {
       @include dimensions(20px, 20px);
-      filter: invert(50%);
+
+      filter: invert(80%);
       transition: $transition;
     }
 
     &:hover {
-      background-color: $font-color-3;
+      background-color: $nav-bg-color-light;  
 
       & img {
-        filter: invert(0);
+        filter: invert(100%);
       }
     }
   }

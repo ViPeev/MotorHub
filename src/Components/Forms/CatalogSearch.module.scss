@@ -24,6 +24,7 @@
 
       font-family: $link-font;
 
+
       & > div {
         @include dimensions(100%, 40%);
 
@@ -91,9 +92,8 @@
       }
 
       input {
-        @include dimensions(80%, 100%);
-        padding: 0.7rem 1rem;
-
+        @include dimensions(90%, 100%);
+        padding:0.7rem 1rem;
         $font-family: inherit;
         caret-color: $nav-bg-color;
 
@@ -105,7 +105,6 @@
       select:hover,
       select:focus,
       button:hover,
-      button:focus,
       input:hover,
       input:focus {
         box-shadow: $shadow-inset;
