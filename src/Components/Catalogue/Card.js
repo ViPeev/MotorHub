@@ -1,15 +1,15 @@
-export default function Card({ _id }) {
-  const href = `/details/${_id}`;
+import styles from "./Catalogue.module.scss";
+import CardGallery from "./CardGallery";
 
+export default function Card({images}) {
   return (
-    <a href={href}>
-        <img src="" alt="" />
-      <div>
-        <img src="" alt="" />
-        <h6>VW GOLF</h6>
-        <p>1.9 TDI</p>
-        <p>Diesel</p>
-        <p>300000 km</p>
+    <a href="#" className={styles["link-wrapper"]}>
+      <div className={styles.card}>
+        <CardGallery images={images}/>
+        <h6>VW Golf 1.9 TDI</h6>
+        <p>2000 &euro;</p>
+        <p>Diesel, 300000 km</p>
+        <p>Bulgaria</p>
       </div>
     </a>
   );
