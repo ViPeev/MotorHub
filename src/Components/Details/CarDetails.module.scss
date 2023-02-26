@@ -6,21 +6,22 @@
   margin: 2rem auto;
   padding: 1rem;
   display: grid;
-  grid-template-columns: 2.5fr 1fr;
-  grid-template-rows: repeat(4, 1fr) 0.5fr;
+  grid-template-columns: 4fr 0.5fr 1.2fr;
+  grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   justify-items: stretch;
   align-items: stretch;
   grid-template-areas:
-    "gallery details"
-    "gallery details"
-    "gallery details"
-    "description contacts"
-    "description contacts";
+    "gallery details details"
+    "gallery details details"
+    "gallery details details"
+    "description description contacts"
+    "description description contacts";
 
   font-family: $text-font;
   box-shadow: $shadow-2;
+  background-color: $bg-color-1;
 
   & div {
     background-color: $bg-color-4;
@@ -28,7 +29,9 @@
 
   & div:nth-child(1) {
     grid-area: gallery;
+    background-color: $bg-color-1;
   }
+
   & div:nth-child(2) {
     grid-area: details;
   }
@@ -51,20 +54,23 @@
   border-radius: 10px;
 
   img {
-    @include dimensions(20px,20px);
-    filter:invert(30%);
+    @include dimensions(20px, 20px);
+    filter: invert(30%);
     margin: 0 5px -5px 0;
   }
 
-}
-
-.description {
   h4 {
+    padding-bottom: 1rem;
+
     font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
-  }
 
+    border-bottom: 2px solid $bg-color-4;
+  }
+}
+
+.description {
   p {
     max-height: 200px;
     overflow: auto;

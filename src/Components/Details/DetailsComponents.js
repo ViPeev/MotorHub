@@ -7,6 +7,7 @@ import map from "../../assets/icons/map-location-dot-solid.svg";
 function ContactBox() {
   return (
     <div className={styles.contacts}>
+      <h4>Contacts</h4>
       <span>
         <img src={user} alt="seller" /> Johann Schmidth
       </span>
