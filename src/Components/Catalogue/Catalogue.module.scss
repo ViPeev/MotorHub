@@ -1,0 +1,12 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.main {
+    display:flex;
+    flex-direction: column;
+}
+.card-container {
+  @include dimensions(100%,max-content);
+  display:flex;
+  flex-direction: row wrap;
+}

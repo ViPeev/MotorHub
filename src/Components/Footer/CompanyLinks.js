@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function CompanyLinks({ links }) {
   return (
-    <div className="col company">
+    <div>
       <h3>Company</h3>
       <ul>
         {links.map((current) => (

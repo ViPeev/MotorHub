@@ -11,10 +11,9 @@ body {
 main {
   height:max-content;
   min-height: 100vh;
-  margin-top:2rem;
 }
 
-header {
+header,footer {
   background: $nav-bg-color;
 }
 

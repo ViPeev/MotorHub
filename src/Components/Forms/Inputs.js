@@ -24,9 +24,9 @@ function Select({
   symbol,
 }) {
   return (
-    <div className="input-group">
+    <div>
       <label htmlFor={name}>{label}</label>
-      <div className="custom-select">
+      <div>
         <select value={value} name={name} id={name} onChange={changeHandler}>
           <option value="all">{firstOption}</option>
           {options ? (
@@ -44,4 +44,24 @@ function Select({
   );
 }
 
-export { Select };
+function InputField({ label, value, name, changeHandler, type }) {
+  return (
+    <div>
+      <label htmlFor={name}>{label}</label>
+      <div>
+        <input
+          type={type}
+          min="0"
+          step="100"
+          value={value}
+          name={name}
+          id={name}
+          onChange={changeHandler}
+          placeholder={`Enter value`}
+        />
+      </div>
+    </div>
+  );
+}
+
+export { Select, InputField };

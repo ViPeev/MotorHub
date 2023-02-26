@@ -1,12 +1,11 @@
 import { createPortal } from "react-dom";
 import PageNav from "../Navigation/PageNav";
 import UserNav from "../Navigation/UserNav";
-import "./Menu.scss";
+import styles from "./Menu.module.scss";
 
 const body = document.querySelector("body");
 
 export default function Menu({ display, clickHandler }) {
-  
   const hideMenu = (e) => {
     if (e.target === e.currentTarget) {
       clickHandler();
@@ -15,12 +14,10 @@ export default function Menu({ display, clickHandler }) {
 
   return display
     ? createPortal(
-        <div className="backdrop" onClick={hideMenu}>
-          <aside className="sidebar fade-in-right">
+        <div className={styles.backdrop} onClick={hideMenu}>
+          <aside className={styles.sidebar}>
             <UserNav />
-            <div className="nav-controls">
-              <PageNav />
-            </div>
+            <PageNav />
           </aside>
         </div>,
         body

@@ -4,7 +4,7 @@ import styles from "./Home.module.scss";
 
 export default function Home() {
   return (
-    <main>
+    <main className={styles.main}>
       <Advert />
       <div className={styles.divider}></div>
       <HomeSearch />

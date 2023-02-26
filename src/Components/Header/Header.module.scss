@@ -1,15 +1,13 @@
 @import "../../main-styles/mixins.scss";
 @import "../../main-styles/variables.scss";
 
-header {
+.header {
   @include dimensions(100%, 3.5rem);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   background: $nav-bg-color;
-
   box-shadow: $shadow;
 
   & nav {
@@ -30,15 +28,14 @@ header {
 
     & li:not(li:first-child) {
       &:before {
-        content: "";
-        background-color: $bg-color-1;
-
+        height: 1px;
+        max-width: 0px;
         position: absolute;
         inset: 120% 0px;
-        transition: $transition;
 
-        max-width: 0px;
-        height: 1px;
+        content: "";
+        background-color: $bg-color-1;
+        transition: $transition;
       }
     }
 
@@ -71,6 +68,5 @@ header {
 
   img {
     @include dimensions(10rem, 10rem);
-    filter: invert(150%);
   }
 }

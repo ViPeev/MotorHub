@@ -6,23 +6,24 @@
 
   & form {
     @include dimensions(70%, max-content);
-    background: $font-color-3;
     padding: 2rem;
     margin: 2rem auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+
+    background: $font-color-3;
     box-shadow: $shadow-2;
     border-radius: 20px;
 
-    & > .input-group {
+    & div {
       @include dimensions(25%, 40%);
-
       display: flex;
       flex-direction: column;
       align-items: center;
       align-content: center;
+
       font-family: $link-font;
 
       button {
@@ -31,56 +32,57 @@
         @include dimensions(50%, max-content);
         max-width: 100px;
         margin-top: 2rem;
+        padding: 0.5rem 0;
 
-        border-radius: 5px;
         background-color: $nav-bg-color-light;
         box-shadow: $shadow-2;
-        padding: 0.5rem 0;
 
         text-align: center;
         color: $font-color-3;
         font-family: $text-font;
+
+        border-radius: 5px;
         cursor: pointer;
 
-        & img {
+        img {
           @include dimensions(25%, 25%);
+
+          filter: invert(100%);
+        }
+      }
+
+      & > div {
+        @include dimensions(100%, 40%);
+        position: relative;
+
+        & img {
+          @include dimensions(15px, 15px);
+          position: absolute;
+          top: 50%;
+          right: 1rem;
+          transform: translateY(-50%);
+
+          pointer-events: none;
           filter: invert(100%);
         }
       }
 
       label {
         margin: 0.5rem 0;
+
         color: $font-color-1;
-      }
-    }
-
-    .custom-select {
-      @include dimensions(100%, 40%);
-      position: relative;
-
-      & img {
-        @include dimensions(15px, 15px);
-        position: absolute;
-        pointer-events: none;
-
-        transform: translateY(-50%);
-        top: 50%;
-        right: 1rem;
-        filter: invert(100%);
       }
 
       select {
         @include dimensions(100%, 100%);
-
-        overflow: auto;
+        position: relative;
         padding: 1rem;
 
         appearance: none;
         border: none;
         outline: none;
+        overflow: auto;
         cursor: pointer;
-
-        position: relative;
 
         color: $font-color-3;
         background: $nav-bg-color-light;
@@ -89,7 +91,9 @@
       }
 
       select:hover,
-      select:focus {
+      select:focus,
+      button:hover,
+      button:focus {
         box-shadow: $shadow-inset;
       }
     }

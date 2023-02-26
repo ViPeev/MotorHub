@@ -3,7 +3,6 @@
 
 .backdrop {
   @include dimensions(100vw, 100vh);
-
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -13,37 +12,41 @@
   position: fixed;
   inset: 0;
   z-index: 5;
+}
 
-  & .sidebar {
-    @include dimensions(18%, 100%);
-    position: fixed;
-    padding-top: 1rem;
+.sidebar {
+  @include dimensions(18%, 100%);
+  padding-top: 1rem;
+  position: fixed;
 
-    background-color: $bg-color-2;
+  background-color: $bg-color-2;
+  box-shadow: $shadow-2;
+
+  -webkit-animation: fade-in-right 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-right 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+
+  & > * {
+    @include dimensions(80%, max-content);
+    margin: 0.7rem 0 0 -1rem;
+    padding: 0.7rem;
+
+    background-color: inherit;
     box-shadow: $shadow-2;
 
-    & > * {
-      @include dimensions(80%, max-content);
+    & li {
+      padding: 0.5rem;
 
-      margin: 0.7rem 0 0 -1rem;
-      padding: 0.7rem;
+      border-radius: 30px;
+      transition: $transition;
 
-      background-color: inherit;
-      box-shadow: $shadow-2;
+      &:hover {
+        padding-left: 1rem;
 
-      & li {
-        padding: 0.5rem;
-        border-radius: 30px;
-        transition: $transition;
+        background: $gradient-blue;
+        box-shadow: $shadow-2;
 
-        &:hover {
-          padding-left: 1rem;
-          box-shadow: $shadow-2;
-          background: $gradient-blue;
-
-          & > a {
-            color: inherit;
-          }
+        a {
+          color: $font-color-3;
         }
       }
     }
@@ -55,15 +58,9 @@
       color: $font-color-2;
       font-family: $text-font;
       font-weight: 600;
-
       transition: $transition;
     }
   }
-}
-
-.fade-in-right {
-  -webkit-animation: fade-in-right 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in-right 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 @-webkit-keyframes fade-in-right {

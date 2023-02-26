@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 
 export default function UserNav() {
   return (
-    <div className="profile-controls">
       <ul>
         <li>
           <NavLink to="/login">Login</NavLink>
@@ -17,6 +16,5 @@ export default function UserNav() {
           <NavLink to="/logout">Logout</NavLink>
         </li>
       </ul>
-    </div>
   );
 }

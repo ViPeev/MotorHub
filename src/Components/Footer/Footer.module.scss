@@ -4,14 +4,13 @@
 .footer {
   @include dimensions(100%, max-content);
   padding: 1rem 0;
-
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 
   background: $nav-bg-color;
 
-  & .col {
+  & > div {
     padding: 2rem;
 
     font-family: $text-font;
@@ -29,15 +28,13 @@
     font-weight: 800;
     font-size: 1.2rem;
   }
+}
 
+.social {
+  width: 20%;
 
-  .social {
-    width: 20%;
-  }
-
-  .social-icon-container {
+  ul {
     @include dimensions(100%, auto);
-
     display: flex;
     justify-content: space-evenly;
   }

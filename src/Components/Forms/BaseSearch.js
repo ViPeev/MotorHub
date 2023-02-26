@@ -2,12 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Select } from "./Inputs";
 import data from "./formData";
-import "./BaseSearch.scss";
+import styles from "./BaseSearch.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
 export default function HomeSearch() {
   const [formData, setFormData] = useState(data.formData);
-
   const navigate = useNavigate();
 
   const changeHandler = (e) => {
@@ -23,7 +22,7 @@ export default function HomeSearch() {
 
   return (
     <section>
-      <div className="form-wrapper">
+      <div className={styles["form-wrapper"]}>
         <form onSubmit={submitHandler}>
           <Select
             label="Make"
@@ -62,13 +61,13 @@ export default function HomeSearch() {
             name="maxPower"
             value={formData.maxPower}
             changeHandler={changeHandler}
-            options={data.power}
+            options={data.maxPower}
             firstOption="Any"
             symbol="HP"
           />
           <Select
             label="Price from"
-            name="pricefrom"
+            name="priceFrom"
             value={formData.priceFrom}
             changeHandler={changeHandler}
             options={data.priceFrom}
@@ -80,13 +79,13 @@ export default function HomeSearch() {
             name="priceUpTo"
             value={formData.priceUpTo}
             changeHandler={changeHandler}
-            options={data.priceUp}
+            options={data.priceUpTo}
             firstOption="Any"
             symbol="&euro;"
           />
           <div className="input-group">
             <button type="submit">
-              <img src={searchIcon} alt="Search"></img>
+              <img src={searchIcon} alt="Search" />
             </button>
           </div>
         </form>

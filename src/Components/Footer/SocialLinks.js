@@ -1,8 +1,10 @@
+import styles from "./Footer.module.scss";
+
 export default function SocialLinks({ links }) {
   return (
-    <div className="col social">
+    <div className={styles.social}>
       <h3>Follow Us</h3>
-      <ul className="social-icon-container">
+      <ul>
         {links.map((current) => (
           <Icon key={current.name} {...current} />
         ))}

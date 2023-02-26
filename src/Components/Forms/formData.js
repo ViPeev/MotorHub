@@ -925,13 +925,118 @@ const fuel = [
 ];
 const condition = ["Used", "New", "Damaged"];
 const priceFrom = [
-  500, 1000, 2000, 3000, 4000, 5000, 10000, 20000, 50000, 75000, 100000, 200000,
+  "500",
+  "1000",
+  "2000",
+  "3000",
+  "4000",
+  "5000",
+  "10000",
+  "20000",
+  "50000",
+  "75000",
+  "100000",
+  "200000",
 ];
-const priceUp = [
-  1000, 2000, 3000, 4000, 5000, 10000, 20000, 50000, 75000, 100000, 200000,
-  1000000,
+const priceUpTo = [
+  "1000",
+  "2000",
+  "3000",
+  "4000",
+  "5000",
+  "10000",
+  "20000",
+  "50000",
+  "75000",
+  "100000",
+  "200000",
+  "1000000",
 ];
-const power = [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000];
+const maxPower = [
+  "50",
+  "100",
+  "150",
+  "200",
+  "250",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+  "1000",
+];
+
+const mileage = [
+  "5000",
+  "10000",
+  "25000",
+  "50000",
+  "100000",
+  "150000",
+  "200000",
+  "250000",
+  "300000",
+];
+
+const colors = [
+  "White",
+  "Black",
+  "Blue",
+  "Beige",
+  "Brown",
+  "Green",
+  "Red",
+  "Gray",
+  "Silver",
+  "Gold",
+  "Violet",
+  "Pink",
+  "Yellow",
+  "Orange",
+  "Turquoise",
+];
+
+const countries = [
+  "Austria",
+  "Belgium",
+  "Bulgaria",
+  "Croatia",
+  "Cyprus",
+  "Czech Republic",
+  "Denmark",
+  "Estonia",
+  "Finland",
+  "France",
+  "Germany",
+  "Greece",
+  "Hungary",
+  "Ireland",
+  "Italy",
+  "Latvia",
+  "Lithuania",
+  "Luxembourg",
+  "Malta",
+  "Netherlands",
+  "Poland",
+  "Portugal",
+  "Romania",
+  "Slovakia",
+  "Slovenia",
+  "Spain",
+  "Sweden",
+];
+
+const transmission = ["Manual", "Automatic", "Semi-automatic"];
+const years = [];
+const firstYear = 1950;
+const lastYear = Number(new Date().getFullYear());
+
+for (let i = lastYear; i >= firstYear; i--) {
+  years.push(i);
+}
+
 const formData = {
   make: "all",
   model: "all",
@@ -945,7 +1050,7 @@ const formData = {
 const extendedFormData = {
   ...formData,
   transmission: "all",
-  cubicCapacity: "all",
+  cubicCapacity: "",
   color: "all",
   location: "all",
   yearFrom: "all",
@@ -960,8 +1065,13 @@ export default {
   fuel,
   condition,
   priceFrom,
-  priceUp,
-  power,
+  priceUpTo,
+  maxPower,
   formData,
   extendedFormData,
+  transmission,
+  years,
+  mileage,
+  colors,
+  countries,
 };
