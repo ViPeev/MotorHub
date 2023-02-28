@@ -1,10 +1,17 @@
+import { useContext } from "react";
+import { createPortal } from "react-dom";
+import { DetailsContext } from "../../contexts/DetailsContext";
+import { Gallery, PhotoRow } from "./DetailsGallery";
+
 import styles from "./CarDetails.module.scss";
 import user from "../../assets/icons/user-large-solid.svg";
 import email from "../../assets/icons/at-solid.svg";
 import phone from "../../assets/icons/phone-solid.svg";
 import map from "../../assets/icons/map-location-dot-solid.svg";
-import { useRef, useState } from "react";
-import { Gallery, PhotoRow } from "./DetailsGallery";
+import expand from "../../assets/icons/maximize-solid.svg";
+import shrink from "../../assets/icons/minimize-solid.svg";
+
+const body = document.querySelector("body");
 
 function ContactBox() {
   return (
@@ -104,19 +111,26 @@ function TechDetailsBox() {
   );
 }
 
-function PhotoBox({ images }) {
-  const [index, setIndex] = useState(0);
+function SlideShow() {
+  const { images, index, setIndex, setLightBoxDisplay } =
+    useContext(DetailsContext);
 
   const handleButtonClick = (direction, e) => {
-    if (direction === "prev" && index > 0) {
-      setIndex((prev) => prev - 1);
-    } else if (direction === "next" && index < images.length - 1) {
-      setIndex((prev) => prev + 1);
+    if (direction === "prev") {
+      const prev = index - 1 >= 0 ? index - 1 : images.length - 1;
+      setIndex(prev);
+    } else if (direction === "next") {
+      const next = index + 1 === images.length ? 0 : index + 1;
+      setIndex(next);
     }
   };
 
-  const handleImageClick = (imageIndex, e) => {
-    setIndex(imageIndex);
+  const handleImageClick = (index, e) => {
+    setIndex(index);
+  };
+
+  const handleDisplay = () => {
+    setLightBoxDisplay(true);
   };
 
   return (
@@ -124,12 +138,58 @@ function PhotoBox({ images }) {
       <Gallery
         image={images[index]}
         handleClick={handleButtonClick}
+        handleDisplay={handleDisplay}
         index={index}
         photoCount={images.length}
+        styleClass={"gallery"}
+        resizeIcon={expand}
       />
-      <PhotoRow images={images} activeIndex={index} handleClick={handleImageClick} />
+      <PhotoRow
+        images={images}
+        activeIndex={index}
+        handleClick={handleImageClick}
+        styleClass={"photo-row"}
+      />
     </div>
   );
 }
 
-export { ContactBox, DescriptionBox, TechDetailsBox, PhotoBox };
+function LightBox() {
+  const { images, index, setIndex, lightBoxDisplay, setLightBoxDisplay } =
+    useContext(DetailsContext);
+
+  const handleButtonClick = (direction, e) => {
+    if (direction === "prev") {
+      const prev = index - 1 >= 0 ? index - 1 : images.length - 1;
+      setIndex(prev);
+    } else if (direction === "next") {
+      const next = index + 1 === images.length ? 0 : index + 1;
+      setIndex(next);
+    }
+  };
+
+  const handleDisplay = (e) => {
+    if (e.target === e.currentTarget) {
+      setLightBoxDisplay(false);
+    }
+  };
+
+  return lightBoxDisplay
+    ? createPortal(
+        <div className={styles["light-box"]} onClick={handleDisplay}>
+          <Gallery
+            image={images[index]}
+            handleClick={handleButtonClick}
+            handleDisplay={handleDisplay}
+            index={index}
+            photoCount={images.length}
+            styleClass={"lightbox-gallery"}
+            resizeIcon={shrink}
+          />
+        </div>,
+        body
+      )
+    : null;
+}
+
+export { ContactBox, DescriptionBox, TechDetailsBox, SlideShow, LightBox };

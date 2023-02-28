@@ -1,19 +1,24 @@
+import {
+  ContactBox,
+  DescriptionBox,
+  SlideShow,
+  TechDetailsBox,
+  LightBox,
+} from "./DetailsComponents";
+import { DetailsProvider } from "../../contexts/DetailsContext";
 import styles from "./CarDetails.module.scss";
-import {ContactBox, DescriptionBox, PhotoBox, TechDetailsBox} from "./DetailsComponents";
-
-import audi1 from "../../assets/images/audi1.jpg";
-import audi2 from "../../assets/images/audi2.jpg";
-import audi3 from "../../assets/images/audi3.jpg";
-
-const images = [audi1, audi2, audi3,audi1];
 
 export default function CarDetails() {
+  window.scrollTo(0, 0);
   return (
-    <main className={styles["main-container"]}>
-      <PhotoBox images={images}/>
-      <TechDetailsBox />
-      <DescriptionBox />
-      <ContactBox />
-    </main>
+    <DetailsProvider>
+      <main className={styles["main-container"]}>
+        <SlideShow />
+        <TechDetailsBox />
+        <DescriptionBox />
+        <ContactBox />
+        <LightBox />
+      </main>
+    </DetailsProvider>
   );
 }

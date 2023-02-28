@@ -3,9 +3,12 @@
 
 body {
   box-sizing: border-box;
+
   background-color: $bg-color-1;
   color: $font-color-3;
+
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 main {

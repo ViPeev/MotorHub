@@ -1,10 +1,11 @@
 import styles from "./Catalogue.module.scss";
 import CardGallery from "./CardGallery";
+import { Link } from "react-router-dom";
 
 export default function Card({ images }) {
   const href = `/details/${123}`;
   return (
-    <a href={href} className={styles["link-wrapper"]}>
+    <Link to={href}>
       <div className={styles.card}>
         <CardGallery images={images} />
         <h6>VW Golf 1.9 TDI</h6>
@@ -12,6 +13,6 @@ export default function Card({ images }) {
         <p>Diesel, 300000 km</p>
         <p>Bulgaria</p>
       </div>
-    </a>
+    </Link>
   );
 }
