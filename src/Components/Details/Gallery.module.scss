@@ -1,0 +1,97 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.gallery {
+  @include dimensions(100%, 80%);
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+
+  & > img {
+    @include dimensions(100%, 100%);
+    object-fit: cover;
+  }
+
+  button {
+    position: absolute;
+    top: 50%;
+    padding: 0.5rem;
+    transform: translateY(-50%);
+
+    background-color: rgba(83, 96, 109, 0.446);
+    border: none;
+
+    cursor: pointer;
+    transition: $transition;
+
+    & img {
+      @include dimensions(20px, 20px);
+
+      filter: invert(80%);
+      transition: $transition;
+    }
+
+    &:hover {
+      background-color: $nav-bg-color-light;
+
+      & img {
+        filter: invert(100%);
+      }
+    }
+  }
+}
+
+.button-backward {
+  border-radius: 0 25% 25% 0;
+  left: 0;
+}
+
+.button-forward {
+  border-radius: 25% 0 0 25%;
+  right: 0;
+}
+
+.button-expand {
+  top: 0 !important;
+  right: 0;
+  transform: translateY(0) !important;
+
+  & img {
+    @include dimensions(50px, 50px);
+
+    filter: invert(100%) !important;
+  }
+}
+
+.photo-row {
+  @include dimensions(100%, max-content);
+  margin: auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: row wrap;
+  justify-content: start;
+  column-gap: 0.3rem;
+  overflow-x: auto;
+
+  & img {
+    @include dimensions(70px, 50px);
+    cursor: pointer;
+    opacity: 0.5;
+
+    transition: $transition;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.counter {
+  text-align: center;
+  color: $font-color-1;
+  margin: 1rem 0;
+}
+
+.active {
+  opacity: 1 !important;
+}
