@@ -57,14 +57,13 @@ function InputField({ label, value, name, handleChange, type }) {
           name={name}
           id={name}
           onChange={handleChange}
-          placeholder={`Enter value`}
         />
       </div>
     </div>
   );
 }
 
-function SortSelect({ label, value, name, handleChange, options}) {
+function SortSelect({ label, value, name, handleChange, options }) {
   return (
     <form>
       <label htmlFor={name}>{label} : </label>

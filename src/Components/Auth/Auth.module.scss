@@ -1,0 +1,181 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.main {
+  @include dimensions(100%, max-content);
+  padding:2rem 0;
+
+  font-family: $text-font;
+  background-color: $bg-color-1;
+
+  section {
+    @include dimensions(clamp(200px, 25%, 350px), max-content);
+    margin:auto;
+    padding: 1.5rem 1rem;
+
+    text-align: center;
+    color: $font-color-1;
+    background-color: $bg-color-4;
+    border-radius: 25px;
+
+    box-shadow: $shadow-2;
+
+    h1 {
+      margin: 1rem 0;
+      padding-bottom: 1rem;
+
+      font-size: 1.7rem;
+      font-weight: 600;
+
+      border-bottom: 2px solid $bg-color-4;
+    }
+
+    p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: $nav-bg-color-light;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  text-align: center;
+  color: $font-color-2;
+
+  & > div {
+    @include dimensions(100%, auto);
+  }
+
+  & input {
+    @include dimensions(60%, auto);
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+
+    color: white;
+    background-color: $nav-bg-color-light;
+    border: none;
+    border-radius: 25px;
+
+    outline: none;
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+
+    transition: $transition;
+
+    &:focus {
+      outline: 2px solid $font-color-1;
+    }
+  }
+
+  & button {
+    width: 100px;
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+
+    color: $font-color-3;
+    background-color: $nav-bg-color-light;
+    border: none;
+    border-radius: 25px;
+
+    font-family: $text-font;
+    font-size: 1rem;
+
+    transition: $transition;
+    cursor: pointer;
+
+    &:focus,
+    &:hover,
+    &:active {
+      box-shadow: $shadow-inset;
+    }
+
+    & img {
+      @include dimensions(20px, 15px);
+
+      filter: invert(100%);
+    }
+  }
+}
+
+.register {
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 1rem;
+
+  justify-content: center;
+
+  text-align: center;
+  color: $font-color-2;
+
+  & > div {
+    @include dimensions(100%, auto);
+  }
+
+  & > div:nth-child(1),
+  & > div:nth-child(2) {
+    @include dimensions(50%, auto);
+  }
+
+  & input {
+    @include dimensions(70%, auto);
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+
+    color: white;
+    background-color: $nav-bg-color-light;
+    border: none;
+    border-radius: 25px;
+
+    outline: none;
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+
+    transition: $transition;
+
+    &:focus {
+      outline: 2px solid $font-color-1;
+    }
+  }
+
+  & button {
+    width: 100px;
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+
+    color: $font-color-3;
+    background-color: $nav-bg-color-light;
+    border: none;
+    border-radius: 25px;
+
+    font-family: $text-font;
+    font-size: 1rem;
+
+    transition: $transition;
+    cursor: pointer;
+
+    &:focus,
+    &:hover,
+    &:active {
+      box-shadow: $shadow-inset;
+    }
+
+    & img {
+      @include dimensions(20px, 15px);
+
+      filter: invert(100%);
+    }
+  }
+}

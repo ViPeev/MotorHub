@@ -1,5 +1,6 @@
 @import "resets";
 @import "variables";
+@import "mixins";
 
 body {
   box-sizing: border-box;
@@ -13,7 +14,8 @@ body {
 
 main {
   height:max-content;
-  min-height: 100vh;
+  min-height: 70vh;
+  position:relative;
 }
 
 header,footer {
@@ -24,4 +26,30 @@ a {
   text-decoration: none;
   color:$font-color-3;
   font-family: $link-font
+}
+
+.divider {
+  @include dimensions(120vw, 5rem);
+  position: fixed;
+  top:70%;
+
+  background-color: $bg-color-2;
+  transform: rotate(5deg) translateX(-5%);
+
+  z-index: -5;
+  pointer-events: none;
+  box-shadow: $shadow-2;
+
+  &::before {
+    @include dimensions(30%,20px);
+    position: absolute;
+    top:-20px;
+    left:0;
+
+    content: "";
+    background-color: rgba(215, 218, 11, 0.395);
+
+    transform: skew(50deg);
+    z-index: -6;
+  }
 }

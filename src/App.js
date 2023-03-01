@@ -7,6 +7,8 @@ import Catalogue from "./Components/Catalogue/Catalogue";
 import NotFound from "./Components/404/404";
 import "./main-styles/App.scss";
 import CarDetails from "./Components/Details/CarDetails";
+import LoginPage from "./Components/Auth/LoginPage";
+import RegisterPage from "./Components/Auth/RegisterPage";
 
 function App() {
   return (
@@ -20,8 +22,8 @@ function App() {
           <Route path="/details/:id" element={<CarDetails />} />
           <Route path="/news" element={<main>news</main>} />
           <Route path="/forum" element={<main>forum</main>} />
-          <Route path="/register" element={<main>register</main>} />
-          <Route path="/login" element={<main>login</main>} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<main>Profile</main>} />
           <Route path="/logout" element={<main>logout</main>} />
           <Route path="*" element={<NotFound />} />

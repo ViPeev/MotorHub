@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Advert />
-      <div className={styles.divider}></div>
+      <div className="divider"></div>
       <HomeSearch />
     </main>
   );
