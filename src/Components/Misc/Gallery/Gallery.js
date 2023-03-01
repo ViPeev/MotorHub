@@ -1,6 +1,6 @@
 import styles from "./Gallery.module.scss";
-import angleLeft from "../../assets/icons/angle-left-solid.svg";
-import angleRight from "../../assets/icons/angle-right-solid.svg";
+import angleLeft from "../../../assets/icons/angle-left-solid.svg";
+import angleRight from "../../../assets/icons/angle-right-solid.svg";
 
 function Gallery({
   image,

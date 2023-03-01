@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Select, InputField } from "./Inputs";
-import data from "./formData";
+import data from "../../staticData/formData";
 import styles from "./CatalogSearch.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
@@ -15,13 +15,13 @@ export default function AdvancedSearch({}) {
   });
   const [display, setDisplay] = useState(false);
 
-  const changeHandler = (e) => {
+  const handleChange = (e) => {
     setFormData((data) => {
       return { ...data, [e.target.name]: e.target.value };
     });
   };
 
-  const submitHandler = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
   };
 
@@ -36,12 +36,12 @@ export default function AdvancedSearch({}) {
   return (
     <section>
       <div className={styles["form-wrapper"]}>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={handleSubmit}>
           <Select
             label="Make"
             name="make"
             value={formData.make}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.makes}
             firstOption="All"
           />
@@ -49,7 +49,7 @@ export default function AdvancedSearch({}) {
             label="Model"
             name="model"
             value={formData.model}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.cars[formData.make]}
             firstOption="All"
           />
@@ -57,7 +57,7 @@ export default function AdvancedSearch({}) {
             label="Fuel type"
             name="fuelType"
             value={formData.fuelType}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.fuel}
             firstOption="All"
           />
@@ -65,7 +65,7 @@ export default function AdvancedSearch({}) {
             label="Condition"
             name="condition"
             value={formData.condition}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.condition}
             firstOption="Any"
           />
@@ -73,7 +73,7 @@ export default function AdvancedSearch({}) {
             label="Power up to"
             name="maxPower"
             value={formData.maxPower}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.maxPower}
             firstOption="Any"
             symbol="HP"
@@ -82,7 +82,7 @@ export default function AdvancedSearch({}) {
             label="Price from"
             name="priceFrom"
             value={formData.priceFrom}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.priceFrom}
             firstOption="Any"
             symbol="&euro;"
@@ -91,7 +91,7 @@ export default function AdvancedSearch({}) {
             label="Price up to"
             name="priceUpTo"
             value={formData.priceUpTo}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.priceUpTo}
             firstOption="Any"
             symbol="&euro;"
@@ -102,7 +102,7 @@ export default function AdvancedSearch({}) {
                 label="Transmission"
                 name="transmission"
                 value={formData.transmission}
-                changeHandler={changeHandler}
+                handleChange={handleChange}
                 options={data.transmission}
                 firstOption="Any"
               />
@@ -110,21 +110,21 @@ export default function AdvancedSearch({}) {
                 label="Cubic Capacity"
                 name="cubicCapacity"
                 value={formData.cubicCapacity}
-                changeHandler={changeHandler}
+                handleChange={handleChange}
                 type="number"
               />
               <InputField
                 label="Modification"
                 name="modification"
                 value={formData.modification}
-                changeHandler={changeHandler}
+                handleChange={handleChange}
                 type="text"
               />
               <Select
                 label="Year from"
                 name="yearFrom"
                 value={formData.yearFrom}
-                changeHandler={changeHandler}
+                handleChange={handleChange}
                 options={data.years}
                 firstOption="Any"
               />
@@ -132,7 +132,7 @@ export default function AdvancedSearch({}) {
                 label="Year up to"
                 name="yearUpTo"
                 value={formData.yearUpTo}
-                changeHandler={changeHandler}
+                handleChange={handleChange}
                 options={data.years}
                 firstOption="Any"
               />
@@ -140,7 +140,7 @@ export default function AdvancedSearch({}) {
                 label="Mileage Up to"
                 name="maxMileage"
                 value={formData.maxMileage}
-                changeHandler={changeHandler}
+                handleChange={handleChange}
                 options={data.mileage}
                 firstOption="Any"
                 symbol="km"
@@ -149,7 +149,7 @@ export default function AdvancedSearch({}) {
                 label="Location"
                 name="location"
                 value={formData.location}
-                changeHandler={changeHandler}
+                handleChange={handleChange}
                 options={data.countries}
                 firstOption="Any"
               />
@@ -157,7 +157,7 @@ export default function AdvancedSearch({}) {
                 label="Color"
                 name="color"
                 value={formData.color}
-                changeHandler={changeHandler}
+                handleChange={handleChange}
                 options={data.colors}
                 firstOption="Any"
               />
@@ -172,7 +172,7 @@ export default function AdvancedSearch({}) {
         <button onClick={handleDisplay}>
           {display ? "Hide" : "Show"} additional filters
         </button>
-        <button onClick={handleReset}>Clear Filters</button>
+        <button onClick={handleReset}>X Clear Filters</button>
       </div>
     </section>
   );

@@ -5,10 +5,10 @@ import styles from "./Menu.module.scss";
 
 const body = document.querySelector("body");
 
-export default function Menu({ display, clickHandler }) {
+export default function Menu({ display, handleClick }) {
   const hideMenu = (e) => {
     if (e.target === e.currentTarget) {
-      clickHandler();
+      handleClick();
     }
   };
 

@@ -1,28 +1,28 @@
-import facebookIcon from "./images/facebook.svg";
-import githubIcon from "./images/github.svg";
-import instagramIcon from "./images/instagram.svg";
-import linkedinIcon from "./images/linkedin.svg";
+import facebookIcon from "../../assets/icons/facebook.svg";
+import githubIcon from "../../assets/icons/github.svg";
+import instagramIcon from "../../assets/icons/instagram.svg";
+import linkedinIcon from "../../assets/icons/linkedin.svg";
 
 const social = [
   {
     icon: facebookIcon,
     link: "https://www.facebook.com/profile.php?id=100000745620405",
-    name: "facebook",
+    name: "Facebook",
   },
   {
     icon: instagramIcon,
     link: "https://www.instagram.com/vipeev_/",
-    name: "instagram",
+    name: "Instagram",
   },
   {
     icon: githubIcon,
     link: "https://github.com/ViPeev",
-    name: "github",
+    name: "GitHub",
   },
   {
     icon: linkedinIcon,
     link: "https://www.linkedin.com/in/vladislav-peev-850b0724a/",
-    name: "linkedin",
+    name: "Linkedin",
   },
 ];
 

@@ -20,8 +20,9 @@
     "description description contacts";
 
   font-family: $text-font;
-  box-shadow: $shadow-2;
+
   background-color: $bg-color-1;
+  box-shadow: $shadow-2;
 
   & > div:nth-child(4) {
     grid-area: contacts;
@@ -36,15 +37,16 @@
   flex-direction: column;
   row-gap: 1rem;
 
-  background-color: $bg-color-4;
   color: $font-color-2;
+  background-color: $bg-color-4;
 
   border-radius: 10px;
 
   img {
     @include dimensions(20px, 20px);
-    filter: invert(30%);
     margin: 0 5px -5px 0;
+
+    filter: invert(30%);
   }
 
   h4,
@@ -65,20 +67,23 @@
 
   p {
     max-height: 200px;
-    overflow: auto;
+
     line-height: 1.5rem;
+    overflow: auto;
   }
 }
 
 .technicals {
-  text-align: center;
   grid-area: technicals;
 
+  text-align: center;
+
   p {
-    font-size: 1.2rem;
-    background-color: $nav-bg-color-light;
-    color: $font-color-3;
     padding: 0.5rem;
+
+    font-size: 1.2rem;
+    color: $font-color-3;
+    background-color: $nav-bg-color-light;
   }
 
   h5 {
@@ -107,8 +112,11 @@
 }
 
 .light-box {
-  position:fixed;
-  background-color: rgba(0, 0, 0, 0.85);
-  inset:0;
-  @include dimensions(100vw,100vh);
+  @include dimensions(100%, 100%);
+  min-width: 400px;
+  min-height: 300px;
+  position: fixed;
+  inset: 0;
+
+  background-color: $backdrop-color-2;
 }

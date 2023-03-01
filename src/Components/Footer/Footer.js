@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <CompanyLinks links={data.company} />
-      <SocialLinks links={data.social}/>
+      <SocialLinks links={data.social} />
     </footer>
   );
 }

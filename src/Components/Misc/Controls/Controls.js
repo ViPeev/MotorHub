@@ -1,6 +1,6 @@
 import Pagination from "./Pagination";
 import styles from "./Controls.module.scss";
-import { SortSelect } from "../Forms/Inputs";
+import { SortSelect } from "../../Forms/Inputs";
 
 const sortOptions = [
   { name: "Latest", value: "latest" },

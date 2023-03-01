@@ -2,23 +2,23 @@
 @import "../../main-styles/variables.scss";
 
 .main {
-  margin:2rem auto auto 0;
-  
+  margin: 2rem auto auto 0;
+
   text-align: center;
   color: $font-color-3;
 }
 
 .message-box {
   @include dimensions(60%, max-content);
+  min-width: 300px;
   position: relative;
   margin: 0 auto;
   padding: 3rem 0.5rem;
-  min-width: 300px;
 
   background: $gradient-blue;
-  border-radius: 50px 10px 50px 10px;
   box-shadow: $shadow-2;
-  
+  border-radius: 50px 10px 50px 10px;
+
   font-size: 1.5rem;
   font-family: $link-font;
 
@@ -34,9 +34,9 @@
     bottom: -2rem;
     transform: translateX(-50%);
 
-    border-radius: 30px;
     background-color: $nav-bg-color-light;
     box-shadow: inherit;
+    border-radius: 30px;
 
     font-family: $text-font;
     color: inherit;
@@ -55,7 +55,7 @@
 
   & img {
     @include dimensions(60vh, 60vh);
-    
+
     filter: hue-rotate(25deg);
   }
 }

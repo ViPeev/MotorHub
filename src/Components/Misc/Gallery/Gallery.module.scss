@@ -1,5 +1,5 @@
-@import "../../main-styles/mixins.scss";
-@import "../../main-styles/variables.scss";
+@import "../../../main-styles/mixins.scss";
+@import "../../../main-styles/variables.scss";
 
 .gallery {
   @include dimensions(100%, 80%);
@@ -26,6 +26,7 @@
     & img {
       @include dimensions(20px, 20px);
 
+      pointer-events: none;
       filter: invert(80%);
       transition: $transition;
     }

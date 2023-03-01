@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Select } from "./Inputs";
-import data from "./formData";
+import data from "../../staticData/formData";
 import styles from "./BaseSearch.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
@@ -9,13 +9,13 @@ export default function HomeSearch() {
   const [formData, setFormData] = useState(data.formData);
   const navigate = useNavigate();
 
-  const changeHandler = (e) => {
+  const handleChange = (e) => {
     setFormData((data) => {
       return { ...data, [e.target.name]: e.target.value };
     });
   };
 
-  const submitHandler = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     navigate("/cars", { state: { data: formData } });
   };
@@ -23,12 +23,12 @@ export default function HomeSearch() {
   return (
     <section>
       <div className={styles["form-wrapper"]}>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={handleSubmit}>
           <Select
             label="Make"
             name="make"
             value={formData.make}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.makes}
             firstOption="All"
           />
@@ -36,7 +36,7 @@ export default function HomeSearch() {
             label="Model"
             name="model"
             value={formData.model}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.cars[formData.make]}
             firstOption="All"
           />
@@ -44,7 +44,7 @@ export default function HomeSearch() {
             label="Fuel type"
             name="fuelType"
             value={formData.fuelType}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.fuel}
             firstOption="All"
           />
@@ -52,7 +52,7 @@ export default function HomeSearch() {
             label="Condition"
             name="condition"
             value={formData.condition}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.condition}
             firstOption="Any"
           />
@@ -60,7 +60,7 @@ export default function HomeSearch() {
             label="Power up to"
             name="maxPower"
             value={formData.maxPower}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.maxPower}
             firstOption="Any"
             symbol="HP"
@@ -69,7 +69,7 @@ export default function HomeSearch() {
             label="Price from"
             name="priceFrom"
             value={formData.priceFrom}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.priceFrom}
             firstOption="Any"
             symbol="&euro;"
@@ -78,7 +78,7 @@ export default function HomeSearch() {
             label="Price up to"
             name="priceUpTo"
             value={formData.priceUpTo}
-            changeHandler={changeHandler}
+            handleChange={handleChange}
             options={data.priceUpTo}
             firstOption="Any"
             symbol="&euro;"

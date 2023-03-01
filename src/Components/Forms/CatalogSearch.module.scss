@@ -12,7 +12,7 @@
     align-items: center;
 
     color: $font-color-2;
-    background: $font-color-3;
+    background-color: $font-color-3;
 
     & div {
       @include dimensions(12.5%, 50%);
@@ -24,10 +24,8 @@
 
       font-family: $link-font;
 
-
       & > div {
         @include dimensions(100%, 40%);
-
         overflow: hidden;
 
         & img {
@@ -43,28 +41,29 @@
       }
 
       label {
-        color: inherit;
-        display: inline-block;
         @include dimensions(100%, 100%);
+        display: inline-block;
+        padding: 0.7rem 0;
+
         text-align: center;
+        color: inherit;
         background-color: $bg-color-3;
-        padding-block: 0.3rem;
       }
 
       button {
         all: unset;
-        padding: 0.5rem;
 
         @include dimensions(100%, max-content);
         max-width: 100px;
-
-        background-color: $bg-color-3;
+        padding: 0.5rem;
 
         text-align: center;
         font-family: $text-font;
+        background-color: $bg-color-3;
 
         outline: solid 2px $nav-bg-color;
         outline-offset: 5px;
+
         cursor: pointer;
 
         img {
@@ -80,25 +79,29 @@
         padding: 0.7rem;
 
         appearance: none;
+
+        font-family: $text-font;
+        font-size: 1rem;
+        color: inherit;
+        background-color: $bg-color-3;
+
         border: none;
         outline: none;
+
         overflow: auto;
         cursor: pointer;
 
-        color: inherit;
-        background: $bg-color-3;
-        font-family: $text-font;
-        font-size: 1rem;
       }
 
       input {
         @include dimensions(90%, 100%);
-        padding:0.7rem 1rem;
+        padding: 0.7rem 1rem;
+        
         $font-family: inherit;
         caret-color: $nav-bg-color;
 
         &::placeholder {
-          font-family: $text-font;
+          font-family: $link-font;
         }
       }
 

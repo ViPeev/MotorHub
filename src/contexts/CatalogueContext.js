@@ -13,3 +13,5 @@ function CatalogueProvider({ children }) {
     </CatalogueContext.Provider>
   );
 }
+
+export { CatalogueContext, CatalogueProvider };

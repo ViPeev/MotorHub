@@ -17,7 +17,7 @@ function Icon({ name, link, icon }) {
   return (
     <li key={name}>
       <a href={link} target="_blank">
-        <img src={icon} alt={name} />
+        <img src={icon} alt={name} title={name} />
       </a>
     </li>
   );

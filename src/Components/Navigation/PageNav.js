@@ -12,7 +12,7 @@ export default function PageNav() {
     <ul>
       <li>
         <NavLink to={"/"}>
-          <img src="" alt="MotorHub Logo" />
+          <img src="" alt="Logo" />
         </NavLink>
       </li>
       <li>

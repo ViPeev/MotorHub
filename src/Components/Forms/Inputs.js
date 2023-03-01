@@ -18,7 +18,7 @@ function Select({
   label,
   value,
   name,
-  changeHandler,
+  handleChange,
   options,
   firstOption,
   symbol,
@@ -27,7 +27,7 @@ function Select({
     <div>
       <label htmlFor={name}>{label}</label>
       <div>
-        <select value={value} name={name} id={name} onChange={changeHandler}>
+        <select value={value} name={name} id={name} onChange={handleChange}>
           <option value="all">{firstOption}</option>
           {options ? (
             <>
@@ -44,7 +44,7 @@ function Select({
   );
 }
 
-function InputField({ label, value, name, changeHandler, type }) {
+function InputField({ label, value, name, handleChange, type }) {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
@@ -56,7 +56,7 @@ function InputField({ label, value, name, changeHandler, type }) {
           value={value}
           name={name}
           id={name}
-          onChange={changeHandler}
+          onChange={handleChange}
           placeholder={`Enter value`}
         />
       </div>
@@ -64,11 +64,11 @@ function InputField({ label, value, name, changeHandler, type }) {
   );
 }
 
-function SortSelect({ label, value, name, changeHandler, options}) {
+function SortSelect({ label, value, name, handleChange, options}) {
   return (
     <form>
       <label htmlFor={name}>{label} : </label>
-      <select value={value} name={name} id={name} onChange={changeHandler}>
+      <select value={value} name={name} id={name} onChange={handleChange}>
         {options.map((current) => {
           return (
             <option key={current.value} value={current.value}>

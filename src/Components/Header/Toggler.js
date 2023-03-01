@@ -1,12 +1,11 @@
 import { useState } from "react";
 import Menu from "../Menu/Menu";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import bars from "../../assets/icons/bars-solid.svg"
 
-function Button({ clickHandler }) {
+function Button({ handleClick }) {
   return (
-    <button onClick={clickHandler}>
-      <FontAwesomeIcon icon={faBars} />
+    <button onClick={handleClick}>
+      <img src={bars} alt="Open"/>
     </button>
   );
 }
@@ -14,14 +13,14 @@ function Button({ clickHandler }) {
 export default function Toggler() {
   const [display, setDisplay] = useState(false);
 
-  const displayHandler = () => {
+  const handleDisplay = () => {
     setDisplay((prev) => !prev);
   };
 
   return (
     <>
-      <Button clickHandler={displayHandler} />
-      <Menu display={display} clickHandler={displayHandler} />
+      <Button handleClick={handleDisplay} />
+      <Menu display={display} handleClick={handleDisplay} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { createPortal } from "react-dom";
 import { DetailsContext } from "../../contexts/DetailsContext";
-import { Gallery, PhotoRow } from "./DetailsGallery";
+import { Gallery, PhotoRow } from "../Misc/Gallery/Gallery";
 
 import styles from "./CarDetails.module.scss";
 import user from "../../assets/icons/user-large-solid.svg";
@@ -13,23 +13,23 @@ import shrink from "../../assets/icons/minimize-solid.svg";
 
 const body = document.querySelector("body");
 
-function ContactBox() {
+function ContactBox({}) {
   return (
     <div className={styles.contacts}>
       <h4>Contacts</h4>
-      <span>
+      <div>
         <img src={user} title="Seller" alt="Seller" /> Johann Schmidth
-      </span>
-      <span>
+      </div>
+      <div>
         <img src={map} title="Location" alt="Location" /> Germany
-      </span>
-      <span>
-        <img src={phone} title="Phone Number" alt="Phone Number" />{" "}
+      </div>
+      <div>
+        <img src={phone} title="Phone Number" alt="Phone Number" />
         +359876511506
-      </span>
-      <span>
+      </div>
+      <div>
         <img src={email} title="E-mail" alt="E-mail" /> vlado@abv.bg
-      </span>
+      </div>
     </div>
   );
 }
@@ -112,26 +112,8 @@ function TechDetailsBox() {
 }
 
 function SlideShow() {
-  const { images, index, setIndex, setLightBoxDisplay } =
+  const { images, index, handleButtonClick, handleImageClick, handleDisplay } =
     useContext(DetailsContext);
-
-  const handleButtonClick = (direction, e) => {
-    if (direction === "prev") {
-      const prev = index - 1 >= 0 ? index - 1 : images.length - 1;
-      setIndex(prev);
-    } else if (direction === "next") {
-      const next = index + 1 === images.length ? 0 : index + 1;
-      setIndex(next);
-    }
-  };
-
-  const handleImageClick = (index, e) => {
-    setIndex(index);
-  };
-
-  const handleDisplay = () => {
-    setLightBoxDisplay(true);
-  };
 
   return (
     <div className={styles.gallery}>
@@ -155,24 +137,13 @@ function SlideShow() {
 }
 
 function LightBox() {
-  const { images, index, setIndex, lightBoxDisplay, setLightBoxDisplay } =
-    useContext(DetailsContext);
-
-  const handleButtonClick = (direction, e) => {
-    if (direction === "prev") {
-      const prev = index - 1 >= 0 ? index - 1 : images.length - 1;
-      setIndex(prev);
-    } else if (direction === "next") {
-      const next = index + 1 === images.length ? 0 : index + 1;
-      setIndex(next);
-    }
-  };
-
-  const handleDisplay = (e) => {
-    if (e.target === e.currentTarget) {
-      setLightBoxDisplay(false);
-    }
-  };
+  const {
+    images,
+    index,
+    lightBoxDisplay,
+    handleButtonClick,
+    handleDisplay,
+  } = useContext(DetailsContext);
 
   return lightBoxDisplay
     ? createPortal(
