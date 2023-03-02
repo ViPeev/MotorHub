@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { InputField } from "./Inputs";
 import eye from "../../assets/icons/eye-solid.svg";
+import { Link } from "react-router-dom";
 
 export default function RegisterForm({ style }) {
   const [formData, setFormData] = useState({
@@ -80,6 +81,12 @@ export default function RegisterForm({ style }) {
         handleChange={handleChange}
         type={passType}
       />
+      <div>
+        <input type="checkbox" name="remember" id="remember" />
+        <label htmlFor="remember">
+          Agree to the <Link to="/tos">terms and conditions</Link>
+        </label>
+      </div>
       <div>
         <button>Register</button>
         <button

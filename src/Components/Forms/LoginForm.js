@@ -2,7 +2,7 @@ import { useState } from "react";
 import { InputField } from "./Inputs";
 import eye from "../../assets/icons/eye-solid.svg";
 
-export default function LoginForm({style}) {
+export default function LoginForm({ style }) {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [viewPass, setViewPass] = useState(false);
 
@@ -56,6 +56,10 @@ export default function LoginForm({style}) {
         >
           <img src={eye} alt="View Password" title="View Password" />
         </button>
+      </div>
+      <div>
+        <input type="checkbox" name="remember" id="remember"/>
+        <label htmlFor="remember">Remember me</label>
       </div>
     </form>
   );
