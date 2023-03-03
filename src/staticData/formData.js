@@ -998,6 +998,18 @@ const colors = [
   "Turquoise",
 ];
 
+const categories = [
+  "Saloon / Sedan",
+  "Hatchback / Crossover",
+  "Estate / Wagon",
+  "Sports Car / Coupe",
+  "SUV / Off-roader ",
+  "Cabriolet / Roadster",
+  "Pickup truck",
+  "Van / Minibus",
+  "Cargo",
+];
+
 const countries = [
   "Austria",
   "Belgium",
@@ -1027,7 +1039,8 @@ const countries = [
   "Spain",
   "Sweden",
 ];
-
+const doors = ["2/3", "4/5"];
+const seats = ["2", "4", "5", "6", "7"];
 const transmission = ["Manual", "Automatic", "Semi-automatic"];
 const years = [];
 const firstYear = 1950;
@@ -1059,6 +1072,28 @@ const extendedFormData = {
   modification: "",
 };
 
+const createFormData = {
+  category: "",
+  condition: "",
+  cubicCapacity: "",
+  color: "",
+  doors: "",
+  description: "",
+  fuelType: "",
+  images: [],
+  location: "",
+  make: "",
+  model: "",
+  modification: "",
+  mileage: "",
+  power: "",
+  price: "",
+  seats: "",
+  transmission: "",
+  phone: "",
+  year: "",
+};
+
 export default {
   makes,
   cars,
@@ -1069,9 +1104,13 @@ export default {
   maxPower,
   formData,
   extendedFormData,
+  createFormData,
   transmission,
   years,
   mileage,
   colors,
   countries,
+  categories,
+  doors,
+  seats,
 };

@@ -170,9 +170,9 @@ export default function AdvancedSearch({}) {
           </div>
         </form>
         <button onClick={handleDisplay}>
-          {display ? "Hide" : "Show"} additional filters
+          {display ? "Hide" : "Show"} all filters
         </button>
-        <button onClick={handleReset}>X Clear Filters</button>
+        <button onClick={handleReset}>Clear Filters</button>
       </div>
     </section>
   );

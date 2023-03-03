@@ -75,15 +75,12 @@
 
       transition: $transition;
 
-      &:focus {
-        outline: 2px solid $font-color-1;
-      }
     }
-
+    
     & input[type="checkbox"] {
       @include dimensions(15px, 15px);
       cursor: pointer;
-
+      
       accent-color: $nav-bg-color-light;
     }
 
@@ -96,29 +93,36 @@
       width: 100px;
       margin: 0 0.5rem;
       padding: 0.5rem;
-
+      
       color: $font-color-3;
       background-color: $nav-bg-color-light;
       border: none;
       border-radius: 25px;
-
+      
       font-family: $text-font;
       font-size: 1rem;
 
+      outline: none;
+      outline: 2px solid transparent;
+      outline-offset: 3px;
+      
       transition: $transition;
       cursor: pointer;
-
-      &:focus,
+      
       &:hover,
       &:active {
         box-shadow: $shadow-inset;
       }
-
+      
       & img {
         @include dimensions(20px, 15px);
-
+        
         filter: invert(100%);
       }
+    }
+
+    & input:focus,& button:focus {
+      outline: 2px solid $font-color-1;
     }
   }
 }

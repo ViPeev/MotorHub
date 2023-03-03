@@ -52,7 +52,6 @@ function InputField({ label, value, name, handleChange, type }) {
         <input
           type={type}
           min="0"
-          step="100"
           value={value}
           name={name}
           id={name}
@@ -80,4 +79,35 @@ function SortSelect({ label, value, name, handleChange, options }) {
   );
 }
 
-export { Select, InputField, SortSelect };
+function CreateSelect({ label, value, name, handleChange, options, symbol }) {
+  return (
+    <div>
+      <label htmlFor={name}>{label}</label>
+      <div>
+        <select value={value} name={name} id={name} onChange={handleChange}>
+          <option value=""></option>
+          {options && (
+            <>
+              <Options data={options} symbol={symbol} />
+              <option value="other">Other</option>
+            </>
+          )}
+        </select>
+        {/* <img src={caret} alt="arrow down" /> */}
+      </div>
+    </div>
+  );
+}
+
+function TextArea({ label, value, name, handleChange }) {
+  return (
+    <div>
+      <label htmlFor={name}>{label}</label>
+      <div>
+        <textarea name={name} id={name} cols="30" rows="10" onChange={handleChange} value={value} />
+      </div>
+    </div>
+  );
+}
+
+export { Select, InputField, SortSelect, CreateSelect, TextArea };

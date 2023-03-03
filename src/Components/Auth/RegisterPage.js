@@ -11,7 +11,7 @@ export default function RegisterPage() {
           <h1>Register</h1>
           <RegisterForm style={styles} />
           <p>
-            Already have an account ? Sign-in{" "}
+            Already have an account? Sign-in{" "}
             <Link here to="/login">
               here
             </Link>

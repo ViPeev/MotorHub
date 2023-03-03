@@ -12,8 +12,8 @@ export default function RegisterForm({ style }) {
     password: "",
     repass: "",
   });
-  const [viewPass, setViewPass] = useState(false);
-  const passType = viewPass ? "text" : "password";
+
+  const [viewPass, setViewPass] = useState("password");
 
   const handleChange = (e) => {
     setFormData((prev) => {
@@ -22,10 +22,10 @@ export default function RegisterForm({ style }) {
   };
 
   const handleMouseDown = (e) => {
-    setViewPass(true);
+    setViewPass("text");
   };
   const handleMouseUp = (e) => {
-    setViewPass(false);
+    setViewPass("password");
   };
 
   const handleClick = (e) => {
@@ -72,14 +72,14 @@ export default function RegisterForm({ style }) {
         name="password"
         value={formData.password}
         handleChange={handleChange}
-        type={passType}
+        type={viewPass}
       />
       <InputField
         label="Repeat password *"
         name="repass"
         value={formData.repass}
         handleChange={handleChange}
-        type={passType}
+        type={viewPass}
       />
       <div>
         <input type="checkbox" name="remember" id="remember" />

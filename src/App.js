@@ -9,6 +9,7 @@ import "./main-styles/App.scss";
 import CarDetails from "./Components/Details/CarDetails";
 import LoginPage from "./Components/Auth/LoginPage";
 import RegisterPage from "./Components/Auth/RegisterPage";
+import Create from "./Components/Create/Create";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cars" element={<Catalogue />} />
-          <Route path="/sell" element={<main>sell</main>} />
+          <Route path="/sell" element={<Create />} />
           <Route path="/details/:id" element={<CarDetails />} />
           <Route path="/news" element={<main>news</main>} />
           <Route path="/forum" element={<main>forum</main>} />
