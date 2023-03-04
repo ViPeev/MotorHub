@@ -4,16 +4,21 @@ import styles from "./Upload.module.scss";
 import plus from "../../../assets/icons/circle-plus-solid.svg";
 
 export default function ImageUpload({ formData, setFormData }) {
-  const [count, setCount] = useState([0]);
+  const [count, setCount] = useState(formData.images.length);
+
+  const cardMap = [];
+  for (let i = 0; i <= count && i < 10; i++) {
+    cardMap.push(i);
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (count.length < 10) {
-      setCount((prev) => [...prev, prev[prev.length - 1] + 1]);
+    if (count < 9) {
+      setCount((prev) => prev + 1);
     }
   };
-  
-  const handleAddImage = (index, image) => {
+
+  const addImage = (index, image) => {
     const images = [...formData.images];
     images[index] = image;
     setFormData((prev) => {
@@ -23,7 +28,7 @@ export default function ImageUpload({ formData, setFormData }) {
 
   const handleRemoveImage = (index) => {
     const images = [...formData.images];
-    images.splice(index, 1);
+    images[index] = undefined;
     setFormData((prev) => {
       return { ...prev, images };
     });
@@ -31,15 +36,16 @@ export default function ImageUpload({ formData, setFormData }) {
 
   return (
     <div className={styles.container}>
-      {count.map((current) => (
+      {cardMap.map((current) => (
         <UploadCard
           key={current}
           index={current}
-          handleAddImage={handleAddImage.bind(null, current)}
+          addImage={addImage.bind(null, current)}
           handleRemoveImage={handleRemoveImage.bind(null, current)}
+          image={formData.images[current]}
         />
       ))}
-      {count.length < 10 && (
+      {count < 9 && (
         <button onClick={handleClick}>
           <img src={plus} alt="Add" title="Add" />
         </button>

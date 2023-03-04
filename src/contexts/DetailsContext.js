@@ -6,7 +6,7 @@ import audi3 from "../assets/images/audi3.jpg";
 const DetailsContext = createContext(null);
 
 function DetailsProvider({ children }) {
-  const images = [audi1, audi2, audi3, audi1];
+  const images = [audi1, audi2, audi3, audi1,audi3,audi2];
   const [index, setIndex] = useState(0);
   const [lightBoxDisplay, setLightBoxDisplay] = useState(false);
 

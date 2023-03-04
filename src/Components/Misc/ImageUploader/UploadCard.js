@@ -2,25 +2,16 @@ import styles from "./Upload.module.scss";
 import placeholder from "../../../assets/icons/image-solid.svg";
 import xmark from "../../../assets/icons/xmark-solid.svg";
 
-import { useState } from "react";
-
 export default function UploadCard({
   index,
-  handleAddImage,
+  addImage,
   handleRemoveImage,
+  image
 }) {
-  const [image, setImage] = useState(null);
-
   const handleChange = (e) => {
     if (e.target.files.length > 0) {
-      setImage(URL.createObjectURL(e.target.files[0]));
-      handleAddImage(e.target.files[0]);
+      addImage(e.target.files[0]);
     }
-  };
-
-  const removeHandler = (e) => {
-    handleRemoveImage();
-    setImage(null);
   };
 
   return !image ? (
@@ -39,8 +30,8 @@ export default function UploadCard({
     </div>
   ) : (
     <div className={styles["card-filled"]}>
-      <img src={image} alt="Car" />
-      <button onClick={removeHandler}>
+      <img src={URL.createObjectURL(image)} alt="Car" />
+      <button onClick={handleRemoveImage}>
         <img src={xmark} alt="Remove" title="Remove" />
       </button>
     </div>
