@@ -18,17 +18,17 @@ function ContactBox({}) {
     <div className={styles.contacts}>
       <h4>Contacts</h4>
       <div>
-        <img src={user} title="Seller" alt="Seller" /> Johann Schmidth
+        <img src={user} title="Seller" alt="Seller" /><span> Johann Schmidth</span>
       </div>
       <div>
-        <img src={map} title="Location" alt="Location" /> Germany
+        <img src={map} title="Location" alt="Location" /><span> Germany</span>
       </div>
       <div>
         <img src={phone} title="Phone Number" alt="Phone Number" />
-        +359876511506
+        <span> +359876511506</span>
       </div>
       <div>
-        <img src={email} title="E-mail" alt="E-mail" /> vlado@abv.bg
+        <img src={email} title="E-mail" alt="E-mail" /><span> vlado@abv.bg</span>
       </div>
     </div>
   );

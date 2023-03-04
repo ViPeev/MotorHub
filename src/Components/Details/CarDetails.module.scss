@@ -1,12 +1,16 @@
 @import "../../main-styles/mixins.scss";
 @import "../../main-styles/variables.scss";
 
-.main-container {
-  @include dimensions(clamp(500px, 90%, 1000px), max-content);
+.main {
+  @include dimensions(clamp(500px, 85%, 1100px), max-content);
   margin: 2rem auto;
+}
+
+.details-container {
+  @include dimensions(100%,max-content);
   padding: 1rem;
   display: grid;
-  grid-template-columns: 5fr 0.5fr 1.7fr;
+  grid-template-columns: 70% 0.15fr 1.7fr;
   grid-template-rows: repeat(5, 13rem);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
@@ -66,7 +70,7 @@
   grid-area: description;
 
   p {
-    max-height: 200px;
+    max-height: 100%;
 
     line-height: 1.5rem;
     overflow: auto;
@@ -118,5 +122,35 @@
   position: fixed;
   inset: 0;
 
+  z-index:3;
   background-color: $backdrop-color-2;
+}
+
+.button-container {
+  position: absolute;
+  top:1.2rem;
+  left:1.2rem;
+  z-index:2;
+
+ button {
+    display:flex;
+    flex-direction: row;
+    border-radius: 50%;
+    border: none;
+    outline:2px solid rgba(255, 255, 255, 0);
+    outline-offset: -5px;
+    background-color:$nav-bg-color-light;
+    cursor: pointer;
+    padding:1rem;
+    transition: $transition;
+
+    & img {
+      @include dimensions(1rem,1rem);
+      filter:invert(100%);
+    }
+
+    &:hover,&:focus {
+      outline: 2px solid $bg-color-1;
+    }
+  }
 }

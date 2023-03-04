@@ -1,25 +1,8 @@
-import { useContext } from "react";
-import { CreateContext } from "../../contexts/CreateContext";
-import { CreateSelect, InputField, TextArea } from "../Forms/Inputs";
-import styles from "./Create.module.scss";
-import data from "../../staticData/formData";
+import { CreateSelect, InputField, TextArea } from "./Inputs";
 
-export default function CreateForm() {
-  const { formData, setFormData, setStep } = useContext(CreateContext);
-
-  const handleChange = (e) => {
-    setFormData((data) => {
-      return { ...data, [e.target.name]: e.target.value };
-    });
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    setStep(1);
-  };
-
+export default function CreateFormPartial({ formData, data, handleChange }) {
   return (
-    <form className={styles["data-form"]} onSubmit={handleFormSubmit}>
+    <>
       <CreateSelect
         label="Make *"
         name="make"
@@ -68,7 +51,7 @@ export default function CreateForm() {
         value={formData.modification}
         handleChange={handleChange}
         type="text"
-        placeholder = "GTI..."
+        placeholder="Turbo, GTI, 16v..."
       />
       <InputField
         label="Power ( HP ) *"
@@ -76,7 +59,7 @@ export default function CreateForm() {
         value={formData.power}
         handleChange={handleChange}
         type="number"
-        placeholder = "150..."
+        placeholder="150..."
       />
       <InputField
         label="Cubic Capacity ( cm ) *"
@@ -84,7 +67,7 @@ export default function CreateForm() {
         value={formData.cubicCapacity}
         handleChange={handleChange}
         type="number"
-        placeholder = "2000..."
+        placeholder="2000..."
       />
       <InputField
         label="Price ( &euro; ) *"
@@ -92,7 +75,7 @@ export default function CreateForm() {
         value={formData.price}
         handleChange={handleChange}
         type="number"
-        placeholder = "6000..."
+        placeholder="6000..."
       />
       <InputField
         label="Mileage ( km ) *"
@@ -100,7 +83,7 @@ export default function CreateForm() {
         value={formData.mileage}
         handleChange={handleChange}
         type="number"
-        placeholder = "176500..."
+        placeholder="176500..."
       />
       <CreateSelect
         label="Year of production *"
@@ -143,16 +126,15 @@ export default function CreateForm() {
         value={formData.phone}
         handleChange={handleChange}
         type="text"
-        placeholder = "+359876811234..."
+        placeholder="+359879..."
       />
       <TextArea
         label="Description *"
         name="description"
         value={formData.description}
         handleChange={handleChange}
-        placeholder = "Enter..."
+        placeholder="Enter..."
       />
-      <button>Continue</button>
-    </form>
+    </>
   );
 }

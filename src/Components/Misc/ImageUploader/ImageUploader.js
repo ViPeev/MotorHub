@@ -46,9 +46,11 @@ export default function ImageUpload({ formData, setFormData }) {
         />
       ))}
       {count < 9 && (
-        <button onClick={handleClick}>
-          <img src={plus} alt="Add" title="Add" />
-        </button>
+        <div className={styles["add-button-container"]}>
+          <button onClick={handleClick}>
+            <img src={plus} alt="Add" title="Add" />
+          </button>
+        </div>
       )}
     </div>
   );

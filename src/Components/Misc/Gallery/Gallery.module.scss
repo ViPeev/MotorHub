@@ -59,13 +59,13 @@
 
 .photo-row {
   @include dimensions(100%, max-content);
-  margin: auto;
-  max-width: 800px;
+  padding-bottom: 0.5rem;
   display: flex;
-  flex-direction: row wrap;
+  flex-direction: row;
   justify-content: flex-start;
   column-gap: 0.3rem;
-  overflow-x: auto;
+  overflow: auto;
+  white-space: nowrap;
 
   & img {
     @include dimensions(70px, 50px);

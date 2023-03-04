@@ -9,8 +9,15 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
 
-  & > button {
+.add-button-container {
+  @include dimensions(auto, 8rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & button {
     @include dimensions(3rem, 3rem);
     display: flex;
     justify-content: center;
@@ -80,8 +87,8 @@
     outline: none;
     background-color: $font-color-1;
     @include dimensions(1.3rem, 1.3rem);
-    top:-10px;
-    right:-10px;
+    top: -10px;
+    right: -10px;
     transition: $transition;
 
     &:hover {
