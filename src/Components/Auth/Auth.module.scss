@@ -6,7 +6,6 @@
   padding: 2rem 0;
 
   font-family: $text-font;
-  background-color: $bg-color-1;
 
   section {
     @include dimensions(clamp(400px, 60%, 800px), clamp(500px, 95vh, 700px));

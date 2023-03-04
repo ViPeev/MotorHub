@@ -44,7 +44,7 @@ function Select({
   );
 }
 
-function InputField({ label, value, name, handleChange, type }) {
+function InputField({ label, value, name, handleChange, type, placeholder }) {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
@@ -56,6 +56,7 @@ function InputField({ label, value, name, handleChange, type }) {
           name={name}
           id={name}
           onChange={handleChange}
+          placeholder={placeholder || ""}
         />
       </div>
     </div>
@@ -89,11 +90,11 @@ function CreateSelect({ label, value, name, handleChange, options, symbol }) {
           {options && (
             <>
               <Options data={options} symbol={symbol} />
-              <option value="other">Other</option>
             </>
           )}
+          <option value="other">Other</option>
         </select>
-        {/* <img src={caret} alt="arrow down" /> */}
+        <img src={caret} alt="arrow down" />
       </div>
     </div>
   );
@@ -104,7 +105,14 @@ function TextArea({ label, value, name, handleChange }) {
     <div>
       <label htmlFor={name}>{label}</label>
       <div>
-        <textarea name={name} id={name} cols="30" rows="10" onChange={handleChange} value={value} />
+        <textarea
+          name={name}
+          id={name}
+          cols="30"
+          rows="10"
+          onChange={handleChange}
+          value={value}
+        />
       </div>
     </div>
   );

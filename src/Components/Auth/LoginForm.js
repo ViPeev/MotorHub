@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { InputField } from "./Inputs";
+import { InputField } from "../Forms/Inputs";
 import eye from "../../assets/icons/eye-solid.svg";
 
 export default function LoginForm({ style }) {

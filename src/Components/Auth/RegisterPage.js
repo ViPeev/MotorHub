@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import RegisterForm from "../Forms/RegisterForm";
+import RegisterForm from "./RegisterForm";
 import styles from "./Auth.module.scss";
 import m4 from "../../assets/images/m4.jpg"
 

@@ -1,4 +1,4 @@
-import LoginForm from "../Forms/LoginForm";
+import LoginForm from "./LoginForm";
 import styles from "./Auth.module.scss";
 import { Link } from "react-router-dom";
 import c63 from "../../assets/images/c63.jpg"

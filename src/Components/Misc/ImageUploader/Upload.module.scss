@@ -2,7 +2,7 @@
 @import "../../../main-styles/variables.scss";
 
 .container {
-  @include dimensions(clamp(300px, 60%, 46rem), max-content);
+  @include dimensions(clamp(300px, 85%, 46rem), max-content);
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;

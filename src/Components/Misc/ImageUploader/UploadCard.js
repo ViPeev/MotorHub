@@ -34,14 +34,14 @@ export default function UploadCard({
         onChange={handleChange}
       />
       <label htmlFor={`uploadPhoto-${index}`}>
-        <img src={placeholder} alt="Photo" title="Upload Photo" />
+        <img src={placeholder} alt="Upload" title="Upload" />
       </label>
     </div>
   ) : (
     <div className={styles["card-filled"]}>
-      <img src={image} alt="Photo" />
+      <img src={image} alt="Car" />
       <button onClick={removeHandler}>
-        <img src={xmark} alt="Remove" title="Remove image" />
+        <img src={xmark} alt="Remove" title="Remove" />
       </button>
     </div>
   );
