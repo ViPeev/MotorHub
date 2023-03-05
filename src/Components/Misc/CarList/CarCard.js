@@ -1,4 +1,4 @@
-import styles from "./Catalogue.module.scss";
+import styles from "./CarList.module.scss";
 import CardSlider from "./CardSlider";
 import { Link } from "react-router-dom";
 

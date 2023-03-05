@@ -17,9 +17,9 @@
 
     text-align: center;
     color: $font-color-1;
+
     background-color: $bg-color-4;
     border-radius: 25px;
-
     box-shadow: $shadow-2;
 
     h1 {
@@ -34,6 +34,7 @@
 
     p {
       margin: 1rem 0;
+
       font-size: 1.1rem;
     }
 
@@ -64,6 +65,7 @@
 
       text-align: center;
       color: $font-color-3;
+
       background-color: $nav-bg-color-light;
       border: none;
       border-radius: 25px;
@@ -94,13 +96,12 @@
       padding: 0.5rem;
       
       color: $font-color-3;
-      background-color: $nav-bg-color-light;
-      border: none;
-      border-radius: 25px;
-      
       font-family: $text-font;
       font-size: 1rem;
 
+      background-color: $nav-bg-color-light;
+      border: none;
+      border-radius: 25px;
       outline: none;
       outline: 2px solid transparent;
       outline-offset: 3px;
@@ -146,7 +147,6 @@
 
 .register {
   flex-flow: row wrap;
-
   justify-content: center;
 
   text-align: center;

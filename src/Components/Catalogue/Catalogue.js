@@ -1,5 +1,5 @@
 import AdvancedSearch from "../Forms/CatalogSearch";
-import CarList from "./CarList";
+import CarList from "../Misc/CarList/CarList";
 import styles from "./Catalogue.module.scss";
 
 export default function Catalogue() {

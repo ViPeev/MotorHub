@@ -58,7 +58,10 @@ export default function Edit() {
           <div>
             <ImageUpload formData={formData} setFormData={setFormData} />
           </div>
-          <button>Edit</button>
+          <div>
+          <button>Delete</button>
+          <button>Save</button>
+          </div>
         </form>
       </section>
     </main>

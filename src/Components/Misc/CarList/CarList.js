@@ -1,10 +1,10 @@
 import CarCard from "./CarCard";
-import Controls from "../Misc/Controls/Controls";
-import styles from "./Catalogue.module.scss";
+import Controls from "../Controls/Controls";
+import styles from "./CarList.module.scss";
 
-import audi1 from "../../assets/images/audi1.jpg";
-import audi2 from "../../assets/images/audi2.jpg";
-import audi3 from "../../assets/images/audi3.jpg";
+import audi1 from "../../../assets/images/audi1.jpg";
+import audi2 from "../../../assets/images/audi2.jpg";
+import audi3 from "../../../assets/images/audi3.jpg";
 
 const images = [audi1,audi2,audi3];
 

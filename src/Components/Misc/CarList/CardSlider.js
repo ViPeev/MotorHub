@@ -1,6 +1,6 @@
-import styles from "./Catalogue.module.scss";
-import angleLeft from "../../assets/icons/angle-left-solid.svg";
-import angleRight from "../../assets/icons/angle-right-solid.svg";
+import styles from "./CarList.module.scss";
+import angleLeft from "../../../assets/icons/angle-left-solid.svg";
+import angleRight from "../../../assets/icons/angle-right-solid.svg";
 import { useRef } from "react";
 
 export default function CardSlider({ images }) {
@@ -32,7 +32,7 @@ export default function CardSlider({ images }) {
           return <img key={index} src={current} alt="Car" />;
         })}
       </div>
-      {images.length > 1 ? (
+      {images.length > 1 && (
         <>
           <button
             className={styles["button-backward"]}
@@ -47,7 +47,7 @@ export default function CardSlider({ images }) {
             <img src={angleRight} alt="Next" />
           </button>
         </>
-      ) : null}
+      )}
     </div>
   );
 }

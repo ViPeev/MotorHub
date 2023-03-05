@@ -11,6 +11,7 @@ import LoginPage from "./Components/Auth/LoginPage";
 import RegisterPage from "./Components/Auth/RegisterPage";
 import Create from "./Components/Create/Create";
 import Edit from "./Components/Edit/Edit";
+import UserProfile from "./Components/Profile/UserProfile";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           <Route path="/forum" element={<main>forum</main>} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/profile" element={<main>Profile</main>} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/logout" element={<main>logout</main>} />
           <Route path="*" element={<NotFound />} />
         </Routes>

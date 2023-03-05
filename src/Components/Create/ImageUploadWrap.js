@@ -7,8 +7,9 @@ export default function ImageUploadWrapper() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { ...formData };
-    setFormData({ ...data, images: data.images.filter((i) => i) });
+    setFormData((prev) => {
+      return { ...prev, images: prev.images.filter((i) => i) };
+    });
   };
 
   const handleClick = (e) => {

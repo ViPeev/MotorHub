@@ -15,7 +15,7 @@
 }
 
 .sidebar {
-  @include dimensions(18%, 100%);
+  @include dimensions(200px, 100%);
   padding-top: 1rem;
   position: fixed;
 

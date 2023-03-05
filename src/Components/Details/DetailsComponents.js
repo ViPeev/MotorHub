@@ -145,6 +145,12 @@ function LightBox() {
     handleDisplay,
   } = useContext(DetailsContext);
 
+  if(lightBoxDisplay){
+    document.body.style.overflow = "hidden";
+  }else {
+    document.body.style.overflow = "auto";
+  }
+
   return lightBoxDisplay
     ? createPortal(
         <div className={styles["light-box"]} onClick={handleDisplay}>

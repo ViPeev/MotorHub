@@ -1,0 +1,118 @@
+@import "../../../main-styles/mixins.scss";
+@import "../../../main-styles/variables.scss";
+
+.card-container {
+    @include dimensions(100%, max-content);
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: center;
+    column-gap: 1rem;
+    row-gap: 1rem;
+  
+    & a {
+      @include dimensions(18rem, max-content);
+      display: inline-block;
+      padding-bottom: 1rem;
+  
+      color: $font-color-2;
+      background-color: $bg-color-4;
+  
+      box-shadow: $shadow-2;
+      border-radius: 25px;
+  
+      overflow: hidden;
+      transition: $transition;
+  
+      &:hover {
+        box-shadow: $shadow;
+      }
+    }
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+  
+    & h6,
+    & p {
+      padding: 0.5rem 0 0.5rem 1rem;
+    }
+  
+    & h6 {
+      @include dimensions(90%, auto);
+  
+      font-weight: 600;
+  
+      text-decoration: underline;
+      text-decoration-color: $font-color-1;
+      text-underline-offset: 5px;
+      text-overflow: ellipsis;
+      line-clamp: 1;
+      line-height: 1.5rem;
+  
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  
+  .gallery {
+    @include dimensions(100%, 13rem);
+    position: relative;
+  
+    overflow: hidden;
+  
+    & div {
+      @include dimensions(100%, max-content);
+      display: flex;
+      flex-direction: row;
+  
+      transition: $transition;
+  
+      & img {
+        @include dimensions(100%, 100%);
+        object-fit: cover;
+      }
+    }
+  
+    button {
+      position: absolute;
+      top: 50%;
+      padding: 0.5rem;
+      transform: translateY(-50%);
+  
+      background-color: rgba(83, 96, 109, 0.446);
+      border: none;
+  
+      cursor: pointer;
+      transition: $transition;
+  
+      & img {
+        @include dimensions(20px, 20px);
+  
+        filter: invert(80%);
+        transition: $transition;
+      }
+  
+      &:hover {
+        background-color: $nav-bg-color-light;
+  
+        & img {
+          filter: invert(100%);
+        }
+      }
+    }
+  }
+  
+  .button-backward {
+    left: 0;
+  
+    border-radius: 0 25% 25% 0;
+  }
+  
+  .button-forward {
+    right: 0;
+    
+    border-radius: 25% 0 0 25%;
+  }

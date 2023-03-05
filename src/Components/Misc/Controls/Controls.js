@@ -22,6 +22,7 @@ export default function Controls() {
   const changeHandler = (e) => {
     console.log(e.target.value);
   };
+  
   return (
     <div className={styles.controls}>
       <SortSelect
