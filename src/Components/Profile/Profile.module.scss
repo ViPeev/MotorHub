@@ -2,12 +2,14 @@
 @import "../../main-styles/variables.scss";
 
 .main {
-  @include dimensions(95%, max-content);
+  @include dimensions(100%, max-content);
   margin: 3rem auto;
 
   font-family: $link-font;
   color: $font-color-1;
   & section:nth-child(1) {
+    @include dimensions(90%, auto);
+    margin: auto;
     border-bottom: 2px solid $bg-color-4;
     padding-bottom: 1rem;
   }
@@ -23,7 +25,7 @@
       text-align: center;
       color: $font-color-3;
       font-family: $text-font;
-      font-size:1rem;
+      font-size: 1rem;
       font-weight: 600;
 
       background-color: $nav-bg-color-light;
@@ -35,7 +37,7 @@
       cursor: pointer;
       transition: $transition;
 
-      &:hover{
+      &:hover {
         box-shadow: $shadow-inset;
       }
     }

@@ -11,9 +11,8 @@ export default function Menu({ display, handleClick }) {
       handleClick();
     }
   };
-
-  return display
-    ? createPortal(
+  
+  return display && createPortal(
         <div className={styles.backdrop} onClick={hideMenu}>
           <aside className={styles.sidebar}>
             <UserNav />
@@ -21,6 +20,5 @@ export default function Menu({ display, handleClick }) {
           </aside>
         </div>,
         body
-      )
-    : null;
+      );
 }

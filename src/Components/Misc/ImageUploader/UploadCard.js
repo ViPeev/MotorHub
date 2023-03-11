@@ -6,7 +6,7 @@ export default function UploadCard({
   index,
   addImage,
   handleRemoveImage,
-  image
+  image,
 }) {
   const handleChange = (e) => {
     if (e.target.files.length > 0) {
@@ -14,8 +14,27 @@ export default function UploadCard({
     }
   };
 
-  return !image ? (
-    <div className={styles["card-empty"]}>
+  let src = undefined;
+  if(image){
+    src = (typeof image === "string") ? image : URL.createObjectURL(image);
+  }
+  
+  return (
+    <>
+      {!image ? (
+        <div className={styles["card-empty"]}>
+          <label htmlFor={`uploadPhoto-${index}`}>
+            <img src={placeholder} alt="Upload" title="Upload" />
+          </label>
+        </div>
+      ) : (
+        <div className={styles["card-filled"]}>
+          <img src={src} alt="Car" />
+          <button onClick={handleRemoveImage}>
+            <img src={xmark} alt="Remove" title="Remove" />
+          </button>
+        </div>
+      )}
       <input
         type="file"
         name={`uploadPhoto-${index}}`}
@@ -24,16 +43,6 @@ export default function UploadCard({
         hidden
         onChange={handleChange}
       />
-      <label htmlFor={`uploadPhoto-${index}`}>
-        <img src={placeholder} alt="Upload" title="Upload" />
-      </label>
-    </div>
-  ) : (
-    <div className={styles["card-filled"]}>
-      <img src={URL.createObjectURL(image)} alt="Car" />
-      <button onClick={handleRemoveImage}>
-        <img src={xmark} alt="Remove" title="Remove" />
-      </button>
-    </div>
+    </>
   );
 }

@@ -18,17 +18,20 @@ function ContactBox({}) {
     <div className={styles.contacts}>
       <h4>Contacts</h4>
       <div>
-        <img src={user} title="Seller" alt="Seller" /><span> Johann Schmidth</span>
+        <img src={user} title="Seller" alt="Seller" />
+        <span> Johann Schmidth</span>
       </div>
       <div>
-        <img src={map} title="Location" alt="Location" /><span> Germany</span>
+        <img src={map} title="Location" alt="Location" />
+        <span> Germany</span>
       </div>
       <div>
         <img src={phone} title="Phone Number" alt="Phone Number" />
         <span> +359876511506</span>
       </div>
       <div>
-        <img src={email} title="E-mail" alt="E-mail" /><span> vlado@abv.bg</span>
+        <img src={email} title="E-mail" alt="E-mail" />
+        <span> vlado@abv.bg</span>
       </div>
     </div>
   );
@@ -137,22 +140,13 @@ function SlideShow() {
 }
 
 function LightBox() {
-  const {
-    images,
-    index,
-    lightBoxDisplay,
-    handleButtonClick,
-    handleDisplay,
-  } = useContext(DetailsContext);
+  const { images, index, lightBoxDisplay, handleButtonClick, handleDisplay } =
+    useContext(DetailsContext);
 
-  if(lightBoxDisplay){
-    document.body.style.overflow = "hidden";
-  }else {
-    document.body.style.overflow = "auto";
-  }
+  const overflow = lightBoxDisplay ? "hidden" : "auto";
+  document.body.style.overflow = overflow;
 
-  return lightBoxDisplay
-    ? createPortal(
+  return lightBoxDisplay && createPortal(
         <div className={styles["light-box"]} onClick={handleDisplay}>
           <Gallery
             image={images[index]}
@@ -165,8 +159,7 @@ function LightBox() {
           />
         </div>,
         body
-      )
-    : null;
+      );
 }
 
 export { ContactBox, DescriptionBox, TechDetailsBox, SlideShow, LightBox };
