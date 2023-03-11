@@ -45,18 +45,20 @@ function Select({
 }
 
 function InputField({ label, value, name, handleChange, type, placeholder }) {
+  const content = placeholder || "";
+
   return (
     <div>
       <label htmlFor={name}>{label}</label>
       <div>
         <input
           type={type}
-          min="0"
+          min={0}
           value={value}
           name={name}
           id={name}
           onChange={handleChange}
-          placeholder={placeholder || ""}
+          placeholder={content}
         />
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function LoginPage() {
           <LoginForm style={styles} />
           <p>
             Don't have an account? Register{" "}
-            <Link here to="/register">
+            <Link to="/register">
               here
             </Link>
           </p>

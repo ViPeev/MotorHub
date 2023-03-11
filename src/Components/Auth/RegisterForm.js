@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { InputField } from "../Forms/Inputs";
+import { register } from "../../api/data";
 import eye from "../../assets/icons/eye-solid.svg";
-import { Link } from "react-router-dom";
 
 export default function RegisterForm({ style }) {
   const [formData, setFormData] = useState({
@@ -11,13 +12,18 @@ export default function RegisterForm({ style }) {
     email: "",
     password: "",
     repass: "",
+    agree: false,
   });
-
   const [viewPass, setViewPass] = useState("password");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
+      if (e.target.type === "checkbox") {
+        return { ...prev, agree: e.target.checked };
+      } else {
+        return { ...prev, [e.target.name]: e.target.value };
+      }
     });
   };
 
@@ -28,13 +34,16 @@ export default function RegisterForm({ style }) {
     setViewPass("password");
   };
 
-  const handleClick = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+    await register(
+      formData.userName,
+      formData.email,
+      formData.password,
+      formData.firstName,
+      formData.lastName
+    );
+    navigate("/");
   };
 
   return (
@@ -82,7 +91,13 @@ export default function RegisterForm({ style }) {
         type={viewPass}
       />
       <div>
-        <input type="checkbox" name="remember" id="remember" />
+        <input
+          type="checkbox"
+          name="remember"
+          id="remember"
+          value={formData.agree}
+          onChange={handleChange}
+        />
         <label htmlFor="remember">
           Agree to the <Link to="/tos">terms and conditions</Link>
         </label>
@@ -90,8 +105,8 @@ export default function RegisterForm({ style }) {
       <div>
         <button>Register</button>
         <button
+          type="button"
           onMouseDown={handleMouseDown}
-          onClick={handleClick}
           onMouseLeave={handleMouseUp}
           onMouseUp={handleMouseUp}
         >

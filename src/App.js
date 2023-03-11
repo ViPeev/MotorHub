@@ -8,6 +8,7 @@ import NotFound from "./Components/404/404";
 import "./main-styles/App.scss";
 import CarDetails from "./Components/Details/CarDetails";
 import LoginPage from "./Components/Auth/LoginPage";
+import Logout from "./Components/Auth/Logout";
 import RegisterPage from "./Components/Auth/RegisterPage";
 import Create from "./Components/Create/Create";
 import Edit from "./Components/Edit/Edit";
@@ -29,7 +30,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<UserProfile />} />
-          <Route path="/logout" element={<main>logout</main>} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

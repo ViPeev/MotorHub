@@ -12,7 +12,7 @@ export default function RegisterPage() {
           <RegisterForm style={styles} />
           <p>
             Already have an account? Sign-in{" "}
-            <Link here to="/login">
+            <Link to="/login">
               here
             </Link>
           </p>

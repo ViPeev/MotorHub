@@ -1,11 +1,12 @@
-const host = "http://localhost:3030/api";
 import { setUserData, clearUserData } from "../utils/localStorage";
+
+const host = "http://localhost:3030/api";
 
 async function request(url, options) {
   try {
     const response = await fetch(host + url, options);
 
-    if (response.ok == false) {
+    if (response.ok === false) {
       const error = await response.json();
       throw new Error(error.message);
     }
@@ -58,14 +59,14 @@ export async function del(url) {
 }
 
 export async function login(username, password) {
-  const result = await post(host + "/auth/login", { username, password });
+  const result = await post("/auth/login", { username, password });
 
-  setUserData(result);
+  setUserData(result.result);
   return result;
 }
 
 export async function register(username, email, password, firstName, lastName) {
-  const result = await post(host + "/auth/register", {
+  const result = await post("/auth/register", {
     username,
     email,
     password,
@@ -73,12 +74,12 @@ export async function register(username, email, password, firstName, lastName) {
     lastName,
   });
 
-  setUserData(result);
+  setUserData(result.result);
   return result;
 }
 
 export async function logout() {
-  const result = await get(host + "/auth/logout");
+  const result = await get("/auth/logout");
 
   clearUserData();
 

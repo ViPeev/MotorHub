@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { InputField } from "../Forms/Inputs";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../api/data";
 import eye from "../../assets/icons/eye-solid.svg";
 
 export default function LoginForm({ style }) {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [viewPass, setViewPass] = useState("password");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => {
@@ -23,9 +26,10 @@ export default function LoginForm({ style }) {
     e.preventDefault();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    await login(formData.username, formData.password);
+    navigate("/");
   };
 
   return (
@@ -56,7 +60,7 @@ export default function LoginForm({ style }) {
         </button>
       </div>
       <div>
-        <input type="checkbox" name="remember" id="remember"/>
+        <input type="checkbox" name="remember" id="remember" />
         <label htmlFor="remember">Remember me</label>
       </div>
     </form>
