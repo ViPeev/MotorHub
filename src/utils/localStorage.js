@@ -17,10 +17,12 @@ function clearUserData() {
 }
 
 function getUserData() {
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  const userData = localStorage.getItem("userData");
   const authToken = localStorage.getItem("userData");
 
-  return { userData, authToken };
+  return userData && authToken
+    ? { userData: JSON.parse(userData), authToken }
+    : null;
 }
 
 function setCredentials(username, password) {
@@ -33,6 +35,12 @@ function setCredentials(username, password) {
   );
 }
 
+function getCredentials() {
+  const credentials = localStorage.getItem("credentials");
+
+  return credentials ? JSON.parse(credentials) : null;
+}
+
 function clearCredentials() {
   localStorage.removeItem("credentials");
 }
@@ -43,4 +51,5 @@ export {
   getUserData,
   setCredentials,
   clearCredentials,
+  getCredentials
 };

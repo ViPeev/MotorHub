@@ -70,6 +70,8 @@
 
     & img {
       @include dimensions(9rem, 9rem);
+
+      pointer-events: none;
       object-fit: cover;
     }
   }
@@ -84,6 +86,7 @@
     p:nth-child(1) {
       font-weight: 600;
       color: $font-color-2;
+      margin-bottom: 1.3rem;
     }
   }
 }

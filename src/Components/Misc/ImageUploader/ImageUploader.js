@@ -5,7 +5,7 @@ import plus from "../../../assets/icons/circle-plus-solid.svg";
 
 export default function ImageUpload({ formData, setFormData }) {
   const [count, setCount] = useState(formData.images.length);
-
+  
   const cardMap = [];
   for (let i = 0; i <= count && i < 10; i++) {
     cardMap.push(i);

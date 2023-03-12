@@ -29,3 +29,15 @@ export async function editCar(id, data) {
 export async function deleteCar(id) {
   return await api.del(`/cars/${id}`);
 }
+
+export async function uploadImages(images) {
+  const response = await fetch("http://localhost:3030/api/uploads/cars", {
+    method: "POST",
+    headers: {
+      "X-Authorization": localStorage.getItem("authToken"),
+    },
+    body: images,
+  });
+  
+  return response.json();
+}

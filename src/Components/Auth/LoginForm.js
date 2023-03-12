@@ -1,16 +1,20 @@
 import { useState } from "react";
-import { InputField } from "../Forms/Inputs";
 import { useNavigate } from "react-router-dom";
+import { InputField } from "../Forms/Inputs";
+import { getLoginState } from "../../utils/initializers";
 import { login } from "../../api/data";
 import eye from "../../assets/icons/eye-solid.svg";
 
 export default function LoginForm({ style }) {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState(getLoginState());
   const [viewPass, setViewPass] = useState("password");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => {
+      if (e.target.type === "checkbox") {
+        return { ...prev, [e.target.name]: e.target.checked };
+      }
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
@@ -22,13 +26,9 @@ export default function LoginForm({ style }) {
     setViewPass("password");
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(formData.username, formData.password);
+    await login(formData.username, formData.password, formData.remember);
     navigate("/");
   };
 
@@ -51,8 +51,8 @@ export default function LoginForm({ style }) {
       <div>
         <button>Login</button>
         <button
+          type="button"
           onMouseDown={handleMouseDown}
-          onClick={handleClick}
           onMouseLeave={handleMouseUp}
           onMouseUp={handleMouseUp}
         >
@@ -60,7 +60,13 @@ export default function LoginForm({ style }) {
         </button>
       </div>
       <div>
-        <input type="checkbox" name="remember" id="remember" />
+        <input
+          type="checkbox"
+          name="remember"
+          id="remember"
+          checked={formData.remember}
+          onChange={handleChange}
+        />
         <label htmlFor="remember">Remember me</label>
       </div>
     </form>

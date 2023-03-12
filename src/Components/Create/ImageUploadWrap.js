@@ -1,25 +1,22 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { submitCar } from "../../api/services";
 import { CreateContext } from "../../contexts/CreateContext";
 import ImageUpload from "../Misc/ImageUploader/ImageUploader";
 
 export default function ImageUploadWrapper() {
   const { formData, setFormData, setStep } = useContext(CreateContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormData((prev) => {
-      return { ...prev, images: prev.images.filter((i) => i) };
-    });
 
-    const fData = new FormData();
-    formData.images.forEach(current => fData.append('images',current));
-    
-    const req = await fetch("http://localhost:3030/api/uploads/cars",{
-      method:"POST",
-      body:fData,
-    })
-    const res = await req.json();
-    console.log(res);
+    try {
+      const id = await submitCar(formData);
+      navigate(`/details/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleClick = (e) => {

@@ -1,6 +1,7 @@
 import styles from "./Gallery.module.scss";
 import angleLeft from "../../../assets/icons/angle-left-solid.svg";
 import angleRight from "../../../assets/icons/angle-right-solid.svg";
+import blank from "../../../assets/images/no-car.jpg";
 
 function Gallery({
   image,
@@ -11,29 +12,37 @@ function Gallery({
   styleClass,
   resizeIcon,
 }) {
+  const src = image ? image : blank;
+
   return (
     <>
       <div className={styles[styleClass]}>
-        <img src={image} alt="car" />
-        <button
-          className={styles["button-backward"]}
-          onClick={handleClick.bind(null, "prev")}
-        >
-          <img src={angleLeft} alt="Prev" />
-        </button>
-        <button
-          className={styles["button-forward"]}
-          onClick={handleClick.bind(null, "next")}
-        >
-          <img src={angleRight} alt="Next" />
-        </button>
-        <button className={styles["button-expand"]} onClick={handleDisplay}>
-          <img src={resizeIcon} alt="expand" />
-        </button>
+        <img src={src} alt="car" />
+        {photoCount > 0 && (
+          <>
+            <button
+              className={styles["button-backward"]}
+              onClick={handleClick.bind(null, "prev")}
+            >
+              <img src={angleLeft} alt="Prev" />
+            </button>
+            <button
+              className={styles["button-forward"]}
+              onClick={handleClick.bind(null, "next")}
+            >
+              <img src={angleRight} alt="Next" />
+            </button>
+            <button className={styles["button-expand"]} onClick={handleDisplay}>
+              <img src={resizeIcon} alt="expand" />
+            </button>
+          </>
+        )}
       </div>
-      <p className={styles.counter}>
-        {index + 1} of {photoCount}
-      </p>
+      {photoCount > 0 && (
+        <p className={styles.counter}>
+          {index + 1} of {photoCount}
+        </p>
+      )}
     </>
   );
 }

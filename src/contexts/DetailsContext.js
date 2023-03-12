@@ -1,21 +1,31 @@
-import { useState, createContext } from "react";
-import audi1 from "../assets/images/audi1.jpg";
-import audi2 from "../assets/images/audi2.jpg";
-import audi3 from "../assets/images/audi3.jpg";
+import { useState, createContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getCarById } from "../api/data";
 
 const DetailsContext = createContext(null);
-
 function DetailsProvider({ children }) {
-  const images = [audi1, audi2, audi3, audi1,audi3,audi2];
+  const [data, setData] = useState(null);
   const [index, setIndex] = useState(0);
   const [lightBoxDisplay, setLightBoxDisplay] = useState(false);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const handleButtonClick = (direction) => {
+  useEffect(() => {
+    getCarById(id)
+      .then((result) => {
+        setData(result);
+      })
+      .catch((error) => {
+        navigate("/404", { replace: true });
+      });
+  }, [id]);
+
+  const handleButtonClick = (length, direction) => {
     let value;
     if (direction === "prev") {
-      value = index - 1 >= 0 ? index - 1 : images.length - 1;
+      value = index - 1 >= 0 ? index - 1 : length - 1;
     } else if (direction === "next") {
-      value = index + 1 < images.length ? index + 1 : 0;
+      value = index + 1 < length ? index + 1 : 0;
     }
     setIndex(value);
   };
@@ -34,7 +44,7 @@ function DetailsProvider({ children }) {
     <DetailsContext.Provider
       value={{
         index,
-        images,
+        data,
         lightBoxDisplay,
         handleButtonClick,
         handleImageClick,

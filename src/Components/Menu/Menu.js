@@ -11,6 +11,8 @@ export default function Menu({ display, handleClick }) {
       handleClick();
     }
   };
+
+  
   
   return display && createPortal(
         <div className={styles.backdrop} onClick={hideMenu}>

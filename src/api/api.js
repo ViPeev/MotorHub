@@ -1,4 +1,9 @@
-import { setUserData, clearUserData } from "../utils/localStorage";
+import {
+  setUserData,
+  clearUserData,
+  setCredentials,
+  clearCredentials,
+} from "../utils/localStorage";
 
 const host = "http://localhost:3030/api";
 
@@ -15,10 +20,10 @@ async function request(url, options) {
       const data = await response.json();
       return data;
     } catch (err) {
-      return response;
+      return response.json();
     }
   } catch (err) {
-    alert(err.message);
+    console.log(err.message);
     throw err;
   }
 }
@@ -58,15 +63,22 @@ export async function del(url) {
   return await request(url, getOptions("delete"));
 }
 
-export async function login(username, password) {
-  const result = await post("/auth/login", { username, password });
+export async function login(username, password, remember) {
+  const { result } = await post("/auth/login", { username, password });
 
-  setUserData(result.result);
+  if (remember) {
+    setCredentials(username, password);
+  } else {
+    clearCredentials();
+  }
+
+  setUserData(result);
+  
   return result;
 }
 
 export async function register(username, email, password, firstName, lastName) {
-  const result = await post("/auth/register", {
+  const { result } = await post("/auth/register", {
     username,
     email,
     password,
@@ -74,7 +86,8 @@ export async function register(username, email, password, firstName, lastName) {
     lastName,
   });
 
-  setUserData(result.result);
+  setUserData(result);
+
   return result;
 }
 

@@ -1,7 +1,10 @@
 import profile from "../../assets/images/profile-photo.jpg";
+import { getUserData } from "../../utils/localStorage";
 import styles from "./Profile.module.scss";
 
 export default function UserCard() {
+  const { userData } = getUserData();
+
   return (
     <div className={styles["card-container"]}>
       <div>
@@ -9,8 +12,9 @@ export default function UserCard() {
         <button></button>
       </div>
       <div>
-        <p>Vladislav Peev</p>
-        <p>vladislavpeev9412@gmail.com</p>
+        <p>{userData.fullName}</p>
+        <p>{userData.username}</p>
+        <p>{userData.email}</p>
       </div>
     </div>
   );

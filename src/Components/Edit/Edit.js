@@ -1,49 +1,45 @@
 import CreateFormPartial from "../Forms/CreateFormPartial";
 import ImageUpload from "../Misc/ImageUploader/ImageUploader";
 import styles from "./Edit.module.scss";
-import { useState } from "react";
 import data from "../../staticData/formData";
-
-let mockData = {
-  category: "Saloon / Sedan",
-  condition: "Used",
-  cubicCapacity: "2200",
-  color: "Red",
-  doors: "4/5",
-  description: "mnogo dobra",
-  fuelType: "Diesel",
-  images: [],
-  location: "Bulgaria",
-  make: "Renault",
-  model: "Twingo",
-  modification: "16v",
-  mileage: "150000",
-  power: "67",
-  price: "3000",
-  seats: "4",
-  transmission: "Manual",
-  phone: "+359876511111",
-  year: "2005",
-}
+import { useState, useEffect } from "react";
+import { deleteCar, getCarById } from "../../api/data";
+import { useParams, useNavigate } from "react-router-dom";
+import { submitEditCar } from "../../api/services";
 
 export default function Edit() {
-  const [formData, setFormData] = useState(mockData);
+  const [formData, setFormData] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getCarById(id)
+      .then((result) => {
+        setFormData(result);
+      })
+      .catch((error) => {
+        navigate("/404", { replace: true });
+      });
+  }, [id]);
 
   const handleChange = (e) => {
-    setFormData((data) => {
-      return { ...data, [e.target.name]: e.target.value };
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const images = formData.images.filter((i) => i);
     setFormData((prev) => {
-      return { ...prev, images };
+      return { ...prev, [e.target.name]: e.target.value };
     });
   };
 
-  return (
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await submitEditCar(id, formData);
+    navigate(`/details/${id}`);
+  };
+
+  const handleDelete = async () => {
+    await deleteCar(id);
+    navigate(`/`);
+  };
+
+  return formData ? (
     <main className={styles.main}>
       <section>
         <h2>Edit article</h2>
@@ -59,11 +55,13 @@ export default function Edit() {
             <ImageUpload formData={formData} setFormData={setFormData} />
           </div>
           <div>
-          <button>Delete</button>
-          <button>Save</button>
+            <button type="button" onClick={handleDelete}>
+              Delete
+            </button>
+            <button>Save</button>
           </div>
         </form>
       </section>
     </main>
-  );
+  ) : null;
 }
