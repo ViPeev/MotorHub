@@ -14,12 +14,24 @@ export async function getCarById(id) {
 }
 
 export async function getFavourites() {
-  const userId = getUserData().userData._id;
-  return await api.get(`/users/${userId}/favourites`);
+  const {
+    userData: { _id },
+  } = getUserData();
+
+  return await api.get(`/users/${_id}/favourites`);
 }
+
 
 export async function createCar(data) {
   return await api.post("/cars", data);
+}
+
+export async function likeCar(carId) {
+  return await api.post(`/users/like/${carId}`);
+}
+
+export async function isLiked(carId){
+  return await api.post(`/users/isLiked/${carId}`);
 }
 
 export async function editCar(id, data) {
@@ -28,6 +40,14 @@ export async function editCar(id, data) {
 
 export async function deleteCar(id) {
   return await api.del(`/cars/${id}`);
+}
+
+export async function getOwnCars() {
+  const {
+    userData: { _id },
+  } = getUserData();
+
+  return await api.get(`/cars?where=_ownerId%3D%22${_id}%22`);
 }
 
 export async function uploadImages(images) {

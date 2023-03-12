@@ -1003,7 +1003,7 @@ const categories = [
   "Hatchback / Crossover",
   "Estate / Wagon",
   "Sports Car / Coupe",
-  "SUV / Off-roader ",
+  "SUV / Off-roader",
   "Cabriolet / Roadster",
   "Pickup truck",
   "Van / Minibus",

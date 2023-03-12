@@ -1,15 +1,24 @@
 import styles from "./CarDetails.module.scss";
 import likeIcon from "../../assets/icons/heart-regular.svg";
 import likedIcon from "../../assets/icons/heart-solid.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { isLiked, likeCar } from "../../api/data";
 
-
-export default function LikeButton() {
-  const [like,setLike] = useState(false);
-
-  const handleClick = () => {
-    setLike(prev => !prev);
+export default function LikeButton({ id }) {
+  const [like, setLike] = useState(false);
+  
+  const handleClick = async () => {
+    setLike((prev) => !prev);
+    await likeCar(id);
   };
+
+  useEffect(() => {
+    isLiked(id).then(result => {
+      setLike(result.result);
+    }).catch(error => {
+      console.log(error);
+    })
+  },[])
 
   const icon = like ? likedIcon : likeIcon;
 

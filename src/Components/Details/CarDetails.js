@@ -12,6 +12,7 @@ import styles from "./CarDetails.module.scss";
 import EditButton from "./EditButton";
 import LikeButton from "./LikeButton";
 import { isOwner } from "../../utils/validators";
+import { getUserData } from "../../utils/localStorage";
 
 export default function CarDetails() {
   window.scrollTo(0, 0);
@@ -24,12 +25,14 @@ export default function CarDetails() {
 }
 
 function DetailsWrapper() {
-  const { data } = useContext(DetailsContext);
+  const { data, id } = useContext(DetailsContext);
+  const hasUser = !!getUserData();
   const isUserOwner = isOwner(data?._ownerId);
 
   return data ? (
     <main className={styles.main}>
-      {isUserOwner ? <EditButton id={data._id}/> : <LikeButton />}
+      {hasUser &&
+        (isUserOwner ? <EditButton id={data._id} /> : <LikeButton id={id} />)}
       <div className={styles["details-container"]}>
         <SlideShow />
         <TechDetailsBox data={data} />

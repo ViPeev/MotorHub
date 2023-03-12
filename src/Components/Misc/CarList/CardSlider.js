@@ -29,7 +29,11 @@ export default function CardSlider({ images }) {
     <div className={styles.gallery}>
       <div ref={sliderRef}>
         {images.map((current, index) => {
-          return <img key={index} src={current} alt="Car" />;
+          return (
+            <span>
+              <img key={index} src={current} alt="Car" />
+            </span>
+          );
         })}
       </div>
       {images.length > 1 && (

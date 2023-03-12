@@ -6,9 +6,9 @@ import styles from "./CatalogSearch.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
 export default function AdvancedSearch({}) {
-  const location = useLocation();
+  const { state } = useLocation();
   const [formData, setFormData] = useState(() => {
-    const incomingData = location.state?.data;
+    const incomingData = state?.data;
     return incomingData
       ? { ...data.extendedFormData, ...incomingData }
       : data.extendedFormData;

@@ -3,8 +3,8 @@ import ImageUpload from "../Misc/ImageUploader/ImageUploader";
 import styles from "./Edit.module.scss";
 import data from "../../staticData/formData";
 import { useState, useEffect } from "react";
-import { deleteCar, getCarById } from "../../api/data";
 import { useParams, useNavigate } from "react-router-dom";
+import { deleteCar, getCarById } from "../../api/data";
 import { submitEditCar } from "../../api/services";
 
 export default function Edit() {

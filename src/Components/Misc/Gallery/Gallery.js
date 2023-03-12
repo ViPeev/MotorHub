@@ -12,6 +12,7 @@ function Gallery({
   styleClass,
   resizeIcon,
 }) {
+  
   const src = image ? image : blank;
 
   return (
@@ -20,18 +21,22 @@ function Gallery({
         <img src={src} alt="car" />
         {photoCount > 0 && (
           <>
-            <button
-              className={styles["button-backward"]}
-              onClick={handleClick.bind(null, "prev")}
-            >
-              <img src={angleLeft} alt="Prev" />
-            </button>
-            <button
-              className={styles["button-forward"]}
-              onClick={handleClick.bind(null, "next")}
-            >
-              <img src={angleRight} alt="Next" />
-            </button>
+            {photoCount !== 1 && (
+              <>
+                <button
+                  className={styles["button-backward"]}
+                  onClick={handleClick.bind(null, "prev")}
+                >
+                  <img src={angleLeft} alt="Prev" />
+                </button>
+                <button
+                  className={styles["button-forward"]}
+                  onClick={handleClick.bind(null, "next")}
+                >
+                  <img src={angleRight} alt="Next" />
+                </button>
+              </>
+            )}
             <button className={styles["button-expand"]} onClick={handleDisplay}>
               <img src={resizeIcon} alt="expand" />
             </button>

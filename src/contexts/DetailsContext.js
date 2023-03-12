@@ -43,6 +43,7 @@ function DetailsProvider({ children }) {
   return (
     <DetailsContext.Provider
       value={{
+        id,
         index,
         data,
         lightBoxDisplay,

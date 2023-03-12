@@ -1,18 +1,32 @@
 import UserCard from "./UserCard";
 import styles from "./Profile.module.scss";
 import CarList from "../Misc/CarList/CarList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getOwnCars, getFavourites } from "../../api/data";
+import Spinner from "../Misc/Loaders/Loaders";
+
+const getFunctions = {
+  ownOffers: getOwnCars,
+  favourites: getFavourites,
+};
 
 export default function UserProfile() {
-  const [carList, setCarList] = useState("ownOffers");
+  const [listType, setListType] = useState("ownOffers");
+  const [offers, setOffers] = useState(null);
+
+  useEffect(() => {
+    getFunctions[listType]().then((result) => {
+      setOffers(result);
+    });
+  }, [listType]);
 
   const handleClick = (type) => {
-    if (type !== carList) {
-      setCarList(type);
+    if (type !== listType) {
+      setListType(type);
     }
   };
 
-  const active = carList === "ownOffers";
+  const active = listType === "ownOffers";
 
   return (
     <main className={styles.main}>
@@ -33,7 +47,7 @@ export default function UserProfile() {
           Favourites
         </button>
       </div>
-      <CarList />
+      {offers ? <CarList cars={offers} /> : null}
     </main>
   );
 }
