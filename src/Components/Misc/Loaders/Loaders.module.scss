@@ -15,8 +15,6 @@
   animation: rotate-center 1s linear infinite both;
 }
 
-
-
 @-webkit-keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
@@ -27,6 +25,7 @@
     transform: rotate(360deg);
   }
 }
+
 @keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
@@ -44,7 +43,7 @@
   flex-direction: row;
   justify-content: right;
 
-  background-color: $backdrop-color;
+  background-color: $backdrop-color-2;
 
   position: fixed;
   inset: 0;

@@ -29,10 +29,10 @@ export default function RegisterForm({ style }) {
     });
   };
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = () => {
     setViewPass("text");
   };
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     setViewPass("password");
   };
 

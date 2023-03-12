@@ -1,4 +1,3 @@
-import wheel from "../../../assets/images/wheel.png";
 import { createPortal } from "react-dom";
 import styles from "./Loaders.module.scss";
 
@@ -19,3 +18,4 @@ export function Backdrop() {
     body
   );
 }
+
