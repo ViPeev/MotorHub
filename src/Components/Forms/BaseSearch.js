@@ -85,7 +85,7 @@ export default function HomeSearch() {
           />
           <div className="input-group">
             <button type="submit">
-              <img src={searchIcon} alt="Search" />
+              <img src={searchIcon} title="Search" alt="Search" />
             </button>
           </div>
         </form>

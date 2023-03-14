@@ -1,6 +1,7 @@
 import styles from "./CarList.module.scss";
 import CardSlider from "./CardSlider";
 import { Link } from "react-router-dom";
+import { formatDate } from "../../../utils/dataFormatters";
 
 export default function CarCard({
   make,
@@ -15,10 +16,10 @@ export default function CarCard({
   createdAt,
 }) {
   const href = `/details/${_id}`;
-
   return (
     <Link to={href}>
       <div className={`${styles.card} fade-in`}>
+        <p className={styles.date}>{formatDate(createdAt)}</p>
         <CardSlider images={images} />
         <h6>{`${make} ${model} ${modification}`}</h6>
         <p>{price} &euro;</p>

@@ -6,9 +6,9 @@ export const formatImageData = (images) => {
   return formData;
 };
 
-export const formatFormData = (data) => {
-  const formData = new FormData();
+export const formatDate = (text) => {
+  const [year, month, day] = text.split("T")[0].split("-");
+  const [hour, minutes] = text.split("T")[1].split(":");
 
-  Object.keys(data).forEach(key => formData.append(key,data[key]));
-  return formData;
+  return `${hour}:${minutes} - ${day}.${month}.${year}`;
 };

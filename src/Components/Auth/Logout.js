@@ -2,6 +2,9 @@ import { Navigate } from "react-router-dom";
 import { logout } from "../../api/data";
 
 export default function Logout() {
-  logout();
+  (async () => {
+    await logout();
+  })();
+  
   return <Navigate to="/" />;
 }

@@ -43,9 +43,7 @@ function DescriptionBox() {
   return (
     <div className={styles.description}>
       <h4>Description</h4>
-      <p>
-       {data.description}
-      </p>
+      <p>{data.description}</p>
     </div>
   );
 }
@@ -53,9 +51,12 @@ function DescriptionBox() {
 function TechDetailsBox() {
   const { data } = useContext(DetailsContext);
 
+  const make = data.make !== "other" ? `${data.make} ` : "";
+  const model = data.model !== "other" ? `${data.model} ` : "";
+
   return (
     <div className={styles.technicals}>
-      <h4>{`${data.make} ${data.model} ${data.modification}`}</h4>
+      <h4>{`${make}${model}${data.modification}`}</h4>
       <p>Price: {data.price} &euro;</p>
       <h5>Technical Details</h5>
       <table>

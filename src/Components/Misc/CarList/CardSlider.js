@@ -33,10 +33,10 @@ export default function CardSlider({ images }) {
   return (
     <div className={styles.gallery}>
       <div ref={sliderRef}>
-        {images.map((current, index) => {
+        {images.map((current) => {
           return (
-            <span>
-              <img key={index} src={current} alt="Car" />
+            <span key={current}>
+              <img src={current} alt="Car" />
             </span>
           );
         })}

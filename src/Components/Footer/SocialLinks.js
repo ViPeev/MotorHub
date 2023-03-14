@@ -15,7 +15,7 @@ export default function SocialLinks({ links }) {
 
 function Icon({ name, link, icon }) {
   return (
-    <li key={name}>
+    <li>
       <a href={link} target="_blank">
         <img src={icon} alt={name} title={name} />
       </a>
