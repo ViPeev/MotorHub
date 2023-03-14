@@ -1043,7 +1043,7 @@ const doors = ["2/3", "4/5"];
 const seats = [2, 4, 5, 6, 7];
 const transmission = ["Manual", "Automatic", "Semi-automatic"];
 const years = [];
-const firstYear = 1950;
+const firstYear = 1930;
 const lastYear = Number(new Date().getFullYear());
 
 for (let i = lastYear; i >= firstYear; i--) {

@@ -1,6 +1,11 @@
-import { CreateSelect, InputField, TextArea } from "./Inputs";
+import { CreateSelect, InputField, TextArea, ValidatedInput } from "./Inputs";
 
-export default function CreateFormPartial({ formData, data, handleChange }) {
+export default function CreateFormPartial({
+  formData,
+  data,
+  handleChange,
+  validator,
+}) {
   return (
     <>
       <CreateSelect
@@ -9,6 +14,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.make}
         handleChange={handleChange}
         options={data.makes}
+        validator={validator.make}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Model *"
@@ -16,6 +23,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.model}
         handleChange={handleChange}
         options={data.cars[formData.make]}
+        validator={validator.model}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Condition *"
@@ -23,6 +32,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.condition}
         handleChange={handleChange}
         options={data.condition}
+        validator={validator.condition}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Category *"
@@ -30,6 +41,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.category}
         handleChange={handleChange}
         options={data.categories}
+        validator={validator.category}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Fuel Type *"
@@ -37,6 +50,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.fuelType}
         handleChange={handleChange}
         options={data.fuel}
+        validator={validator.fuelType}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Transmission *"
@@ -44,6 +59,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.transmission}
         handleChange={handleChange}
         options={data.transmission}
+        validator={validator.transmission}
+        message={"Invalid value"}
       />
       <InputField
         label="Modification"
@@ -53,37 +70,45 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         type="text"
         placeholder="Turbo, GTI, 16v..."
       />
-      <InputField
+      <ValidatedInput
         label="Power ( HP ) *"
         name="power"
         value={formData.power}
         handleChange={handleChange}
         type="number"
         placeholder="150..."
+        validator={validator.power}
+        message={"Power cannot be less than 10"}
       />
-      <InputField
+      <ValidatedInput
         label="Cubic Capacity ( cm ) *"
         name="cubicCapacity"
         value={formData.cubicCapacity}
         handleChange={handleChange}
         type="number"
         placeholder="2000..."
+        validator={validator.cubicCapacity}
+        message={"Cubic capacity be less than 250"}
       />
-      <InputField
+      <ValidatedInput
         label="Price ( &euro; ) *"
         name="price"
         value={formData.price}
         handleChange={handleChange}
         type="number"
         placeholder="6000..."
+        validator={validator.price}
+        message={"Price cannot be less than 1"}
       />
-      <InputField
+      <ValidatedInput
         label="Mileage ( km ) *"
         name="mileage"
         value={formData.mileage}
         handleChange={handleChange}
         type="number"
         placeholder="176500..."
+        validator={validator.mileage}
+        message={"Mileage cannot be less than 0"}
       />
       <CreateSelect
         label="Year of production *"
@@ -91,6 +116,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.year}
         handleChange={handleChange}
         options={data.years}
+        validator={validator.year}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Doors *"
@@ -98,6 +125,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.doors}
         handleChange={handleChange}
         options={data.doors}
+        validator={validator.doors}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Seats *"
@@ -105,6 +134,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.seats}
         handleChange={handleChange}
         options={data.seats}
+        validator={validator.seats}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Color *"
@@ -112,6 +143,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.color}
         handleChange={handleChange}
         options={data.colors}
+        validator={validator.color}
+        message={"Invalid value"}
       />
       <CreateSelect
         label="Location *"
@@ -119,14 +152,18 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.location}
         handleChange={handleChange}
         options={data.countries}
+        validator={validator.location}
+        message={"Invalid value"}
       />
-      <InputField
+      <ValidatedInput
         label="Phone number *"
         name="phone"
         value={formData.phone}
         handleChange={handleChange}
         type="text"
         placeholder="+359879..."
+        validator={validator.phone}
+        message={"Invalid format"}
       />
       <TextArea
         label="Description *"
@@ -134,6 +171,8 @@ export default function CreateFormPartial({ formData, data, handleChange }) {
         value={formData.description}
         handleChange={handleChange}
         placeholder="Enter..."
+        validator={validator.description}
+        message={"Description must be at least 5 characters long"}
       />
     </>
   );

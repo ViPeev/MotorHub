@@ -7,12 +7,20 @@
 
   border-radius: 50%;
   border-top: solid $nav-bg-color-light 5px;
-  border-right: solid$nav-bg-color-light 5px;
-  border-bottom: solid$bg-color-1 5px;
-  border-left: solid $bg-color-1 5px;
+  border-right: solid $nav-bg-color-light 5px;
 
   -webkit-animation: rotate-center 1s linear infinite both;
   animation: rotate-center 1s linear infinite both;
+}
+
+.white {
+  border-bottom: solid $bg-color-1 5px;
+  border-left: solid $bg-color-1 5px;
+}
+
+.gray {
+  border-bottom: solid $bg-color-4 5px;
+  border-left: solid $bg-color-4 5px;
 }
 
 @-webkit-keyframes rotate-center {
@@ -48,24 +56,33 @@
   position: fixed;
   inset: 0;
   z-index: 5;
-
-  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+.loading-box {
+  display: flex;
+
+  background-size: 400% 400%;
+  animation: pulse 1.2s ease-in-out infinite;
+
+  @keyframes pulse {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: -135% 0%;
+    }
   }
 }
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+
+.full-height {
+  @include dimensions(clamp(500px, 90%, 1050px), 100vh);
+  margin: 2rem auto;
+
+  background: linear-gradient(-90deg, #efefef 0%, #eeeaea 50%, #efefef 100%);
+  box-shadow: $shadow;
+}
+
+.half-height {
+  @include dimensions(95%, 50vh);
+  margin: 2rem auto;
 }

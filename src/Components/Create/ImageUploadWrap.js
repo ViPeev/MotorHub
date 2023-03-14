@@ -6,6 +6,7 @@ import ImageUpload from "../Misc/ImageUploader/ImageUploader";
 import { Backdrop } from "../Misc/Loaders/Loaders";
 
 export default function ImageUploadWrapper() {
+  window.scrollTo(0, 0);
   const { formData, setFormData, setStep } = useContext(CreateContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

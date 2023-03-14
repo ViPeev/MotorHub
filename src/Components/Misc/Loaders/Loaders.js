@@ -3,19 +3,26 @@ import styles from "./Loaders.module.scss";
 
 const body = document.querySelector("body");
 
-export function Spinner() {
-  return (
-    <div className={styles.spinner}>
-    </div>
-  );
+export function Spinner({color}) {
+  return <div className={`${styles.spinner} ${styles[color]}`}></div>;
 }
 
 export function Backdrop() {
   return createPortal(
-    <div className={styles.backdrop}>
-      <Spinner />
+    <div className={`${styles.backdrop} fade-in`}>
+      <Spinner color="white" />
     </div>,
     body
   );
 }
 
+export function Skeleton({ height }) {
+  const heightClass = height === "full" ? "full-height" : "half-height";
+  const color = height === "full" ? "white" : "gray";
+
+  return (
+    <div className={`${styles["loading-box"]} ${styles[heightClass]} fade-in`}>
+      <Spinner color={color} />
+    </div>
+  );
+}

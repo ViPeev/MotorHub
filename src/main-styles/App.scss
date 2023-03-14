@@ -53,3 +53,25 @@ a {
     z-index: -6;
   }
 }
+
+.fade-in {
+  -webkit-animation: fade-in $transition cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  animation: fade-in $transition cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

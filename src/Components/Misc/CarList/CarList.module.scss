@@ -66,18 +66,18 @@
   & > div {
     @include dimensions(100%, 100%);
     transition: $transition;
-    white-space:nowrap;
-    
+    white-space: nowrap;
+
     & span {
-      display:inline-block;
+      display: inline-block;
       @include dimensions(100%, 100%);
       overflow: hidden;
 
       & img {
-        all:unset;
+        all: unset;
         @include dimensions(100%, 100%);
         object-position: center center;
-        object-fit:cover;
+        object-fit: cover;
       }
     }
   }
@@ -121,4 +121,20 @@
   right: 0;
 
   border-radius: 25% 0 0 25%;
+}
+
+.empty {
+  @include dimensions(100%, 30vh);
+  min-height: 500px;
+  display: flex;
+
+  & > p {
+    margin: auto;
+
+    text-align: center;
+    color: $font-color-1;
+    font-family: $link-font;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
 }

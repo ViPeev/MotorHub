@@ -6,7 +6,7 @@ export default function UserCard() {
   const { userData } = getUserData();
 
   return (
-    <div className={styles["card-container"]}>
+    <div className={`${styles["card-container"]} fade-in`}>
       <div>
         <img src={profile} alt="profile" />
         <button></button>

@@ -5,7 +5,7 @@ import m4 from "../../assets/images/m4.jpg"
 
 export default function RegisterPage() {
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} fade-in`}>
       <section>
         <div>
           <h1>Register</h1>

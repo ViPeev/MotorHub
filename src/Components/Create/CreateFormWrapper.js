@@ -3,10 +3,13 @@ import { CreateContext } from "../../contexts/CreateContext";
 import styles from "./Create.module.scss";
 import data from "../../staticData/formData";
 import CreateFormPartial from "../Forms/CreateFormPartial";
+import { validateCreate } from "../../utils/validators";
 
 export default function CreateFormWrapper() {
   const { formData, setFormData, setStep } = useContext(CreateContext);
 
+  const { validator, canSubmit } = validateCreate(formData);
+  
   const handleChange = (e) => {
     setFormData((data) => {
       return { ...data, [e.target.name]: e.target.value };
@@ -15,6 +18,9 @@ export default function CreateFormWrapper() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    if (!canSubmit) return;
+
     setStep(1);
   };
 
@@ -24,8 +30,9 @@ export default function CreateFormWrapper() {
         handleChange={handleChange}
         data={data}
         formData={formData}
+        validator={validator}
       />
-      <button>Continue</button>
+      <button disabled={!canSubmit}>Continue</button>
     </form>
   );
 }

@@ -1,11 +1,16 @@
 import styles from "./CarList.module.scss";
 import angleLeft from "../../../assets/icons/angle-left-solid.svg";
 import angleRight from "../../../assets/icons/angle-right-solid.svg";
+import blank from "../../../assets/images/no-car.jpg";
 import { useRef } from "react";
 
 export default function CardSlider({ images }) {
   const sliderRef = useRef(null);
   const positionRef = useRef(0);
+
+  if (images.length === 0) {
+    images = [blank];
+  }
 
   const handleClick = (direction, e) => {
     e.preventDefault();

@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { InputField } from "../Forms/Inputs";
-import { getLoginState } from "../../utils/initializers";
 import { login } from "../../api/data";
-import eye from "../../assets/icons/eye-solid.svg";
+import { getLoginState } from "../../utils/initializers";
+import { validateLogin } from "../../utils/validators";
+import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
+
+import eye from "../../assets/icons/eye-solid.svg";
 
 export default function LoginForm({ style }) {
   const [formData, setFormData] = useState(getLoginState());
   const [viewPass, setViewPass] = useState("password");
   const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
+
+  const { validator, canSubmit } = validateLogin(formData);
 
   const handleChange = (e) => {
     setFormData((prev) => {
@@ -22,15 +25,18 @@ export default function LoginForm({ style }) {
     });
   };
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = () => {
     setViewPass("text");
   };
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     setViewPass("password");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!canSubmit) return;
+
     setLoading(true);
     await login(formData.username, formData.password, formData.remember);
     setTimeout(() => navigate("/"), 1000);
@@ -39,22 +45,26 @@ export default function LoginForm({ style }) {
   return (
     <>
       <form onSubmit={handleSubmit} className={style.login}>
-        <InputField
+        <ValidatedInput
           label="Username"
           name="username"
           value={formData.username}
           handleChange={handleChange}
           type="text"
+          validator={validator.username}
+          message={"Username is required"}
         />
-        <InputField
+        <ValidatedInput
           label="Password"
           name="password"
           value={formData.password}
           handleChange={handleChange}
           type={viewPass}
+          validator={validator.password}
+          message={"Password is required"}
         />
         <div>
-          <button>Login</button>
+          <button disabled={!canSubmit}>Login</button>
           <button
             type="button"
             onMouseDown={handleMouseDown}

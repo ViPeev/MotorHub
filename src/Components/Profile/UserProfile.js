@@ -3,7 +3,7 @@ import styles from "./Profile.module.scss";
 import CarList from "../Misc/CarList/CarList";
 import { useState, useEffect } from "react";
 import { getOwnCars, getFavourites } from "../../api/data";
-import Spinner from "../Misc/Loaders/Loaders";
+import { Skeleton } from "../Misc/Loaders/Loaders";
 
 const getFunctions = {
   ownOffers: getOwnCars,
@@ -47,7 +47,7 @@ export default function UserProfile() {
           Favourites
         </button>
       </div>
-      {offers ? <CarList cars={offers} /> : null}
+      {offers ? <CarList cars={offers} /> : <Skeleton height="half" />}
     </main>
   );
 }

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { InputField } from "../Forms/Inputs";
 import { register } from "../../api/data";
+import { validateRegister } from "../../utils/validators";
+import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
 import eye from "../../assets/icons/eye-solid.svg";
 
@@ -18,6 +19,8 @@ export default function RegisterForm({ style }) {
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState("password");
   const navigate = useNavigate();
+  
+  const { validator, canSubmit } = validateRegister(formData);
 
   const handleChange = (e) => {
     setFormData((prev) => {
@@ -38,6 +41,9 @@ export default function RegisterForm({ style }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!canSubmit) return;
+
     setLoading(true);
     await register(
       formData.userName,
@@ -52,47 +58,59 @@ export default function RegisterForm({ style }) {
   return (
     <>
       <form onSubmit={handleSubmit} className={style.register}>
-        <InputField
+        <ValidatedInput
           label="First Name *"
           name="firstName"
           value={formData.firstName}
           handleChange={handleChange}
           type="text"
+          validator={validator.firstName}
+          message={"First name is required"}
         />
-        <InputField
+        <ValidatedInput
           label="Last Name *"
           name="lastName"
           value={formData.lastName}
           handleChange={handleChange}
           type="text"
+          validator={validator.lastName}
+          message={"Last name is required"}
         />
-        <InputField
+        <ValidatedInput
           label="Username *"
           name="userName"
           value={formData.userName}
           handleChange={handleChange}
           type="text"
+          validator={validator.userName}
+          message={"Username is required"}
         />
-        <InputField
+        <ValidatedInput
           label="E-mail *"
           name="email"
           value={formData.email}
           handleChange={handleChange}
           type="text"
+          validator={validator.email}
+          message={"Invalid E-mail"}
         />
-        <InputField
+        <ValidatedInput
           label="Password *"
           name="password"
           value={formData.password}
           handleChange={handleChange}
           type={viewPass}
+          validator={validator.password}
+          message={"Password too short"}
         />
-        <InputField
+        <ValidatedInput
           label="Repeat password *"
           name="repass"
           value={formData.repass}
           handleChange={handleChange}
           type={viewPass}
+          validator={validator.repass}
+          message={"Passwords do not match"}
         />
         <div>
           <input
@@ -107,7 +125,7 @@ export default function RegisterForm({ style }) {
           </label>
         </div>
         <div>
-          <button>Register</button>
+          <button disabled={!canSubmit}>Register</button>
           <button
             type="button"
             onMouseDown={handleMouseDown}

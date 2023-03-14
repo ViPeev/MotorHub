@@ -7,7 +7,7 @@ import styles from "./Home.module.scss";
 
 export default memo(function Advert() {
   return (
-    <section className={styles.adverts}>
+    <section className={`${styles.adverts} fade-in`}>
       <figure>
         <a
           href="https://www.skoda-auto.bg/models/kodiaq_fl/kodiaq_fl"

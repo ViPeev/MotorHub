@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { deleteCar } from "../../api/data";
 
-export default function EditButtons({ id, setLoading }) {
+export default function EditButtons({ id, setLoading, canSubmit }) {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
@@ -15,7 +15,7 @@ export default function EditButtons({ id, setLoading }) {
       <button type="button" onClick={handleDelete}>
         Delete
       </button>
-      <button>Save</button>
+      <button disabled={!canSubmit}>Save</button>
     </div>
   );
 }

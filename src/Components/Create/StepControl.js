@@ -6,8 +6,9 @@ import ImageUploadWrapper from "./ImageUploadWrap";
 
 export default function StepControl() {
   const { step } = useContext(CreateContext);
+
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} fade-in`}>
       <section>
         <h2>{`Step ${step + 1}`}</h2>
         <h3>{!step ? "Technical Details" : "Add Photos"}</h3>

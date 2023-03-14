@@ -3,6 +3,7 @@ import AdvancedSearch from "../Forms/CatalogSearch";
 import CarList from "../Misc/CarList/CarList";
 import styles from "./Catalogue.module.scss";
 import { getCars } from "../../api/data";
+import { Skeleton } from "../Misc/Loaders/Loaders";
 
 export default function Catalogue() {
   window.scrollTo(0, 0);
@@ -17,7 +18,7 @@ export default function Catalogue() {
   return (
     <main className={styles.main}>
       <AdvancedSearch />
-      {offers ? <CarList cars={offers} /> : null}
+      {offers ? <CarList cars={offers} /> : <Skeleton height="half" />}
     </main>
   );
 }

@@ -5,7 +5,7 @@ import c63 from "../../assets/images/c63.jpg"
 
 export default function LoginPage() {
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} fade-in`}>
       <section>
         <div className={styles["side-image"]}>
           <img src={c63} alt="Mercedes-AMG C63" />

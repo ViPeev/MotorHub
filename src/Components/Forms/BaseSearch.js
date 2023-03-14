@@ -22,7 +22,7 @@ export default function HomeSearch() {
 
   return (
     <section>
-      <div className={styles["form-wrapper"]}>
+      <div className={`${styles["form-wrapper"]} fade-in`}>
         <form onSubmit={handleSubmit}>
           <Select
             label="Make"

@@ -13,6 +13,7 @@ import EditButton from "./EditButton";
 import LikeButton from "./LikeButton";
 import { isOwner } from "../../utils/validators";
 import { getUserData } from "../../utils/localStorage";
+import { Skeleton } from "../Misc/Loaders/Loaders";
 
 export default function CarDetails() {
   window.scrollTo(0, 0);
@@ -30,7 +31,7 @@ function DetailsWrapper() {
   const isUserOwner = isOwner(data?._ownerId);
 
   return data ? (
-    <main className={styles.main}>
+    <main className={`${styles.main} fade-in`}>
       {hasUser &&
         (isUserOwner ? <EditButton id={data._id} /> : <LikeButton id={id} />)}
       <div className={styles["details-container"]}>
@@ -41,5 +42,5 @@ function DetailsWrapper() {
         <LightBox />
       </div>
     </main>
-  ) : null;
+  ) : <Skeleton height="full" />;
 }

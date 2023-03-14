@@ -18,7 +18,7 @@ export default function CarCard({
 
   return (
     <Link to={href}>
-      <div className={styles.card}>
+      <div className={`${styles.card} fade-in`}>
         <CardSlider images={images} />
         <h6>{`${make} ${model} ${modification}`}</h6>
         <p>{price} &euro;</p>

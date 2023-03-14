@@ -8,7 +8,7 @@
   font-family: $text-font;
 
   section {
-    @include dimensions(clamp(400px, 60%, 800px), clamp(500px, 95vh, 700px));
+    @include dimensions(clamp(400px, 60%, 800px), clamp(700px, 95vh, 800px));
     display: flex;
     flex-direction: row;
     column-gap: 2rem;
@@ -55,7 +55,7 @@
 
   & form {
     display: flex;
-    row-gap: 1rem;
+    row-gap: 2rem;
 
     & input[type="text"],
     & input[type="password"] {
@@ -75,13 +75,12 @@
       outline-offset: 3px;
 
       transition: $transition;
-
     }
-    
+
     & input[type="checkbox"] {
       @include dimensions(15px, 15px);
       cursor: pointer;
-      
+
       accent-color: $nav-bg-color-light;
     }
 
@@ -90,11 +89,36 @@
       cursor: pointer;
     }
 
+    & > div {
+      position: relative;
+
+      & span {
+        display: inline-block;
+        margin-top: 5px;
+        height: 17px;
+        
+        position:absolute;
+        bottom:-1.3rem;
+        left:50%;
+        transform: translateX(-50%);
+        
+        color: rgb(220, 60, 60);
+        font-size: 14px;
+        line-height: 17px;
+        text-overflow: ellipsis;
+        text-align: center;
+        white-space: nowrap;
+  
+        overflow: hidden;
+      }
+    }
+
+
     & button {
       width: 100px;
       margin: 0 0.5rem;
       padding: 0.5rem;
-      
+
       color: $font-color-3;
       font-family: $text-font;
       font-size: 1rem;
@@ -105,23 +129,29 @@
       outline: none;
       outline: 2px solid transparent;
       outline-offset: 3px;
-      
+
       transition: $transition;
       cursor: pointer;
-      
+
       &:hover,
       &:active {
         box-shadow: $shadow-inset;
       }
-      
+
       & img {
         @include dimensions(20px, 15px);
-        
+
         filter: invert(100%);
+      }
+
+      &[disabled] {
+        pointer-events: none;
+        background-color: $bg-color-4;
       }
     }
 
-    & input:focus,& button:focus {
+    & input:focus,
+    & button:focus {
       outline: 2px solid $font-color-1;
     }
   }
@@ -173,7 +203,7 @@
   overflow: hidden;
 
   & img {
-    @include dimensions(100%,100%);
-    object-fit:cover;
+    @include dimensions(100%, 100%);
+    object-fit: cover;
   }
 }
