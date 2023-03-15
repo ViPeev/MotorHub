@@ -1,5 +1,5 @@
 import Advert from "./Adverts";
-import HomeSearch from "../Forms/BaseSearch";
+import { HomeSearch } from "./Search";
 import styles from "./Home.module.scss";
 
 export default function Home() {

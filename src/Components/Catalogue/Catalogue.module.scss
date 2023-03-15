@@ -6,3 +6,137 @@
   flex-direction: column;
 }
 
+.form-wrapper {
+  @include dimensions(100%, max-content);
+
+  & form {
+    @include dimensions(100%, max-content);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    color: $font-color-2;
+    background-color: $font-color-3;
+
+    & div {
+      @include dimensions(12.5%, 50%);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+
+      font-family: $link-font;
+
+      & > div {
+        @include dimensions(100%, 40%);
+        overflow: hidden;
+
+        & img {
+          @include dimensions(15px, 15px);
+          position: absolute;
+          top: 50%;
+          right: 1rem;
+          transform: translateY(-50%);
+
+          pointer-events: none;
+          filter: invert(60%);
+        }
+      }
+
+      label {
+        @include dimensions(100%, 100%);
+        display: inline-block;
+        padding: 0.7rem 0;
+
+        text-align: center;
+        color: inherit;
+        background-color: $bg-color-3;
+      }
+
+      button {
+        all: unset;
+
+        @include dimensions(100%, max-content);
+        max-width: 100px;
+        padding: 0.5rem;
+
+        text-align: center;
+        font-family: $text-font;
+        background-color: $bg-color-3;
+
+        outline: solid 2px $nav-bg-color;
+        outline-offset: 5px;
+
+        cursor: pointer;
+
+        img {
+          @include dimensions(20%, 20%);
+
+          filter: invert(30%);
+        }
+      }
+      select,
+      input {
+        @include dimensions(100%, 100%);
+        position: relative;
+        padding: 0.7rem;
+
+        appearance: none;
+
+        font-family: $text-font;
+        font-size: 1rem;
+        color: inherit;
+        background-color: $bg-color-3;
+
+        border: none;
+        outline: none;
+
+        overflow: auto;
+        cursor: pointer;
+
+      }
+
+      input {
+        @include dimensions(90%, 100%);
+        padding: 0.7rem 1rem;
+        
+        $font-family: inherit;
+        caret-color: $nav-bg-color;
+
+        &::placeholder {
+          font-family: $link-font;
+        }
+      }
+
+      select:hover,
+      select:focus,
+      button:hover,
+      input:hover,
+      input:focus {
+        box-shadow: $shadow-inset;
+      }
+    }
+  }
+  button {
+    all: unset;
+
+    position: relative;
+    padding: 0.5rem;
+
+    color: $font-color-1;
+    font-family: $text-font;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      color: $font-color-2;
+    }
+  }
+}
+

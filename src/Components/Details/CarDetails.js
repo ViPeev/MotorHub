@@ -26,9 +26,12 @@ export default function CarDetails() {
 }
 
 function DetailsWrapper() {
-  const { data, id } = useContext(DetailsContext);
+  const { data, id, lightBoxDisplay } = useContext(DetailsContext);
   const hasUser = !!getUserData();
   const isUserOwner = isOwner(data?._ownerId);
+
+  const overflow = lightBoxDisplay ? "hidden" : "auto";
+  document.body.style.overflow = overflow;
 
   return data ? (
     <main className={`${styles.main} fade-in`}>
@@ -39,8 +42,10 @@ function DetailsWrapper() {
         <TechDetailsBox data={data} />
         <DescriptionBox data={data} />
         <ContactBox data={data} />
-        <LightBox />
+        {lightBoxDisplay && <LightBox />}
       </div>
     </main>
-  ) : <Skeleton height="full" />;
+  ) : (
+    <Skeleton height="full" />
+  );
 }

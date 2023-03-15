@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import AdvancedSearch from "../Forms/CatalogSearch";
+import CatalogSearch from "./Search";
 import CarList from "../Misc/CarList/CarList";
 import styles from "./Catalogue.module.scss";
 import { getCars } from "../../api/data";
@@ -17,7 +17,7 @@ export default function Catalogue() {
 
   return (
     <main className={styles.main}>
-      <AdvancedSearch />
+      <CatalogSearch />
       {offers ? <CarList cars={offers} /> : <Skeleton height="half" />}
     </main>
   );

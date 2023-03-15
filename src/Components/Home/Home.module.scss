@@ -10,7 +10,7 @@
   row-gap: 3rem;
   
   section {
-    @include dimensions(80%, max-content);
+    @include dimensions(clamp(400px,80%,1500px), max-content);
     margin: auto;
   }
 }

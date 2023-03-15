@@ -143,29 +143,24 @@ function SlideShow() {
 }
 
 function LightBox() {
-  const { data, index, lightBoxDisplay, handleButtonClick, handleDisplay } =
+  const { data, index, handleButtonClick, handleDisplay } =
     useContext(DetailsContext);
 
   const images = data.images;
-  const overflow = lightBoxDisplay ? "hidden" : "auto";
-  document.body.style.overflow = overflow;
 
-  return (
-    lightBoxDisplay &&
-    createPortal(
-      <div className={styles["light-box"]} onClick={handleDisplay}>
-        <Gallery
-          image={images[index]}
-          handleClick={handleButtonClick.bind(null, images.length)}
-          handleDisplay={handleDisplay}
-          index={index}
-          photoCount={images.length}
-          styleClass={"lightbox-gallery"}
-          resizeIcon={shrink}
-        />
-      </div>,
-      body
-    )
+  return createPortal(
+    <div className={styles["light-box"]} onClick={handleDisplay}>
+      <Gallery
+        image={images[index]}
+        handleClick={handleButtonClick.bind(null, images.length)}
+        handleDisplay={handleDisplay}
+        index={index}
+        photoCount={images.length}
+        styleClass={"lightbox-gallery"}
+        resizeIcon={shrink}
+      />
+    </div>,
+    body
   );
 }
 
