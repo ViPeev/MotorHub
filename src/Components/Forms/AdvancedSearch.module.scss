@@ -2,7 +2,7 @@
 @import "../../main-styles/variables.scss";
 
 .form-wrapper {
-  @include dimensions(clamp(350px, 60%, 1000px), max-content);
+  @include dimensions(clamp(350px, 60%, 1000px),clamp(80vh,85vh,1000px));
   margin: 3vh auto;
   padding: 2rem 0;
   position: relative;
@@ -56,13 +56,12 @@
   & > button:nth-of-type(2) {
     all: unset;
 
-    width: 100px;
+    width: 6rem;
     margin: 0.5rem;
     padding: 0.5rem;
 
     background-color: $nav-bg-color-light;
 
-    text-align: center;
     color: $font-color-3;
     font-family: $text-font;
 
@@ -86,7 +85,6 @@
       align-items: center;
       align-content: center;
       overflow: hidden;
-      
 
       font-family: $link-font;
 
@@ -137,7 +135,8 @@
         color: $font-color-1;
       }
 
-      select,input {
+      select,
+      input {
         @include dimensions(100%, 100%);
         position: relative;
         padding: 1rem 0 1rem 2rem;
@@ -153,17 +152,18 @@
         font-family: $text-font;
         font-size: 1rem;
 
-        &::placeholder{
-          color:$placeholder-color;
+        &::placeholder {
+          color: $placeholder-color;
         }
       }
-
     }
   }
   select:hover,
   select:focus,
   button:hover,
-  button:focus {
+  button:focus,
+  input:hover,
+  input:focus {
     box-shadow: $shadow-inset;
   }
 }

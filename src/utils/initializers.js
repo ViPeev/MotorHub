@@ -1,3 +1,4 @@
+import { queryBuilder } from "./dataFormatters";
 import { getCredentials } from "./localStorage";
 
 export const getLoginState = () => {
@@ -18,3 +19,16 @@ export const getLoginState = () => {
   }
 };
 
+export const getFormState = (state, data) => {
+  const incomingData = state?.data;
+  return incomingData
+    ? { ...data.extendedFormData, ...incomingData }
+    : data.extendedFormData;
+};
+
+export const getSearchState = (state) => {
+  const incomingData = state?.data;
+  return incomingData
+    ? queryBuilder(incomingData)
+    : "";
+};

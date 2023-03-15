@@ -21,11 +21,12 @@ export default function CarCard({
       <div className={`${styles.card} fade-in`}>
         <CardSlider images={images} />
         <h6>{`${make} ${model} ${modification}`}</h6>
-        <p>{price} &euro;</p>
+        <p>
+          {price} &euro;, {location}
+        </p>
         <p>
           {fuelType}, {mileage} km
         </p>
-        <p>{location}</p>
         <p>{formatDate(createdAt)}</p>
       </div>
     </Link>

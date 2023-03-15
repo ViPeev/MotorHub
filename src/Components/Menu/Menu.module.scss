@@ -19,7 +19,7 @@
   padding-top: 1rem;
   position: fixed;
 
-  background-color: $bg-color-2;
+  background-color: $side-bar-color;
   box-shadow: $shadow-2;
 
   -webkit-animation: fade-in-right 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
@@ -27,11 +27,8 @@
 
   & > * {
     @include dimensions(80%, max-content);
-    margin: 0.7rem 0 0 -1rem;
     padding: 0.7rem;
 
-    background-color: inherit;
-    box-shadow: $shadow-2;
 
     & li {
       padding: 0.5rem;
@@ -42,12 +39,9 @@
       &:hover {
         padding-left: 1rem;
 
-        background: $gradient-blue;
+        background: $nav-bg-color-light;
         box-shadow: $shadow-2;
 
-        a {
-          color: $font-color-3;
-        }
       }
     }
 
@@ -55,9 +49,8 @@
       @include dimensions(100%, 100%);
       display: inline-block;
 
-      color: $font-color-2;
+      color: $font-color-3;
       font-family: $text-font;
-      font-weight: 600;
       transition: $transition;
     }
   }

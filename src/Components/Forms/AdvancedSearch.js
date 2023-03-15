@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { SearchFormPartial, AdvancedSearchPartial } from "./SearchFormPartial";
 import { createPortal } from "react-dom";
 import styles from "./AdvancedSearch.module.scss";

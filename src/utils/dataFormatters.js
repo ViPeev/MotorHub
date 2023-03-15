@@ -12,3 +12,14 @@ export const formatDate = (text) => {
 
   return `${hour}:${minutes} - ${day}.${month}.${year}`;
 };
+
+export const queryBuilder = (data) => {
+  let query = [];
+
+  Object.entries(data).forEach(([k,v]) => {
+    if(v !== "" && v !== "all"){
+      query.push(`${k}="${v}"`);
+    }
+  });
+  return encodeURIComponent(query.join('&'));
+}

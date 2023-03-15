@@ -5,8 +5,8 @@ export const login = api.login;
 export const register = api.register;
 export const logout = api.logout;
 
-export async function getCars() {
-  return await api.get("/cars");
+export async function getCars(search) {
+  return await api.get(`/cars?where=${search}`);
 }
 
 export async function getCarById(id) {
@@ -47,7 +47,7 @@ export async function getOwnCars() {
     userData: { _id },
   } = getUserData();
 
-  return await api.get(`/cars?where=_ownerId%3D%22${_id}%22`);
+  return await api.get(`/cars?where=_ownerId%3D${_id}`);
 }
 
 export async function uploadImages(images) {

@@ -1,20 +1,18 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import { SearchFormPartial } from "../Forms/SearchFormPartial";
 import data from "../../staticData/formData";
 import styles from "./Catalogue.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 import AdvancedSearch from "../Forms/AdvancedSearch";
+import { queryBuilder } from "../../utils/dataFormatters";
+import { getFormState } from "../../utils/initializers";
 
-export default function CatalogSearch() {
-  const { state } = useLocation();
-  const [formData, setFormData] = useState(() => {
-    const incomingData = state?.data;
-    return incomingData
-      ? { ...data.extendedFormData, ...incomingData }
-      : data.extendedFormData;
-  });
+export default function CatalogSearch({ setSearch, state }) {
+  const [formData, setFormData] = useState(getFormState(state, data));
   const [display, setDisplay] = useState(false);
+
+  const overflow = display ? "hidden" : "auto";
+  document.body.style.overflow = overflow;
 
   const handleChange = (e) => {
     setFormData((data) => {
@@ -24,10 +22,11 @@ export default function CatalogSearch() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSearch(queryBuilder(formData));
   };
 
   const handleDisplay = (e) => {
-    if(e.target !== e.currentTarget) return;
+    if (e.target !== e.currentTarget) return;
 
     setDisplay((prev) => !prev);
   };
