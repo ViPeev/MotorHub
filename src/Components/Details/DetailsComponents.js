@@ -10,6 +10,7 @@ import phone from "../../assets/icons/phone-solid.svg";
 import map from "../../assets/icons/map-location-dot-solid.svg";
 import expand from "../../assets/icons/maximize-solid.svg";
 import shrink from "../../assets/icons/minimize-solid.svg";
+import { formatDate } from "../../utils/dataFormatters";
 
 const body = document.querySelector("body");
 
@@ -58,6 +59,7 @@ function TechDetailsBox() {
     <div className={styles.technicals}>
       <h4>{`${make}${model}${data.modification}`}</h4>
       <p>Price: {data.price} &euro;</p>
+      <span>{formatDate(data.createdAt)}</span>
       <h5>Technical Details</h5>
       <table>
         <tbody>

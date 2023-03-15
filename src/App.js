@@ -31,10 +31,11 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/sell" element={<Create />} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/edit/:id" element={<Edit />} />
             <Route path="/profile" element={<UserProfile />} />
+            
+            <Route path="/edit/:id" element={<Edit />} />
           </Route>
-          
+
           <Route element={<PublicRoute />}>
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />

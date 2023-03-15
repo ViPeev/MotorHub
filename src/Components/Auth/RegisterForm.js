@@ -83,7 +83,7 @@ export default function RegisterForm({ style }) {
           handleChange={handleChange}
           type="text"
           validator={validator.userName}
-          message={"Username is required"}
+          message={"Username is too short"}
         />
         <ValidatedInput
           label="E-mail *"
@@ -101,7 +101,7 @@ export default function RegisterForm({ style }) {
           handleChange={handleChange}
           type={viewPass}
           validator={validator.password}
-          message={"Password too short"}
+          message={"Password is too short"}
         />
         <ValidatedInput
           label="Repeat password *"

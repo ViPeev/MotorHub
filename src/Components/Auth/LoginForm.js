@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { login } from "../../api/data";
 import { getLoginState } from "../../utils/initializers";
 import { validateLogin } from "../../utils/validators";
@@ -13,8 +13,10 @@ export default function LoginForm({ style }) {
   const [viewPass, setViewPass] = useState("password");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const { validator, canSubmit } = validateLogin(formData);
+  const redirect = state && state !== "/logout" ? state : "/";
 
   const handleChange = (e) => {
     setFormData((prev) => {
@@ -39,7 +41,7 @@ export default function LoginForm({ style }) {
 
     setLoading(true);
     await login(formData.username, formData.password, formData.remember);
-    setTimeout(() => navigate("/"), 1000);
+    setTimeout(() => navigate(redirect), 1000);
   };
 
   return (

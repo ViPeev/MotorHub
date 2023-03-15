@@ -20,6 +20,7 @@ export const validateLogin = (data) => {
     username: data.username.length > 4,
     password: data.password.length > 7,
   };
+
   const canSubmit = Object.values(validator).every((v) => v);
 
   return { validator, canSubmit };

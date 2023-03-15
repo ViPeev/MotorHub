@@ -5,7 +5,7 @@ const PublicRoute = ({children}) => {
     const isAuthenticated = getUserData();
 
     if (isAuthenticated) {
-        return <Navigate to="/" replace />
+        return <Navigate to="/" replace />;
     }
 
     return children ? children : <Outlet />  
