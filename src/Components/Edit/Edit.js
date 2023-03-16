@@ -11,6 +11,7 @@ export default function Edit() {
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+
   const navigate = useNavigate();
 
   let validator, canSubmit;
@@ -29,7 +30,7 @@ export default function Edit() {
       .catch((error) => {
         navigate("/404", { replace: true });
       });
-  }, [id]);
+  }, [id, navigate]);
 
   const handleChange = (e) => {
     setFormData((prev) => {

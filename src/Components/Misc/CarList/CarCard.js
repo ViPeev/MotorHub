@@ -16,6 +16,7 @@ export default function CarCard({
   createdAt,
 }) {
   const href = `/details/${_id}`;
+  
   return (
     <Link to={href}>
       <div className={`${styles.card} fade-in`}>

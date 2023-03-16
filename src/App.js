@@ -15,6 +15,7 @@ import Edit from "./Components/Edit/Edit";
 import UserProfile from "./Components/Profile/UserProfile";
 import PrivateRoute from "./Components/Guards/Private";
 import PublicRoute from "./Components/Guards/PublicOnly";
+import OwnerRoute from "./Components/Guards/OwnerOnly";
 
 function App() {
   return (
@@ -32,8 +33,10 @@ function App() {
             <Route path="/sell" element={<Create />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/profile" element={<UserProfile />} />
-            
-            <Route path="/edit/:id" element={<Edit />} />
+
+            <Route element={<OwnerRoute />}>
+              <Route path="/edit/:id" element={<Edit />} />
+            </Route>
           </Route>
 
           <Route element={<PublicRoute />}>
@@ -47,5 +50,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

@@ -5,10 +5,10 @@ import { SortSelect } from "../../Forms/Inputs";
 const sortOptions = [
   { name: "Latest", value: "latest" },
   { name: "Oldest", value: "oldest" },
-  { name: "Ascending - Price", value: "priceAsc" },
-  { name: "Descending - Price", value: "priceDes" },
-  { name: "Descending - Year", value: "yearDes" },
-  { name: "Ascending - Year", value: "yearAsc" },
+  { name: "Price - Ascending", value: "priceAsc" },
+  { name: "Price - Descending", value: "priceDes" },
+  { name: "Year - Descending", value: "yearDes" },
+  { name: "Year - Ascending", value: "yearAsc" },
 ];
 
 const itemsPerPage = [

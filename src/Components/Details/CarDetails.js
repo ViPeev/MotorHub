@@ -32,11 +32,14 @@ function DetailsWrapper() {
 
   const overflow = lightBoxDisplay ? "hidden" : "auto";
   document.body.style.overflow = overflow;
-
   return data ? (
     <main className={`${styles.main} fade-in`}>
       {hasUser &&
-        (isUserOwner ? <EditButton id={data._id} /> : <LikeButton id={id} />)}
+        (isUserOwner ? (
+          <EditButton id={data._id} ownerId={data._ownerId} />
+        ) : (
+          <LikeButton id={id} />
+        ))}
       <div className={styles["details-container"]}>
         <SlideShow />
         <TechDetailsBox data={data} />

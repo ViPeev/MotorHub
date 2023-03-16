@@ -140,7 +140,8 @@
 
       & img {
         @include dimensions(20px, 15px);
-
+        
+        pointer-events: none;
         filter: invert(100%);
       }
 
