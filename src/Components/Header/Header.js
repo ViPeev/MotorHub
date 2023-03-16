@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <nav>
-        <PageNav />
+        <PageNav logo={true} />
       </nav>
       <Toggler />
     </header>

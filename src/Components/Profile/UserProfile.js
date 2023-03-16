@@ -14,12 +14,14 @@ export default function UserProfile() {
   const [listType, setListType] = useState("ownOffers");
   const [offers, setOffers] = useState(null);
   const [perPage, setPerPage] = useState(20);
+  const [sort, setSort] = useState("latest");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getFunctions[listType]().then((result) => {
+    getFunctions[listType](page, perPage, sort).then((result) => {
       setOffers(result);
     });
-  }, [listType]);
+  }, [listType, sort, page, perPage]);
 
   const handleClick = (type) => {
     if (type !== listType) {
@@ -48,7 +50,20 @@ export default function UserProfile() {
           Favourites
         </button>
       </div>
-      {offers ? <CarList data={offers} perPage={perPage} setPerPage={setPerPage}/> : <Skeleton height="half" />}
+      {offers ? (
+        <CarList
+          data={offers}
+          perPage={perPage}
+          setPerPage={setPerPage}
+          page={page}
+          setPage={setPage}
+          sort={sort}
+          setSort={setSort}
+          controls={active}
+        />
+      ) : (
+        <Skeleton height="half" />
+      )}
     </main>
   );
 }

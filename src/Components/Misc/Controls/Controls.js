@@ -28,10 +28,12 @@ export default function Controls({
   setSort
 }) {
   const changeItems = (e) => {
+    setPage(1);
     setPerPage(e.target.value);
   };
 
   const changeSort = (e) => {
+    setPage(1);
     setSort(e.target.value)
   };
 

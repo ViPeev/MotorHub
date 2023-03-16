@@ -142,7 +142,7 @@ function CreateSelect({
         >
           <option value=""></option>
           {options && <Options data={options} symbol={symbol} />}
-          <option value="other">Other</option>
+          {name !== "year" && <option value="other">Other</option>}
         </select>
         <img src={caret} alt="arrow down" />
       </div>

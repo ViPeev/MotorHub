@@ -43,12 +43,12 @@ export async function deleteCar(id) {
   return await api.del(`/cars/${id}`);
 }
 
-export async function getOwnCars() {
+export async function getOwnCars(page, perPage,sort) {
   const {
     userData: { _id },
   } = getUserData();
 
-  return await api.get(`/cars?where=_ownerId%3D%22${_id}%22`);
+  return await api.get(`/cars?where=_ownerId%3D%22${_id}%22&skip=%22${page}%22&limit=%22${perPage}%22&sort=%22${sort}%22`);
 }
 
 export async function uploadImages(images) {

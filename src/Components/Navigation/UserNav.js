@@ -5,6 +5,13 @@ import { getUserData } from "../../utils/localStorage";
 export default function UserNav() {
   const [isLogged, setIsLogged] = useState(!!getUserData());
 
+  const active = {
+    textDecoration: "underline 0.5px",
+    textUnderlineOffset: "6px",
+  };
+
+  const setActiveStyles = ({ isActive }) => (isActive ? active : undefined);
+
   const handleLogout = () => {
     setIsLogged(false);
   };
@@ -14,19 +21,27 @@ export default function UserNav() {
       {isLogged ? (
         <>
           <li>
-            <NavLink to="/profile">My Profile</NavLink>
+            <NavLink to="/profile" style={setActiveStyles}>
+              My Profile
+            </NavLink>
           </li>
           <li onClick={handleLogout}>
-            <NavLink to="/logout">Logout</NavLink>
+            <NavLink to="/logout" style={setActiveStyles}>
+              Logout
+            </NavLink>
           </li>
         </>
       ) : (
         <>
           <li>
-            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/login" style={setActiveStyles}>
+              Login
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/register" style={setActiveStyles}>
+              Register
+            </NavLink>
           </li>
         </>
       )}

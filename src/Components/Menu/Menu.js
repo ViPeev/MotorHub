@@ -18,7 +18,7 @@ export default function Menu({ display, handleClick }) {
         <div className={styles.backdrop} onClick={hideMenu}>
           <aside className={styles.sidebar}>
             <UserNav />
-            <PageNav />
+            <PageNav logo={false}/>
           </aside>
         </div>,
         body

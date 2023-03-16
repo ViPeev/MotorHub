@@ -7,7 +7,7 @@ import data from "../../staticData/formData";
 import styles from "./Catalogue.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
-export default function CatalogSearch({ setSearch, setPage,state }) {
+export default function CatalogSearch({ setSearch, setPage, state }) {
   const [formData, setFormData] = useState(getFormState(state, data));
   const [display, setDisplay] = useState(false);
 

@@ -34,6 +34,7 @@ export default function Catalogue() {
           setPage={setPage}
           sort={sort}
           setSort={setSort}
+          controls={true}
         />
       ) : (
         <Skeleton height="half" />
