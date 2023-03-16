@@ -13,6 +13,7 @@ const getFunctions = {
 export default function UserProfile() {
   const [listType, setListType] = useState("ownOffers");
   const [offers, setOffers] = useState(null);
+  const [perPage, setPerPage] = useState(20);
 
   useEffect(() => {
     getFunctions[listType]().then((result) => {
@@ -47,7 +48,7 @@ export default function UserProfile() {
           Favourites
         </button>
       </div>
-      {offers ? <CarList cars={offers} /> : <Skeleton height="half" />}
+      {offers ? <CarList data={offers} perPage={perPage} setPerPage={setPerPage}/> : <Skeleton height="half" />}
     </main>
   );
 }

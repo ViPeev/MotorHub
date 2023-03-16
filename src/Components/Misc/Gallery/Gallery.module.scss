@@ -101,7 +101,6 @@
 
   & > img {
     @include dimensions(100%, 100%);
-    object-fit: cover;
   }
 
   button {

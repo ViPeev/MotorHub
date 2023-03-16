@@ -5,8 +5,10 @@ export const login = api.login;
 export const register = api.register;
 export const logout = api.logout;
 
-export async function getCars(search) {
-  return await api.get(`/cars?where=${search}`);
+export async function getCars(search, page, perPage,sort) {
+  return await api.get(
+    `/cars?where=${search}&skip=%22${page}%22&limit=%22${perPage}%22&sort=%22${sort}%22`
+  );
 }
 
 export async function getCarById(id) {
@@ -21,7 +23,6 @@ export async function getFavourites() {
   return await api.get(`/users/${_id}/favourites`);
 }
 
-
 export async function createCar(data) {
   return await api.post("/cars", data);
 }
@@ -30,7 +31,7 @@ export async function likeCar(carId) {
   return await api.post(`/users/like/${carId}`);
 }
 
-export async function isLiked(carId){
+export async function isLiked(carId) {
   return await api.post(`/users/isLiked/${carId}`);
 }
 
@@ -47,7 +48,7 @@ export async function getOwnCars() {
     userData: { _id },
   } = getUserData();
 
-  return await api.get(`/cars?where=_ownerId%3D${_id}`);
+  return await api.get(`/cars?where=_ownerId%3D%22${_id}%22`);
 }
 
 export async function uploadImages(images) {
@@ -58,6 +59,6 @@ export async function uploadImages(images) {
     },
     body: images,
   });
-  
+
   return response.json();
 }

@@ -2,18 +2,34 @@ import CarCard from "./CarCard";
 import Controls from "../Controls/Controls";
 import styles from "./CarList.module.scss";
 
-export default function CarList({ cars }) {
+export default function CarList({ data, perPage, setPerPage, page, setPage,sort,setSort }) {
   return (
     <section>
-      {cars.length > 0 ? (
+      {data.cars.length > 0 ? (
         <>
-          <Controls />
+          <Controls
+            perPage={perPage}
+            setPerPage={setPerPage}
+            items={data.count}
+            page={page}
+            setPage={setPage}
+            sort={sort}
+            setSort={setSort}
+          />
           <div className={styles["card-container"]}>
-            {cars.map((current) => {
+            {data.cars.map((current) => {
               return <CarCard key={current._id} {...current} />;
             })}
           </div>
-          <Controls />
+          <Controls
+            perPage={perPage}
+            setPerPage={setPerPage}
+            items={data.count}
+            page={page}
+            setPage={setPage}
+            sort={sort}
+            setSort={setSort}
+          />
         </>
       ) : (
         <div className={`${styles.empty} fade-in`}>

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { SearchFormPartial } from "../Forms/SearchFormPartial";
-import data from "../../staticData/formData";
-import styles from "./Catalogue.module.scss";
-import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 import AdvancedSearch from "../Forms/AdvancedSearch";
 import { queryBuilder } from "../../utils/dataFormatters";
 import { getFormState } from "../../utils/initializers";
+import data from "../../staticData/formData";
+import styles from "./Catalogue.module.scss";
+import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
-export default function CatalogSearch({ setSearch, state }) {
+export default function CatalogSearch({ setSearch, setPage,state }) {
   const [formData, setFormData] = useState(getFormState(state, data));
   const [display, setDisplay] = useState(false);
 
@@ -22,6 +22,8 @@ export default function CatalogSearch({ setSearch, state }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setDisplay(false);
+    setPage(1);
     setSearch(queryBuilder(formData));
   };
 

@@ -3,6 +3,7 @@
 
 .card-container {
   @include dimensions(100%, max-content);
+  max-width:80rem;
   margin: auto;
   display: flex;
   flex-flow: row wrap;

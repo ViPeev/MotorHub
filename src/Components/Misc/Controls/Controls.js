@@ -12,32 +12,49 @@ const sortOptions = [
 ];
 
 const itemsPerPage = [
-  { name: "10", value: "10" },
-  { name: "20", value: "20" },
-  { name: "30", value: "30" },
-  { name: "40", value: "40" },
+  { name: "10", value: 10 },
+  { name: "20", value: 20 },
+  { name: "30", value: 30 },
+  { name: "40", value: 40 },
 ];
 
-export default function Controls() {
-  const changeHandler = (e) => {
-    console.log(e.target.value);
+export default function Controls({
+  perPage,
+  setPerPage,
+  items,
+  page,
+  setPage,
+  sort,
+  setSort
+}) {
+  const changeItems = (e) => {
+    setPerPage(e.target.value);
   };
-  
+
+  const changeSort = (e) => {
+    setSort(e.target.value)
+  };
+
   return (
     <div className={styles.controls}>
       <SortSelect
         label="Sort by"
         name="sortBy"
-        value="latest"
-        changeHandler={changeHandler}
+        value={sort}
+        handleChange={changeSort}
         options={sortOptions}
       />
-      <Pagination />
+      <Pagination
+        items={items}
+        perPage={perPage}
+        page={page}
+        setPage={setPage}
+      />
       <SortSelect
         label="Items per page"
         name="itemsPerPage"
-        value="20"
-        changeHandler={changeHandler}
+        value={perPage}
+        handleChange={changeItems}
         options={itemsPerPage}
       />
     </div>
