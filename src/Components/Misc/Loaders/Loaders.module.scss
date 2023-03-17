@@ -60,6 +60,7 @@
 
 .loading-box {
   display: flex;
+  margin: 2rem auto;
 
   background-size: 400% 400%;
   animation: pulse 1.2s ease-in-out infinite;
@@ -76,7 +77,6 @@
 
 .full-height {
   @include dimensions(clamp(500px, 90%, 1050px), 100vh);
-  margin: 2rem auto;
 
   background: linear-gradient(-90deg, #efefef 0%, #eeeaea 50%, #efefef 100%);
   box-shadow: $shadow;
@@ -84,5 +84,10 @@
 
 .half-height {
   @include dimensions(95%, 60vh);
-  margin: 2rem auto;
 }
+
+.suspense-load {
+  @include dimensions(95%, 82vh);
+}
+
+

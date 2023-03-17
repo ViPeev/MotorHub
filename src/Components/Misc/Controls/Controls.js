@@ -1,6 +1,8 @@
 import Pagination from "./Pagination";
 import styles from "./Controls.module.scss";
 import { SortSelect } from "../../Forms/Inputs";
+import { useContext } from "react";
+import { ListContext } from "../CarList/CarList";
 
 const sortOptions = [
   { name: "Latest", value: "latest" },
@@ -18,23 +20,15 @@ const itemsPerPage = [
   { name: "40", value: 40 },
 ];
 
-export default function Controls({
-  perPage,
-  setPerPage,
-  items,
-  page,
-  setPage,
-  sort,
-  setSort
-}) {
+export default function Controls() {
+  const { navigation, dispatch } = useContext(ListContext);
+
   const changeItems = (e) => {
-    setPage(1);
-    setPerPage(e.target.value);
+    dispatch({ type: "SET_PER_PAGE", payload: e.target.value });
   };
 
   const changeSort = (e) => {
-    setPage(1);
-    setSort(e.target.value)
+    dispatch({ type: "SET_SORT", payload: e.target.value });
   };
 
   return (
@@ -42,20 +36,15 @@ export default function Controls({
       <SortSelect
         label="Sort by"
         name="sortBy"
-        value={sort}
+        value={navigation.sort}
         handleChange={changeSort}
         options={sortOptions}
       />
-      <Pagination
-        items={items}
-        perPage={perPage}
-        page={page}
-        setPage={setPage}
-      />
+      <Pagination />
       <SortSelect
         label="Items per page"
         name="itemsPerPage"
-        value={perPage}
+        value={navigation.perPage}
         handleChange={changeItems}
         options={itemsPerPage}
       />

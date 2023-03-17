@@ -3,7 +3,7 @@ import styles from "./Loaders.module.scss";
 
 const body = document.querySelector("body");
 
-export function Spinner({color}) {
+export function Spinner({ color }) {
   return <div className={`${styles.spinner} ${styles[color]}`}></div>;
 }
 
@@ -17,7 +17,12 @@ export function Backdrop() {
 }
 
 export function Skeleton({ height }) {
-  const heightClass = height === "full" ? "full-height" : "half-height";
+  const heightClass =
+    height === "full"
+      ? "full-height"
+      : height === "suspense"
+      ? "suspense-load"
+      : "half-height";
   const color = height === "full" ? "white" : "gray";
 
   return (

@@ -1,54 +1,30 @@
 import CarCard from "./CarCard";
 import Controls from "../Controls/Controls";
 import styles from "./CarList.module.scss";
+import { createContext } from "react";
 
-export default function CarList({
-  data,
-  perPage,
-  setPerPage,
-  page,
-  setPage,
-  sort,
-  setSort,
-  controls,
-}) {
+export const ListContext = createContext(null);
+
+export function CarList({ data, navigation, dispatch }) {
   return (
-    <section>
-      {data.cars.length > 0 ? (
-        <>
-          {controls && (
-            <Controls
-              perPage={perPage}
-              setPerPage={setPerPage}
-              items={data.count}
-              page={page}
-              setPage={setPage}
-              sort={sort}
-              setSort={setSort}
-            />
-          )}
-          <div className={styles["card-container"]}>
-            {data.cars.map((current) => {
-              return <CarCard key={current._id} {...current} />;
-            })}
+    <ListContext.Provider value={{ navigation, dispatch, data }}>
+      <section>
+        {data.cars.length > 0 ? (
+          <>
+            <Controls />
+            <div className={styles["card-container"]}>
+              {data.cars.map((current) => {
+                return <CarCard key={current._id} {...current} />;
+              })}
+            </div>
+            <Controls />
+          </>
+        ) : (
+          <div className={`${styles.empty} fade-in`}>
+            <p>No cars were found...</p>
           </div>
-          {controls && (
-            <Controls
-              perPage={perPage}
-              setPerPage={setPerPage}
-              items={data.count}
-              page={page}
-              setPage={setPage}
-              sort={sort}
-              setSort={setSort}
-            />
-          )}
-        </>
-      ) : (
-        <div className={`${styles.empty} fade-in`}>
-          <p>No cars were found...</p>
-        </div>
-      )}
-    </section>
+        )}
+      </section>
+    </ListContext.Provider>
   );
 }

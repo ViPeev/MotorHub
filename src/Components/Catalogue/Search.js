@@ -1,21 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SearchFormPartial } from "../Forms/SearchFormPartial";
 import AdvancedSearch from "../Forms/AdvancedSearch";
-import { queryBuilder } from "../../utils/dataFormatters";
-import { getFormState } from "../../utils/initializers";
+import { SearchContext } from "../../contexts/SearchContext";
 import data from "../../staticData/formData";
 import styles from "./Catalogue.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
-export default function CatalogSearch({ setSearch, setPage, state }) {
-  const [formData, setFormData] = useState(getFormState(state, data));
+export default function CatalogSearch() {
+  const { searchData, setSearchData, dispatch } = useContext(SearchContext);
   const [display, setDisplay] = useState(false);
 
   const overflow = display ? "hidden" : "auto";
   document.body.style.overflow = overflow;
 
   const handleChange = (e) => {
-    setFormData((data) => {
+    setSearchData((data) => {
       return { ...data, [e.target.name]: e.target.value };
     });
   };
@@ -23,19 +22,18 @@ export default function CatalogSearch({ setSearch, setPage, state }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setDisplay(false);
-    setPage(1);
-    setSearch(queryBuilder(formData));
+    dispatch({ type: "SET_PAGE", payload: 1 });
   };
 
   const handleDisplay = (e) => {
     if (e.target !== e.currentTarget) return;
-
     setDisplay((prev) => !prev);
   };
 
   const handleReset = () => {
-    setFormData(data.extendedFormData);
+    setSearchData(data.extendedFormData);
   };
+
   return (
     <>
       <section>
@@ -43,7 +41,7 @@ export default function CatalogSearch({ setSearch, setPage, state }) {
           <form onSubmit={handleSubmit}>
             <SearchFormPartial
               handleChange={handleChange}
-              formData={formData}
+              formData={searchData}
               data={data}
             />
             <div className="input-group">
@@ -64,7 +62,7 @@ export default function CatalogSearch({ setSearch, setPage, state }) {
           handleChange={handleChange}
           handleDisplay={handleDisplay}
           handleReset={handleReset}
-          formData={formData}
+          formData={searchData}
           data={data}
         />
       )}

@@ -4,6 +4,7 @@
 .main {
   @include dimensions(100%, max-content);
   padding: 2rem 0;
+  display:flex;
 
   font-family: $text-font;
 

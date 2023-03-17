@@ -1,27 +1,29 @@
-import UserCard from "./UserCard";
+import { useState, useEffect, useReducer } from "react";
 import styles from "./Profile.module.scss";
-import CarList from "../Misc/CarList/CarList";
-import { useState, useEffect } from "react";
-import { getOwnCars, getFavourites } from "../../api/data";
+import UserCard from "./UserCard";
+import { CarList } from "../Misc/CarList/CarList";
 import { Skeleton } from "../Misc/Loaders/Loaders";
+import { controlReducer, defaultSettings } from "../../utils/reducer";
+import { getOwnCars, getFavourites } from "../../api/data";
 
 const getFunctions = {
   ownOffers: getOwnCars,
   favourites: getFavourites,
 };
-
 export default function UserProfile() {
   const [listType, setListType] = useState("ownOffers");
   const [offers, setOffers] = useState(null);
-  const [perPage, setPerPage] = useState(20);
-  const [sort, setSort] = useState("latest");
-  const [page, setPage] = useState(1);
+  const [navigation, dispatch] = useReducer(defaultSettings, controlReducer);
 
   useEffect(() => {
-    getFunctions[listType](page, perPage, sort).then((result) => {
+    getFunctions[listType](
+      navigation.page,
+      navigation.perPage,
+      navigation.sort
+    ).then((result) => {
       setOffers(result);
     });
-  }, [listType, sort, page, perPage]);
+  }, [listType, navigation]);
 
   const handleClick = (type) => {
     if (type !== listType) {
@@ -53,13 +55,8 @@ export default function UserProfile() {
       {offers ? (
         <CarList
           data={offers}
-          perPage={perPage}
-          setPerPage={setPerPage}
-          page={page}
-          setPage={setPage}
-          sort={sort}
-          setSort={setSort}
-          controls={active}
+          navigation={navigation}
+          dispatch={dispatch}
         />
       ) : (
         <Skeleton height="half" />
