@@ -8,6 +8,8 @@
 
 .form-wrapper {
   @include dimensions(100%, max-content);
+  box-shadow: $shadow-2;
+  background-color: $bg-color-3;
 
   & form {
     @include dimensions(100%, max-content);
@@ -16,7 +18,6 @@
     justify-content: center;
     align-items: center;
 
-    background-color: $font-color-3;
     color: $font-color-2;
 
     & div {
@@ -31,6 +32,7 @@
 
       & > div {
         @include dimensions(100%, 40%);
+
         overflow: hidden;
 
         & img {
@@ -50,8 +52,6 @@
         display: inline-block;
         padding: 0.7rem 0;
 
-        background-color: $bg-color-3;
-
         text-align: center;
         color: inherit;
       }
@@ -63,17 +63,21 @@
         padding: 0.5rem;
 
         background-color: $bg-color-3;
-        outline: solid 2px $nav-bg-color;
-        outline-offset: 5px;
+        box-shadow: $shadow-2;
         
         text-align: center;
         font-family: $text-font;
         cursor: pointer;
+        transition: $transition;
 
         img {
           @include dimensions(20%, 20%);
 
           filter: invert(30%);
+        }
+
+        &:hover, &:active {
+          box-shadow: none;
         }
       }
       select,
@@ -86,7 +90,7 @@
 
         background-color: $bg-color-3;
         border: none;
-        outline: none;
+          outline: none;
 
         font-family: $text-font;
         font-size: 1rem;
@@ -110,7 +114,6 @@
 
       select:hover,
       select:focus,
-      button:hover,
       input:hover,
       input:focus {
         box-shadow: $shadow-inset;

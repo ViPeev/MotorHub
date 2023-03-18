@@ -9,6 +9,7 @@ import Edit from "./Components/Edit/Edit";
 import CarDetails from "./Components/Details/CarDetails";
 import { Skeleton } from "./Components/Misc/Loaders/Loaders";
 import { SearchProvider } from "./contexts/SearchContext";
+import { ProfileProvider } from "./contexts/ProfileContext";
 import "./main-styles/App.scss";
 
 const Home = React.lazy(() => import("./Components/Home/Home"));
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <SearchProvider>
+          <ProfileProvider>
 
           <Header />
           <Routes>
@@ -52,6 +54,7 @@ function App() {
           </Routes>
           <Footer />
 
+          </ProfileProvider>
         </SearchProvider>
       </BrowserRouter>
     </div>

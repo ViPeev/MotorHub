@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import brandLogo from "../../assets/icons/car-solid.svg"
+import brandLogo from "../../assets/icons/car-solid.svg";
 
 export default function PageNav({ logo }) {
   const active = {

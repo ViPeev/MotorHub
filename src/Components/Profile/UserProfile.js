@@ -1,19 +1,20 @@
-import { useState, useEffect, useReducer } from "react";
-import styles from "./Profile.module.scss";
+import { useState, useEffect, useReducer, useContext } from "react";
+import { ProfileContext } from "../../contexts/ProfileContext";
 import UserCard from "./UserCard";
 import { CarList } from "../Misc/CarList/CarList";
 import { Skeleton } from "../Misc/Loaders/Loaders";
-import { controlReducer, defaultSettings } from "../../utils/reducer";
 import { getOwnCars, getFavourites } from "../../api/data";
+import styles from "./Profile.module.scss";
 
 const getFunctions = {
   ownOffers: getOwnCars,
   favourites: getFavourites,
 };
+
 export default function UserProfile() {
-  const [listType, setListType] = useState("ownOffers");
   const [offers, setOffers] = useState(null);
-  const [navigation, dispatch] = useReducer(controlReducer, defaultSettings);
+  const { navigation, dispatch, listType, setListType } =
+    useContext(ProfileContext);
 
   useEffect(() => {
     getFunctions[listType](
