@@ -4,24 +4,23 @@
 .card-container {
   @include dimensions(100%, max-content);
   max-width:80rem;
-  margin: auto;
   display: flex;
   flex-flow: row wrap;
   align-content: space-between;
   justify-content: center;
-  column-gap: 1rem;
-  row-gap: 1rem;
+  gap: 1rem;
+  margin: auto;
   
   & a {
     @include dimensions(clamp(10rem, 18%, 15rem), max-content);
     display: inline-block;
     padding-bottom: 1rem;
     
-    color: $font-color-2;
     background-color: $bg-color-4;
-    
     box-shadow: $shadow-2;
     border-radius: 25px;
+    
+    color: $font-color-2;
     
     overflow: hidden;
     transition: $transition;
@@ -68,18 +67,20 @@
 
   & > div {
     @include dimensions(100%, 100%);
+
     transition: $transition;
     white-space: nowrap;
 
     & span {
       @include dimensions(100%, 100%);
       display: inline-block;
+
       overflow: hidden;
 
       & img {
         all: unset;
-
         @include dimensions(100%, 100%);
+        
         object-position: center center;
         object-fit: cover;
       }

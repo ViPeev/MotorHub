@@ -16,12 +16,11 @@ export async function submitCar(formData) {
   return _id;
 }
 
-export async function submitEditCar(id,formData) {
+export async function submitEditCar(id, formData) {
   const fileIndexes = [];
   const filtered = formData.images.filter((i) => i);
 
   if (filtered.length > 0) {
-
     filtered.forEach((image, index) => {
       if (typeof image !== "string") {
         fileIndexes.push(index);
@@ -32,14 +31,13 @@ export async function submitEditCar(id,formData) {
 
     const imageURLs = await uploadImages(formatImageData(files));
 
-    imageURLs.images.forEach((url,index) => {
+    imageURLs.images.forEach((url, index) => {
       filtered[fileIndexes[index]] = url;
     });
-
   }
 
   const data = { ...formData, images: filtered };
-  const { _id } = await editCar(id,data);
+  const { _id } = await editCar(id, data);
 
   return _id;
 }

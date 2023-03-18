@@ -1,5 +1,6 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { getUserData } from "../../utils/localStorage";
+
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = getUserData();
 

@@ -1,15 +1,14 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../contexts/SearchContext";
 import { SearchFormPartial } from "../Forms/SearchFormPartial";
-
 import data from "../../staticData/formData";
 import styles from "./Search.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
-import { SearchContext } from "../../contexts/SearchContext";
 
 export function HomeSearch() {
+  const { setSearchData, dispatch } = useContext(SearchContext);
   const [formData, setFormData] = useState(data.formData);
-  const { setSearchData } = useContext(SearchContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,10 +23,12 @@ export function HomeSearch() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    dispatch({ type: "SET_PAGE", payload: 1 });
     setSearchData((prev) => {
       return { ...prev, ...formData };
     });
-    navigate("/cars", { state: { data: formData } });
+
+    navigate("/cars");
   };
 
   return (

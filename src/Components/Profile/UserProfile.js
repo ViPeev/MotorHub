@@ -36,7 +36,7 @@ export default function UserProfile() {
   return (
     <main className={styles.main}>
       <section>
-        <UserCard />
+        <UserCard owner={true} />
       </section>
       <div>
         <button

@@ -6,12 +6,12 @@
 
   & form {
     @include dimensions(70%, max-content);
-    padding: 2rem;
-    margin: 2rem auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
+    margin: 2rem auto;
 
     background: $font-color-3;
     box-shadow: $shadow-2;
@@ -79,13 +79,14 @@
         padding: 1rem;
 
         appearance: none;
+        background: $nav-bg-color-light;
         border: none;
         outline: none;
+
         overflow: auto;
         cursor: pointer;
 
         color: $font-color-3;
-        background: $nav-bg-color-light;
         font-family: $text-font;
         font-size: 1rem;
       }

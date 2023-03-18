@@ -2,7 +2,7 @@ import profile from "../../assets/images/profile-photo.jpg";
 import { getUserData } from "../../utils/localStorage";
 import styles from "./Profile.module.scss";
 
-export default function UserCard() {
+export default function UserCard({ owner }) {
   const { userData } = getUserData();
 
   return (
@@ -13,7 +13,7 @@ export default function UserCard() {
       </div>
       <div>
         <p>{userData.fullName}</p>
-        <p>{userData.username}</p>
+        {owner && <p>{userData.username}</p>}
         <p>{userData.email}</p>
       </div>
     </div>

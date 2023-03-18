@@ -1,9 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Suspense } from "react";
-
-import "./main-styles/App.scss";
-
-import { Skeleton } from "./Components/Misc/Loaders/Loaders";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import PrivateRoute from "./Components/Guards/Private";
@@ -11,7 +7,9 @@ import PublicRoute from "./Components/Guards/PublicOnly";
 import OwnerRoute from "./Components/Guards/OwnerOnly";
 import Edit from "./Components/Edit/Edit";
 import CarDetails from "./Components/Details/CarDetails";
+import { Skeleton } from "./Components/Misc/Loaders/Loaders";
 import { SearchProvider } from "./contexts/SearchContext";
+import "./main-styles/App.scss";
 
 const Home = React.lazy(() => import("./Components/Home/Home"));
 const Catalogue = React.lazy(() => import("./Components/Catalogue/Catalogue"));

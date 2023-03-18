@@ -7,7 +7,7 @@ export const controlReducer = (state, action) => {
     case "SET_SORT":
       return { ...state, sort: action.payload, page: 1 };
     default:
-      return state;
+      return defaultSettings;
   }
 };
 

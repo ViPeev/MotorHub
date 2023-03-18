@@ -18,14 +18,10 @@ export default function Pagination() {
   }
 
   const handleClick = (pageNum) => {
-    if (pageNum < 1) {
-      pageNum = 1;
-    }
-    if (pageNum > pageCount) {
-      pageNum = pageCount;
-    }
+    let index = pageNum < 1 ? 1 : pageNum > pageCount ? pageCount : pageNum;
+    if(index === currentPage) return;
 
-    dispatch({ type: "SET_PAGE", payload: pageNum });
+    dispatch({ type: "SET_PAGE", payload: index });
   };
 
   return (

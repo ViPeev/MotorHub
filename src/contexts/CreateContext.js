@@ -11,9 +11,9 @@ function CreateProvider({ children }) {
     <CreateContext.Provider
       value={{
         step,
+        setStep,
         formData,
         setFormData,
-        setStep,
       }}
     >
       {children}

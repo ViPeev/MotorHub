@@ -50,11 +50,10 @@
   display: flex;
   flex-direction: row;
   justify-content: right;
-
-  background-color: $backdrop-color-2;
-
   position: fixed;
   inset: 0;
+
+  background-color: $backdrop-color-2;
   z-index: 5;
 }
 
@@ -89,5 +88,3 @@
 .suspense-load {
   @include dimensions(95%, 82vh);
 }
-
-

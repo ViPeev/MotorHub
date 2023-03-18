@@ -5,22 +5,20 @@ import styles from "./Menu.module.scss";
 
 const body = document.querySelector("body");
 
-export default function Menu({ display, handleClick }) {
+export default function Menu({ setDisplay }) {
   const hideMenu = (e) => {
     if (e.target === e.currentTarget) {
-      handleClick();
+      setDisplay((prev) => !prev);
     }
   };
 
-  
-  
-  return display && createPortal(
-        <div className={styles.backdrop} onClick={hideMenu}>
-          <aside className={styles.sidebar}>
-            <UserNav />
-            <PageNav logo={false}/>
-          </aside>
-        </div>,
-        body
-      );
+  return createPortal(
+    <div className={styles.backdrop} onClick={hideMenu}>
+      <aside className={styles.sidebar}>
+        <UserNav />
+        <PageNav logo={false} />
+      </aside>
+    </div>,
+    body
+  );
 }

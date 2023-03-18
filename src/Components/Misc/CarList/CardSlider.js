@@ -1,8 +1,8 @@
+import { useRef } from "react";
 import styles from "./CarList.module.scss";
 import angleLeft from "../../../assets/icons/angle-left-solid.svg";
 import angleRight from "../../../assets/icons/angle-right-solid.svg";
 import blank from "../../../assets/images/no-car.jpg";
-import { useRef } from "react";
 
 export default function CardSlider({ images }) {
   const sliderRef = useRef(null);
@@ -14,6 +14,7 @@ export default function CardSlider({ images }) {
 
   const handleClick = (direction, e) => {
     e.preventDefault();
+
     if (direction === "next") {
       positionRef.current =
         positionRef.current + 1 > images.length - 1
@@ -25,6 +26,7 @@ export default function CardSlider({ images }) {
           ? images.length - 1
           : positionRef.current - 1;
     }
+    
     sliderRef.current.style.transform = `translateX(-${
       positionRef.current * 100
     }%)`;

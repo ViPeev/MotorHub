@@ -64,14 +64,15 @@
   flex-direction: row;
   justify-content: flex-start;
   column-gap: 0.3rem;
+
   overflow: auto;
   white-space: nowrap;
 
   & img {
     @include dimensions(70px, 50px);
+
     cursor: pointer;
     opacity: 0.5;
-
     transition: $transition;
 
     &:hover {
@@ -81,9 +82,10 @@
 }
 
 .counter {
+  margin: 1rem 0;
+  
   text-align: center;
   color: $font-color-1;
-  margin: 1rem 0;
 }
 
 .active {

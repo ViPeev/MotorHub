@@ -2,9 +2,9 @@ import { useState } from "react";
 import Menu from "../Menu/Menu";
 import bars from "../../assets/icons/bars-solid.svg"
 
-function Button({ handleClick }) {
+function Button({ setDisplay }) {
   return (
-    <button onClick={handleClick}>
+    <button onClick={() => setDisplay((prev) => !prev)}>
       <img src={bars} alt="Open"/>
     </button>
   );
@@ -13,14 +13,12 @@ function Button({ handleClick }) {
 export default function Toggler() {
   const [display, setDisplay] = useState(false);
 
-  const handleDisplay = () => {
-    setDisplay((prev) => !prev);
-  };
-
   return (
     <>
-      <Button handleClick={handleDisplay} />
-      <Menu display={display} handleClick={handleDisplay} />
+      <Button setDisplay={setDisplay} />
+      {display && 
+      <Menu setDisplay={setDisplay} />
+      }
     </>
   );
 }

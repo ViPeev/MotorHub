@@ -5,9 +5,6 @@ import backdrop from "../Menu/Menu.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 import xmark from "../../assets/icons/xmark-solid.svg";
 
-
-const body = document.querySelector("body");
-
 export default function AdvancedSearch({
   handleSubmit,
   handleChange,
@@ -42,6 +39,6 @@ export default function AdvancedSearch({
         <button onClick={handleReset}>Clear Filters</button>
       </div>
     </div>,
-    body
+    document.body
   );
 }

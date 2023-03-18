@@ -7,9 +7,12 @@ import { getCars } from "../../api/data";
 import { queryBuilder } from "../../utils/dataFormatters";
 import styles from "./Catalogue.module.scss";
 
+const scrollSettings = {
+  top: 0,
+  left: 0,
+  behavior: "smooth",
+};
 export default function Catalogue() {
-  window.scrollTo(0, 0);
-
   const { navigation, dispatch, searchData, offers, setOffers } =
     useContext(SearchContext);
 
@@ -21,6 +24,7 @@ export default function Catalogue() {
       navigation.sort
     ).then((result) => {
       setOffers(result);
+      window.scrollTo(scrollSettings);
     });
   }, [navigation]);
 

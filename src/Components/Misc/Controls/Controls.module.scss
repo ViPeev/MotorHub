@@ -23,13 +23,14 @@
     & select {
       padding:0.5rem;
 
+      border:none;
+      outline:none;
       background-color: $bg-color-3;
+
       color:$font-color-2;
       font-family: inherit;
       font-size: 1rem;
 
-      border:none;
-      outline:none;
     }
   }
 }
@@ -47,12 +48,13 @@
     @include dimensions(30px, 30px);
 
     background-color: $font-color-3;
-    color: $font-color-1;
-    font-weight: 600;
-
     border: none;
     border-radius: 50%;
     outline: solid rgb(255, 255, 255) 2px;
+    
+    color: $font-color-1;
+    font-weight: 600;
+
     cursor: pointer;
     transition: $transition;
 

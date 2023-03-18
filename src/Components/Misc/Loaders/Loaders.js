@@ -23,6 +23,7 @@ export function Skeleton({ height }) {
       : height === "suspense"
       ? "suspense-load"
       : "half-height";
+      
   const color = height === "full" ? "white" : "gray";
 
   return (
