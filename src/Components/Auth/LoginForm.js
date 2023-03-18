@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { ValidatedInput } from "../Forms/Inputs";
+import { Backdrop } from "../Misc/Loaders/Loaders";
 import { login } from "../../api/data";
 import { getLoginState } from "../../utils/initializers";
 import { validateLogin } from "../../utils/validators";
-import { ValidatedInput } from "../Forms/Inputs";
-import { Backdrop } from "../Misc/Loaders/Loaders";
-
+import styles from "./Auth.module.scss";
 import eye from "../../assets/icons/eye-solid.svg";
 
-export default function LoginForm({ style }) {
+export default function LoginForm() {
   const [formData, setFormData] = useState(getLoginState());
   const [viewPass, setViewPass] = useState("password");
   const [loading, setLoading] = useState(false);
@@ -30,6 +30,7 @@ export default function LoginForm({ style }) {
   const handleMouseDown = () => {
     setViewPass("text");
   };
+
   const handleMouseUp = () => {
     setViewPass("password");
   };
@@ -41,12 +42,12 @@ export default function LoginForm({ style }) {
 
     setLoading(true);
     await login(formData.username, formData.password, formData.remember);
-    setTimeout(() => navigate(redirect), 1000);
+    setTimeout(() => navigate(redirect, { replace: true }), 1000);
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={style.login}>
+      <form onSubmit={handleSubmit} className={styles.login}>
         <ValidatedInput
           label="Username"
           name="username"

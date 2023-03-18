@@ -16,8 +16,8 @@
     justify-content: center;
     align-items: center;
 
-    color: $font-color-2;
     background-color: $font-color-3;
+    color: $font-color-2;
 
     & div {
       @include dimensions(12.5%, 50%);
@@ -50,25 +50,24 @@
         display: inline-block;
         padding: 0.7rem 0;
 
+        background-color: $bg-color-3;
+
         text-align: center;
         color: inherit;
-        background-color: $bg-color-3;
       }
 
       button {
         all: unset;
-
         @include dimensions(100%, max-content);
         max-width: 100px;
         padding: 0.5rem;
 
-        text-align: center;
-        font-family: $text-font;
         background-color: $bg-color-3;
-
         outline: solid 2px $nav-bg-color;
         outline-offset: 5px;
-
+        
+        text-align: center;
+        font-family: $text-font;
         cursor: pointer;
 
         img {
@@ -85,24 +84,23 @@
 
         appearance: none;
 
-        font-family: $text-font;
-        font-size: 1rem;
-        color: inherit;
         background-color: $bg-color-3;
-
         border: none;
         outline: none;
 
+        font-family: $text-font;
+        font-size: 1rem;
+        color: inherit;
+
         overflow: auto;
         cursor: pointer;
-
       }
 
       input {
         @include dimensions(90%, 100%);
         padding: 0.7rem 1rem;
         
-        $font-family: inherit;
+        font-family: inherit;
         caret-color: $nav-bg-color;
 
         &::placeholder {
@@ -121,7 +119,6 @@
   }
   button {
     all: unset;
-
     position: relative;
     padding: 0.5rem;
 

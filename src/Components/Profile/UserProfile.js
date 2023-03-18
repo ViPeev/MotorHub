@@ -13,7 +13,7 @@ const getFunctions = {
 export default function UserProfile() {
   const [listType, setListType] = useState("ownOffers");
   const [offers, setOffers] = useState(null);
-  const [navigation, dispatch] = useReducer(defaultSettings, controlReducer);
+  const [navigation, dispatch] = useReducer(controlReducer, defaultSettings);
 
   useEffect(() => {
     getFunctions[listType](
@@ -53,11 +53,7 @@ export default function UserProfile() {
         </button>
       </div>
       {offers ? (
-        <CarList
-          data={offers}
-          navigation={navigation}
-          dispatch={dispatch}
-        />
+        <CarList data={offers} navigation={navigation} dispatch={dispatch} />
       ) : (
         <Skeleton height="half" />
       )}

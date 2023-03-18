@@ -1,8 +1,8 @@
 import { useEffect, useContext } from "react";
 import { SearchContext } from "../../contexts/SearchContext";
 import CatalogSearch from "./Search";
-import { Skeleton } from "../Misc/Loaders/Loaders";
 import { CarList } from "../Misc/CarList/CarList";
+import { Skeleton } from "../Misc/Loaders/Loaders";
 import { getCars } from "../../api/data";
 import { queryBuilder } from "../../utils/dataFormatters";
 import styles from "./Catalogue.module.scss";
@@ -28,12 +28,7 @@ export default function Catalogue() {
     <main className={styles.main}>
       <CatalogSearch />
       {offers ? (
-        <CarList
-          data={offers}
-          navigation={navigation}
-          dispatch={dispatch}
-          controls={true}
-        />
+        <CarList data={offers} navigation={navigation} dispatch={dispatch} />
       ) : (
         <Skeleton height="half" />
       )}

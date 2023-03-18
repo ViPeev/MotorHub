@@ -1,21 +1,11 @@
-import { useContext } from "react";
-import { createPortal } from "react-dom";
-import { DetailsContext } from "../../contexts/DetailsContext";
-import { Gallery, PhotoRow } from "../Misc/Gallery/Gallery";
-
+import { formatDate } from "../../utils/dataFormatters";
 import styles from "./CarDetails.module.scss";
 import user from "../../assets/icons/user-large-solid.svg";
 import email from "../../assets/icons/at-solid.svg";
 import phone from "../../assets/icons/phone-solid.svg";
 import map from "../../assets/icons/map-location-dot-solid.svg";
-import expand from "../../assets/icons/maximize-solid.svg";
-import shrink from "../../assets/icons/minimize-solid.svg";
-import { formatDate } from "../../utils/dataFormatters";
 
-const body = document.querySelector("body");
-
-function ContactBox() {
-  const { data } = useContext(DetailsContext);
+function Contacts({ data }) {
   return (
     <div className={styles.contacts}>
       <h4>Contacts</h4>
@@ -39,8 +29,7 @@ function ContactBox() {
   );
 }
 
-function DescriptionBox() {
-  const { data } = useContext(DetailsContext);
+function Description({ data }) {
   return (
     <div className={styles.description}>
       <h4>Description</h4>
@@ -49,9 +38,7 @@ function DescriptionBox() {
   );
 }
 
-function TechDetailsBox() {
-  const { data } = useContext(DetailsContext);
-
+function TechDetails({ data }) {
   const make = data.make !== "other" ? `${data.make} ` : "";
   const model = data.model !== "other" ? `${data.model} ` : "";
 
@@ -115,53 +102,4 @@ function TechDetailsBox() {
   );
 }
 
-function SlideShow() {
-  const { data, index, handleButtonClick, handleImageClick, handleDisplay } =
-    useContext(DetailsContext);
-
-  const images = data.images;
-
-  return (
-    <div className={styles.gallery}>
-      <Gallery
-        image={images[index]}
-        handleClick={handleButtonClick.bind(null, images.length)}
-        handleDisplay={handleDisplay}
-        index={index}
-        photoCount={images.length}
-        styleClass={"gallery"}
-        resizeIcon={expand}
-      />
-      <PhotoRow
-        images={images}
-        activeIndex={index}
-        handleClick={handleImageClick}
-        styleClass={"photo-row"}
-      />
-    </div>
-  );
-}
-
-function LightBox() {
-  const { data, index, handleButtonClick, handleDisplay } =
-    useContext(DetailsContext);
-
-  const images = data.images;
-
-  return createPortal(
-    <div className={styles["light-box"]} onClick={handleDisplay}>
-      <Gallery
-        image={images[index]}
-        handleClick={handleButtonClick.bind(null, images.length)}
-        handleDisplay={handleDisplay}
-        index={index}
-        photoCount={images.length}
-        styleClass={"lightbox-gallery"}
-        resizeIcon={shrink}
-      />
-    </div>,
-    body
-  );
-}
-
-export { ContactBox, DescriptionBox, TechDetailsBox, SlideShow, LightBox };
+export { Contacts, Description, TechDetails };

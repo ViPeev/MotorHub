@@ -34,7 +34,7 @@ export default function Controls() {
   return (
     <div className={styles.controls}>
       <SortSelect
-        label="Sort by"
+        label="Sort"
         name="sortBy"
         value={navigation.sort}
         handleChange={changeSort}

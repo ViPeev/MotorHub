@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { SearchFormPartial } from "../Forms/SearchFormPartial";
-import AdvancedSearch from "../Forms/AdvancedSearch";
 import { SearchContext } from "../../contexts/SearchContext";
+import AdvancedSearch from "../Forms/AdvancedSearch";
+import { SearchFormPartial } from "../Forms/SearchFormPartial";
 import data from "../../staticData/formData";
 import styles from "./Catalogue.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
@@ -15,18 +15,23 @@ export default function CatalogSearch() {
 
   const handleChange = (e) => {
     setSearchData((data) => {
+      if (e.target.name === "make") {
+        return { ...data, make: e.target.value, model: "" };
+      }
       return { ...data, [e.target.name]: e.target.value };
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setDisplay(false);
     dispatch({ type: "SET_PAGE", payload: 1 });
   };
 
   const handleDisplay = (e) => {
     if (e.target !== e.currentTarget) return;
+
     setDisplay((prev) => !prev);
   };
 

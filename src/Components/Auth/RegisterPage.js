@@ -9,7 +9,7 @@ export default function RegisterPage() {
       <section>
         <div>
           <h1>Register</h1>
-          <RegisterForm style={styles} />
+          <RegisterForm />
           <p>
             Already have an account? Sign-in{" "}
             <Link to="/login">

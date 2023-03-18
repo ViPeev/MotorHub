@@ -14,6 +14,9 @@ export function HomeSearch() {
 
   const handleChange = (e) => {
     setFormData((data) => {
+      if (e.target.name === "make") {
+        return { ...data, make: e.target.value, model: "" };
+      }
       return { ...data, [e.target.name]: e.target.value };
     });
   };
@@ -21,9 +24,9 @@ export function HomeSearch() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setSearchData(prev => {
-      return {...prev,...formData};
-    })
+    setSearchData((prev) => {
+      return { ...prev, ...formData };
+    });
     navigate("/cars", { state: { data: formData } });
   };
 

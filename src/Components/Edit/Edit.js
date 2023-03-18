@@ -45,7 +45,7 @@ export default function Edit() {
 
     setLoading(true);
     await submitEditCar(id, formData);
-    setTimeout(() => navigate(`/details/${id}`), 1000);
+    setTimeout(() => navigate(`/details/${id}`, { replace: true }), 1000);
   };
 
   return formData ? (

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { register } from "../../api/data";
-import { validateRegister } from "../../utils/validators";
 import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
+import { register } from "../../api/data";
+import { validateRegister } from "../../utils/validators";
+import styles from "./Auth.module.scss";
 import eye from "../../assets/icons/eye-solid.svg";
 
-export default function RegisterForm({ style }) {
+export default function RegisterForm() {
   const [formData, setFormData] = useState({
     userName: "",
     firstName: "",
@@ -19,7 +20,7 @@ export default function RegisterForm({ style }) {
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState("password");
   const navigate = useNavigate();
-  
+
   const { validator, canSubmit } = validateRegister(formData);
 
   const handleChange = (e) => {
@@ -52,12 +53,12 @@ export default function RegisterForm({ style }) {
       formData.firstName,
       formData.lastName
     );
-    setTimeout(() => navigate("/"), 1000);
+    setTimeout(() => navigate("/", { replace: true }), 1000);
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={style.register}>
+      <form onSubmit={handleSubmit} className={styles.register}>
         <ValidatedInput
           label="First Name *"
           name="firstName"

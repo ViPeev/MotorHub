@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { CreateContext } from "../../contexts/CreateContext";
 import CreateFormWrapper from "./CreateFormWrapper";
-import styles from "./Create.module.scss";
 import ImageUploadWrapper from "./ImageUploadWrap";
+import styles from "./Create.module.scss";
 
 export default function StepControl() {
   const { step } = useContext(CreateContext);

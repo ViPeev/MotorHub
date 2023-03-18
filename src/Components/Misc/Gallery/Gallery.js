@@ -12,7 +12,6 @@ function Gallery({
   styleClass,
   resizeIcon,
 }) {
-  
   const src = image ? image : blank;
 
   return (
@@ -25,13 +24,13 @@ function Gallery({
               <>
                 <button
                   className={styles["button-backward"]}
-                  onClick={handleClick.bind(null, "prev")}
+                  onClick={handleClick.bind(null, index - 1)}
                 >
                   <img src={angleLeft} alt="Prev" />
                 </button>
                 <button
                   className={styles["button-forward"]}
-                  onClick={handleClick.bind(null, "next")}
+                  onClick={handleClick.bind(null, index + 1)}
                 >
                   <img src={angleRight} alt="Next" />
                 </button>

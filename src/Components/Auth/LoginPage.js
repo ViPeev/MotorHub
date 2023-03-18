@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import styles from "./Auth.module.scss";
-import { Link } from "react-router-dom";
 import c63 from "../../assets/images/c63.jpg"
 
 export default function LoginPage() {
@@ -12,7 +12,7 @@ export default function LoginPage() {
         </div>
         <div>
           <h1>Login</h1>
-          <LoginForm style={styles} />
+          <LoginForm />
           <p>
             Don't have an account? Register{" "}
             <Link to="/register">
