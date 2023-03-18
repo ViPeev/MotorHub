@@ -1,6 +1,5 @@
 import { useState, createContext, useReducer } from "react";
 import { controlReducer, defaultSettings } from "../utils/reducer";
-import data from "../staticData/formData";
 
 const ProfileContext = createContext(null);
 

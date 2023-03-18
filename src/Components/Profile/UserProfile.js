@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ProfileContext } from "../../contexts/ProfileContext";
 import UserCard from "./UserCard";
 import { CarList } from "../Misc/CarList/CarList";
@@ -28,6 +28,7 @@ export default function UserProfile() {
 
   const handleClick = (type) => {
     if (type !== listType) {
+      dispatch({ type: "SET_PAGE", payload: 1 });
       setListType(type);
     }
   };

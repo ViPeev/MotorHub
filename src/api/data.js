@@ -5,7 +5,7 @@ export const login = api.login;
 export const register = api.register;
 export const logout = api.logout;
 
-export async function getCars(search, page, perPage,sort) {
+export async function getCars(search, page, perPage, sort) {
   return await api.get(
     `/cars?where=${search}&skip=%22${page}%22&limit=%22${perPage}%22&sort=%22${sort}%22`
   );
@@ -15,12 +15,16 @@ export async function getCarById(id) {
   return await api.get(`/cars/${id}`);
 }
 
-export async function getFavourites() {
+export async function getOwnerId(id) {
+  return await api.get(`/cars/ownerId/${id}`);
+}
+
+export async function getFavourites(page, perPage, sort) {
   const {
     userData: { _id },
   } = getUserData();
 
-  return await api.get(`/users/${_id}/favourites`);
+  return await api.get(`/users/${_id}/favourites?skip=%22${page}%22&limit=%22${perPage}%22&sort=%22${sort}%22`);
 }
 
 export async function createCar(data) {
@@ -43,12 +47,14 @@ export async function deleteCar(id) {
   return await api.del(`/cars/${id}`);
 }
 
-export async function getOwnCars(page, perPage,sort) {
+export async function getOwnCars(page, perPage, sort) {
   const {
     userData: { _id },
   } = getUserData();
 
-  return await api.get(`/cars?where=_ownerId%3D%22${_id}%22&skip=%22${page}%22&limit=%22${perPage}%22&sort=%22${sort}%22`);
+  return await api.get(
+    `/cars?where=_ownerId%3D%22${_id}%22&skip=%22${page}%22&limit=%22${perPage}%22&sort=%22${sort}%22`
+  );
 }
 
 export async function uploadImages(images) {
