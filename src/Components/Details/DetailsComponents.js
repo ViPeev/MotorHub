@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { formatDate } from "../../utils/dataFormatters";
 import styles from "./CarDetails.module.scss";
 import user from "../../assets/icons/user-large-solid.svg";
@@ -11,7 +12,7 @@ function Contacts({ data }) {
       <h4>Contacts</h4>
       <div>
         <img src={user} title="Seller" alt="Seller" />
-        <span> {data.owner.name}</span>
+        <span><Link to={`/sellers/${data._ownerId}`}>{data.owner.name}</Link></span>
       </div>
       <div>
         <img src={map} title="Location" alt="Location" />

@@ -3,11 +3,12 @@ import { ProfileContext } from "../../contexts/ProfileContext";
 import UserCard from "./UserCard";
 import { CarList } from "../Misc/CarList/CarList";
 import { Skeleton } from "../Misc/Loaders/Loaders";
-import { getOwnCars, getFavourites } from "../../api/data";
+import { getUserCars, getFavourites } from "../../api/data";
+import { getUserData } from "../../utils/localStorage";
 import styles from "./Profile.module.scss";
 
 const getFunctions = {
-  ownOffers: getOwnCars,
+  ownOffers: getUserCars,
   favourites: getFavourites,
 };
 
@@ -16,15 +17,20 @@ export default function UserProfile() {
   const { navigation, dispatch, listType, setListType } =
     useContext(ProfileContext);
 
+  const {
+    userData: { _id },
+  } = getUserData();
+
   useEffect(() => {
     getFunctions[listType](
       navigation.page,
       navigation.perPage,
-      navigation.sort
+      navigation.sort,
+      _id
     ).then((result) => {
       setOffers(result);
     });
-  }, [listType, navigation]);
+  }, [listType, navigation, _id]);
 
   const handleClick = (type) => {
     if (type !== listType) {

@@ -16,12 +16,13 @@
 
   & ul {
     @include dimensions(100%, 100%);
-    padding-left:3rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     column-gap:5vw;
+
+    padding-left:3rem;
 
     & li {
       & img {
@@ -31,13 +32,16 @@
     }
 
     & li:not(li:first-child) {
+      position:relative;
+
       &:before {
         height: 1px;
-        max-width: 0px;
+        max-width: 0;
         position: absolute;
         inset: 120% 0px;
 
         background-color: $bg-color-1;
+
         content: "";
         transition: $transition;
       }
@@ -45,13 +49,14 @@
 
     & li:not(li:first-child):hover {
       &:before {
-        max-width: 100%;
+        max-width: 100px;
       }
     }
   }
 
   & button {
     all: unset;
+
     margin-right: 2rem;
     padding: 0.4rem;
 
@@ -64,9 +69,8 @@
     cursor: pointer;
 
     img {
-      @include dimensions(15px, 15px);
       margin-top:1px;
-      
+      @include dimensions(15px, 15px);
       filter:invert(100%);
     }
   }

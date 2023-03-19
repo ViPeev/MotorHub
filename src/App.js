@@ -16,6 +16,7 @@ const Home = React.lazy(() => import("./Components/Home/Home"));
 const Catalogue = React.lazy(() => import("./Components/Catalogue/Catalogue"));
 const Create = React.lazy(() => import("./Components/Create/Create"));
 const UserProfile = React.lazy(() => import("./Components/Profile/UserProfile"));
+const SellerProfile = React.lazy(() => import("./Components/Profile/SellerProfile"));
 const LoginPage = React.lazy(() => import("./Components/Auth/LoginPage"));
 const RegisterPage = React.lazy(() => import("./Components/Auth/RegisterPage"));
 const Logout = React.lazy(() => import("./Components/Auth/Logout"));
@@ -31,7 +32,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Suspense fallback={<Skeleton height={"suspense"} />}><Home /></Suspense>} />
-            <Route path="/cars" element={<Suspense fallback={<Skeleton height={"suspense"} />}><Catalogue /></Suspense>} />
+            <Route path="/cars" element={<Suspense fallback={<Skeleton height={"suspense"} />}><Catalogue /></Suspense>} />            
+            <Route path="/sellers/:id" element={<Suspense fallback={<Skeleton height={"suspense"} />}><SellerProfile /></Suspense>} />
             <Route path="/news" element={<main>news</main>} />
             <Route path="/forum" element={<main>forum</main>} />
             <Route path="/details/:id" element={<CarDetails />} />
