@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./Upload.module.scss";
 import placeholder from "../../../assets/icons/image-solid.svg";
 import xmark from "../../../assets/icons/xmark-solid.svg";
@@ -10,9 +11,15 @@ export default function UploadCard({
   handleRemoveImage,
   image,
 }) {
+  const [error, setError] = useState(false);
+
   const handleChange = (e) => {
     if (e.target.files.length > 0 && allowed.includes(e.target.files[0].type)) {
       addImage(e.target.files[0]);
+      setError(false);
+    }
+    if (!allowed.includes(e.target.files[0].type)) {
+      setError(true);
     }
   };
 
@@ -26,7 +33,7 @@ export default function UploadCard({
       {!image ? (
         <div className={styles["card-empty"]}>
           <label htmlFor={`uploadPhoto-${index}`}>
-            <img src={placeholder} alt="Upload" title="Upload" />
+            {!error && <img src={placeholder} alt="Upload" title="Upload" />}
           </label>
           <input
             type="file"
@@ -36,6 +43,7 @@ export default function UploadCard({
             hidden
             onChange={handleChange}
           />
+          {error && <span>File type not supported!</span>}
         </div>
       ) : (
         <div className={styles["card-filled"]}>

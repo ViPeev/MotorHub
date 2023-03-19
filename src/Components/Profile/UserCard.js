@@ -1,15 +1,12 @@
 import profile from "../../assets/images/profile-photo.jpg";
-import { getUserData } from "../../utils/localStorage";
 import styles from "./Profile.module.scss";
 
-export default function UserCard({ owner }) {
-  const { userData } = getUserData();
+export default function UserCard({ owner, userData }) {
 
   return (
     <div className={`${styles["card-container"]} fade-in`}>
       <div>
         <img src={profile} alt="profile" />
-        <button></button>
       </div>
       <div>
         <p>{userData.fullName}</p>

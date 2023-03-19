@@ -18,7 +18,7 @@ export default function UserProfile() {
     useContext(ProfileContext);
 
   const {
-    userData: { _id },
+    userData,
   } = getUserData();
 
   useEffect(() => {
@@ -26,11 +26,11 @@ export default function UserProfile() {
       navigation.page,
       navigation.perPage,
       navigation.sort,
-      _id
+      userData._id
     ).then((result) => {
       setOffers(result);
     });
-  }, [listType, navigation, _id]);
+  }, [listType, navigation, userData._id]);
 
   const handleClick = (type) => {
     if (type !== listType) {
@@ -44,7 +44,7 @@ export default function UserProfile() {
   return (
     <main className={styles.main}>
       <section>
-        <UserCard owner={true} />
+        <UserCard owner={true} userData={userData} />
       </section>
       <div>
         <button

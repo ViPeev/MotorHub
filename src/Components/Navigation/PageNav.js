@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import brandLogo from "../../assets/icons/car-solid.svg";
+import brandLogo from "../../assets/images/logo.svg";
 
 export default function PageNav({ logo }) {
   const active = {
@@ -13,7 +13,7 @@ export default function PageNav({ logo }) {
     <ul>
       <li>
         <NavLink to={"/"} style={!logo ? setActiveStyles : {}}>
-          {logo ? <img src={brandLogo} alt="Logo" /> : "Home"}
+          {logo ? <img src={brandLogo} alt="Logo" title="Home" /> : "Home"}
         </NavLink>
       </li>
       <li>

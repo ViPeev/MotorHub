@@ -12,7 +12,9 @@ function Contacts({ data }) {
       <h4>Contacts</h4>
       <div>
         <img src={user} title="Seller" alt="Seller" />
-        <span><Link to={`/sellers/${data._ownerId}`}>{data.owner.name}</Link></span>
+        <span>
+          <Link to={`/sellers/${data._ownerId}`}>{data.owner.fullName}</Link>
+        </span>
       </div>
       <div>
         <img src={map} title="Location" alt="Location" />

@@ -42,23 +42,38 @@
 
 .card-empty {
   @include dimensions(8rem, 8rem);
+  position: relative;
+
   border: dashed 2px $nav-bg-color-light;
   border-radius: 10px;
-  overflow: hidden;
   background-color: $bg-color-4;
   box-shadow: $shadow-2;
+  overflow: hidden;
+
   & label {
     @include dimensions(100%, 100%);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
     cursor: pointer;
 
     & img {
       @include dimensions(30%, 40%);
+
       filter: invert(40%);
     }
+  }
+
+  & span {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+    pointer-events: none;
+    color:$error-color;
   }
 }
 

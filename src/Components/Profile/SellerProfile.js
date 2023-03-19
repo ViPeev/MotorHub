@@ -4,9 +4,9 @@ import UserCard from "./UserCard";
 import { CarList } from "../Misc/CarList/CarList";
 import { Skeleton } from "../Misc/Loaders/Loaders";
 import { getUserCars } from "../../api/data";
+import { getUserData } from "../../utils/localStorage";
 import { controlReducer, defaultSettings } from "../../utils/reducer";
 import styles from "./Profile.module.scss";
-import { getUserData } from "../../utils/localStorage";
 
 function SellerProfile({ id }) {
   const [offers, setOffers] = useState(null);
@@ -20,24 +20,26 @@ function SellerProfile({ id }) {
     );
   }, [navigation, id]);
 
-  return (
+  return offers ? (
     <main className={styles.main}>
       <section>
-        <UserCard owner={false} />
+        <UserCard owner={false} userData={offers.owner} />
       </section>
-      {offers ? (
-        <CarList data={offers} navigation={navigation} dispatch={dispatch} />
-      ) : (
-        <Skeleton height="half" />
+      {offers.cars.length > 0 && (
+        <h2>Offers from this user : {offers.count}</h2>
       )}
+      <CarList data={offers} navigation={navigation} dispatch={dispatch} />
     </main>
+  ) : (
+    <Skeleton height="full" />
   );
 }
+
 export default function SellerWrapper() {
   const { id } = useParams();
   const user = getUserData();
 
-  if (user && user.userData._id === id) {
+  if (user?.userData._id === id) {
     return <Navigate to="/profile" replace={true} />;
   }
 
