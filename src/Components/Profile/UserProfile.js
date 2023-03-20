@@ -17,9 +17,7 @@ export default function UserProfile() {
   const { navigation, dispatch, listType, setListType } =
     useContext(ProfileContext);
 
-  const {
-    userData,
-  } = getUserData();
+  const { userData } = getUserData();
 
   useEffect(() => {
     getFunctions[listType](

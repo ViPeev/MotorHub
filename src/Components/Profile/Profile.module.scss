@@ -94,7 +94,7 @@
   position: relative;
 
   & > div:nth-of-type(1) {
-    @include dimensions(100%,100%);
+    @include dimensions(100%, 100%);
 
     border-radius: 50%;
     outline: 9px solid $nav-bg-color-light;
@@ -110,31 +110,68 @@
     }
   }
 
-  & > div:nth-of-type(2){
+  & form {
     width: 100%;
     position: absolute;
-    bottom:0.5rem;
-    left:50%;
-    transform: translate(-50%,50%);
-    border-radius: 25px;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 50%);
 
     transition: $transition;
-    overflow:hidden;
     opacity: 0;
 
-    
     & label {
+      width: 100%;
       display: inline-block;
-      padding-block:0.5rem;
-      width:100%;
-      
-      color:$font-color-3;
+      padding: 0.5rem 0;
+
+      border-radius: 25px;
       background-color: $side-bar-color;
-      cursor:pointer;
+      cursor: pointer;
+
+      color: $font-color-3;
+    }
+
+    & button {
+      @include dimensions(1.5rem, 1.5rem);
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      background-color: $error-color;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      box-shadow: $shadow;
+
+      cursor: pointer;
+      transition: $transition;
+
+      & img {
+        @include dimensions(1rem, 1rem);
+
+        pointer-events: none;
+        filter: invert(100%);
+      }
+
+      &:nth-of-type(1) {
+        top: -1.5rem;
+        left: 0;
+
+        background-color: rgb(24, 94, 24);
+      }
+      &:nth-of-type(2) {
+        top: -1.5rem;
+        right: 0;
+
+        background-color: $error-color;
+      }
     }
   }
 
-  &:hover > div:nth-of-type(2){
+  &:hover > form {
     opacity: 1;
   }
 }
@@ -145,4 +182,8 @@
 
 .cover {
   object-fit: cover;
+}
+
+.visible {
+  opacity: 1 !important;
 }

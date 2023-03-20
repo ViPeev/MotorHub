@@ -7,6 +7,7 @@ function setUserData(data) {
       _id: data._id,
       username: data.username,
       fullName: `${data.firstName} ${data.lastName}`,
+      image: data.image,
     })
   );
 }
@@ -23,6 +24,13 @@ function getUserData() {
   return userData && authToken
     ? { userData: JSON.parse(userData), authToken }
     : null;
+}
+
+function updateUserData(image) {
+  const userData = localStorage.getItem("userData");
+  const user = JSON.parse(userData);
+  user.image = image;
+  localStorage.setItem("userData", JSON.stringify(user));
 }
 
 function setCredentials(username, password) {
@@ -49,7 +57,8 @@ export {
   setUserData,
   clearUserData,
   getUserData,
+  updateUserData,
   setCredentials,
   clearCredentials,
-  getCredentials
+  getCredentials,
 };

@@ -1,5 +1,12 @@
 import { formatImageData } from "../utils/dataFormatters";
-import { createCar, uploadImages, editCar } from "./data";
+import { updateUserData } from "../utils/localStorage";
+import {
+  createCar,
+  uploadImages,
+  editCar,
+  updateUser,
+  uploadPhoto,
+} from "./data";
 
 export async function submitCar(formData) {
   const filtered = formData.images.filter((i) => i);
@@ -40,4 +47,13 @@ export async function submitEditCar(id, formData) {
   const { _id } = await editCar(id, data);
 
   return _id;
+}
+
+export async function submitProfilePhoto(id, file) {
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const imageURL = await uploadPhoto(formData);
+  await updateUser(id, imageURL);
+  updateUserData(imageURL.image);
 }

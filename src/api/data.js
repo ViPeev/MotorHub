@@ -43,6 +43,10 @@ export async function deleteCar(id) {
   return await api.del(`/cars/${id}`);
 }
 
+export async function updateUser(id, data) {
+  return await api.put(`/users/${id}`, data);
+}
+
 export async function likeCar(carId) {
   return await api.post(`/users/like/${carId}`);
 }
@@ -54,6 +58,7 @@ export async function isLiked(carId) {
 export async function getOwnerId(id) {
   return await api.get(`/cars/ownerId/${id}`);
 }
+
 
 export async function uploadImages(images) {
   const response = await fetch("http://localhost:3030/api/uploads/cars", {
@@ -67,13 +72,13 @@ export async function uploadImages(images) {
   return response.json();
 }
 
-export async function uploadPhoto(photo) {
-  const response = await fetch("http://localhost:3030/api/uploads/cars", {
+export async function uploadPhoto(image) {
+  const response = await fetch("http://localhost:3030/api/uploads/users", {
     method: "POST",
     headers: {
       "X-Authorization": localStorage.getItem("authToken"),
     },
-    body: photo,
+    body: image,
   });
 
   return response.json();

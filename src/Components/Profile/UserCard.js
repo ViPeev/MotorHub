@@ -1,17 +1,28 @@
 import { useState } from "react";
+import { submitProfilePhoto } from "../../api/services";
 import blank from "../../assets/images/profile-photo.jpg";
+import xmark from "../../assets/icons/xmark-solid.svg";
+import check from "../../assets/icons/check-solid.svg";
 import styles from "./Profile.module.scss";
 
 const allowed = ["image/jpeg", "image/png", "image/jpg"];
 
 export default function UserCard({ owner, userData }) {
-  const [image, setImage] = useState(userData.image);
+  const [image, setImage] = useState({
+    photo: userData.image,
+    interacted: false,
+    default: userData.image,
+  });
 
   let src;
   let imgFit;
-  if (image) {
+
+  if (image.photo) {
     imgFit = "contain";
-    src = typeof image === "string" ? image : URL.createObjectURL(image);
+    src =
+      typeof image.photo === "string"
+        ? image.photo
+        : URL.createObjectURL(image.photo);
   } else {
     imgFit = "cover";
     src = blank;
@@ -23,7 +34,9 @@ export default function UserCard({ owner, userData }) {
         <div>
           <img src={src} alt="profile" className={styles[imgFit]} />
         </div>
-        {owner && <PhotoUpload setImage={setImage} />}
+        {owner && (
+          <PhotoUpload image={image} setImage={setImage} id={userData._id} />
+        )}
       </div>
       <div>
         <p>{userData.fullName}</p>
@@ -34,24 +47,54 @@ export default function UserCard({ owner, userData }) {
   );
 }
 
-function PhotoUpload({ setImage }) {
+function PhotoUpload({ image, setImage, id }) {
   const handleChange = (e) => {
     if (e.target.files.length > 0 && allowed.includes(e.target.files[0].type)) {
-      setImage(e.target.files[0]);
+      setImage((prev) => {
+        return { ...prev, interacted: true, photo: e.target.files[0] };
+      });
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setImage((prev) => {
+      return { ...prev, default: image.photo, interacted: false };
+    });
+    await submitProfilePhoto(id, image.photo);
+  };
+
+  const handleCancel = (e) => {
+    setImage((prev) => {
+      return { ...prev, photo: prev.default, interacted: false };
+    });
+    e.target.parentElement.reset();
+  };
+
+  const visible = image.interacted ? styles["visible"] : "";
+
   return (
-    <div>
-      <label htmlFor={`upload-photo`}>Set profile image</label>
+    <form onSubmit={handleSubmit} className={visible}>
+      <label htmlFor={`upload-photo`}>Set profile photo</label>
       <input
         type="file"
         name={`upload-photo`}
         id={`upload-photo`}
         accept=".jpg,.jpeg,.png"
         onChange={handleChange}
+        onInput={handleChange}
         hidden
       />
-    </div>
+      {image.interacted && (
+        <>
+          <button>
+            <img src={check} alt="Confrim" title="Confirm" />
+          </button>
+          <button onClick={handleCancel}>
+            <img src={xmark} alt="Cancel" title="Cancel" />
+          </button>
+        </>
+      )}
+    </form>
   );
 }
