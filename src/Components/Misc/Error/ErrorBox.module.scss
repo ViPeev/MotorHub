@@ -1,0 +1,38 @@
+@import "../../../main-styles/mixins.scss";
+@import "../../../main-styles/variables.scss";
+
+.error-box {
+  position: fixed;
+  padding: 1rem;
+  top: 10%;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 5;
+
+  background-color: $error-color;
+  border-radius: 25px;
+  box-shadow: $shadow-2;
+
+  color: $font-color-3;
+  font-family: $link-font;
+
+  -webkit-animation: fade-out 1s ease-out both 1s;
+  animation: fade-out 1s ease-out both 1s;
+
+  @-webkit-keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

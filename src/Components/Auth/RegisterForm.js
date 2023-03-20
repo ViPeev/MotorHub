@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
+import ErrorBox from "../Misc/Error/ErrorBox";
 import { register } from "../../api/data";
 import { validateRegister } from "../../utils/validators";
 import styles from "./Auth.module.scss";
@@ -19,6 +20,7 @@ export default function RegisterForm() {
   });
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState("password");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const { validator, canSubmit } = validateRegister(formData);
@@ -46,14 +48,21 @@ export default function RegisterForm() {
     if (!canSubmit) return;
 
     setLoading(true);
-    await register(
-      formData.userName,
-      formData.email,
-      formData.password,
-      formData.firstName,
-      formData.lastName
-    );
-    setTimeout(() => navigate("/", { replace: true }), 1000);
+
+    try {
+      await register(
+        formData.userName,
+        formData.email,
+        formData.password,
+        formData.firstName,
+        formData.lastName
+      );
+      setTimeout(() => navigate("/", { replace: true }), 1000);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+      setTimeout(() => setError(null), 1800);
+    }
   };
 
   return (
@@ -126,7 +135,7 @@ export default function RegisterForm() {
           </label>
         </div>
         <div>
-          <button disabled={!canSubmit}>Register</button>
+          <button disabled={!canSubmit || error}>Register</button>
           <button
             type="button"
             onMouseDown={handleMouseDown}
@@ -137,6 +146,7 @@ export default function RegisterForm() {
           </button>
         </div>
       </form>
+      {error && <ErrorBox text={error} />}
       {loading && <Backdrop />}
     </>
   );

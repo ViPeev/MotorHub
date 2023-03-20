@@ -43,8 +43,8 @@ export async function deleteCar(id) {
   return await api.del(`/cars/${id}`);
 }
 
-export async function updateUser(id, data) {
-  return await api.put(`/users/${id}`, data);
+export async function updateUser(data) {
+  return await api.put(`/users/`, data);
 }
 
 export async function likeCar(carId) {
@@ -56,7 +56,7 @@ export async function isLiked(carId) {
 }
 
 export async function getOwnerId(id) {
-  return await api.get(`/cars/ownerId/${id}`);
+  return await api.get(`/cars/${id}/ownerId`);
 }
 
 

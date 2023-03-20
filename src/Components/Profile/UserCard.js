@@ -34,9 +34,7 @@ export default function UserCard({ owner, userData }) {
         <div>
           <img src={src} alt="profile" className={styles[imgFit]} />
         </div>
-        {owner && (
-          <PhotoUpload image={image} setImage={setImage} id={userData._id} />
-        )}
+        {owner && <PhotoUpload image={image} setImage={setImage} />}
       </div>
       <div>
         <p>{userData.fullName}</p>
@@ -47,7 +45,7 @@ export default function UserCard({ owner, userData }) {
   );
 }
 
-function PhotoUpload({ image, setImage, id }) {
+function PhotoUpload({ image, setImage }) {
   const handleChange = (e) => {
     if (e.target.files.length > 0 && allowed.includes(e.target.files[0].type)) {
       setImage((prev) => {
@@ -61,7 +59,7 @@ function PhotoUpload({ image, setImage, id }) {
     setImage((prev) => {
       return { ...prev, default: image.photo, interacted: false };
     });
-    await submitProfilePhoto(id, image.photo);
+    await submitProfilePhoto(image.photo);
   };
 
   const handleCancel = (e) => {
@@ -87,10 +85,10 @@ function PhotoUpload({ image, setImage, id }) {
       />
       {image.interacted && (
         <>
-          <button>
+          <button className="fade-in">
             <img src={check} alt="Confrim" title="Confirm" />
           </button>
-          <button onClick={handleCancel}>
+          <button className="fade-in" onClick={handleCancel}>
             <img src={xmark} alt="Cancel" title="Cancel" />
           </button>
         </>

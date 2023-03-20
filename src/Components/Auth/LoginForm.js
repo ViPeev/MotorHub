@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
+import ErrorBox from "../Misc/Error/ErrorBox";
 import { login } from "../../api/data";
 import { getLoginState } from "../../utils/initializers";
 import { validateLogin } from "../../utils/validators";
@@ -12,9 +13,9 @@ export default function LoginForm() {
   const [formData, setFormData] = useState(getLoginState());
   const [viewPass, setViewPass] = useState("password");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { state } = useLocation();
-
   const { validator, canSubmit } = validateLogin(formData);
   const redirect = state && state !== "/logout" ? state : "/";
 
@@ -41,8 +42,14 @@ export default function LoginForm() {
     if (!canSubmit) return;
 
     setLoading(true);
-    await login(formData.username, formData.password, formData.remember);
-    setTimeout(() => navigate(redirect, { replace: true }), 1000);
+    try {
+      await login(formData.username, formData.password, formData.remember);
+      setTimeout(() => navigate(redirect, { replace: true }), 1000);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+      setTimeout(() => setError(null), 1800);
+    }
   };
 
   return (
@@ -67,7 +74,7 @@ export default function LoginForm() {
           message={"Password is required"}
         />
         <div>
-          <button disabled={!canSubmit}>Login</button>
+          <button disabled={!canSubmit || error}>Login</button>
           <button
             type="button"
             onMouseDown={handleMouseDown}
@@ -88,6 +95,7 @@ export default function LoginForm() {
           <label htmlFor="remember">Remember me</label>
         </div>
       </form>
+      {error && <ErrorBox text={error} />}
       {loading && <Backdrop />}
     </>
   );

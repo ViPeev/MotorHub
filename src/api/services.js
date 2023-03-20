@@ -49,11 +49,11 @@ export async function submitEditCar(id, formData) {
   return _id;
 }
 
-export async function submitProfilePhoto(id, file) {
+export async function submitProfilePhoto(file) {
   const formData = new FormData();
   formData.append("image", file);
 
   const imageURL = await uploadPhoto(formData);
-  await updateUser(id, imageURL);
+  await updateUser(imageURL);
   updateUserData(imageURL.image);
 }
