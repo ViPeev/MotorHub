@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import styles from "./CarDetails.module.scss";
 import pen from "../../assets/icons/pen-solid.svg";
 
-export default function EditButton({ id, ownerId }) {
+export default function EditButton({ id }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/edit/${id}`, { state: { ownerId } });
+    navigate(`/edit/${id}`);
   };
 
   return (

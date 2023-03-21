@@ -1,5 +1,5 @@
 import { useState, useEffect, useReducer } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import UserCard from "./UserCard";
 import { CarList } from "../Misc/CarList/CarList";
 import { Skeleton } from "../Misc/Loaders/Loaders";
@@ -11,14 +11,17 @@ import styles from "./Profile.module.scss";
 function SellerProfile({ id }) {
   const [offers, setOffers] = useState(null);
   const [navigation, dispatch] = useReducer(controlReducer, defaultSettings);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getUserCars(navigation.page, navigation.perPage, navigation.sort, id).then(
-      (result) => {
+    getUserCars(navigation.page, navigation.perPage, navigation.sort, id)
+      .then((result) => {
         setOffers(result);
-      }
-    );
-  }, [navigation, id]);
+      })
+      .catch((error) => {
+        navigate("/404", { replace: true });
+      });
+  }, [navigation, navigate, id]);
 
   return offers ? (
     <main className={styles.main}>

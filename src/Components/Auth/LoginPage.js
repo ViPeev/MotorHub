@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import styles from "./Auth.module.scss";
-import c63 from "../../assets/images/c63.jpg"
+import c63 from "../../assets/images/c63.jpg";
 
 export default function LoginPage() {
   return (
@@ -14,10 +14,7 @@ export default function LoginPage() {
           <h1>Login</h1>
           <LoginForm />
           <p>
-            Don't have an account? Register{" "}
-            <Link to="/register">
-              here
-            </Link>
+            Don't have an account? Register <Link to="/register">here</Link>
           </p>
         </div>
       </section>

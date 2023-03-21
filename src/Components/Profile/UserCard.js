@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ProfileContext } from "../../contexts/ProfileContext";
 import { submitProfilePhoto } from "../../api/services";
 import blank from "../../assets/images/profile-photo.jpg";
 import xmark from "../../assets/icons/xmark-solid.svg";
 import check from "../../assets/icons/check-solid.svg";
 import styles from "./Profile.module.scss";
-
 const allowed = ["image/jpeg", "image/png", "image/jpg"];
 
 export default function UserCard({ owner, userData }) {
@@ -46,6 +46,8 @@ export default function UserCard({ owner, userData }) {
 }
 
 function PhotoUpload({ image, setImage }) {
+  const { setError } = useContext(ProfileContext);
+
   const handleChange = (e) => {
     if (e.target.files.length > 0 && allowed.includes(e.target.files[0].type)) {
       setImage((prev) => {
@@ -59,7 +61,13 @@ function PhotoUpload({ image, setImage }) {
     setImage((prev) => {
       return { ...prev, default: image.photo, interacted: false };
     });
-    await submitProfilePhoto(image.photo);
+
+    try {
+      await submitProfilePhoto(image.photo);
+    } catch (error) {
+      setError("Oops! Something went wrong!");
+      setTimeout(() => setError(null), 1800);
+    }
   };
 
   const handleCancel = (e) => {

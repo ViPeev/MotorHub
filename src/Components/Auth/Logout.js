@@ -5,6 +5,6 @@ export default function Logout() {
   (async () => {
     await logout();
   })();
-  
+
   return <Navigate to="/" />;
 }

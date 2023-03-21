@@ -13,7 +13,6 @@ export default function AdvancedSearch({
   formData,
   data,
 }) {
-
   return createPortal(
     <div className={backdrop.backdrop} onClick={handleDisplay}>
       <div className={`${styles["form-wrapper"]} fade-in`}>
@@ -35,7 +34,9 @@ export default function AdvancedSearch({
             </button>
           </div>
         </form>
-        <button onClick={handleDisplay}><img src={xmark} alt="Close" title="Close" /></button>
+        <button onClick={handleDisplay}>
+          <img src={xmark} alt="Close" title="Close" />
+        </button>
         <button onClick={handleReset}>Clear Filters</button>
       </div>
     </div>,

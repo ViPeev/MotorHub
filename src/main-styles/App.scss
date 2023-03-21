@@ -13,25 +13,26 @@ body {
 }
 
 main {
-  height:max-content;
+  position: relative;
+  height: max-content;
   min-height: 80vh;
-  position:relative;
 }
 
-header,footer {
+header,
+footer {
   background: $nav-bg-color;
 }
 
 a {
   text-decoration: none;
-  color:$font-color-3;
-  font-family: $link-font
+  color: $font-color-3;
+  font-family: $link-font;
 }
 
 .divider {
   @include dimensions(120vw, 5rem);
   position: fixed;
-  top:70%;
+  top: 70%;
 
   background-color: $bg-color-2;
   transform: rotate(5deg) translateX(-5%);
@@ -41,10 +42,10 @@ a {
   box-shadow: $shadow-2;
 
   &::before {
-    @include dimensions(30%,20px);
+    @include dimensions(30%, 20px);
     position: absolute;
-    top:-20px;
-    left:0;
+    top: -20px;
+    left: 0;
 
     content: "";
     background-color: rgba(215, 218, 11, 0.395);
@@ -55,7 +56,8 @@ a {
 }
 
 .fade-in {
-  -webkit-animation: fade-in $transition cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  -webkit-animation: fade-in $transition cubic-bezier(0.645, 0.045, 0.355, 1)
+    forwards;
   animation: fade-in $transition cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
 }
 

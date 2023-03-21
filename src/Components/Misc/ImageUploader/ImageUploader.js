@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import UploadCard from "./UploadCard";
 import styles from "./Upload.module.scss";
 import plus from "../../../assets/icons/circle-plus-solid.svg";
@@ -6,10 +6,7 @@ import plus from "../../../assets/icons/circle-plus-solid.svg";
 export default function ImageUpload({ formData, setFormData }) {
   const [count, setCount] = useState(formData.images.length);
 
-  const cardMap = [];
-  for (let i = 0; i <= count && i < 10; i++) {
-    cardMap.push(i);
-  }
+  const cardMap = useMemo(() => createCardMap(count), [count]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -56,4 +53,13 @@ export default function ImageUpload({ formData, setFormData }) {
       )}
     </div>
   );
+}
+
+function createCardMap(count) {
+  const cardMap = [];
+  for (let i = 0; i <= count && i < 10; i++) {
+    cardMap.push(i);
+  }
+
+  return cardMap;
 }

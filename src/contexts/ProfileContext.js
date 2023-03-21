@@ -6,7 +6,7 @@ const ProfileContext = createContext(null);
 function ProfileProvider({ children }) {
   const [navigation, dispatch] = useReducer(controlReducer, defaultSettings);
   const [listType, setListType] = useState("ownOffers");
-
+  const [error, setError] = useState(null);
 
   return (
     <ProfileContext.Provider
@@ -15,6 +15,8 @@ function ProfileProvider({ children }) {
         dispatch,
         listType,
         setListType,
+        error,
+        setError,
       }}
     >
       {children}

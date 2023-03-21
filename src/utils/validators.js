@@ -70,5 +70,6 @@ export const validateCreate = (data) => {
   };
 
   const canSubmit = Object.values(validator).every((v) => v);
+  
   return { validator, canSubmit };
 };

@@ -8,23 +8,15 @@ import {
 const host = "http://localhost:3030/api";
 
 async function request(url, options) {
-  try {
-    const response = await fetch(host + url, options);
+  const response = await fetch(host + url, options);
 
-    if (response.ok === false) {
-      const error = await response.json();
-      throw new Error(error.message);
-    }
-
-    try {
-      const data = await response.json();
-      return data;
-    } catch (err) {
-      return response.json();
-    }
-  } catch (err) {
-    throw new Error(err.message);
+  if (response.ok === false) {
+    const error = await response.json();
+    throw new Error(error.message);
   }
+
+  const data = await response.json();
+  return data;
 }
 
 function getOptions(method = "get", body) {
@@ -72,7 +64,7 @@ export async function login(username, password, remember) {
   }
 
   setUserData(result);
-  
+
   return result;
 }
 
@@ -91,9 +83,8 @@ export async function register(username, email, password, firstName, lastName) {
 }
 
 export async function logout() {
-  const result = await get("/auth/logout");
-
   clearUserData();
+  const result = await get("/auth/logout");
 
   return result;
 }

@@ -6,6 +6,7 @@ import { Skeleton } from "../Misc/Loaders/Loaders";
 import { getUserCars, getFavourites } from "../../api/data";
 import { getUserData } from "../../utils/localStorage";
 import styles from "./Profile.module.scss";
+import ErrorBox from "../Misc/Error/ErrorBox";
 
 const getFunctions = {
   ownOffers: getUserCars,
@@ -14,7 +15,7 @@ const getFunctions = {
 
 export default function UserProfile() {
   const [offers, setOffers] = useState(null);
-  const { navigation, dispatch, listType, setListType } =
+  const { navigation, dispatch, listType, setListType, error, setError } =
     useContext(ProfileContext);
 
   const { userData } = getUserData();
@@ -25,9 +26,14 @@ export default function UserProfile() {
       navigation.perPage,
       navigation.sort,
       userData._id
-    ).then((result) => {
-      setOffers(result);
-    });
+    )
+      .then((result) => {
+        setOffers(result);
+      })
+      .catch((error) => {
+        setError("Oops! Something went wrong!");
+        setTimeout(() => setError(null), 1800);
+      });
   }, [listType, navigation, userData._id]);
 
   const handleClick = (type) => {
@@ -63,6 +69,7 @@ export default function UserProfile() {
       ) : (
         <Skeleton height="half" />
       )}
+      {error && <ErrorBox text={error} />}
     </main>
   );
 }

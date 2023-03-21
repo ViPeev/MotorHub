@@ -1,29 +1,25 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
 import ErrorBox from "../Misc/Error/ErrorBox";
 import { register } from "../../api/data";
 import { validateRegister } from "../../utils/validators";
+import { registerForm } from "../../utils/initializers";
 import styles from "./Auth.module.scss";
 import eye from "../../assets/icons/eye-solid.svg";
 
 export default function RegisterForm() {
-  const [formData, setFormData] = useState({
-    userName: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    repass: "",
-    agree: false,
-  });
+  const [formData, setFormData] = useState(registerForm);
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState("password");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const { validator, canSubmit } = validateRegister(formData);
+  const { validator, canSubmit } = useMemo(
+    () => validateRegister(formData),
+    [formData]
+  );
 
   const handleChange = (e) => {
     setFormData((prev) => {

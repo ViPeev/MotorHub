@@ -21,5 +21,6 @@ export const queryBuilder = (data) => {
       query.push(`${k}="${v}"`);
     }
   });
+  
   return encodeURIComponent(query.join('&'));
 }

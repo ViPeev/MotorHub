@@ -15,7 +15,7 @@
   margin: 0 auto;
   padding: 3rem 0.5rem;
 
-  background: $gradient-blue;
+  background: $side-bar-color;
   box-shadow: $shadow-2;
   border-radius: 50px 10px 50px 10px;
 
@@ -34,7 +34,7 @@
     bottom: -2rem;
     transform: translateX(-50%);
 
-    background-color: $nav-bg-color-light;
+    background-color: $nav-bg-color;
     box-shadow: inherit;
     border-radius: 30px;
 

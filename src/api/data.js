@@ -52,7 +52,7 @@ export async function likeCar(carId) {
 }
 
 export async function isLiked(carId) {
-  return await api.post(`/users/isLiked/${carId}`);
+  return await api.post(`/users/liked/${carId}`);
 }
 
 export async function getOwnerId(id) {

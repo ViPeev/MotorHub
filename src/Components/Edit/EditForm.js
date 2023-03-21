@@ -7,8 +7,9 @@ export default function EditForm({
   formData,
   handleSubmit,
   handleChange,
-  setFormData,
+  setError,
   setLoading,
+  setFormData,
   validator,
   canSubmit,
   id,
@@ -26,7 +27,7 @@ export default function EditForm({
       <div>
         <ImageUpload formData={formData} setFormData={setFormData} />
       </div>
-      <EditButtons id={id} setLoading={setLoading} canSubmit={canSubmit} />
+      <EditButtons id={id} setLoading={setLoading} setError={setError} canSubmit={canSubmit} />
     </form>
   );
 }

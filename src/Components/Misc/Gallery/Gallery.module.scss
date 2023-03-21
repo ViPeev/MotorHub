@@ -14,8 +14,8 @@
   button {
     position: absolute;
     top: 50%;
-    padding: 0.5rem;
     transform: translateY(-50%);
+    padding: 0.5rem;
 
     background-color: rgba(83, 96, 109, 0.446);
     border: none;
@@ -42,13 +42,13 @@
 }
 
 .button-backward {
-  border-radius: 0 25% 25% 0;
   left: 0;
+  border-radius: 0 25% 25% 0;
 }
 
 .button-forward {
-  border-radius: 25% 0 0 25%;
   right: 0;
+  border-radius: 25% 0 0 25%;
 }
 
 .button-expand {
@@ -59,11 +59,11 @@
 
 .photo-row {
   @include dimensions(100%, max-content);
-  padding-bottom: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   column-gap: 0.3rem;
+  padding-bottom: 0.5rem;
 
   overflow: auto;
   white-space: nowrap;

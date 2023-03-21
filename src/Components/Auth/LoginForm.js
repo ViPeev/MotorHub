@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
@@ -14,9 +14,10 @@ export default function LoginForm() {
   const [viewPass, setViewPass] = useState("password");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const { state } = useLocation();
-  const { validator, canSubmit } = validateLogin(formData);
+  const navigate = useNavigate();
+  
+  const { validator, canSubmit } =  useMemo(() => validateLogin(formData),[formData]);
   const redirect = state && state !== "/logout" ? state : "/";
 
   const handleChange = (e) => {

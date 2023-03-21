@@ -17,3 +17,19 @@ export const getLoginState = () => {
     };
   }
 };
+
+export const scrollSettings = {
+  top: 0,
+  left: 0,
+  behavior: "smooth",
+};
+
+export const registerForm = {
+  userName: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  repass: "",
+  agree: false,
+}
