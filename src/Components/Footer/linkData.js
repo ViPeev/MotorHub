@@ -32,7 +32,7 @@ const company = [
     content: "About Us",
   },
   {
-    link: "/contact",
+    link: "/contacts",
     content: "Contact us",
   },
   {

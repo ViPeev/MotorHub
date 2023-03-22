@@ -10,6 +10,7 @@
   box-shadow: $shadow-2;
   background-color: $bg-color-4;
 
+  line-height: 1.5rem;
   color: $font-color-2;
   font-family: $text-font;
 
@@ -45,13 +46,59 @@
       width: 90%;
       margin: auto;
       padding: 0.5rem;
-      line-height: 1.5rem;
     }
   }
 }
 
 .center {
-    text-align: center;
-    text-indent: 0px !important;
-    margin:1rem 0 0.5rem 0 !important;
+  text-align: center;
+  text-indent: 0px !important;
+  margin: 1rem 0 0.5rem 0 !important;
+}
+
+.contact-data {
+  display: flex;
+  flex-flow: column wrap;
+  row-gap: 2rem;
+  justify-content: center;
+
+  & > section {
+    @include dimensions(clamp(100px, 90%, 1300px), 100%);
+    display: flex;
+    margin: auto;
+  }
+
+  & > section:nth-of-type(1) {
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    & img {
+      @include dimensions(20px, 20px);
+      margin: 0 5px -5px 0;
+
+      filter: invert(30%);
+    }
+
+    span {
+      word-break: keep-all;
+      line-height: 1.5rem;
+
+      a {
+        color: $nav-bg-color-light;
+        font-weight: 600;
+      }
+    }
+  }
+
+  iframe {
+    @include dimensions(clamp(300px, 100%, 1000px), 350px);
+
+    border-radius: 25px;
+    box-shadow: $shadow-2;
+  }
 }

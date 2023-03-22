@@ -25,6 +25,8 @@ const Logout = React.lazy(() => import("./Components/Auth/Logout"));
 const NotFound = React.lazy(() => import("./Components/ErrorHandlers/404"));
 const Tos = React.lazy(() => import( "./Components/Info/Tos"));
 const Privacy = React.lazy(() => import( "./Components/Info/Privacy"));
+const Contacts = React.lazy(() => import( "./Components/Info/Contacts"));
+
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
                 <Route path="/details/:id" element={<CarDetails />} />
                 <Route path="/tos" element={<Suspense fallback={<Skeleton height={"suspense"} />}><Tos /></Suspense>} />
                 <Route path="/privacy" element={<Suspense fallback={<Skeleton height={"suspense"} />}><Privacy /></Suspense>} />
+                <Route path="/contacts" element={<Suspense fallback={<Skeleton height={"suspense"} />}><Contacts /></Suspense>} />
+                <Route path="/about" element={<Suspense fallback={<Skeleton height={"suspense"} />}><Contacts /></Suspense>} />
 
                 <Route element={<PrivateRoute />}>
                   <Route path="/sell" element={<Suspense fallback={<Skeleton height={"suspense"} />}><Create /></Suspense>} />
