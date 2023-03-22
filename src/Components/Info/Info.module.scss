@@ -1,0 +1,57 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.container {
+  @include dimensions(clamp(300px, 70vw, 800px), max-content);
+  margin: 3rem auto;
+  padding: 1rem;
+
+  border-radius: 25px;
+  box-shadow: $shadow-2;
+  background-color: $bg-color-4;
+
+  color: $font-color-2;
+  font-family: $text-font;
+
+  & h1 {
+    padding: 0.5rem;
+    border-bottom: 2px solid $bg-color-4;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  & h1,
+  & p:has(strong) {
+    margin: 1rem auto;
+
+    text-align: center;
+  }
+
+  & strong {
+    font-weight: 600;
+  }
+
+  & p:not(:has(strong)) {
+    margin: 0.5rem auto;
+
+    text-indent: 1rem;
+  }
+
+  ol {
+    list-style-type: disc;
+    list-style-position: inside;
+
+    li {
+      width: 90%;
+      margin: auto;
+      padding: 0.5rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+.center {
+    text-align: center;
+    text-indent: 0px !important;
+    margin:1rem 0 0.5rem 0 !important;
+}
