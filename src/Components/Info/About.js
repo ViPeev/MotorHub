@@ -24,7 +24,7 @@ export default function About() {
           All of the contents are fictional, including the published cars,
           users, Terms of Service, and Privacy policy.
         </p>
-        <p>MotorHub was created by Vladislav Ivanov Peev</p>
+        <p>MotorHub was created by Vladislav Peev</p>
         <img src={vladislav} alt="V.Peev" />
       </section>
     </main>

@@ -114,13 +114,12 @@
   background-image: url("../../assets/images/camaro.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  backdrop-filter: blur(30px);
+  background-position: center;
   border-radius: 25px;
-  box-shadow: $shadow;
   overflow: hidden;
 
   & section {
-    @include dimensions(clamp(300px, 50%, 900px), 100%);
+    @include dimensions(clamp(310px, 50%, 900px), 100%);
     padding: 2rem 1rem;
     margin: 0 1vw;
     display: flex;
@@ -134,21 +133,23 @@
     backdrop-filter: blur(20px);
 
     h1 {
-      text-align: center;
-      padding-bottom: 0.5rem;
       width: 100%;
+      padding-bottom: 0.5rem;
+
+      border-bottom: 2px solid currentColor;
+
+      text-align: center;
       font-family: $text-font;
       font-size: 1.5rem;
       font-weight: 600;
-      border-bottom: 2px solid currentColor;
     }
 
     p {
       width: 100%;
+
       word-break: break-word;
       line-height: 1.2rem;
       font-family: $link-font;
-      text-shadow: 3px 3px 2px #474747;
 
       span {
         font-size: 1.3rem;
@@ -157,15 +158,18 @@
     }
 
     p:nth-of-type(5) {
-      text-align: center;
       margin: 1rem 0;
+
+      text-align: center;
     }
 
     & img {
+      @include dimensions(100px, auto);
+      pointer-events: none;
+
       border-radius: 50%;
       outline: solid 5px $font-color-3;
       outline-offset: 5px;
-      @include dimensions(100px, auto);
     }
   }
 }
