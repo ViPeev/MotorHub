@@ -95,10 +95,77 @@
     }
   }
 
-  iframe {
-    @include dimensions(clamp(300px, 100%, 1000px), 350px);
+  & > section:nth-of-type(2) {
+    iframe {
+      @include dimensions(clamp(300px, 100%, 1000px), 350px);
 
-    border-radius: 25px;
-    box-shadow: $shadow-2;
+      border-radius: 25px;
+      box-shadow: $shadow-2;
+    }
+  }
+}
+
+.about-container {
+  @include dimensions(clamp(300px, 70vw, 800px), clamp(500px, 90vh, 700px));
+  min-height: 500px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+
+  background-image: url("../../assets/images/camaro.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(30px);
+  border-radius: 25px;
+  box-shadow: $shadow;
+  overflow: hidden;
+
+  & section {
+    @include dimensions(clamp(300px, 50%, 900px), 100%);
+    padding: 2rem 1rem;
+    margin: 0 1vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 1rem;
+
+    border-radius: inherit;
+    background-color: #7277d652;
+    backdrop-filter: blur(20px);
+
+    h1 {
+      text-align: center;
+      padding-bottom: 0.5rem;
+      width: 100%;
+      font-family: $text-font;
+      font-size: 1.5rem;
+      font-weight: 600;
+      border-bottom: 2px solid currentColor;
+    }
+
+    p {
+      width: 100%;
+      word-break: break-word;
+      line-height: 1.2rem;
+      font-family: $link-font;
+      text-shadow: 3px 3px 2px #474747;
+
+      span {
+        font-size: 1.3rem;
+        font-weight: 800;
+      }
+    }
+
+    p:nth-of-type(5) {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    & img {
+      border-radius: 50%;
+      outline: solid 5px $font-color-3;
+      outline-offset: 5px;
+      @include dimensions(100px, auto);
+    }
   }
 }
