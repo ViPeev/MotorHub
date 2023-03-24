@@ -8,33 +8,41 @@ import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
 export default function CatalogSearch() {
   const { searchData, setSearchData, dispatch } = useContext(SearchContext);
+  const [formData, setFormData] = useState({ ...searchData });
   const [display, setDisplay] = useState(false);
 
-  const handleChange = useCallback((e) => {
-    setSearchData((data) => {
-      if (e.target.name === "make") {
-        return { ...data, make: e.target.value, model: "" };
-      }
-      return { ...data, [e.target.name]: e.target.value };
-    });
-  }, [setSearchData]);
+  const handleChange = useCallback(
+    (e) => {
+      setFormData((data) => {
+        if (e.target.name === "make") {
+          return { ...data, make: e.target.value, model: "" };
+        }
+        return { ...data, [e.target.name]: e.target.value };
+      });
+    },
+    [setFormData]
+  );
 
-  const handleSubmit = useCallback((e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     setDisplay(false);
+    setSearchData({ ...formData });
     dispatch({ type: "SET_PAGE", payload: 1 });
-  }, [dispatch]);
+  };
 
-  const handleDisplay = useCallback((e) => {
-    if (e.target !== e.currentTarget) return;
+  const handleDisplay = useCallback(
+    (e) => {
+      if (e.target !== e.currentTarget) return;
 
-    setDisplay((prev) => !prev);
-  }, []);
+      setDisplay((prev) => !prev);
+    },
+    [setDisplay]
+  );
 
   const handleReset = useCallback(() => {
-    setSearchData(data.extendedFormData);
-  }, setSearchData);
+    setFormData(data.extendedFormData);
+  }, [setSearchData]);
 
   const overflow = display ? "hidden" : "auto";
   document.body.style.overflow = overflow;
@@ -46,7 +54,7 @@ export default function CatalogSearch() {
           <form onSubmit={handleSubmit}>
             <SearchFormPartial
               handleChange={handleChange}
-              formData={searchData}
+              formData={formData}
               data={data}
             />
             <div className="input-group">
@@ -67,7 +75,7 @@ export default function CatalogSearch() {
           handleChange={handleChange}
           handleDisplay={handleDisplay}
           handleReset={handleReset}
-          formData={searchData}
+          formData={formData}
           data={data}
         />
       )}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { ListContext } from "../CarList/CarList";
 import Pagination from "./Pagination";
 import { SortSelect } from "../../Forms/Inputs";
@@ -23,13 +23,19 @@ const itemsPerPage = [
 export default function Controls() {
   const { navigation, dispatch } = useContext(ListContext);
 
-  const changeItems = (e) => {
-    dispatch({ type: "SET_PER_PAGE", payload: e.target.value });
-  };
+  const changeItems = useCallback(
+    (e) => {
+      dispatch({ type: "SET_PER_PAGE", payload: e.target.value });
+    },
+    [dispatch]
+  );
 
-  const changeSort = (e) => {
-    dispatch({ type: "SET_SORT", payload: e.target.value });
-  };
+  const changeSort = useCallback(
+    (e) => {
+      dispatch({ type: "SET_SORT", payload: e.target.value });
+    },
+    [dispatch]
+  );
 
   return (
     <div className={styles.controls}>

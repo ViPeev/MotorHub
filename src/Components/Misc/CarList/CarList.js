@@ -1,11 +1,11 @@
-import { createContext } from "react";
+import { createContext, memo } from "react";
 import CarCard from "./CarCard";
 import Controls from "../Controls/Controls";
 import styles from "./CarList.module.scss";
 
 export const ListContext = createContext(null);
 
-export function CarList({ data, navigation, dispatch }) {
+const CarList = memo(function CarList({ data, navigation, dispatch }) {
   return (
     <ListContext.Provider value={{ navigation, dispatch, data }}>
       <section>
@@ -27,4 +27,6 @@ export function CarList({ data, navigation, dispatch }) {
       </section>
     </ListContext.Provider>
   );
-}
+});
+
+export { CarList };
