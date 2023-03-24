@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import styles from "./Upload.module.scss";
 import placeholder from "../../../assets/icons/image-solid.svg";
 import xmark from "../../../assets/icons/xmark-solid.svg";
 
 const allowed = ["image/jpeg", "image/png", "image/jpg"];
 
-export default function UploadCard({
+export default memo(function UploadCard({
   index,
   addImage,
   handleRemoveImage,
@@ -55,4 +55,4 @@ export default function UploadCard({
       )}
     </>
   );
-}
+});

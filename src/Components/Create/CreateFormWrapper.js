@@ -12,19 +12,22 @@ export default function CreateFormWrapper() {
     [formData]
   );
 
-  const handleChange = useCallback((e) => {
-    setFormData((data) => {
-      return { ...data, [e.target.name]: e.target.value };
-    });
-  }, setFormData);
+  const handleChange = useCallback(
+    (e) => {
+      setFormData((data) => {
+        return { ...data, [e.target.name]: e.target.value };
+      });
+    },
+    [setFormData]
+  );
 
-  const handleFormSubmit = useCallback((e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
 
     if (!canSubmit) return;
 
     setStep(1);
-  }, setStep);
+  };
 
   return (
     <form className={styles["data-form"]} onSubmit={handleFormSubmit}>

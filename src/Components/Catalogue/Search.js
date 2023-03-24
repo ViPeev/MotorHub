@@ -42,7 +42,7 @@ export default function CatalogSearch() {
 
   const handleReset = useCallback(() => {
     setFormData(data.extendedFormData);
-  }, [setSearchData]);
+  }, []);
 
   const overflow = display ? "hidden" : "auto";
   document.body.style.overflow = overflow;

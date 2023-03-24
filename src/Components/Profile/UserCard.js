@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { memo, useContext, useState } from "react";
 import { ProfileContext } from "../../contexts/ProfileContext";
 import { submitProfilePhoto } from "../../api/services";
 import blank from "../../assets/images/profile-photo.jpg";
@@ -7,7 +7,7 @@ import check from "../../assets/icons/check-solid.svg";
 import styles from "./Profile.module.scss";
 const allowed = ["image/jpeg", "image/png", "image/jpg"];
 
-export default function UserCard({ owner, userData }) {
+export default memo(function UserCard({ owner, userData }) {
   const [image, setImage] = useState({
     photo: userData.image,
     interacted: false,
@@ -43,7 +43,7 @@ export default function UserCard({ owner, userData }) {
       </div>
     </div>
   );
-}
+});
 
 function PhotoUpload({ image, setImage }) {
   const { setError } = useContext(ProfileContext);

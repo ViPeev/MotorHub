@@ -6,6 +6,7 @@ import styles from "./Menu.module.scss";
 const body = document.querySelector("body");
 
 export default function Menu({ setDisplay }) {
+  
   const hideMenu = (e) => {
     if (e.target === e.currentTarget) {
       setDisplay((prev) => !prev);

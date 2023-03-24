@@ -107,7 +107,13 @@ const ValidatedInput = memo(function ValidatedInput({
   );
 });
 
-const SortSelect = memo(function SortSelect({ label, value, name, handleChange, options }) {
+const SortSelect = memo(function SortSelect({
+  label,
+  value,
+  name,
+  handleChange,
+  options,
+}) {
   return (
     <form>
       <label htmlFor={name}>{label} : </label>
@@ -124,7 +130,7 @@ const SortSelect = memo(function SortSelect({ label, value, name, handleChange, 
   );
 });
 
-function CreateSelect({
+const CreateSelect = memo(function CreateSelect({
   label,
   value,
   name,
@@ -156,9 +162,16 @@ function CreateSelect({
       <span>{!validator && interacted && message}</span>
     </div>
   );
-}
+});
 
-function TextArea({ label, value, name, handleChange, message, validator }) {
+const TextArea = memo(function TextArea({
+  label,
+  value,
+  name,
+  handleChange,
+  message,
+  validator,
+}) {
   const [interacted, setInteracted] = useState(false);
 
   return (
@@ -178,7 +191,7 @@ function TextArea({ label, value, name, handleChange, message, validator }) {
       <span>{!validator && interacted && message}</span>
     </div>
   );
-}
+});
 
 export {
   Select,

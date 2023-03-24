@@ -1,5 +1,5 @@
 import styles from "./Edit.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import EditForm from "./EditForm";
 import ErrorBox from "../Misc/Error/ErrorBox";
@@ -22,6 +22,7 @@ export default function Edit() {
     validator = validated.validator;
     canSubmit = validated.canSubmit;
   }
+
   useEffect(() => {
     getCarById(id)
       .then((result) => {
@@ -33,11 +34,14 @@ export default function Edit() {
       });
   }, [id, navigate]);
 
-  const handleChange = (e) => {
-    setFormData((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
+  const handleChange = useCallback(
+    (e) => {
+      setFormData((prev) => {
+        return { ...prev, [e.target.name]: e.target.value };
+      });
+    },
+    [setFormData]
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();

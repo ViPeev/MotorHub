@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import { ProfileContext } from "../../contexts/ProfileContext";
 import UserCard from "./UserCard";
 import { CarList } from "../Misc/CarList/CarList";
@@ -18,7 +18,7 @@ export default function UserProfile() {
   const { navigation, dispatch, listType, setListType, error, setError } =
     useContext(ProfileContext);
 
-  const { userData } = getUserData();
+  const { userData } = useMemo(() => getUserData(), []);
 
   useEffect(() => {
     getFunctions[listType](
