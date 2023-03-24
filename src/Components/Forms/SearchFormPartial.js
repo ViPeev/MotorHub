@@ -1,6 +1,10 @@
 import { Select, InputField } from "./Inputs";
 
-export function SearchFormPartial({ handleChange, formData, data }) {
+function SearchFormPartial({
+  handleChange,
+  formData,
+  data,
+}) {
   return (
     <>
       <Select
@@ -64,9 +68,13 @@ export function SearchFormPartial({ handleChange, formData, data }) {
       />
     </>
   );
-}
+};
 
-export function AdvancedSearchPartial({ formData, handleChange, data }) {
+function AdvancedSearchPartial({
+  formData,
+  handleChange,
+  data,
+}) {
   return (
     <>
       <Select
@@ -136,4 +144,6 @@ export function AdvancedSearchPartial({ formData, handleChange, data }) {
       />
     </>
   );
-}
+};
+
+export { SearchFormPartial, AdvancedSearchPartial };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getUserData } from "../../utils/localStorage";
 import loginImg from "../../assets/icons/arrow-right-to-bracket-solid.svg";
@@ -16,9 +16,9 @@ export default function UserNav() {
 
   const setActiveStyles = ({ isActive }) => (isActive ? active : undefined);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     setIsLogged(false);
-  };
+  }, [setIsLogged]);
 
   return (
     <ul>

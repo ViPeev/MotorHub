@@ -1,8 +1,9 @@
-import Toggler from "./Toggler";
+import { Toggler } from "./Toggler";
 import PageNav from "../Navigation/PageNav";
+import { memo } from "react";
 import styles from "./Header.module.scss";
 
-export default function Header() {
+const Header = memo(function Header() {
   return (
     <header className={styles.header}>
       <nav>
@@ -11,4 +12,6 @@ export default function Header() {
       <Toggler />
     </header>
   );
-}
+});
+
+export { Header };

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { memo, useCallback, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchContext";
 import { SearchFormPartial } from "../Forms/SearchFormPartial";
@@ -6,19 +6,22 @@ import data from "../../staticData/formData";
 import styles from "./Search.module.scss";
 import searchIcon from "../../assets/icons/magnifying-glass-solid.svg";
 
-export function HomeSearch() {
+export default function HomeSearch() {
   const { setSearchData, dispatch } = useContext(SearchContext);
   const [formData, setFormData] = useState(data.formData);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData((data) => {
-      if (e.target.name === "make") {
-        return { ...data, make: e.target.value, model: "" };
-      }
-      return { ...data, [e.target.name]: e.target.value };
-    });
-  };
+  const handleChange = useCallback(
+    (e) => {
+      setFormData((data) => {
+        if (e.target.name === "make") {
+          return { ...data, make: e.target.value, model: "" };
+        }
+        return { ...data, [e.target.name]: e.target.value };
+      });
+    },
+    [setFormData]
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,4 +52,6 @@ export function HomeSearch() {
       </div>
     </section>
   );
-}
+};
+
+
