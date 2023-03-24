@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState, memo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
@@ -8,6 +8,14 @@ import { validateRegister } from "../../utils/validators";
 import { registerForm } from "../../utils/initializers";
 import styles from "./Auth.module.scss";
 import eye from "../../assets/icons/eye-solid.svg";
+
+const MemoLabel = memo(function Label() {
+  return (
+    <label htmlFor="agree">
+      Agree to the <Link to="/tos">terms and conditions</Link>
+    </label>
+  );
+});
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState(registerForm);
@@ -21,22 +29,26 @@ export default function RegisterForm() {
     [formData]
   );
 
-  const handleChange = (e) => {
-    setFormData((prev) => {
-      if (e.target.type === "checkbox") {
-        return { ...prev, agree: e.target.checked };
-      } else {
-        return { ...prev, [e.target.name]: e.target.value };
-      }
-    });
-  };
+  const handleChange = useCallback(
+    (e) => {
+      setFormData((prev) => {
+        if (e.target.type === "checkbox") {
+          return { ...prev, agree: e.target.checked };
+        } else {
+          return { ...prev, [e.target.name]: e.target.value };
+        }
+      });
+    },
+    [setFormData]
+  );
 
-  const handleMouseDown = () => {
+  const handleMouseDown = useCallback(() => {
     setViewPass("text");
-  };
-  const handleMouseUp = () => {
+  }, [setViewPass]);
+
+  const handleMouseUp = useCallback(() => {
     setViewPass("password");
-  };
+  }, [setViewPass]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -121,14 +133,12 @@ export default function RegisterForm() {
         <div>
           <input
             type="checkbox"
-            name="remember"
-            id="remember"
+            name="agree"
+            id="agree"
             value={formData.agree}
             onChange={handleChange}
           />
-          <label htmlFor="remember">
-            Agree to the <Link to="/tos">terms and conditions</Link>
-          </label>
+          <MemoLabel />
         </div>
         <div>
           <button disabled={!canSubmit || error}>Register</button>

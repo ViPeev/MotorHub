@@ -106,9 +106,9 @@
 }
 
 .about-container {
-  @include dimensions(clamp(300px, 70vw, 800px), clamp(500px, 90vh, 700px));
+  @include dimensions(clamp(300px, 70vw, 800px), max-content);
   min-height: 500px;
-  margin: 2rem auto;
+  margin: 3rem auto;
   padding: 2rem 1rem;
 
   background-image: url("../../assets/images/camaro.jpg");
@@ -116,10 +116,9 @@
   background-size: cover;
   background-position: center;
   border-radius: 25px;
-  overflow: hidden;
 
   & section {
-    @include dimensions(clamp(310px, 50%, 900px), 100%);
+    @include dimensions(clamp(265px, 50%, 900px), max-content);
     padding: 2rem 1rem;
     margin: 0 1vw;
     display: flex;

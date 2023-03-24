@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { SearchContext } from "../../contexts/SearchContext";
 import AdvancedSearch from "../Forms/AdvancedSearch";
 import { SearchFormPartial } from "../Forms/SearchFormPartial";
@@ -10,34 +10,34 @@ export default function CatalogSearch() {
   const { searchData, setSearchData, dispatch } = useContext(SearchContext);
   const [display, setDisplay] = useState(false);
 
-  const overflow = display ? "hidden" : "auto";
-  document.body.style.overflow = overflow;
-
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     setSearchData((data) => {
       if (e.target.name === "make") {
         return { ...data, make: e.target.value, model: "" };
       }
       return { ...data, [e.target.name]: e.target.value };
     });
-  };
+  }, [setSearchData]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
     setDisplay(false);
     dispatch({ type: "SET_PAGE", payload: 1 });
-  };
+  }, [dispatch]);
 
-  const handleDisplay = (e) => {
+  const handleDisplay = useCallback((e) => {
     if (e.target !== e.currentTarget) return;
 
     setDisplay((prev) => !prev);
-  };
+  }, []);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setSearchData(data.extendedFormData);
-  };
+  }, setSearchData);
+
+  const overflow = display ? "hidden" : "auto";
+  document.body.style.overflow = overflow;
 
   return (
     <>

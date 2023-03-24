@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import caret from "../../assets/icons/caret-down-solid.svg";
 
 function Options({ data, symbol }) {
@@ -15,7 +15,7 @@ function Options({ data, symbol }) {
   );
 }
 
-function Select({
+const Select = memo(function Select({
   label,
   value,
   name,
@@ -43,9 +43,16 @@ function Select({
       </div>
     </div>
   );
-}
+});
 
-function InputField({ label, value, name, handleChange, type, placeholder }) {
+const InputField = memo(function InputField({
+  label,
+  value,
+  name,
+  handleChange,
+  type,
+  placeholder,
+}) {
   const content = placeholder || "";
 
   return (
@@ -64,9 +71,9 @@ function InputField({ label, value, name, handleChange, type, placeholder }) {
       </div>
     </div>
   );
-}
+});
 
-function ValidatedInput({
+const ValidatedInput = memo(function ValidatedInput({
   label,
   value,
   name,
@@ -98,9 +105,9 @@ function ValidatedInput({
       <span>{!validator && interacted && message}</span>
     </div>
   );
-}
+});
 
-function SortSelect({ label, value, name, handleChange, options }) {
+const SortSelect = memo(function SortSelect({ label, value, name, handleChange, options }) {
   return (
     <form>
       <label htmlFor={name}>{label} : </label>
@@ -115,7 +122,7 @@ function SortSelect({ label, value, name, handleChange, options }) {
       </select>
     </form>
   );
-}
+});
 
 function CreateSelect({
   label,

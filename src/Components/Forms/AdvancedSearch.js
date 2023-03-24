@@ -12,7 +12,7 @@ export default function AdvancedSearch({
   handleReset,
   formData,
   data,
-}) {
+}) { 
   return createPortal(
     <div className={backdrop.backdrop} onClick={handleDisplay}>
       <div className={`${styles["form-wrapper"]} fade-in`}>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ValidatedInput } from "../Forms/Inputs";
 import { Backdrop } from "../Misc/Loaders/Loaders";
@@ -16,26 +16,29 @@ export default function LoginForm() {
   const [error, setError] = useState(null);
   const { state } = useLocation();
   const navigate = useNavigate();
-  
-  const { validator, canSubmit } =  useMemo(() => validateLogin(formData),[formData]);
+
+  const { validator, canSubmit } = useMemo(
+    () => validateLogin(formData),
+    [formData]
+  );
   const redirect = state && state !== "/logout" ? state : "/";
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     setFormData((prev) => {
       if (e.target.type === "checkbox") {
         return { ...prev, [e.target.name]: e.target.checked };
       }
       return { ...prev, [e.target.name]: e.target.value };
     });
-  };
+  }, [setFormData]);
 
-  const handleMouseDown = () => {
+  const handleMouseDown = useCallback(() => {
     setViewPass("text");
-  };
+  }, [setViewPass]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setViewPass("password");
-  };
+  }, [setViewPass]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

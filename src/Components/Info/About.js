@@ -5,7 +5,8 @@ export default function About() {
   window.scrollTo({ top: 0 });
 
   return (
-    <main className={`${styles["about-container"]} fade-in`}>
+    <main>
+      <div className={`${styles["about-container"]} fade-in`}>
       <section>
         <h1>About us</h1>
         <p>
@@ -27,6 +28,7 @@ export default function About() {
         <p>MotorHub was created by Vladislav Peev</p>
         <img src={vladislav} alt="V.Peev" />
       </section>
+      </div>
     </main>
   );
 }
