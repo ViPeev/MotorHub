@@ -1,0 +1,173 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.form-wrapper {
+  @include dimensions(clamp(350px, 60%, 1000px),clamp(500px,85vh,600px));
+  margin: 3vh auto;
+  padding: 2rem 0;
+  position: relative;
+
+  background: $font-color-3;
+  box-shadow: $shadow-2;
+  border-radius: 25px;
+
+  text-align: center;
+
+  h3 {
+    width: 80%;
+    margin: 1rem auto;
+    padding-bottom: 1rem;
+
+    border-bottom: 2px solid $bg-color-3;
+
+    color: $font-color-1;
+    font-family: $text-font;
+    font-weight: 600;
+    font-size: 1.7rem;
+  }
+
+  & > button:first-of-type {
+    @include dimensions(2rem, 2rem);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    background-color: $font-color-1;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background-color: $nav-bg-color-light;
+    }
+
+    & img {
+      @include dimensions(1.3rem, 1.3rem);
+
+      pointer-events: none;
+      filter: invert(100%);
+    }
+  }
+
+  & > button:nth-of-type(2) {
+    all: unset;
+    width: 6rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+
+    background-color: $nav-bg-color-light;
+    border-radius: 25px;
+
+    color: $font-color-3;
+    font-family: $text-font;
+
+    cursor: pointer;
+    transition: $transition;
+  }
+
+  & form {
+    @include dimensions(80%, max-content);
+    margin: 2rem auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    & div {
+      @include dimensions(25%, auto);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+
+      overflow: hidden;
+
+      font-family: $link-font;
+
+      button {
+        all: unset;
+        @include dimensions(50%, max-content);
+        max-width: 100px;
+        margin-top: 2rem;
+        padding: 0.5rem 0;
+
+        background-color: $nav-bg-color-light;
+        box-shadow: $shadow-2;
+        border-radius: 5px;
+
+        color: $font-color-3;
+        font-family: $text-font;
+        text-align: center;
+
+        cursor: pointer;
+
+        img {
+          @include dimensions(25%, 25%);
+          filter: invert(100%);
+        }
+      }
+
+      & > div {
+        @include dimensions(100%, 40%);
+        position: relative;
+
+        & img {
+          @include dimensions(15px, 15px);
+          position: absolute;
+          top: 50%;
+          right: 1rem;
+          transform: translateY(-50%);
+
+          pointer-events: none;
+          filter: invert(100%);
+        }
+      }
+
+      label {
+        margin: 0.5rem 0;
+        color: $font-color-1;
+      }
+
+      select,
+      input {
+        @include dimensions(100%, 100%);
+        position: relative;
+        padding: 1rem;
+
+        appearance: none;
+        border: none;
+        outline: none;
+        overflow: auto;
+
+        color: $font-color-3;
+        background: $nav-bg-color-light;
+        font-family: $text-font;
+        font-size: 1rem;
+
+        cursor: pointer;
+
+        &::placeholder {
+          color: $placeholder-color;
+        }
+      }
+      input{
+        padding:1rem 0 1rem 2rem;
+      }
+    }
+  }
+  select:hover,
+  select:focus,
+  button:hover,
+  button:focus,
+  input:hover,
+  input:focus {
+    box-shadow: $shadow-inset;
+  }
+}

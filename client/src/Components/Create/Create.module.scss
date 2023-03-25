@@ -1,0 +1,177 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.main {
+  @include dimensions(100%, max-content);
+  align-content: flex-start !important;
+
+  color: $font-color-3;
+  font-family: $link-font;
+
+  & section {
+    @include dimensions(clamp(500px, 85%, 1030px), 100%);
+    margin:3rem auto;
+    padding: 2rem;
+
+    background-color: $bg-color-3;
+    border-radius: 25px;
+    box-shadow: $shadow-2;
+
+    color: $font-color-1;
+    text-align: center;
+
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    h3 {
+      margin: 1rem 0;
+      padding-bottom: 1rem;
+
+      font-weight: 600;
+      font-size: 1.7rem;
+      border-bottom: 2px solid $bg-color-3;
+    }
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    form {
+      @include dimensions(100%, 100%);
+
+      & > button {
+        all: unset;
+        width: 100px;
+        margin: 2rem 0.5rem;
+        padding: 0.5rem;
+
+        background-color: $nav-bg-color-light;
+
+        text-align: center;
+        color: $font-color-3;
+        font-family: $text-font;
+
+        border-radius: 25px;
+        cursor: pointer;
+        transition: $transition;
+
+        &[disabled] {
+          background-color: $bg-color-3;
+          pointer-events: none;
+        }
+      }
+
+      select:hover,
+      select:focus,
+      button:hover,
+      button:focus,
+      input:hover,
+      input:focus {
+        box-shadow: $shadow-inset;
+      }
+    }
+  }
+}
+
+.data-form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  & > div {
+    @include dimensions(12rem, 7rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+
+    & > div {
+      @include dimensions(100%, 40%);
+      position: relative;
+
+      overflow: hidden;
+
+      & img {
+        @include dimensions(15px, 15px);
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+
+        pointer-events: none;
+        filter: invert(100%);
+      }
+
+    }
+
+    & span {
+      display: inline-block;
+      margin-top: 5px;
+      height: 17px;
+      
+      color: $error-color;
+      font-size: 14px;
+      line-height: 17px;
+      text-overflow: ellipsis;
+      text-align: center;
+
+    }
+
+    label {
+      margin: 0.5rem 0;
+
+      color: $font-color-1;
+    }
+
+    select,
+    input {
+      @include dimensions(100%, 100%);
+      position: relative;
+      appearance: none;
+      padding-left: 1rem;
+
+      background: $nav-bg-color-light;
+      border: none;
+      outline: none;
+
+      color: $font-color-3;
+      font-family: $text-font;
+      font-size: 1rem;
+
+      overflow: auto;
+      cursor: pointer;
+    }
+
+    input::placeholder {
+      color: $placeholder-color;
+    }
+    select,
+    input,
+    button {
+      transition: $transition;
+    }
+  }
+
+  & > div:nth-last-child(2) {
+    @include dimensions(100%, 80%);
+    text-align: center;
+
+    & textarea {
+      @include dimensions(80%, 100%);
+      min-height: 100px;
+      margin: auto;
+      padding: 0.5rem;
+
+      border: none;
+      outline: none;
+
+      color: $font-color-2;
+      font-family: $text-font;
+      font-weight: 600;
+
+      resize: vertical;
+    }
+  }
+}

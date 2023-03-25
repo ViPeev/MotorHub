@@ -1,0 +1,90 @@
+@import "../../../main-styles/mixins.scss";
+@import "../../../main-styles/variables.scss";
+
+.spinner {
+  @include dimensions(3rem, 3rem);
+  margin: auto;
+
+  border-radius: 50%;
+  border-top: solid $nav-bg-color-light 5px;
+  border-right: solid $nav-bg-color-light 5px;
+
+  -webkit-animation: rotate-center 1s linear infinite both;
+  animation: rotate-center 1s linear infinite both;
+}
+
+.white {
+  border-bottom: solid $bg-color-1 5px;
+  border-left: solid $bg-color-1 5px;
+}
+
+.gray {
+  border-bottom: solid $bg-color-3 5px;
+  border-left: solid $bg-color-3 5px;
+}
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.backdrop {
+  @include dimensions(100vw, 100vh);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  z-index: 5;
+
+  background-color: $backdrop-color-light;
+}
+
+.loading-box {
+  display: flex;
+  margin: 2rem auto;
+
+  background-size: 400% 400%;
+  animation: pulse 1.2s ease-in-out infinite;
+
+  @keyframes pulse {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: -135% 0%;
+    }
+  }
+}
+
+.full-height {
+  @include dimensions(clamp(500px, 90%, 1050px), 100vh);
+
+  background: linear-gradient(-90deg, #efefef 0%, #eeeaea 50%, #efefef 100%);
+  box-shadow: $shadow;
+}
+
+.half-height {
+  @include dimensions(95%, 60vh);
+}
+
+.suspense-load {
+  @include dimensions(95%, 82vh);
+}

@@ -1,0 +1,36 @@
+@import "resets";
+@import "variables";
+@import "mixins";
+@import "common";
+
+body {
+  box-sizing: border-box;
+
+  background-color: $bg-color-1;
+  color: $font-color-3;
+
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+header,
+footer {
+  background: $nav-bg-color-dark;
+}
+
+main {
+  height: max-content;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+
+a {
+  text-decoration: none;
+  color: $font-color-3;
+  font-family: $link-font;
+}
+

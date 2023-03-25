@@ -1,0 +1,210 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.main {
+  @include dimensions(100%, max-content);
+  display: flex;
+  padding: 2rem 0;
+
+  font-family: $text-font;
+
+  section {
+    @include dimensions(clamp(400px, 60%, 800px), clamp(700px, 95vh, 800px));
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    margin: auto;
+    padding: 1.5rem 1rem;
+
+    background-color: $bg-color-3;
+    border-radius: 25px;
+    box-shadow: $shadow-2;
+    
+    text-align: center;
+    color: $font-color-1;
+
+    h1 {
+      margin: 1rem 0;
+      padding-bottom: 1rem;
+
+      border-bottom: 2px solid $bg-color-3;
+
+      font-size: 1.7rem;
+      font-weight: 600;
+
+    }
+
+    p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: $nav-bg-color-light;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    & > div {
+      @include dimensions(50%, 100%);
+    }
+  }
+
+  & form {
+    display: flex;
+    row-gap: 2rem;
+
+    & input[type="text"],
+    & input[type="password"] {
+      @include dimensions(70%, auto);
+      margin-top: 0.5rem;
+      padding: 0.7rem;
+
+      
+      background-color: $nav-bg-color-light;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      outline: 2px solid transparent;
+      outline-offset: 3px;
+
+      color: $font-color-3;
+      text-align: center;
+
+      transition: $transition;
+    }
+
+    & input[type="checkbox"] {
+      @include dimensions(15px, 15px);
+
+      cursor: pointer;
+      accent-color: $nav-bg-color-light;
+    }
+
+    & input[type="checkbox"] ~ label {
+      line-height: 1.2rem;
+      cursor: pointer;
+    }
+
+    & > div {
+      position: relative;
+
+      & span {
+        display: inline-block;
+        height: 1rem;
+        margin-top: 5px;
+        position: absolute;
+        bottom: -1.3rem;
+        left: 50%;
+        transform: translateX(-50%);
+
+
+        color: $error-color;
+        font-size: 14px;
+        line-height: 17px;
+        text-overflow: ellipsis;
+        text-align: center;
+
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+
+    & button {
+      width: 100px;
+      margin: 0 0.5rem;
+      padding: 0.5rem;
+
+      background-color: $nav-bg-color-light;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      outline: 2px solid transparent;
+      outline-offset: 3px;
+      
+      color: $font-color-3;
+      font-family: $text-font;
+      font-size: 1rem;
+
+      transition: $transition;
+      cursor: pointer;
+
+      &:hover,
+      &:active {
+        box-shadow: $shadow-inset;
+      }
+
+      & img {
+        @include dimensions(20px, 15px);
+
+        pointer-events: none;
+        filter: invert(100%);
+      }
+
+      &[disabled] {
+        pointer-events: none;
+        background-color: $bg-color-3;
+      }
+    }
+
+    & input:focus,
+    & button:focus {
+      outline: 2px solid $font-color-1;
+    }
+  }
+}
+
+.login {
+  flex-direction: column;
+
+  text-align: center;
+  color: $font-color-2;
+
+  & > div {
+    @include dimensions(100%, auto);
+  }
+
+  & > div:last-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5px;
+  }
+}
+
+.register {
+  flex-flow: row wrap;
+  justify-content: center;
+
+  text-align: center;
+  color: $font-color-2;
+
+  & > div {
+    @include dimensions(100%, auto);
+  }
+
+  & > div:nth-child(1),
+  & > div:nth-child(2) {
+    @include dimensions(50%, auto);
+  }
+  & > div:nth-last-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5px;
+  }
+}
+
+.side-image {
+  border-radius: 25px;
+  overflow: hidden;
+
+  & img {
+    @include dimensions(100%, 100%);
+    object-fit: cover;
+  }
+}

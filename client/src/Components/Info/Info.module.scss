@@ -1,0 +1,174 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.container {
+  @include dimensions(clamp(300px, 70vw, 800px), max-content);
+  margin: 3rem auto;
+  padding: 1rem;
+
+  border-radius: 25px;
+  box-shadow: $shadow-2;
+  background-color: $bg-color-3;
+
+  line-height: 1.5rem;
+  color: $font-color-2;
+  font-family: $text-font;
+
+  & h1 {
+    padding: 0.5rem;
+    border-bottom: 2px solid $bg-color-3;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  & h1,
+  & p:has(strong) {
+    margin: 1rem auto;
+
+    text-align: center;
+  }
+
+  & strong {
+    font-weight: 600;
+  }
+
+  & p:not(:has(strong)) {
+    margin: 0.5rem auto;
+
+    text-indent: 1rem;
+  }
+
+  ol {
+    list-style-type: disc;
+    list-style-position: inside;
+
+    li {
+      width: 90%;
+      margin: auto;
+      padding: 0.5rem;
+    }
+  }
+}
+
+.center {
+  text-align: center;
+  text-indent: 0px !important;
+  margin: 1rem 0 0.5rem 0 !important;
+}
+
+.contact-data {
+  display: flex;
+  flex-flow: column wrap;
+  row-gap: 2rem;
+  justify-content: center;
+
+  & > section {
+    @include dimensions(clamp(100px, 90%, 1300px), 100%);
+    display: flex;
+    margin: auto;
+  }
+
+  & > section:nth-of-type(1) {
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    & img {
+      @include dimensions(20px, 20px);
+      margin: 0 5px -5px 0;
+
+      filter: invert(30%);
+    }
+
+    span {
+      word-break: keep-all;
+      line-height: 1.5rem;
+
+      a {
+        color: $nav-bg-color-light;
+        font-weight: 600;
+      }
+    }
+  }
+
+  & > section:nth-of-type(2) {
+    iframe {
+      @include dimensions(clamp(300px, 100%, 1000px), 350px);
+
+      border-radius: 25px;
+      box-shadow: $shadow-2;
+    }
+  }
+}
+
+.about-container {
+  @include dimensions(clamp(300px, 70vw, 800px), max-content);
+  min-height: 500px;
+  margin: 3rem auto;
+  padding: 2rem 1rem;
+
+  background-image: url("../../assets/images/camaro.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 25px;
+
+  & section {
+    @include dimensions(clamp(265px, 50%, 900px), max-content);
+    padding: 2rem 1rem;
+    margin: 0 1vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 1rem;
+
+    border-radius: inherit;
+    background-color: #7277d652;
+    backdrop-filter: blur(20px);
+
+    h1 {
+      width: 100%;
+      padding-bottom: 0.5rem;
+
+      border-bottom: 2px solid currentColor;
+
+      text-align: center;
+      font-family: $text-font;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      width: 100%;
+
+      word-break: break-word;
+      line-height: 1.2rem;
+      font-family: $link-font;
+
+      span {
+        font-size: 1.3rem;
+        font-weight: 800;
+      }
+    }
+
+    p:nth-of-type(5) {
+      margin: 1rem 0;
+
+      text-align: center;
+    }
+
+    & img {
+      @include dimensions(100px, auto);
+      pointer-events: none;
+
+      border-radius: 50%;
+      outline: solid 5px $font-color-3;
+      outline-offset: 5px;
+    }
+  }
+}

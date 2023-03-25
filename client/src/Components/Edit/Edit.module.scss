@@ -1,0 +1,179 @@
+@import "../../main-styles/mixins.scss";
+@import "../../main-styles/variables.scss";
+
+.main {
+  @include dimensions(100%, max-content);
+  padding: 2rem 0;
+  font-family: $link-font;
+  color: $font-color-3;
+
+  & section {
+    @include dimensions(clamp(500px, 85%, 1030px), 100%);
+    margin: auto;
+    padding: 2rem;
+
+    background-color: $bg-color-3;
+    border-radius: 25px;
+    box-shadow: $shadow-2;
+    text-align: center;
+    color: $font-color-1;
+
+    h2 {
+      font-size: 1.7rem;
+      margin: 1rem 0;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid $bg-color-3;
+    }
+
+    form {
+      @include dimensions(100%, 100%);
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 3rem;
+
+      & > div {
+        @include dimensions(100%, max-content);
+      }
+
+      & > div:nth-child(1) {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+        column-gap: 1rem;
+        padding-bottom: 2rem;
+
+        border-bottom: 2px solid $bg-color-3;
+
+        & > div {
+          @include dimensions(12rem, 7rem);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          align-content: center;
+
+          & span {
+            display: inline-block;
+            margin-top: 5px;
+            height: 17px;
+            
+            color: $error-color;
+            font-size: 14px;
+            line-height: 17px;
+            text-overflow: ellipsis;
+            text-align: center;
+          }
+      
+          & > div {
+            @include dimensions(100%, 40%);
+            position: relative;
+            overflow: hidden;
+
+            & img {
+              @include dimensions(15px, 15px);
+              position: absolute;
+              top: 50%;
+              right: 1rem;
+              transform: translateY(-50%);
+
+              pointer-events: none;
+              filter: invert(100%);
+            }
+          }
+
+          label {
+            margin: 0.5rem 0;
+
+            color: $font-color-1;
+          }
+
+          select,
+          input {
+            @include dimensions(100%, 100%);
+            position: relative;
+            appearance: none;
+            padding-left: 1rem;
+            border: none;
+            outline: none;
+            overflow: auto;
+            cursor: pointer;
+
+            color: $font-color-3;
+            background: $nav-bg-color-light;
+            font-family: $text-font;
+            font-size: 1rem;
+            transition: $transition;
+          }
+
+          input::placeholder {
+            color: $placeholder-color;
+          }
+        }
+
+        & > div:nth-last-child(1) {
+          @include dimensions(100%, 80%);
+          text-align: center;
+          & textarea {
+            @include dimensions(80%, 100%);
+            max-width: 100%;
+            min-width: 50%;
+            min-height: 100px;
+            border: none;
+            outline: none;
+            padding: 0.5rem;
+            margin: auto;
+            font-family: $text-font;
+            resize: vertical;
+            color: $font-color-2;
+            font-weight: 600;
+          }
+        }
+      }
+
+      
+      & > div:nth-last-child(1){
+        & > button {
+          width: 100px;
+          margin: 2rem 0.5rem;
+          padding: 0.5rem 1rem;
+          
+          text-align: center;
+          color: $font-color-3;
+          font-family: $text-font;
+          font-weight: 600;
+          
+          background-color: $nav-bg-color-light;
+          border:none;
+          border-radius: 25px;
+          cursor: pointer;
+          transition: $transition;
+
+          &[disabled] {
+            pointer-events: none;
+            background-color: $bg-color-3;
+          }
+          
+          &:nth-child(1):hover{
+            background-color: $error-color;
+          }
+          &:nth-child(2):hover{
+            background-color:$success-color;
+          }
+        }
+
+
+      }
+          select:hover,
+          select:focus,
+          button:hover,
+          button:focus,
+          input:hover,
+          input:focus {
+            box-shadow: $shadow-inset;
+          }
+
+    }
+  }
+}

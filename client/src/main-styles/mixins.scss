@@ -1,0 +1,9 @@
+@mixin dimensions($width: auto, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex-box($direction,$wrap:no-wrap){
+  display:flex;
+  flex-flow: $direction $wrap;
+}
