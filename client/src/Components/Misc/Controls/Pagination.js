@@ -19,7 +19,7 @@ export default function Pagination() {
 
   const handleClick = (pageNum) => {
     let index = pageNum < 1 ? 1 : pageNum > pageCount ? pageCount : pageNum;
-    if(index === currentPage) return;
+    if (index === currentPage) return;
 
     dispatch({ type: "SET_PAGE", payload: index });
   };
@@ -27,10 +27,10 @@ export default function Pagination() {
   return (
     <div className={styles["pagination-container"]}>
       <button onClick={handleClick.bind(null, 1)}>
-        <img src={anglesLeft} alt="First" />
+        <img src={anglesLeft} alt="First" className="invert-medium" />
       </button>
       <button onClick={handleClick.bind(null, currentPage - 1)}>
-        <img src={angleLeft} alt="Previous" />
+        <img src={angleLeft} alt="Previous" className="invert-medium" />
       </button>
       {pages.map((current) => {
         let active = "";
@@ -48,10 +48,10 @@ export default function Pagination() {
         );
       })}
       <button onClick={handleClick.bind(null, currentPage + 1)}>
-        <img src={angleRight} alt="Next" />
+        <img src={angleRight} alt="Next" className="invert-medium" />
       </button>
       <button onClick={handleClick.bind(null, pageCount)}>
-        <img src={anglesRight} alt="Last" />
+        <img src={anglesRight} alt="Last" className="invert-medium" />
       </button>
     </div>
   );

@@ -4,8 +4,7 @@
 .container {
   @include dimensions(clamp(300px, 85%, 46rem), max-content);
   margin: 0 auto;
-  display: flex;
-  flex-flow: row wrap;
+  @include flex-box(row, wrap);
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -24,17 +23,13 @@
     align-items: center;
 
     background-color: $nav-bg-color-light;
-    border-radius: 50%;
-    outline: none;
-    border: none;
+    @include border(null, null, null, map-get($radius, "circle"));
+    @include outline(null, null, null, 0px);
     box-shadow: $shadow-2;
     cursor: pointer;
 
-
     & img {
       @include dimensions(60%, 60%);
-
-      filter: invert(100%);
     }
   }
 }
@@ -43,16 +38,14 @@
   @include dimensions(8rem, 8rem);
   position: relative;
 
-  border: dashed 2px $nav-bg-color-light;
-  border-radius: 10px;
+  @include border(dashed, 2px, $nav-bg-color-light, map-get($radius, "small"));
   background-color: $bg-color-3;
   box-shadow: $shadow-2;
   overflow: hidden;
 
   & label {
     @include dimensions(100%, 100%);
-    display: flex;
-    flex-direction: row;
+    @include flex-box(row);
     justify-content: center;
     align-items: center;
 
@@ -60,19 +53,17 @@
 
     & img {
       @include dimensions(30%, 40%);
-
-      filter: invert(40%);
     }
   }
 
   & span {
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     pointer-events: none;
-    color:$error-color;
+    color: $error-color;
   }
 }
 
@@ -80,14 +71,12 @@
   @include dimensions(8rem, 8rem);
   position: relative;
 
-  background-color: $bg-color-3;
-  border-radius: 10px;
-  box-shadow: $shadow-2;
-
   & > img {
     @include dimensions(100%, 100%);
 
-    border-radius: 10px;
+    @include border(null, null, null, map-get($radius, "small"));
+    box-shadow: $shadow-2;
+
     object-fit: cover;
   }
 
@@ -96,25 +85,19 @@
     position: absolute;
     top: -10px;
     right: -10px;
-    display: flex;
-    flex-direction: row;
+    @include flex-box(row);
     justify-content: center;
     align-items: center;
 
     background-color: $font-color-1;
-    border-radius: 50%;
-    border: none;
+    @include border(null, null, null, map-get($radius, "circle"));
     outline: none;
     cursor: pointer;
-    
+
     transition: $transition;
 
     &:hover {
       background-color: $nav-bg-color-light;
-    }
-
-    & img {
-      filter: invert(100%);
     }
   }
 }

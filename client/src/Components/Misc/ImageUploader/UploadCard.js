@@ -33,7 +33,14 @@ export default memo(function UploadCard({
       {!image ? (
         <div className={styles["card-empty"]}>
           <label htmlFor={`uploadPhoto-${index}`}>
-            {!error && <img src={placeholder} alt="Upload" title="Upload" />}
+            {!error && (
+              <img
+                src={placeholder}
+                alt="Upload"
+                title="Upload"
+                className="invert-low"
+              />
+            )}
           </label>
           <input
             type="file"
@@ -49,7 +56,12 @@ export default memo(function UploadCard({
         <div className={styles["card-filled"]}>
           <img src={src} alt="Car" />
           <button onClick={handleRemoveImage}>
-            <img src={xmark} alt="Remove" title="Remove" />
+            <img
+              src={xmark}
+              alt="Remove"
+              title="Remove"
+              className="invert-full"
+            />
           </button>
         </div>
       )}

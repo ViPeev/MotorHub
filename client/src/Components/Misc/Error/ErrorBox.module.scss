@@ -10,7 +10,7 @@
   z-index: 5;
 
   background-color: $error-color;
-  border-radius: 25px;
+  @include border(null, null, null, map-get($radius, "medium"));
   box-shadow: $shadow-2;
 
   color: $font-color-3;

@@ -23,21 +23,26 @@ function Gallery({
             {photoCount !== 1 && (
               <>
                 <button
-                  className={styles["button-backward"]}
+                  className={"button-backward"}
                   onClick={handleClick.bind(null, index - 1)}
                 >
-                  <img src={angleLeft} alt="Prev" />
+                  <img src={angleLeft} alt="Prev" className="invert-high" />
                 </button>
                 <button
-                  className={styles["button-forward"]}
+                  className={"button-forward"}
                   onClick={handleClick.bind(null, index + 1)}
                 >
-                  <img src={angleRight} alt="Next" />
+                  <img src={angleRight} alt="Next" className="invert-high" />
                 </button>
               </>
             )}
             <button className={styles["button-expand"]} onClick={handleDisplay}>
-              <img src={resizeIcon} alt="expand" title="Expand" className="invert-full"/>
+              <img
+                src={resizeIcon}
+                alt="expand"
+                title="Expand"
+                className="invert-high"
+              />
             </button>
           </>
         )}

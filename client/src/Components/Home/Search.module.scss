@@ -2,11 +2,10 @@
 @import "../../main-styles/variables.scss";
 
 .form-wrapper {
-  @include dimensions(100%, 15rem);
-  margin: 2vw 0;
+  @include dimensions(clamp(400px, 60%, 1000px), max-content);
+  margin: auto;
 
   & form {
-    @include dimensions(clamp(300px, 100%, 600px), max-content);
     @include flex-box(row, wrap);
     justify-content: center;
     align-items: center;
@@ -66,8 +65,16 @@
 
       label {
         margin: 0.5rem 0;
+        display: inline-block;
+        width: 100%;
 
+        text-align: center;
+        text-overflow: ellipsis;
+        word-break: keep-all;
+        white-space: nowrap;
         color: $font-color-1;
+
+        overflow: hidden;
       }
 
       select {

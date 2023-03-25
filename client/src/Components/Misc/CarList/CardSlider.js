@@ -26,7 +26,7 @@ export default function CardSlider({ images }) {
           ? images.length - 1
           : positionRef.current - 1;
     }
-    
+
     sliderRef.current.style.transform = `translateX(-${
       positionRef.current * 100
     }%)`;
@@ -46,13 +46,13 @@ export default function CardSlider({ images }) {
       {images.length > 1 && (
         <>
           <button
-            className={styles["button-backward"]}
+            className={"button-backward"}
             onClick={handleClick.bind(null, "prev")}
           >
             <img src={angleLeft} alt="Prev" />
           </button>
           <button
-            className={styles["button-forward"]}
+            className={"button-forward"}
             onClick={handleClick.bind(null, "next")}
           >
             <img src={angleRight} alt="Next" />

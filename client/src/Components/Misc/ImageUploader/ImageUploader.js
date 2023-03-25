@@ -47,7 +47,7 @@ export default function ImageUpload({ formData, setFormData }) {
       {count < 9 && (
         <div className={styles["add-button-container"]}>
           <button onClick={handleClick}>
-            <img src={plus} alt="Add" title="Add" />
+            <img src={plus} alt="Add" title="Add" className="invert-full" />
           </button>
         </div>
       )}

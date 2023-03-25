@@ -4,43 +4,37 @@
 .controls {
   padding: 0 1rem;
   margin: 2rem 0;
-  display: flex;
-  flex-direction: row;
+  @include flex-box(row);
   justify-content: space-between;
 
-
   & > form {
-    @include dimensions(15rem,auto);
-    display:flex;
-    direction: row;
+    @include dimensions(15rem, auto);
+    @include flex-box(row);
     justify-content: center;
     align-items: center;
-    column-gap:0.5rem;
+    column-gap: 0.5rem;
 
-    color:$font-color-1;
+    color: $font-color-1;
     font-family: $text-font;
 
     & select {
-      padding:0.5rem;
+      padding: 0.5rem;
 
-      border:none;
-      outline:none;
+      border: none;
+      outline: none;
       background-color: $bg-color-2;
 
-      color:$font-color-2;
+      color: $font-color-2;
       font-family: inherit;
-      font-size: 1rem;
-
+      font-size: map-get($font-sizes, "small");
     }
   }
 }
 
-
 .pagination-container {
   @include dimensions(max-content, 100%);
   padding: 0.5rem;
-  display: flex;
-  flex-direction: row;
+  @include flex-box(row);
   align-items: center;
   column-gap: 5px;
 
@@ -48,29 +42,26 @@
     @include dimensions(30px, 30px);
 
     background-color: $font-color-3;
-    border: none;
-    border-radius: 50%;
-    outline: solid rgb(255, 255, 255) 2px;
-    
+    @include border(null, null, null, map-get($radius, "circle"));
+    @include outline(solid, $font-color-3, 2px, 0px);
+
     color: $font-color-1;
-    font-weight: 600;
+    font-weight: map-get($font-weights, "medium");
 
     cursor: pointer;
     transition: $transition;
 
     & img {
       @include dimensions(15px, 15px);
-
-      filter: invert(50%);
     }
 
-    &:hover {
-      outline: solid $nav-bg-color-dark 2px;
+    &:hover,
+    &:focus {
+      @include outline(solid, $nav-bg-color-dark, 2px, 0px);
     }
   }
-
 }
 
 .active-page {
-  outline: solid $nav-bg-color-dark 2px !important;
+  @include outline(solid, $nav-bg-color-dark, 2px !important, 0px);
 }

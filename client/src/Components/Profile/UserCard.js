@@ -94,10 +94,20 @@ function PhotoUpload({ image, setImage }) {
       {image.interacted && (
         <>
           <button className="fade-in">
-            <img src={check} alt="Confrim" title="Confirm" />
+            <img
+              src={check}
+              alt="Confrim"
+              title="Confirm"
+              className="invert-full"
+            />
           </button>
           <button className="fade-in" onClick={handleCancel}>
-            <img src={xmark} alt="Cancel" title="Cancel" />
+            <img
+              src={xmark}
+              alt="Cancel"
+              title="Cancel"
+              className="invert-full"
+            />
           </button>
         </>
       )}

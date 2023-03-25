@@ -112,18 +112,6 @@
   }
 }
 
-.button-backward {
-  left: 0;
-
-  border-radius: 0 25% 25% 0;
-}
-
-.button-forward {
-  right: 0;
-
-  border-radius: 25% 0 0 25%;
-}
-
 .empty {
   @include dimensions(100%, 30vh);
   min-height: 500px;
