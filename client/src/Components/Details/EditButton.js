@@ -12,7 +12,7 @@ export default function EditButton({ id }) {
   return (
     <div className={styles["button-container"]}>
       <button onClick={handleClick}>
-        <img src={pen} alt="edit" title="Edit" />
+        <img src={pen} alt="edit" title="Edit" className="invert-full"/>
       </button>
     </div>
   );

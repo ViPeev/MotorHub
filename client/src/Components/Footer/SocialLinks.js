@@ -17,7 +17,7 @@ function Icon({ name, link, icon }) {
   return (
     <li>
       <a href={link} target="_blank">
-        <img src={icon} alt={name} title={name} />
+        <img src={icon} alt={name} title={name} className="invert-full" />
       </a>
     </li>
   );

@@ -3,8 +3,7 @@
 
 .backdrop {
   @include dimensions(100vw, 100vh);
-  display: flex;
-  flex-direction: row;
+  @include flex-box(row);
   justify-content: right;
   position: fixed;
   inset: 0;
@@ -28,12 +27,30 @@
     @include dimensions(80%, max-content);
     padding: 0.7rem;
 
+    a {
+      @include dimensions(80%, auto);
+      @include flex-box(row);
+      align-items: center;
+      justify-content: flex-start;
+      column-gap: 1rem;
+      padding: 0.5rem;
 
-    & li {
-      border-radius: 30px;
+      @include border(null, null, null, map-get($radius, "medium"));
+
+      color: $font-color-3;
+      font-family: $text-font;
+
       transition: $transition;
 
-      &:hover a {
+      & img {
+        @include dimensions(1.3rem, 1.3rem);
+
+        pointer-events: none;
+        opacity: 0;
+        transition: $transition;
+      }
+
+      &:hover {
         padding-left: 1rem;
 
         background: $nav-bg-color-light;
@@ -42,32 +59,6 @@
         & img {
           opacity: 1;
         }
-
-      }
-    }
-
-    a {
-      @include dimensions(80%, auto);
-      display:flex;
-      align-items: center;
-      justify-content: flex-start;
-      column-gap: 1rem;
-      padding: 0.5rem;
-
-      border-radius: 30px;
-      
-      color: $font-color-3;
-      font-family: $text-font;
-
-      transition: $transition;
-
-      & img {
-        @include dimensions(1.3rem,1.3rem);
-
-        pointer-events: none;
-        opacity:0;
-        filter:invert(100%);
-        transition: $transition;
       }
     }
   }

@@ -3,23 +3,22 @@
 
 .main {
   @include dimensions(100%, max-content);
-  display: flex;
-  padding: 2rem 0;
+  @include flex-box(row);
+  padding: $offset-top-header 0;
 
   font-family: $text-font;
 
   section {
     @include dimensions(clamp(400px, 60%, 800px), clamp(700px, 95vh, 800px));
-    display: flex;
-    flex-direction: row;
+    @include flex-box(row);
     column-gap: 2rem;
     margin: auto;
     padding: 1.5rem 1rem;
 
     background-color: $bg-color-3;
-    border-radius: 25px;
+    @include border(null, null, null, map-get($radius, "medium"));
     box-shadow: $shadow-2;
-    
+
     text-align: center;
     color: $font-color-1;
 
@@ -29,14 +28,13 @@
 
       border-bottom: 2px solid $bg-color-3;
 
-      font-size: 1.7rem;
-      font-weight: 600;
-
+      font-size: map-get($font-sizes, "xl");
+      font-weight: map-get($font-weights, "medium");
     }
 
     p {
       margin: 1rem 0;
-      font-size: 1.1rem;
+      font-size: map-get($font-sizes, "medium");
     }
 
     a:link,
@@ -44,7 +42,7 @@
     a:hover,
     a:active {
       color: $nav-bg-color-light;
-      font-weight: 600;
+      font-weight: map-get($font-weights, "medium");
       text-decoration: underline;
       text-underline-offset: 3px;
     }
@@ -55,7 +53,7 @@
   }
 
   & form {
-    display: flex;
+    @include flex-box(row);
     row-gap: 2rem;
 
     & input[type="text"],
@@ -64,13 +62,9 @@
       margin-top: 0.5rem;
       padding: 0.7rem;
 
-      
       background-color: $nav-bg-color-light;
-      border: none;
-      border-radius: 25px;
-      outline: none;
-      outline: 2px solid transparent;
-      outline-offset: 3px;
+      @include border(null, null, null, map-get($radius, "medium"));
+      @include outline(2px, solid, transparent, 3px);
 
       color: $font-color-3;
       text-align: center;
@@ -102,10 +96,9 @@
         left: 50%;
         transform: translateX(-50%);
 
-
         color: $error-color;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: map-get($font-sizes, "small");
+        line-height: 1rem;
         text-overflow: ellipsis;
         text-align: center;
 
@@ -120,15 +113,12 @@
       padding: 0.5rem;
 
       background-color: $nav-bg-color-light;
-      border: none;
-      border-radius: 25px;
-      outline: none;
-      outline: 2px solid transparent;
-      outline-offset: 3px;
-      
+      @include border(null, null, null, map-get($radius, "medium"));
+      @include outline(2px, solid, transparent, 3px);
+
       color: $font-color-3;
       font-family: $text-font;
-      font-size: 1rem;
+      font-size: map-get($font-sizes, "small");
 
       transition: $transition;
       cursor: pointer;
@@ -142,18 +132,17 @@
         @include dimensions(20px, 15px);
 
         pointer-events: none;
-        filter: invert(100%);
       }
 
       &[disabled] {
-        pointer-events: none;
         background-color: $bg-color-3;
+        pointer-events: none;
       }
     }
 
     & input:focus,
     & button:focus {
-      outline: 2px solid $font-color-1;
+      @include outline(2px, solid, $font-color-1, 3px);
     }
   }
 }
@@ -169,15 +158,14 @@
   }
 
   & > div:last-child {
-    display: flex;
-    flex-direction: row;
+    @include flex-box(row);
     justify-content: center;
     column-gap: 5px;
   }
 }
 
 .register {
-  flex-flow: row wrap;
+  @include flex-box(row, wrap);
   justify-content: center;
 
   text-align: center;
@@ -192,15 +180,14 @@
     @include dimensions(50%, auto);
   }
   & > div:nth-last-child(2) {
-    display: flex;
-    flex-direction: row;
+    @include flex-box(row);
     justify-content: center;
     column-gap: 5px;
   }
 }
 
 .side-image {
-  border-radius: 25px;
+  @include border(null, null, null, map-get($radius, "medium"));
   overflow: hidden;
 
   & img {

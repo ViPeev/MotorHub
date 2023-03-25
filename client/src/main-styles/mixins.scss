@@ -3,7 +3,48 @@
   height: $height;
 }
 
-@mixin flex-box($direction,$wrap:no-wrap){
-  display:flex;
+@mixin flex-box($direction, $wrap: no-wrap) {
+  display: flex;
   flex-flow: $direction $wrap;
 }
+
+@mixin border($style, $thickness, $color, $radius) {
+  border-radius: $radius;
+
+  @if ($style) {
+    border: $style $thickness $color;
+  } @else {
+    border: none;
+  }
+}
+
+@mixin outline($style, $thickness, $color, $offset: 0px) {
+  outline-offset: $offset;
+
+  @if ($style) {
+    outline: $style $thickness $color;
+  } @else {
+    outline: none;
+  }
+}
+
+$font-weights: (
+  "regular": 400,
+  "medium": 600,
+  "bold": 800,
+);
+
+$font-sizes: (
+  "xs": 0.5rem,
+  "small": 0.9rem,
+  "medium": 1.1rem,
+  "large": 1.4rem,
+  "xl": 1.7rem,
+);
+
+$radius:(
+  "small":15px,
+  "medium":25px,
+  "large":50px,
+  "circle":50%
+)

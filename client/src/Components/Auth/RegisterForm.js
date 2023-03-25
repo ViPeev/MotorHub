@@ -148,7 +148,12 @@ export default function RegisterForm() {
             onMouseLeave={handleMouseUp}
             onMouseUp={handleMouseUp}
           >
-            <img src={eye} alt="View Password" title="View Password" />
+            <img
+              src={eye}
+              alt="View Password"
+              title="View Password"
+              className="invert-full"
+            />
           </button>
         </div>
       </form>

@@ -21,17 +21,20 @@ export default function LoginForm() {
     () => validateLogin(formData),
     [formData]
   );
-  
+
   const redirect = state && state !== "/logout" ? state : "/";
 
-  const handleChange = useCallback((e) => {
-    setFormData((prev) => {
-      if (e.target.type === "checkbox") {
-        return { ...prev, [e.target.name]: e.target.checked };
-      }
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  }, [setFormData]);
+  const handleChange = useCallback(
+    (e) => {
+      setFormData((prev) => {
+        if (e.target.type === "checkbox") {
+          return { ...prev, [e.target.name]: e.target.checked };
+        }
+        return { ...prev, [e.target.name]: e.target.value };
+      });
+    },
+    [setFormData]
+  );
 
   const handleMouseDown = useCallback(() => {
     setViewPass("text");
@@ -86,7 +89,12 @@ export default function LoginForm() {
             onMouseLeave={handleMouseUp}
             onMouseUp={handleMouseUp}
           >
-            <img src={eye} alt="View Password" title="View Password" />
+            <img
+              src={eye}
+              alt="View Password"
+              title="View Password"
+              className="invert-full"
+            />
           </button>
         </div>
         <div>

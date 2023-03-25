@@ -3,10 +3,10 @@
 
 .container {
   @include dimensions(clamp(300px, 70vw, 800px), max-content);
-  margin: 3rem auto;
+  margin: $offset-top-header auto;
   padding: 1rem;
 
-  border-radius: 25px;
+  @include border(null, null, null, map-get($radius, "medium"));
   box-shadow: $shadow-2;
   background-color: $bg-color-3;
 
@@ -18,8 +18,8 @@
     padding: 0.5rem;
     border-bottom: 2px solid $bg-color-3;
 
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: map-get($font-sizes, "large");
+    font-weight: map-get($font-weights, "medium");
   }
   & h1,
   & p:has(strong) {
@@ -29,7 +29,7 @@
   }
 
   & strong {
-    font-weight: 600;
+    font-weight: map-get($font-weights, "medium");
   }
 
   & p:not(:has(strong)) {
@@ -57,24 +57,19 @@
 }
 
 .contact-data {
-  display: flex;
-  flex-flow: column wrap;
-  row-gap: 2rem;
+  @include flex-box(column, wrap);
+  row-gap: 1rem;
   justify-content: center;
 
   & > section {
     @include dimensions(clamp(100px, 90%, 1300px), 100%);
-    display: flex;
+    @include flex-box(column, wrap);
     margin: auto;
-  }
-
-  & > section:nth-of-type(1) {
-    flex-direction: column;
     row-gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 0;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: map-get($font-sizes, "large");
     }
 
     & img {
@@ -90,39 +85,36 @@
 
       a {
         color: $nav-bg-color-light;
-        font-weight: 600;
+        font-weight: map-get($font-weights, "medium");
       }
     }
   }
 
-  & > section:nth-of-type(2) {
-    iframe {
-      @include dimensions(clamp(300px, 100%, 1000px), 350px);
+  iframe {
+    @include dimensions(clamp(300px, 100%, 1000px), 350px);
 
-      border-radius: 25px;
-      box-shadow: $shadow-2;
-    }
+    @include border(null, null, null, map-get($radius, "medium"));
+    box-shadow: $shadow-2;
   }
 }
 
 .about-container {
   @include dimensions(clamp(300px, 70vw, 800px), max-content);
   min-height: 500px;
-  margin: 3rem auto;
+  margin: $offset-top-header auto;
   padding: 2rem 1rem;
 
   background-image: url("../../assets/images/camaro.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border-radius: 25px;
+  @include border(null, null, null, map-get($radius, "medium"));
 
   & section {
     @include dimensions(clamp(265px, 50%, 900px), max-content);
     padding: 2rem 1rem;
     margin: 0 1vw;
-    display: flex;
-    flex-flow: column;
+    @include flex-box(column, wrap);
     justify-content: flex-start;
     align-items: center;
     row-gap: 1rem;
@@ -139,8 +131,8 @@
 
       text-align: center;
       font-family: $text-font;
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: map-get($font-sizes, "large");
+      font-weight: map-get($font-weights, "medium");
     }
 
     p {
@@ -151,8 +143,8 @@
       font-family: $link-font;
 
       span {
-        font-size: 1.3rem;
-        font-weight: 800;
+        font-size: map-get($font-sizes, "medium");
+        font-weight: map-get($font-weights, "medium");
       }
     }
 
@@ -166,9 +158,8 @@
       @include dimensions(100px, auto);
       pointer-events: none;
 
-      border-radius: 50%;
-      outline: solid 5px $font-color-3;
-      outline-offset: 5px;
+      @include border(null,null,null,map-get($radius,"circle"));
+      @include outline(solid,5px,$font-color-3,5px);
     }
   }
 }

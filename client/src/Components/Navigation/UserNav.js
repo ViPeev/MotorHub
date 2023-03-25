@@ -27,13 +27,13 @@ export default function UserNav() {
           <li>
             <NavLink to="/profile" style={setActiveStyles}>
               <span>My Profile</span>
-              <img src={profileImg} alt="profile" />
+              <img src={profileImg} alt="profile" className="invert-full" />
             </NavLink>
           </li>
           <li onClick={handleLogout}>
             <NavLink to="/logout" style={setActiveStyles}>
               <span>Logout</span>
-              <img src={logoutImg} alt="logout" />
+              <img src={logoutImg} alt="logout" className="invert-full" />
             </NavLink>
           </li>
         </>
@@ -42,13 +42,13 @@ export default function UserNav() {
           <li>
             <NavLink to="/login" style={setActiveStyles}>
               <span>Login</span>
-              <img src={loginImg} alt="login" />
+              <img src={loginImg} alt="login" className="invert-full" />
             </NavLink>
           </li>
           <li>
             <NavLink to="/register" style={setActiveStyles}>
               <span>Register</span>
-              <img src={registerImg} alt="register" />
+              <img src={registerImg} alt="register" className="invert-full" />
             </NavLink>
           </li>
         </>

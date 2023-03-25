@@ -3,14 +3,13 @@
 
 .main {
   @include dimensions(auto, 100%);
-  padding: 3rem 0;
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-  row-gap: 3rem;
+  padding: 3vw;
+  @include flex-box(column);
+  align-content: space-around;
+  row-gap: 2vw;
   
   section {
-    @include dimensions(clamp(400px,80%,1500px), max-content);
+    @include dimensions(clamp(400px,80%,1300px), max-content);
     margin: auto;
   }
 }
@@ -25,9 +24,9 @@
     "main fourth";
 
   font-family: $text-font;
-  font-size: 0.7rem;
+  font-size:clamp(6px, 1vw, 0.8rem);
   box-shadow: $shadow;
-
+  
   & figure {
     @include dimensions(100%, 100%);
     position: relative;
@@ -38,17 +37,23 @@
 
   & figcaption {
     @include dimensions(100%, max-content);
-    padding: 0.7rem;
+    padding: clamp(5px,0.5vw,13px);
     position: absolute;
     bottom: -100%;
-
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
     background-color: $backdrop-color-dark;
     transition: $transition;
 
     h4 {
       margin-bottom: 2px;
 
-      font-weight: 700;
+      font-weight: map-get($font-weights,"medium");
+    }
+
+    p {
+      font-size:0.9em;
     }
   }
 
@@ -82,14 +87,7 @@
   }
 }
 
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+
 
 
 

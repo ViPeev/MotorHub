@@ -13,7 +13,16 @@ export default function PageNav({ logo }) {
     <ul>
       <li>
         <NavLink to={"/"} style={!logo ? setActiveStyles : {}}>
-          {logo ? <img src={brandLogo} alt="Logo" title="Home" /> : "Home"}
+          {logo ? (
+            <img
+              src={brandLogo}
+              alt="Logo"
+              title="Home"
+              className="invert-full"
+            />
+          ) : (
+            "Home"
+          )}
         </NavLink>
       </li>
       <li>

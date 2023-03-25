@@ -2,8 +2,7 @@
 @import "../../main-styles/variables.scss";
 
 .main {
-  display: flex;
-  flex-direction: column;
+  @include flex-box(column);
 }
 
 .form-wrapper {
@@ -13,20 +12,17 @@
 
   & form {
     @include dimensions(100%, max-content);
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    @include flex-box(row,wrap);
+    justify-content: flex-start;
     align-items: center;
 
     color: $font-color-2;
 
     & div {
-      @include dimensions(12.5%, 50%);
+      @include dimensions(12vw, 50%);
       position: relative;
-      display: flex;
-      flex-direction: column;
+      @include flex-box(column,wrap);
       align-items: center;
-      align-content: center;
 
       font-family: $link-font;
 
@@ -53,7 +49,12 @@
         padding: 0.7rem 0;
 
         text-align: center;
+        text-overflow: ellipsis;
+        word-break:keep-all;
+        white-space: nowrap;
         color: inherit;
+
+        overflow: hidden;
       }
 
       button {
@@ -72,8 +73,6 @@
 
         img {
           @include dimensions(20%, 20%);
-
-          filter: invert(30%);
         }
 
         &:hover,
@@ -90,11 +89,11 @@
         appearance: none;
 
         background-color: $bg-color-2;
-        border: none;
-        outline: none;
+        @include border(null,null,null,0px);
+        @include outline(null,null,null,0px);
 
         font-family: $text-font;
-        font-size: 1rem;
+        font-size: map-get($font-sizes,"small");
         color: inherit;
 
         overflow: auto;
@@ -128,7 +127,7 @@
 
     color: $font-color-1;
     font-family: $text-font;
-    font-weight: 600;
+    font-weight: map-get($font-weights, "medium");
     text-decoration: underline;
     text-underline-offset: 3px;
 

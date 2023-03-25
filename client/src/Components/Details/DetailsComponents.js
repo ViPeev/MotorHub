@@ -11,21 +11,21 @@ function Contacts({ data }) {
     <div className={styles.contacts}>
       <h4>Contacts</h4>
       <div>
-        <img src={user} title="Seller" alt="Seller" />
+        <img src={user} title="Seller" alt="Seller" className="invert-low"/>
         <span>
           <Link to={`/sellers/${data._ownerId}`}>{data.owner.fullName}</Link>
         </span>
       </div>
       <div>
-        <img src={map} title="Location" alt="Location" />
+        <img src={map} title="Location" alt="Location" className="invert-low"/>
         <span> {data.location}</span>
       </div>
       <div>
-        <img src={phone} title="Phone Number" alt="Phone Number" />
+        <img src={phone} title="Phone Number" alt="Phone Number" className="invert-low"/>
         <span> {data.phone}</span>
       </div>
       <div>
-        <img src={email} title="E-mail" alt="E-mail" />
+        <img src={email} title="E-mail" alt="E-mail" className="invert-low"/>
         <span> {data.owner.email}</span>
       </div>
     </div>

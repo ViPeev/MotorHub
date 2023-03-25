@@ -45,7 +45,7 @@ export default function HomeSearch() {
           />
           <div className="input-group">
             <button type="submit">
-              <img src={searchIcon} title="Search" alt="Search" />
+              <img src={searchIcon} title="Search" alt="Search" className="invert-full" />
             </button>
           </div>
         </form>

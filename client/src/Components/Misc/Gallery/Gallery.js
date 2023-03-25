@@ -37,7 +37,7 @@ function Gallery({
               </>
             )}
             <button className={styles["button-expand"]} onClick={handleDisplay}>
-              <img src={resizeIcon} alt="expand" title="Expand" />
+              <img src={resizeIcon} alt="expand" title="Expand" className="invert-full"/>
             </button>
           </>
         )}

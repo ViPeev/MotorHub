@@ -3,23 +3,23 @@
 
 .main {
   @include dimensions(100%, max-content);
-  padding: 2rem 0;
   font-family: $link-font;
   color: $font-color-3;
 
   & section {
-    @include dimensions(clamp(500px, 85%, 1030px), 100%);
-    margin: auto;
-    padding: 2rem;
+    @include dimensions(clamp(400px, 85%, 1030px), 100%);
+    margin: $offset-top-header auto;
+    padding: 1rem;
 
     background-color: $bg-color-3;
-    border-radius: 25px;
+    @include border(null, null, null, map-get($radius, "medium"));
     box-shadow: $shadow-2;
-    text-align: center;
+
     color: $font-color-1;
+    text-align: center;
 
     h2 {
-      font-size: 1.7rem;
+      font-size: map-get($font-sizes, "xl");
       margin: 1rem 0;
       padding-bottom: 1rem;
       border-bottom: 2px solid $bg-color-3;
@@ -27,19 +27,15 @@
 
     form {
       @include dimensions(100%, 100%);
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
-      align-items: center;
-      row-gap: 3rem;
+      @include flex-box(column, wrap);
+      row-gap: 2rem;
 
       & > div {
         @include dimensions(100%, max-content);
       }
 
       & > div:nth-child(1) {
-        display: flex;
-        flex-flow: row wrap;
+        @include flex-box(row, wrap);
         align-items: center;
         justify-content: center;
         column-gap: 1rem;
@@ -49,26 +45,23 @@
 
         & > div {
           @include dimensions(12rem, 7rem);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          align-content: center;
+          @include flex-box(column, wrap);
 
           & span {
             display: inline-block;
             margin-top: 5px;
             height: 17px;
-            
+
             color: $error-color;
-            font-size: 14px;
-            line-height: 17px;
+            font-size: map-get($font-sizes, "small");
             text-overflow: ellipsis;
             text-align: center;
           }
-      
+
           & > div {
             @include dimensions(100%, 40%);
             position: relative;
+
             overflow: hidden;
 
             & img {
@@ -95,16 +88,17 @@
             position: relative;
             appearance: none;
             padding-left: 1rem;
+
+            background: $nav-bg-color-light;
             border: none;
             outline: none;
-            overflow: auto;
-            cursor: pointer;
 
             color: $font-color-3;
-            background: $nav-bg-color-light;
             font-family: $text-font;
-            font-size: 1rem;
+            font-size: map-get($font-sizes, "small");
             transition: $transition;
+
+            cursor: pointer;
           }
 
           input::placeholder {
@@ -115,38 +109,22 @@
         & > div:nth-last-child(1) {
           @include dimensions(100%, 80%);
           text-align: center;
-          & textarea {
-            @include dimensions(80%, 100%);
-            max-width: 100%;
-            min-width: 50%;
-            min-height: 100px;
-            border: none;
-            outline: none;
-            padding: 0.5rem;
-            margin: auto;
-            font-family: $text-font;
-            resize: vertical;
-            color: $font-color-2;
-            font-weight: 600;
-          }
         }
       }
 
-      
-      & > div:nth-last-child(1){
+      & > div:nth-last-child(1) {
         & > button {
           width: 100px;
           margin: 2rem 0.5rem;
           padding: 0.5rem 1rem;
-          
+
           text-align: center;
           color: $font-color-3;
           font-family: $text-font;
-          font-weight: 600;
-          
+          font-weight: map-get($font-weights, "medium");
+
+          @include border(null, null, null, map-get($radius, "medium"));
           background-color: $nav-bg-color-light;
-          border:none;
-          border-radius: 25px;
           cursor: pointer;
           transition: $transition;
 
@@ -154,26 +132,23 @@
             pointer-events: none;
             background-color: $bg-color-3;
           }
-          
-          &:nth-child(1):hover{
+
+          &:nth-child(1):hover {
             background-color: $error-color;
           }
-          &:nth-child(2):hover{
-            background-color:$success-color;
-          }
+          &:nth-child(2):hover {
+            background-color: $success-color;
+          }         
         }
-
-
       }
-          select:hover,
-          select:focus,
-          button:hover,
-          button:focus,
-          input:hover,
-          input:focus {
-            box-shadow: $shadow-inset;
-          }
-
+      select:hover,
+      select:focus,
+      button:hover,
+      button:focus,
+      input:hover,
+      input:focus {
+        box-shadow: $shadow-inset;
+      }
     }
   }
 }

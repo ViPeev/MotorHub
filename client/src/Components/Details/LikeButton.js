@@ -37,7 +37,7 @@ export default function LikeButton({ id, setError }) {
           <img
             src={icon}
             alt="like"
-            className={"fade-in"}
+            className={"fade-in invert-full"}
             title="Add to favourites"
           />
         </button>

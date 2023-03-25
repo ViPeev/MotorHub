@@ -3,36 +3,32 @@
 
 .header {
   @include dimensions(100%, 3.5rem);
-  display: flex;
+  @include flex-box(row);
   justify-content: space-between;
   align-items: center;
 
-  background: $nav-bg-color-dark;
   box-shadow: $shadow;
 
   & nav {
-    @include dimensions(70%, 100%);
+    @include dimensions(max-content, 100%);
   }
 
   & ul {
     @include dimensions(100%, 100%);
-    display: flex;
-    flex-direction: row;
+    @include flex-box(row);
     justify-content: flex-start;
     align-items: center;
-    column-gap:5vw;
-
-    padding-left:3rem;
+    column-gap: 4vw;
+    padding-left: 4vw;
 
     & li {
       & img {
-        @include dimensions(2rem,2rem);
-        filter:invert(100%);
+        @include dimensions(30px, 30px);
       }
     }
 
     & li:not(li:first-child) {
-      position:relative;
+      position: relative;
 
       &:before {
         height: 1px;
@@ -57,26 +53,23 @@
   & button {
     all: unset;
 
-    margin-right: 2rem;
-    padding: 0.4rem;
+    margin-right: 30px;
+    padding: 7px;
 
-    border: solid 1px $font-color-3;
-    border-radius: 50%;
-    outline: solid 2px transparent;
-    outline-offset: 3px;
+    @include border(solid,1px,$font-color-3,map-get($radius,"circle"));
+    @include outline(solid,2px,transparent,3px);
 
     transition: $transition;
     cursor: pointer;
 
     img {
-      margin-top:1px;
+      margin-top: 1px;
       @include dimensions(15px, 15px);
-      filter:invert(100%);
+      filter: invert(100%);
     }
   }
 
   & button:hover {
     outline-color: inherit;
   }
-
 }
