@@ -101,3 +101,25 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .container {
+    @include dimensions(90%, max-content);
+    gap: 0.6rem;
+    padding-bottom: 1rem;
+  }
+
+  .add-button-container {
+    & button {
+      @include dimensions(2.5rem, 2.5rem);
+    }
+  }
+
+  .card-empty {
+    @include dimensions(6rem, 6rem);
+  }
+
+  .card-filled {
+    @include dimensions(6rem, 6rem);
+  }
+}

@@ -73,13 +73,13 @@
 }
 
 .data-form {
-  @include flex-box(row,wrap);
+  @include flex-box(row, wrap);
   justify-content: center;
   column-gap: 1rem;
 
   & > div {
     @include dimensions(12rem, 7rem);
-    @include flex-box(column,wrap);
+    @include flex-box(column, wrap);
     align-items: center;
     align-content: center;
 
@@ -107,7 +107,7 @@
       height: 17px;
 
       color: $error-color;
-      font-size: map-get($font-sizes,"small");
+      font-size: map-get($font-sizes, "small");
       text-overflow: ellipsis;
       text-align: center;
     }
@@ -131,7 +131,7 @@
 
       color: $font-color-3;
       font-family: $text-font;
-      font-size: map-get($font-sizes,"small");
+      font-size: map-get($font-sizes, "small");
 
       cursor: pointer;
     }
@@ -149,5 +149,59 @@
   & > div:nth-last-child(2) {
     @include dimensions(100%, 80%);
     text-align: center;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .main {
+    & section {
+      @include dimensions(90%, max-content);
+      margin: $offset-top-header auto;
+      padding: 1rem 0.5rem;
+
+      h2 {
+        font-size: map-get($font-sizes, "large");
+      }
+
+      h3 {
+        font-size: map-get($font-sizes, "large");
+      }
+
+      p {
+        margin-bottom: 0.5rem;
+        font-size: map-get($font-sizes, "small");
+      }
+
+      form {
+        & > button {
+          margin: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .data-form {
+    column-gap: 0.5rem;
+
+    & > div {
+      @include dimensions(8.5rem, 6rem);
+
+      & label {
+        margin: 0.3rem 0;
+
+        font-size: map-get($font-sizes, "small");
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      & span {
+        font-size: 12px;
+      }
+
+      & textarea {
+        @include dimensions(90%, auto);
+      }
+    }
   }
 }

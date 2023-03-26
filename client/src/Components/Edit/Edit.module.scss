@@ -138,7 +138,7 @@
           }
           &:nth-child(2):hover {
             background-color: $success-color;
-          }         
+          }
         }
       }
       select:hover,
@@ -150,5 +150,48 @@
         box-shadow: $shadow-inset;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 730px) {
+
+  .main {
+    & section {
+      @include dimensions(90%, max-content);
+      margin: $offset-top-header auto;
+      padding: 1rem 0.5rem;
+
+      h2 {
+        font-size: map-get($font-sizes, "large");
+      }
+
+      form {
+        & > div:nth-child(1) {
+          column-gap: 0.5rem;
+
+          & > div {
+            @include dimensions(8.5rem, 6rem);
+  
+            & label {
+              margin: 0.3rem 0;
+  
+              font-size: map-get($font-sizes, "small");
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+  
+            & span {
+              font-size: 12px;
+            }
+  
+            & textarea {
+              @include dimensions(90%, auto);
+            }
+          }
+        }
+      }
+    }
+
   }
 }
