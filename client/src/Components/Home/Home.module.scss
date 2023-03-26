@@ -5,10 +5,10 @@
   padding: 3vw;
   @include flex-box(column);
   align-content: space-around;
-  row-gap: 3vw;
+  row-gap: calc(2vw + 3rem);
 
   section {
-    @include dimensions(clamp(400px, 80%, 1300px), max-content);
+    @include dimensions(clamp(400px, 80%, 1400px), max-content);
     margin: auto;
   }
 }
@@ -23,7 +23,7 @@
     "main fourth";
 
   font-family: $text-font;
-  font-size: clamp(6px, 1vw, 0.8rem);
+  font-size: clamp(6px, 0.8vw, 0.8rem);
   box-shadow: $shadow;
 
   & figure {

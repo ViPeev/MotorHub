@@ -9,7 +9,7 @@
   font-family: $text-font;
 
   section {
-    @include dimensions(clamp(400px, 60%, 800px), clamp(700px, 95vh, 800px));
+    @include dimensions(clamp(500px, 60%, 800px), clamp(700px, 95vh, 800px));
     @include flex-box(row);
     column-gap: 2rem;
     margin: auto;
@@ -58,7 +58,7 @@
 
     & input[type="text"],
     & input[type="password"] {
-      @include dimensions(70%, auto);
+      @include dimensions(clamp(100px, 70%, 500px), auto);
       margin-top: 0.5rem;
       padding: 0.7rem;
 
@@ -193,5 +193,40 @@
   & img {
     @include dimensions(100%, 100%);
     object-fit: cover;
+  }
+}
+
+
+//Media queries
+
+@media only screen and (max-width: 900px) {
+  .side-image {
+    display: none;
+  }
+
+  .main {
+    section {
+      & > div {
+        @include dimensions(100%, 100%);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    section {
+      @include dimensions(80%, max-content);
+      margin: 0.5rem auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .register {
+    & > div:nth-child(1),
+    & > div:nth-child(2) {
+      @include dimensions(100%, auto);
+    }
   }
 }
