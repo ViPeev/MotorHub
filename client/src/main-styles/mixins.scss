@@ -3,7 +3,7 @@
   height: $height;
 }
 
-@mixin flex-box($direction, $wrap: no-wrap) {
+@mixin flex-box($direction, $wrap: nowrap) {
   display: flex;
   flex-flow: $direction $wrap;
 }

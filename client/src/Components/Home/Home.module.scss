@@ -3,13 +3,19 @@
 
 .main {
   padding: 3vw;
-  @include flex-box(column);
-  align-content: space-around;
+  @include flex-box(column, wrap);
+  align-content:center;
   row-gap: calc(2vw + 3rem);
 
   section {
-    @include dimensions(clamp(400px, 80%, 1400px), max-content);
     margin: auto;
+  }
+
+  section:nth-of-type(1) {
+    @include dimensions(clamp(700px, 80%, 1400px), max-content);
+  }
+  section:nth-of-type(2) {
+    @include dimensions(clamp(500px, 100%, 1200px), max-content);
   }
 }
 
@@ -83,5 +89,45 @@
   }
   & figure:nth-child(4) {
     grid-area: fourth;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .main {
+    padding: 0;
+    padding-bottom: 1rem;
+    row-gap: 0;
+    justify-content: flex-start;
+
+    section {
+      margin: 1.5rem auto;
+      @include dimensions(100% !important, max-content);
+    }
+  }
+
+  .adverts {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2.5fr 1fr;
+    grid-template-areas:
+      "main main main"
+      "second third fourth";
+
+    font-size: clamp(5px, 2vw, 10px);
+
+    & figure:nth-child(2):hover {
+      transform: scale(1.2) translateX(11%);
+    }
+    & figure:nth-child(3):hover {
+      transform: scale(1.2);
+    }
+    & figure:nth-child(4):hover {
+      transform: scale(1.2) translateX(-11%);
+    }
+
+    & figure {
+      & figcaption {
+        bottom: 0;
+      }
+    } 
   }
 }

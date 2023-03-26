@@ -1,7 +1,7 @@
 .divider {
   @include dimensions(120vw, 5rem);
   position: fixed;
-  top: 70%;
+  top: 60%;
 
   background-color: #bae8e8;
   transform: rotate(5deg) translateX(-5%);

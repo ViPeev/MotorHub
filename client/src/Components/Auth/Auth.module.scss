@@ -53,7 +53,7 @@
   }
 
   & form {
-    @include flex-box(row);
+    @include flex-box(row, wrap);
     row-gap: 2rem;
 
     & input[type="text"],
@@ -195,7 +195,6 @@
     object-fit: cover;
   }
 }
-
 
 //Media queries
 
