@@ -56,8 +56,8 @@
     margin-right: 30px;
     padding: 7px;
 
-    @include border(solid,1px,$font-color-3,map-get($radius,"circle"));
-    @include outline(solid,2px,transparent,3px);
+    @include border(solid, 1px, $font-color-3, map-get($radius, "circle"));
+    @include outline(solid, 2px, transparent, 3px);
 
     transition: $transition;
     cursor: pointer;
@@ -71,5 +71,17 @@
 
   & button:hover {
     outline-color: inherit;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    position: fixed;
+    top:0;
+    z-index: 5;
+
+    & li:not(li:first-child) {
+      display: none;
+    }
   }
 }

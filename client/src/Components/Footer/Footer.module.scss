@@ -38,3 +38,40 @@
     @include dimensions(30px, 30px);
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    @include dimensions(100%, max-content);
+    @include flex-box(column, wrap);
+    align-content: flex-start;
+
+    & > div {
+      padding: 2rem;
+      text-align: start;
+
+      li {
+        margin: 1.5rem auto;
+        font-size:map-get($font-sizes,"medium");
+      }
+
+      h3 {
+        font-size: map-get($font-sizes, "large");
+        width:max-content;
+      }
+    }
+  }
+
+  .social {
+    @include dimensions(50%, auto);
+  
+    ul {
+      @include dimensions(100%, auto);
+      @include flex-box(row,wrap);
+      justify-content: space-around;
+    }
+  
+    img {
+      @include dimensions(30px, 30px);
+    }
+  }
+}
