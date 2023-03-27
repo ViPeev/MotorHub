@@ -2,7 +2,7 @@
 @import "../../main-styles/variables.scss";
 
 .form-wrapper {
-  @include dimensions(clamp(350px, 60%, 1000px), clamp(500px, 85vh, 600px));
+  @include dimensions(clamp(700px, 60%, 1000px), clamp(500px, 85vh, 600px));
   margin: 3vh auto;
   padding: 2rem 0;
   position: relative;
@@ -94,7 +94,7 @@
 
         background-color: $nav-bg-color-light;
         box-shadow: $shadow-2;
-        @include border(null,null,null,5px);
+        @include border(null, null, null, 5px);
 
         color: $font-color-3;
         font-family: $text-font;
@@ -127,6 +127,12 @@
       label {
         margin: 0.5rem 0;
         color: $font-color-1;
+
+        text-overflow: ellipsis;
+        word-break: keep-all;
+        white-space: nowrap;
+
+        overflow: hidden;
       }
 
       select,
@@ -143,7 +149,7 @@
         color: $font-color-3;
         background: $nav-bg-color-light;
         font-family: $text-font;
-        font-size:map-get($font-sizes,"small");
+        font-size: map-get($font-sizes, "small");
 
         cursor: pointer;
 
@@ -163,5 +169,53 @@
   input:hover,
   input:focus {
     box-shadow: $shadow-inset;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .form-wrapper {
+    @include dimensions(100%, 100vh);
+    margin: 0 auto 1rem auto;
+    padding: 1rem 0.5rem;
+
+    @include border(null, null, null, 0);
+
+    h3 {
+      margin: 1rem auto;
+      font-weight: map-get($font-weights, "medium");
+      font-size: map-get($font-sizes, "large");
+    }
+
+    & > button:first-of-type {
+      @include dimensions(1.7rem, 1.7rem);
+
+      & img {
+        @include dimensions(1rem, 1rem);
+      }
+    }
+
+    & form {
+      @include dimensions(95%, max-content);
+
+      & div {
+        @include dimensions(clamp(100px, 25%, 190px), auto);
+
+        button {
+          @include dimensions(70%, max-content);
+        }
+
+        label {
+          margin: 0.5rem 0;
+        }
+
+        select {
+          padding: 0.8rem;
+        }
+
+        input {
+          padding: 0.8rem 0 0.8rem 2rem;
+        }
+      }
+    }
   }
 }
