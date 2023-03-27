@@ -63,6 +63,7 @@
 
     color: $font-color-3;
     font-family: $text-font;
+    font-weight:map-get($font-weights,"medium");
 
     cursor: pointer;
     transition: $transition;
@@ -127,12 +128,6 @@
       label {
         margin: 0.5rem 0;
         color: $font-color-1;
-
-        text-overflow: ellipsis;
-        word-break: keep-all;
-        white-space: nowrap;
-
-        overflow: hidden;
       }
 
       select,
@@ -176,8 +171,9 @@
   .form-wrapper {
     @include dimensions(100%, 100vh);
     margin: 0 auto 1rem auto;
-    padding: 1rem 0.5rem;
+    padding: 1rem 0.3rem;
 
+    overflow-y: scroll;
     @include border(null, null, null, 0);
 
     h3 {
@@ -204,8 +200,14 @@
           @include dimensions(70%, max-content);
         }
 
+        & > div {
+          @include dimensions(100%, 40%);
+          position: relative;
+        }
+
         label {
           margin: 0.5rem 0;
+          font-size: map-get($font-sizes, "small");
         }
 
         select {

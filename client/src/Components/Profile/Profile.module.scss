@@ -3,14 +3,13 @@
 
 .main {
   @include dimensions(100%, max-content);
-  margin: 3rem auto;
-
+  
   color: $font-color-1;
   font-family: $link-font;
-
+  
   & section:nth-child(1) {
     @include dimensions(90%, auto);
-    margin: auto;
+    margin: $offset-top-header auto 0 auto;
     padding-bottom: 1rem;
 
     border-bottom: 2px solid $bg-color-3;
@@ -49,8 +48,8 @@
 }
 
 .card-container {
-  @include dimensions(30%, 300px);
-  margin: 0 auto;
+  @include dimensions(clamp(300px,30%,500px), 300px);
+  margin: auto;
   padding-top: 1rem;
 
   border-radius: map-get($radius, "medium");
@@ -161,7 +160,7 @@
 }
 
 .contain {
-  object-fit: contain;
+  object-fit:fill;
 }
 
 .cover {
