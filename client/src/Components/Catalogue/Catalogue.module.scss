@@ -12,16 +12,17 @@
 
   & form {
     @include dimensions(100%, max-content);
-    @include flex-box(row,wrap);
-    justify-content: flex-start;
-    align-items: center;
+    @include flex-box(row, wrap);
+    justify-content: center;
+    align-items: flex-end;
+    row-gap: 2vw;
 
     color: $font-color-2;
 
     & div {
-      @include dimensions(12vw, 50%);
+      @include dimensions(150px, 50%);
       position: relative;
-      @include flex-box(column,wrap);
+      @include flex-box(column, wrap);
       align-items: center;
 
       font-family: $link-font;
@@ -50,7 +51,7 @@
 
         text-align: center;
         text-overflow: ellipsis;
-        word-break:keep-all;
+        word-break: keep-all;
         white-space: nowrap;
         color: inherit;
 
@@ -61,15 +62,13 @@
         all: unset;
         @include dimensions(100%, max-content);
         max-width: 100px;
-        padding: 0.5rem;
+        padding: 0.6rem;
 
         background-color: $bg-color-2;
-        box-shadow: $shadow-2;
 
         text-align: center;
         font-family: $text-font;
         cursor: pointer;
-        transition: $transition;
 
         img {
           @include dimensions(20%, 20%);
@@ -77,7 +76,7 @@
 
         &:hover,
         &:active {
-          box-shadow: none;
+          box-shadow: $shadow-inset;
         }
       }
       select,
@@ -89,11 +88,11 @@
         appearance: none;
 
         background-color: $bg-color-2;
-        @include border(null,null,null,0px);
-        @include outline(null,null,null,0px);
+        @include border(null, null, null, 0px);
+        @include outline(null, null, null, 0px);
 
         font-family: $text-font;
-        font-size: map-get($font-sizes,"small");
+        font-size: map-get($font-sizes, "small");
         color: inherit;
 
         overflow: auto;
@@ -123,10 +122,11 @@
   button {
     all: unset;
     position: relative;
-    padding: 0.5rem;
+    padding: 1rem;
 
     color: $font-color-1;
     font-family: $text-font;
+    font-size: map-get($font-sizes, "small");
     font-weight: map-get($font-weights, "medium");
     text-decoration: underline;
     text-underline-offset: 3px;

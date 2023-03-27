@@ -11,7 +11,7 @@
   margin: auto;
 
   & a {
-    @include dimensions(clamp(12rem, 18%, 15rem), max-content);
+    @include dimensions(clamp(14rem, 18%, 15rem), max-content);
     display: inline-block;
     padding-bottom: 1rem;
 
@@ -125,5 +125,14 @@
     font-family: $link-font;
     font-size: map-get($font-sizes, "xl");
     font-weight: map-get($font-weights, "medium");
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .card-container {
+    & a {
+      @include dimensions(18rem, auto);
+    }
   }
 }

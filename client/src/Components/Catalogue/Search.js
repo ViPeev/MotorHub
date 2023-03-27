@@ -51,7 +51,7 @@ export default function CatalogSearch() {
     <>
       <section>
         <div className={styles["form-wrapper"]}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="sm-hide">
             <SearchFormPartial
               handleChange={handleChange}
               formData={formData}
@@ -64,9 +64,9 @@ export default function CatalogSearch() {
             </div>
           </form>
           <button onClick={handleDisplay}>
-            {display ? "Hide" : "Show"} all filters
+            {display ? "Hide" : "Show"} <span className="sm-hide">all</span> filters
           </button>
-          <button onClick={handleReset}>Clear Filters</button>
+          <button onClick={handleReset} className="sm-hide">Clear Filters</button>
         </div>
       </section>
       {display && (

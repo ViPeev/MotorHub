@@ -29,6 +29,16 @@
       font-size: map-get($font-sizes, "small");
     }
   }
+
+  & > *:nth-child(1) {
+    order: 0;
+  }
+  & > *:nth-child(2) {
+    order: 1;
+  }
+  & > *:nth-child(3) {
+    order: 2;
+  }
 }
 
 .pagination-container {
@@ -64,4 +74,42 @@
 
 .active-page {
   @include outline(solid, $nav-bg-color-dark, 2px !important, 0px);
+}
+
+@media only screen and (max-width: 850px) {
+  .controls {
+    @include flex-box(row, wrap);
+    row-gap: 1rem;
+    justify-content: space-between;
+
+    & > *:nth-child(1) {
+      order: 0;
+    }
+    & > *:nth-child(2) {
+      order: 2;
+      width: 100%;
+    }
+    & > *:nth-child(3) {
+      order: 1;
+    }
+
+    & > form {
+      @include dimensions(max-content, auto);
+      column-gap: 0.3rem;
+
+      & label {
+        font-size: clamp(5px, 3.5vw, map-get($font-sizes, "small"));
+      }
+
+      & select {
+        padding: 0.3rem;
+
+        font-size: clamp(5px, 3.5vw, map-get($font-sizes, "small"));
+      }
+    }
+  }
+  .pagination-container {
+    margin: auto;
+    justify-content: center;
+  }
 }

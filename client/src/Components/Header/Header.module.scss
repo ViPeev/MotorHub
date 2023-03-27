@@ -2,7 +2,7 @@
 @import "../../main-styles/variables.scss";
 
 .header {
-  @include dimensions(100vw, 3.5rem);
+  @include dimensions(100%, 3.5rem);
   @include flex-box(row);
   justify-content: space-between;
   align-items: center;
@@ -82,6 +82,10 @@
 
     & li:not(li:first-child) {
       display: none;
+    }
+
+    & button {
+      margin-right:20px;
     }
   }
 }

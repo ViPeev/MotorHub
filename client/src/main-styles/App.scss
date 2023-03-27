@@ -40,3 +40,9 @@ a {
     min-height:60vh;
   }
 }
+
+@media only screen and (max-width: 650px) {
+  .sm-hide {
+    display: none !important;
+  }
+}
