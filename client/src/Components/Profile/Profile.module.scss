@@ -6,6 +6,14 @@
   
   color: $font-color-1;
   font-family: $link-font;
+
+  h2{
+    margin:1rem;
+
+    text-align: center;
+    font-size: map-get($font-sizes,"medium");
+    font-weight: map-get($font-weights,"medium");
+  }
   
   & section:nth-child(1) {
     @include dimensions(90%, auto);

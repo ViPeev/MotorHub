@@ -145,7 +145,7 @@
   position: fixed;
   inset: 0;
 
-  z-index: 3;
+  z-index: 6;
   background-color: $backdrop-color-light;
 }
 
@@ -208,5 +208,19 @@
   .technicals {
     background-color: $bg-color-3;
     @include border(null, null, null, 0);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .lightbox {
+    @include dimensions(100%, 100%);
+    @include flex-box(row, wrap);
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    min-width: 0;
+    min-height: 0;
+    position: fixed;
   }
 }
