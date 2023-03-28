@@ -2,7 +2,7 @@
 @import "../../main-styles/variables.scss";
 
 .main {
-  @include dimensions(clamp(500px, 85%, 1030px), max-content);
+  @include dimensions(clamp(800px, 85%, 1030px), max-content);
   margin: $offset-top-header auto;
 }
 
@@ -36,12 +36,12 @@
 .contacts,
 .description,
 .technicals {
-  @include flex-box(column,wrap);
+  @include flex-box(column, nowrap);
   row-gap: 1rem;
   padding: 1rem;
 
   background-color: $bg-color-3;
-  @include border(null,null,null,map-get($radius,"small"));
+  @include border(null, null, null, map-get($radius, "small"));
 
   color: $font-color-2;
 
@@ -58,6 +58,10 @@
     font-weight: map-get($font-weights, "medium");
     text-align: center;
     line-height: 2rem;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
 
     border-bottom: 2px solid $bg-color-3;
   }
@@ -110,8 +114,14 @@
 
   th,
   td {
+    table-layout: fixed;
     padding: 0.5rem 0;
     text-align: start;
+
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow-x: hidden;
   }
 
   td::first-letter {
@@ -163,7 +173,40 @@
 
     &:hover,
     &:focus {
-      @include outline(2px,solid,$bg-color-1,-5px)
+      @include outline(2px, solid, $bg-color-1, -5px);
     }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .main {
+    @include dimensions(100%, max-content);
+  }
+
+  .details-container {
+    padding: 1rem 0 0 0;
+    grid-template-columns: 48vw 48vw;
+    grid-template-rows: auto max-content auto max-content;
+    grid-column-gap: 5px;
+    grid-row-gap: 1rem;
+    grid-template-areas:
+      "technicals technicals"
+      "gallery gallery"
+      "contacts contacts"
+      "description description";
+    justify-content: center;
+    box-shadow: none;
+  }
+
+  .description {
+    p {
+      word-break: break-all;
+    }
+  }
+  .contacts,
+  .description,
+  .technicals {
+    background-color: $bg-color-3;
+    @include border(null, null, null, 0);
   }
 }

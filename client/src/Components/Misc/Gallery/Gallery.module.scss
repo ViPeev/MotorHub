@@ -71,7 +71,7 @@
 
 .counter {
   margin: 1rem 0;
-  
+
   text-align: center;
   color: $font-color-1;
 }
@@ -145,5 +145,34 @@
     -webkit-transform: translateX(0);
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .gallery {
+    height:clamp(500px,45vh,700px);
+    
+
+    & > img {
+      object-fit:cover;
+    }
+  }
+
+  .photo-row {
+    @include dimensions(100%, max-content);
+    @include flex-box(row, wrap);
+    justify-content: center;
+    row-gap: 0.3rem;
+
+    & img {
+      @include dimensions(60px, 60px);
+    }
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .gallery {
+    height:40vh;
   }
 }
