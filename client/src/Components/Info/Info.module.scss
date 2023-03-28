@@ -111,7 +111,7 @@
   @include border(null, null, null, map-get($radius, "medium"));
 
   & section {
-    @include dimensions(clamp(265px, 50%, 900px), max-content);
+    @include dimensions(clamp(300px, 45%, 900px), max-content);
     padding: 2rem 1rem;
     margin: 0 1vw;
     @include flex-box(column, wrap);
@@ -158,8 +158,28 @@
       @include dimensions(100px, auto);
       pointer-events: none;
 
-      @include border(null,null,null,map-get($radius,"circle"));
-      @include outline(solid,5px,$font-color-3,5px);
+      @include border(null, null, null, map-get($radius, "circle"));
+      @include outline(solid, 5px, $font-color-3, 5px);
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .about-container {
+    @include dimensions(95%, max-content);
+    min-height: 0;
+    padding: 1rem 0;
+
+    & section {
+      @include dimensions(85%, max-content);
+      padding: 1rem;
+      margin: auto;
+    }
+  }
+
+  .contact-data {
+    & > section {
+      @include dimensions(100%, 100%);
     }
   }
 }

@@ -63,7 +63,7 @@ export default function Edit() {
     <>
       <main className={`${styles.main} fade-in`}>
         <section>
-          <h2>Edit article</h2>
+          <h2>Edit</h2>
           <EditForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}

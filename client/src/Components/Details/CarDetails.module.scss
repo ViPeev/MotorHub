@@ -84,6 +84,7 @@
   p {
     max-height: 100%;
 
+    word-break: break-all;
     line-height: 1.5rem;
     overflow: auto;
   }
@@ -195,6 +196,7 @@
       "contacts contacts"
       "description description";
     justify-content: center;
+    
     box-shadow: none;
   }
 
