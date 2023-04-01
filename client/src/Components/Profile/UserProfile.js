@@ -15,6 +15,7 @@ const getFunctions = {
 
 export default function UserProfile() {
   const [offers, setOffers] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { navigation, dispatch, listType, setListType, error, setError } =
     useContext(ProfileContext);
 
@@ -33,6 +34,9 @@ export default function UserProfile() {
       .catch((error) => {
         setError("Oops! Something went wrong!");
         setTimeout(() => setError(null), 1800);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [listType, navigation, userData._id]);
 
@@ -64,7 +68,7 @@ export default function UserProfile() {
           Favourites
         </button>
       </div>
-      {offers ? (
+      {!loading ? (
         <CarList data={offers} navigation={navigation} dispatch={dispatch} />
       ) : (
         <Skeleton height="half" />

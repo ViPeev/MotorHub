@@ -65,8 +65,6 @@ function App() {
                     </Suspense>
                   }
                 />
-                <Route path="/news" element={<main>news</main>} />
-                <Route path="/forum" element={<main>forum</main>} />
                 <Route path="/details/:id" element={<CarDetails />} />
                 <Route
                   path="/tos"

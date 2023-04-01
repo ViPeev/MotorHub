@@ -11,6 +11,7 @@ import styles from "./Catalogue.module.scss";
 
 export default function Catalogue() {
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { navigation, dispatch, searchData, offers, setOffers } =
     useContext(SearchContext);
 
@@ -27,16 +28,19 @@ export default function Catalogue() {
       .catch((error) => {
         setError(error.message);
         setTimeout(() => setError(null), 1800);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [navigation]);
 
   window.scrollTo(scrollSettings);
-  
+
   return (
     <>
       <main className={styles.main}>
         <CatalogSearch />
-        {offers ? (
+        {!loading ? (
           <CarList data={offers} navigation={navigation} dispatch={dispatch} />
         ) : (
           <Skeleton height="half" />

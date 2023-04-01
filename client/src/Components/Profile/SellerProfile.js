@@ -10,6 +10,7 @@ import styles from "./Profile.module.scss";
 
 function SellerProfile({ id }) {
   const [offers, setOffers] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [navigation, dispatch] = useReducer(controlReducer, defaultSettings);
   const navigate = useNavigate();
 
@@ -17,13 +18,14 @@ function SellerProfile({ id }) {
     getUserCars(navigation.page, navigation.perPage, navigation.sort, id)
       .then((result) => {
         setOffers(result);
+        setLoading(false);
       })
       .catch((error) => {
         navigate("/404", { replace: true });
       });
   }, [navigation, navigate, id]);
 
-  return offers ? (
+  return !loading ? (
     <main className={styles.main}>
       <section>
         <UserCard owner={false} userData={offers.owner} />

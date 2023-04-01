@@ -35,16 +35,6 @@ export default function PageNav({ logo }) {
           Sell your car
         </NavLink>
       </li>
-      <li>
-        <NavLink to={"/news"} style={setActiveStyles}>
-          News
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/forum"} style={setActiveStyles}>
-          Forum
-        </NavLink>
-      </li>
     </ul>
   );
 }
