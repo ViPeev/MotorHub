@@ -9,7 +9,7 @@ import {
 } from "./data";
 
 export async function submitCar(formData) {
-  const filtered = formData.images.filter((i) => i);
+  const filtered = formData.images.filter((i) => i).slice(0, 10);
 
   let URLs = [];
   if (filtered.length > 0) {
@@ -25,7 +25,7 @@ export async function submitCar(formData) {
 
 export async function submitEditCar(id, formData) {
   const fileIndexes = [];
-  const filtered = formData.images.filter((i) => i);
+  const filtered = formData.images.filter((i) => i).slice(0, 10);
 
   if (filtered.length > 0) {
     filtered.forEach((image, index) => {
