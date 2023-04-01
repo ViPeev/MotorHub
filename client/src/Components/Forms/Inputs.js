@@ -100,6 +100,7 @@ const ValidatedInput = memo(function ValidatedInput({
           onChange={handleChange}
           onBlur={() => setInteracted(true)}
           placeholder={content}
+          data-testid={name}
         />
       </div>
       <span>{!validator && interacted && message}</span>
@@ -152,6 +153,7 @@ const CreateSelect = memo(function CreateSelect({
           id={name}
           onChange={handleChange}
           onBlur={() => setInteracted(true)}
+          data-testid={name}
         >
           <option value=""></option>
           {options && <Options data={options} symbol={symbol} />}
@@ -186,6 +188,7 @@ const TextArea = memo(function TextArea({
           onChange={handleChange}
           onBlur={() => setInteracted(true)}
           value={value}
+          data-testid={name}
         />
       </div>
       <span>{!validator && interacted && message}</span>

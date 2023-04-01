@@ -37,7 +37,7 @@ export default function CreateFormWrapper() {
         formData={formData}
         validator={validator}
       />
-      <button disabled={!canSubmit}>Continue</button>
+      <button data-testid="continue" disabled={!canSubmit}>Continue</button>
     </form>
   );
 }
