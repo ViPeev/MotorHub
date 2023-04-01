@@ -44,7 +44,7 @@ export default memo(function UploadCard({
           </label>
           <input
             type="file"
-            name={`uploadPhoto-${index}}`}
+            name={`uploadPhoto-${index}`}
             id={`uploadPhoto-${index}`}
             accept=".jpg,.jpeg,.png"
             hidden

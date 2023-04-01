@@ -7,7 +7,7 @@ import { submitCar } from "../../api/services";
 import ErrorBox from "../Misc/Error/ErrorBox";
 
 export default function ImageUploadWrapper() {
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
 
   const { formData, setFormData, setStep } = useContext(CreateContext);
   const [loading, setLoading] = useState(false);
