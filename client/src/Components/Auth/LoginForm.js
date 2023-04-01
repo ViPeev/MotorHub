@@ -82,7 +82,7 @@ export default function LoginForm() {
           message={"Password is required"}
         />
         <div>
-          <button disabled={!canSubmit || error}>Login</button>
+          <button data-testid="submit" disabled={!canSubmit || error}>Login</button>
           <button
             type="button"
             onMouseDown={handleMouseDown}

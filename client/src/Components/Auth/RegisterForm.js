@@ -137,11 +137,12 @@ export default function RegisterForm() {
             id="agree"
             value={formData.agree}
             onChange={handleChange}
+            data-testid="agree"
           />
           <MemoLabel />
         </div>
         <div>
-          <button disabled={!canSubmit || error}>Register</button>
+          <button data-testid="submit" disabled={!canSubmit || error}>Register</button>
           <button
             type="button"
             onMouseDown={handleMouseDown}
