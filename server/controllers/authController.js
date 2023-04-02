@@ -26,9 +26,9 @@ router.post("/login", isNotLoggedIn(), async (req, res) => {
 
   try {
     const result = await authManager.login(username, password);
-    res.json({ result });
+    res.json({ result, ok: true });
   } catch (error) {
-    res.status(400).json({ ok: false, message: error.message });
+    res.status(400).json({ ok: false, message: parseError(error) });
   }
 });
 

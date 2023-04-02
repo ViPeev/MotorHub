@@ -1,0 +1,34 @@
+{
+  "_id": "641df78698e475422f29e2b5",
+  "category": "Saloon / Sedan",
+  "color": "Silver",
+  "condition": "New",
+  "cubicCapacity": 2000,
+  "description": "Smells like a new car in here",
+  "doors": "4/5",
+  "fuelType": "Plug-in Hybrid",
+  "images": [
+    "https://res.cloudinary.com/ds7iwtbmd/image/upload/v1678979921/nr5ah0ts9f5brrszn4dd.jpg",
+    "https://res.cloudinary.com/ds7iwtbmd/image/upload/v1678821666/r3xtqtutiz14gl1xiejr.jpg"
+  ],
+  "location": "Germany",
+  "make": "Mercedes-Benz",
+  "mileage": 20,
+  "model": "C-Class",
+  "modification": "C63 AMG",
+  "phone": "+359878123123",
+  "power": 671,
+  "price": 78000,
+  "seats": "5",
+  "transmission": "Automatic",
+  "year": 2023,
+  "_ownerId": "640de884ea962968ae5bc0c4",
+  "createdAt": "2023-03-24T19:18:30.783Z",
+  "updatedAt": "2023-04-02T22:25:04.753Z",
+  "__v": 0,
+  "owner": {
+    "fullName": "Mocky McMockerson",
+    "email": "mockuser@gmail.com",
+    "image": ""
+  }
+}

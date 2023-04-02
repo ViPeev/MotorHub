@@ -1,12 +1,16 @@
+const baseUrl = "http://localhost:3000";
+
 describe("Testing Login", () => {
   it("testing unsuccessful login ", () => {
-    cy.intercept("POST", "*/auth/login", (req) => {
-      req.reply((res) => {
-        res.send({ fixture: "false-login.json" });
-      });
+    cy.intercept("POST", "*/auth/login", {
+      statusCode: 400,
+      body: {
+        ok: false,
+        message: "Invalid username / password",
+      },
     });
 
-    cy.visit("http://localhost:3000/login");
+    cy.visit(`${baseUrl}/login`);
     cy.get('[name="username"]').type("mockuser");
     cy.get('[name="password"]').type("mockpass");
     cy.get('[data-testid="submit"]').click();
@@ -14,20 +18,20 @@ describe("Testing Login", () => {
     cy.wait(2000);
 
     cy.location().should((loc) => {
-      expect(loc.href).to.eq("http://localhost:3000/login");
+      expect(loc.href).to.eq(`${baseUrl}/login`);
     });
   });
 
   it("testing successful login ", () => {
     cy.intercept("POST", "*/auth/login", { fixture: "login.json" });
-    cy.visit("http://localhost:3000/login");
+    cy.visit(`${baseUrl}/login`);
     cy.get('[name="username"]').type("mockuser");
     cy.get('[name="password"]').type("mockpass");
     cy.get('[data-testid="submit"]').click();
     cy.wait(2000);
-    
+
     cy.location().should((loc) => {
-      expect(loc.href).to.eq("http://localhost:3000/");
+      expect(loc.href).to.eq(`${baseUrl}/`);
     });
   });
 });
