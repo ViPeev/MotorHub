@@ -1,0 +1,11 @@
+{
+  "result": {
+    "_id": "640de884ea962968ae5bc0c4",
+    "email": "mockuser@gmail.com",
+    "username": "mockuser",
+    "firstName": "Mocky",
+    "lastName": "McMockerson",
+    "image": "https://res.cloudinary.com/ds7iwtbmd/image/upload/v1680441981/motorhub-profile-images/uheoqy8txgeaunemrjvv.jpg",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDBkZTg4NGVhOTYyOTY4YWU1YmMwYzQiLCJlbWFpbCI6InZsYWRpc2xhdkBkYWdyb3VwLmJnIiwidXNlcm5hbWUiOiJ2bGFkaXNsYXZwZWV2OTQxMiIsImZpcnN0TmFtZSI6IlZsYWRpc2xhdiIsImxhc3ROYW1lIjoiUGVldmR2ZSIsImlhdCI6MTY4MDQ0NTYwNH0.ydS2aQbDtSp3R5ZUHxdSrO9fwp65GVmxwJzPSsQJ7io"
+  }
+}

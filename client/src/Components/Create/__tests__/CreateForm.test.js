@@ -14,7 +14,7 @@ describe("Testing Create Form", () => {
   it("Continue button should be disabled initially", () => {
     render(<WrappedForm />);
     const submitButton = screen.getByTestId("continue");
-    expect(submitButton.disabled).toEqual(true);
+    expect(submitButton).toBeDisabled();
   });
 
   it("Continue button should not be disabled if all inputs are valid", () => {
@@ -74,7 +74,7 @@ describe("Testing Create Form", () => {
     fireEvent.change(description, { target: { value: "pristine condition" } });
 
     const submitButon = screen.getByTestId("continue");
-    expect(submitButon.disabled).toEqual(false);
+    expect(submitButon).not.toBeDisabled();
   });
 
   it("Continue button should be disabled if at least one input is not valid", () => {
@@ -133,7 +133,7 @@ describe("Testing Create Form", () => {
     const description = screen.getByTestId("description");
     fireEvent.change(description, { target: { value: "pristine condition" } });
 
-    const submitButon = screen.getByTestId("continue");
-    expect(submitButon.disabled).toEqual(true);
+    const submitButton = screen.getByTestId("continue");
+    expect(submitButton).toBeDisabled();
   });
 });

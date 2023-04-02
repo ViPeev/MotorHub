@@ -31,13 +31,13 @@ describe("Testing RegisterForm component", () => {
     render(<WrappedForm />);
     const checkbox = screen.getByTestId("agree");
     fireEvent.click(checkbox);
-    expect(checkbox.checked).toEqual(true);
+    expect(checkbox).toBeChecked();
   });
 
   it("Submit button should be disabled when inputs are empty", () => {
     render(<WrappedForm />);
     const submitButton = screen.getByTestId("submit");
-    expect(submitButton.disabled).toEqual(true);
+    expect(submitButton).toBeDisabled();
   });
 
   it("Submit button should not be disabled when inputs are valid", () => {
@@ -54,7 +54,7 @@ describe("Testing RegisterForm component", () => {
 
     const emailField = screen.getByLabelText("E-mail *");
     fireEvent.change(emailField, {
-      target: { value: "vladislavpeev9412@gmail.com" },
+      target: { value: "vladislavpee@gmail.com" },
     });
 
     const firstNameField = screen.getByLabelText("First Name *");
@@ -67,7 +67,7 @@ describe("Testing RegisterForm component", () => {
     fireEvent.click(checkbox);
 
     const submitButton = screen.getByTestId("submit");
-    expect(submitButton.disabled).toEqual(false);
+    expect(submitButton).not.toBeDisabled();
   });
 
   it("Submit button should be disabled if one input is not valid", () => {
@@ -97,6 +97,6 @@ describe("Testing RegisterForm component", () => {
     fireEvent.click(checkbox);
 
     const submitButton = screen.getByTestId("submit");
-    expect(submitButton.disabled).toEqual(true);
+    expect(submitButton).toBeDisabled();
   });
 });

@@ -30,13 +30,13 @@ describe("Testing LoginForm component", () => {
     render(<WrappedForm />);
     const checkbox = screen.getByLabelText("Remember me");
     fireEvent.click(checkbox);
-    expect(checkbox.checked).toEqual(true);
+    expect(checkbox).toBeChecked();
   });
 
   it("Submit button should be disabled when inputs are empty", () => {
     render(<WrappedForm />);
     const submitButton = screen.getByTestId("submit");
-    expect(submitButton.disabled).toEqual(true);
+    expect(submitButton).toBeDisabled();
   });
 
   it("Submit button should not be disabled when inputs are valid", () => {
@@ -46,6 +46,6 @@ describe("Testing LoginForm component", () => {
     const passwordField = screen.getByLabelText("Password");
     fireEvent.change(passwordField, { target: { value: "tralala123" } });
     const submitButton = screen.getByTestId("submit");
-    expect(submitButton.disabled).toEqual(false);
+    expect(submitButton).not.toBeDisabled();
   });
 });
