@@ -51,5 +51,8 @@ describe("Testing Create", () => {
     cy.location().should((loc) => {
       expect(loc.href).to.eq(`${baseUrl}/details/641df78698e475422f29e2b5`);
     });
+
+    cy.wait(3000);
+    cy.contains("Mercedes-Benz C-Class C63 AMG");
   });
 });

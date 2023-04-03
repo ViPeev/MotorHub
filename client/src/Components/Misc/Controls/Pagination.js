@@ -11,9 +11,18 @@ export default function Pagination() {
 
   const pageCount = Math.ceil(data.count / navigation.perPage);
   const currentPage = navigation.page;
-
   const pages = [];
-  for (let i = 1; i <= pageCount; i++) {
+
+  let start = Math.max(1, currentPage - 1);
+  if (currentPage === pageCount) {
+    start = pageCount - 2;
+  }
+  let end = Math.min(pageCount, currentPage + 1);
+  if (currentPage === 1) {
+    end = currentPage + 2;
+  }
+
+  for (let i = Math.max(1, start); i <= Math.min(end, pageCount); i++) {
     pages.push(i);
   }
 
@@ -32,7 +41,7 @@ export default function Pagination() {
       <button onClick={handleClick.bind(null, currentPage - 1)}>
         <img src={angleLeft} alt="Previous" className="invert-medium" />
       </button>
-      {pages.map((current) => {
+      {pages.slice(0, 3).map((current) => {
         let active = "";
         if (current === currentPage) {
           active = styles["active-page"];
@@ -47,6 +56,16 @@ export default function Pagination() {
           </button>
         );
       })}
+      {currentPage < pageCount - 1 && (
+        <>
+          {currentPage < pageCount - 2 && pageCount > 4 && (
+            <span>....</span>
+          )}
+          <button onClick={handleClick.bind(null, pageCount)}>
+            {pageCount}
+          </button>
+        </>
+      )}
       <button onClick={handleClick.bind(null, currentPage + 1)}>
         <img src={angleRight} alt="Next" className="invert-medium" />
       </button>

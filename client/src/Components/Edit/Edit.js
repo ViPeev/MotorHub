@@ -3,10 +3,10 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import EditForm from "./EditForm";
 import ErrorBox from "../Misc/Error/ErrorBox";
+import { Skeleton, Backdrop } from "../Misc/Loaders/Loaders";
 import { getCarById } from "../../api/data";
 import { submitEditCar } from "../../api/services";
 import { validateCreate } from "../../utils/validators";
-import { Skeleton, Backdrop } from "../Misc/Loaders/Loaders";
 
 export default function Edit() {
   const [formData, setFormData] = useState(null);

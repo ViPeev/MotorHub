@@ -70,7 +70,7 @@ describe("Testing RegisterForm component", () => {
     expect(submitButton).not.toBeDisabled();
   });
 
-  it("Submit button should be disabled if one input is not valid", () => {
+  it("Submit button should be disabled if at least one input is not valid", () => {
     render(<WrappedForm />);
 
     const userNameField = screen.getByLabelText("Username *");

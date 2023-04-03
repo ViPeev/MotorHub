@@ -65,10 +65,18 @@
       @include dimensions(15px, 15px);
     }
 
-    &:hover,
-    &:focus {
+    
+    &:hover {
       @include outline(solid, $nav-bg-color-dark, 2px, 0px);
     }
+  }
+
+  span {
+    color:$font-color-1;
+    font-size:map-get($font-sizes, "medium");
+    letter-spacing: 1px;
+    
+    pointer-events: none;
   }
 }
 
