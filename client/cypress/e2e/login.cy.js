@@ -2,7 +2,7 @@ const baseUrl = "http://localhost:3000";
 
 describe("Testing Login", () => {
   it("testing unsuccessful login ", () => {
-    cy.intercept("POST", "*/auth/login", {
+    cy.intercept("POST", "**/auth/login", {
       statusCode: 400,
       body: {
         ok: false,
@@ -23,7 +23,7 @@ describe("Testing Login", () => {
   });
 
   it("testing successful login ", () => {
-    cy.intercept("POST", "*/auth/login", { fixture: "login.json" });
+    cy.intercept("POST", "**/auth/login", { fixture: "login.json" });
     cy.visit(`${baseUrl}/login`);
     cy.get('[name="username"]').type("mockuser");
     cy.get('[name="password"]').type("mockpass");

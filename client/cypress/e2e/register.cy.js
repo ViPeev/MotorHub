@@ -2,7 +2,7 @@ const baseUrl = "http://localhost:3000";
 
 describe("Testing Register", () => {
   it("testing unsuccessful register ", () => {
-    cy.intercept("POST", "*/auth/register", {
+    cy.intercept("POST", "**/auth/register", {
       statusCode: 400,
       body: {
         ok: false,
@@ -27,7 +27,7 @@ describe("Testing Register", () => {
   });
 
   it("testing successful register ", () => {
-    cy.intercept("POST", "*/auth/register", { fixture: "login.json" });
+    cy.intercept("POST", "**/auth/register", { fixture: "login.json" });
 
     cy.visit(`${baseUrl}/register`);
     cy.get('[name="firstName"]').type("Mocky");

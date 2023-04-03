@@ -4,10 +4,10 @@ const photo2 = "cypress/fixtures/amgc63.jpg";
 
 describe("Testing Create", () => {
   it("testing successful login & create", () => {
-    cy.intercept("POST", "*/auth/login", { fixture: "login.json" });
-    cy.intercept("POST", "*/api/uploads/cars", { fixture: "image-url.json" });
-    cy.intercept("POST", "*/api/cars", { fixture: "carId.json" });
-    cy.intercept("GET", "*/cars/641df78698e475422f29e2b5", {
+    cy.intercept("POST", "**/auth/login", { fixture: "login.json" });
+    cy.intercept("POST", "**/api/uploads/cars", { fixture: "image-url.json" });
+    cy.intercept("POST", "**/api/cars", { fixture: "carId.json" });
+    cy.intercept("GET", "**/cars/641df78698e475422f29e2b5", {
       fixture: "car.json",
     });
 
@@ -46,5 +46,10 @@ describe("Testing Create", () => {
     cy.get("form button:nth-child(1)").click();
     cy.get('[name="uploadPhoto-1"]').selectFile(photo2, { force: true });
     cy.contains("Publish").click();
+
+    cy.wait(1000);
+    cy.location().should((loc) => {
+      expect(loc.href).to.eq(`${baseUrl}/details/641df78698e475422f29e2b5`);
+    });
   });
 });
