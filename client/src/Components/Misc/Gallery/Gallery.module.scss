@@ -70,7 +70,7 @@
 }
 
 .counter {
-  margin: 1rem 0;
+  margin: 1rem auto;
 
   text-align: center;
   color: $font-color-1;
@@ -153,10 +153,6 @@
 @media only screen and (max-width: 850px) {
   .gallery {
     height: clamp(500px, 45vh, 700px);
-
-    & > img {
-      object-fit: cover;
-    }
   }
 
   .photo-row {
@@ -164,10 +160,6 @@
     @include flex-box(row, wrap);
     justify-content: center;
     row-gap: 0.3rem;
-
-    & img {
-      @include dimensions(60px, 60px);
-    }
   }
 }
 
@@ -179,14 +171,19 @@
 
 @media only screen and (max-width: 700px) {
   .lightbox-gallery {
-    @include dimensions(500px, 90vw);
-    margin: auto;
+    @include dimensions(100vw, 40vh);
+    max-height: 350px;
+    margin:0;
     min-width: 0;
+  }
+}
 
-    rotate: 90deg;
-    translate: -50% -50%;
-    top: 50%;
-    left: 50%;
+
+@media (orientation: landscape) and (max-width: 700px){
+  .lightbox-gallery {
+    @include dimensions(100vw, 100vh);
+    max-width: 700px;
+    max-height:100vh;
   }
 }
 

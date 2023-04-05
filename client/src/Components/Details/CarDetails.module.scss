@@ -42,7 +42,6 @@
 
   background-color: $bg-color-3;
   @include border(null, null, null, map-get($radius, "small"));
-
   color: $font-color-2;
 
   img {
@@ -58,12 +57,15 @@
     font-weight: map-get($font-weights, "medium");
     text-align: center;
     line-height: 2rem;
+    
+    border-bottom: 2px solid $bg-color-3;
+  }
+  
+  h5 {
     text-overflow: ellipsis;
     word-break: keep-all;
     white-space: nowrap;
     overflow: hidden;
-
-    border-bottom: 2px solid $bg-color-3;
   }
 
   span {
@@ -71,7 +73,8 @@
   }
 
   a {
-    color: inherit;
+    color: $nav-bg-color-light;
+    font-weight: map-get($font-weights,"medium");
     text-decoration: underline;
     text-underline-offset: 5px;
     text-decoration-color: $bg-color-3;
@@ -83,10 +86,7 @@
 
   p {
     max-height: 100%;
-
-    word-break: break-all;
     line-height: 1.5rem;
-    overflow: auto;
   }
 }
 
@@ -115,12 +115,12 @@
 
   th,
   td {
-    table-layout: fixed;
     padding: 0.5rem 0;
     text-align: start;
+  }
 
+  th {
     text-overflow: ellipsis;
-    word-break: keep-all;
     white-space: nowrap;
     overflow-x: hidden;
   }
@@ -148,6 +148,11 @@
 
   z-index: 6;
   background-color: $backdrop-color-light;
+
+  p {
+    color:$font-color-3 !important;
+    font-family: $text-font;
+  }
 }
 
 .button-container {
@@ -196,33 +201,36 @@
       "contacts contacts"
       "description description";
     justify-content: center;
-    
+
     box-shadow: none;
   }
 
-  .description {
-    p {
-      word-break: break-all;
-    }
-  }
   .contacts,
   .description,
   .technicals {
     background-color: $bg-color-3;
     @include border(null, null, null, 0);
   }
+
+  .button-container {
+    position:fixed;
+    top:calc(90% - 20px);
+    left:80%;
+  }
 }
 
 @media only screen and (max-width: 700px) {
-  .lightbox {
-    @include dimensions(100%, 100%);
-    @include flex-box(row, wrap);
+  .light-box {
+    @include dimensions(100vw, 100vh);
+    @include flex-box(column, wrap);
     justify-content: center;
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-    min-width: 0;
-    min-height: 0;
-    position: fixed;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 700px){
+  .light-box {
+    @include dimensions(100vw, 100vh);
+    @include flex-box(column, wrap);
+    justify-content: center;
   }
 }

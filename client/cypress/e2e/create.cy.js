@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://127.0.0.1:3000";
 const photo = "cypress/fixtures/c63.jpg";
 const photo2 = "cypress/fixtures/amgc63.jpg";
 

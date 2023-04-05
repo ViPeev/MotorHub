@@ -5,7 +5,7 @@ import {
   clearCredentials,
 } from "../utils/localStorage";
 
-const host = "http://localhost:3030/api";
+const host = "http://127.0.0.1:3030/api";
 
 async function request(url, options) {
   const response = await fetch(host + url, options);

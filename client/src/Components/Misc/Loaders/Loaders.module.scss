@@ -74,7 +74,7 @@
 }
 
 .full-height {
-  @include dimensions(clamp(500px, 90%, 1050px), 100vh);
+  @include dimensions(clamp(300px, 90%, 1050px), 90vh);
 
   background: linear-gradient(-90deg, #efefef 0%, #eeeaea 50%, #efefef 100%);
   box-shadow: $shadow;
@@ -87,3 +87,5 @@
 .suspense-load {
   @include dimensions(95%, 82vh);
 }
+
+
