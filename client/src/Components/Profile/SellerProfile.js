@@ -7,6 +7,7 @@ import { getUserCars } from "../../api/data";
 import { getUserData } from "../../utils/localStorage";
 import { controlReducer, defaultSettings } from "../../utils/reducer";
 import styles from "./Profile.module.scss";
+import { scrollSettings } from "../../utils/initializers";
 
 function SellerProfile({ id }) {
   const [offers, setOffers] = useState(null);
@@ -25,6 +26,8 @@ function SellerProfile({ id }) {
       });
   }, [navigation, navigate, id]);
 
+  window.scrollTo(scrollSettings);
+  
   return !loading ? (
     <main className={styles.main}>
       <section>

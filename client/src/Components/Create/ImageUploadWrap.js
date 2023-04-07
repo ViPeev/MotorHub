@@ -5,10 +5,9 @@ import ImageUpload from "../Misc/ImageUploader/ImageUploader";
 import { Backdrop } from "../Misc/Loaders/Loaders";
 import { submitCar } from "../../api/services";
 import ErrorBox from "../Misc/Error/ErrorBox";
+import { scrollSettings } from "../../utils/initializers";
 
 export default function ImageUploadWrapper() {
-  // window.scrollTo(0, 0);
-
   const { formData, setFormData, setStep } = useContext(CreateContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -32,6 +31,8 @@ export default function ImageUploadWrapper() {
     e.stopPropagation();
     setStep(0);
   };
+  
+  window.scrollTo(scrollSettings);
 
   return (
     <>

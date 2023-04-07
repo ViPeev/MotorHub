@@ -7,6 +7,7 @@ import { getUserCars, getFavourites } from "../../api/data";
 import { getUserData } from "../../utils/localStorage";
 import styles from "./Profile.module.scss";
 import ErrorBox from "../Misc/Error/ErrorBox";
+import { scrollSettings } from "../../utils/initializers";
 
 const getFunctions = {
   ownOffers: getUserCars,
@@ -46,7 +47,8 @@ export default function UserProfile() {
       setListType(type);
     }
   };
-
+  
+  window.scrollTo(scrollSettings);
   const active = listType === "ownOffers";
 
   return (

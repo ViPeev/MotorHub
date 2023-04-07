@@ -7,6 +7,7 @@ import { Skeleton, Backdrop } from "../Misc/Loaders/Loaders";
 import { getCarById } from "../../api/data";
 import { submitEditCar } from "../../api/services";
 import { validateCreate } from "../../utils/validators";
+import { scrollSettings } from "../../utils/initializers";
 
 export default function Edit() {
   const [formData, setFormData] = useState(null);
@@ -58,7 +59,8 @@ export default function Edit() {
       setTimeout(() => setError(null), 1800);
     }
   };
-
+  window.scrollTo(scrollSettings);
+  
   return formData ? (
     <>
       <main className={`${styles.main} fade-in`}>
