@@ -2,6 +2,7 @@ const router = require("express").Router();
 const authManager = require("../managers/authManager");
 const { isNotLoggedIn } = require("../middleware/guards");
 const { parseError } = require("../utils/parsers");
+
 router.post("/register", isNotLoggedIn(), async (req, res) => {
 
   const { username, email, password, firstName, lastName } = req.body;
