@@ -6,7 +6,7 @@ MotorHub is a platform for publishing car deals on the internet.
 
 # Technologies
 
-Front-end
+### Front-end
 -   ReactJS
 -   JavaScript
 -   HTML
@@ -14,7 +14,7 @@ Front-end
 -   React Testing Library
 -   Cypress
 
-Back-end
+### Back-end
 -   Node.js
 -   Express
 -   MongoDB / Mongoose
