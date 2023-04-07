@@ -56,7 +56,7 @@ export default function Pagination() {
           </button>
         );
       })}
-      {currentPage < pageCount - 1 && (
+      {currentPage < pageCount - 1 && pageCount > 3 && (
         <>
           {currentPage < pageCount - 2 && pageCount > 4 && (
             <span>....</span>
