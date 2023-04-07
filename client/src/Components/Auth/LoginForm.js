@@ -88,6 +88,8 @@ export default function LoginForm() {
             onMouseDown={handleMouseDown}
             onMouseLeave={handleMouseUp}
             onMouseUp={handleMouseUp}
+            onTouchEnd={handleMouseUp}
+            onTouchStart={handleMouseUp}
           >
             <img
               src={eye}

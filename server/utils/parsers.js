@@ -19,7 +19,7 @@ exports.parseQuery = (query) => {
 
   filter.power = { $lte: Number(filter.maxPower) || 2500 };
   filter.cubicCapacity = { $lte: Number(filter.cubicCapacity) || 10000 };
-  filter.mileage = { $lte: Number(filter.maxMileage) || 1000000 };
+  filter.mileage = { $lte: Number(filter.maxMileage) || 10000000 };
 
   return filter;
 };

@@ -61,7 +61,7 @@ export async function getOwnerId(id) {
 
 
 export async function uploadImages(images) {
-  const response = await fetch("http://127.0.0.1:3030/api/uploads/cars", {
+  const response = await fetch(`${api.host}/api/uploads/cars`, {
     method: "POST",
     headers: {
       "X-Authorization": localStorage.getItem("authToken"),
@@ -73,7 +73,7 @@ export async function uploadImages(images) {
 }
 
 export async function uploadPhoto(image) {
-  const response = await fetch("http://127.0.0.1:3030/api/uploads/users", {
+  const response = await fetch(`${api.host}/api/uploads/users`, {
     method: "POST",
     headers: {
       "X-Authorization": localStorage.getItem("authToken"),

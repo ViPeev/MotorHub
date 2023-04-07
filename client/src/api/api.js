@@ -5,10 +5,11 @@ import {
   clearCredentials,
 } from "../utils/localStorage";
 
-const host = "http://127.0.0.1:3030/api";
+const deploy = false;
+export const host = deploy ? "" : "http://localhost:3030";
 
 async function request(url, options) {
-  const response = await fetch(host + url, options);
+  const response = await fetch(`${host}/api${url}`, options);
 
   if (response.ok === false) {
     const error = await response.json();

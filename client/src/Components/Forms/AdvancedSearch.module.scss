@@ -2,12 +2,12 @@
 @import "../../main-styles/variables.scss";
 
 .form-wrapper {
-  @include dimensions(clamp(700px, 60%, 1000px), clamp(500px, 85vh, 600px));
+  @include dimensions(clamp(700px, 60%, 1000px), clamp(500px, 100vh, 600px));
   margin: 3vh auto;
   padding: 2rem 0;
   position: relative;
 
-  background: $font-color-3;
+  background: $bg-color-1;
   box-shadow: $shadow-2;
   @include border(null, null, null, map-get($radius, "medium"));
 
@@ -171,6 +171,61 @@
   .form-wrapper {
     @include dimensions(100%, 100vh);
     margin: 0 auto 1rem auto;
+    padding: 1rem 0.3rem;
+
+    overflow-y: scroll;
+    @include border(null, null, null, 0);
+
+    h3 {
+      margin: 1rem auto;
+      font-weight: map-get($font-weights, "medium");
+      font-size: map-get($font-sizes, "large");
+    }
+
+    & > button:first-of-type {
+      @include dimensions(1.7rem, 1.7rem);
+
+      & img {
+        @include dimensions(1rem, 1rem);
+      }
+    }
+
+    & form {
+      @include dimensions(95%, max-content);
+
+      & div {
+        @include dimensions(clamp(100px, 25%, 190px), auto);
+
+        button {
+          @include dimensions(70%, max-content);
+        }
+
+        & > div {
+          @include dimensions(100%, 40%);
+          position: relative;
+        }
+
+        label {
+          margin: 0.5rem 0;
+          font-size: map-get($font-sizes, "small");
+        }
+
+        select {
+          padding: 0.8rem;
+        }
+
+        input {
+          padding: 0.8rem 0 0.8rem 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .form-wrapper {
+    @include dimensions(100%, 93vh);
+    margin: 0 auto;
     padding: 1rem 0.3rem;
 
     overflow-y: scroll;
