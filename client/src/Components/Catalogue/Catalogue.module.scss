@@ -134,6 +134,10 @@
     cursor: pointer;
     transition: $transition;
 
+    span {
+      pointer-events: none;
+    }
+
     &:hover {
       color: $font-color-2;
     }

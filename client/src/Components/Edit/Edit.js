@@ -32,7 +32,8 @@ export default function Edit() {
       })
       .catch((error) => {
         navigate("/404", { replace: true });
-      });
+      })
+      .finally(() => window.scrollTo(scrollSettings));
   }, [id, navigate]);
 
   const handleChange = useCallback(
@@ -59,8 +60,7 @@ export default function Edit() {
       setTimeout(() => setError(null), 1800);
     }
   };
-  window.scrollTo(scrollSettings);
-  
+
   return formData ? (
     <>
       <main className={`${styles.main} fade-in`}>
