@@ -149,7 +149,7 @@ export default function RegisterForm() {
             onMouseLeave={handleMouseUp}
             onMouseUp={handleMouseUp}
             onTouchEnd={handleMouseUp}
-            onTouchStart={handleMouseUp}
+            onTouchStart={handleMouseDown}
           >
             <img
               src={eye}

@@ -40,7 +40,7 @@ export default function LoginForm() {
     setViewPass("text");
   }, [setViewPass]);
 
-  const handleMouseUp = useCallback(() => {
+  const handleMouseUp = useCallback((e) => {
     setViewPass("password");
   }, [setViewPass]);
 
@@ -89,7 +89,7 @@ export default function LoginForm() {
             onMouseLeave={handleMouseUp}
             onMouseUp={handleMouseUp}
             onTouchEnd={handleMouseUp}
-            onTouchStart={handleMouseUp}
+            onTouchStart={handleMouseDown}
           >
             <img
               src={eye}

@@ -25,19 +25,18 @@ export async function submitCar(formData) {
 
 export async function submitEditCar(id, formData) {
   const filtered = formData.images.filter((i) => i).slice(0, 10);
-  
+
   if (filtered.length > 0) {
     const fileIndexes = [];
-    
-    filtered.forEach((image, index) => {
-      if (typeof image !== "string") {
-        fileIndexes.push(index);
-      }
-    });
-
     const files = filtered.filter((i) => typeof i !== "string");
 
     if (files.length > 0) {
+      filtered.forEach((image, index) => {
+        if (typeof image !== "string") {
+          fileIndexes.push(index);
+        }
+      });
+
       const imageURLs = await uploadImages(formatImageData(files));
       imageURLs.images.forEach((url, index) => {
         filtered[fileIndexes[index]] = url;
