@@ -52,9 +52,10 @@
 
   & button {
     all: unset;
-
-    margin-right: 30px;
+    display: flex;
+    justify-content: center;
     padding: 7px;
+    margin-right: 30px;
 
     @include border(solid, 1px, $font-color-3, map-get($radius, "circle"));
     @include outline(solid, 2px, transparent, 3px);
@@ -63,7 +64,6 @@
     cursor: pointer;
 
     img {
-      margin-top: 1px;
       @include dimensions(15px, 15px);
       filter: invert(100%);
     }
@@ -77,7 +77,7 @@
 @media only screen and (max-width: 600px) {
   .header {
     position: fixed;
-    top:0;
+    top: 0;
     z-index: 4;
 
     & li:not(li:first-child) {
@@ -85,7 +85,7 @@
     }
 
     & button {
-      margin-right:20px;
+      margin-right: 20px;
     }
   }
 }
