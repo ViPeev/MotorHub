@@ -48,14 +48,15 @@ export default memo(function UploadCard({
             id={`uploadPhoto-${index}`}
             accept=".jpg,.jpeg,.png"
             hidden
+            aria-hidden="true"
             onChange={handleChange}
           />
-          {error && <span>File type not supported!</span>}
+          {error && <span >File type not supported!</span>}
         </div>
       ) : (
         <div className={styles["card-filled"]}>
           <img src={src} alt="Car" />
-          <button onClick={handleRemoveImage}>
+          <button onClick={handleRemoveImage} aria-label="remove">
             <img
               src={xmark}
               alt="Remove"

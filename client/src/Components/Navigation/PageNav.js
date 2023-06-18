@@ -16,7 +16,7 @@ export default function PageNav({ logo }) {
           {logo ? (
             <img
               src={brandLogo}
-              alt="Logo"
+              alt="Home"
               title="Home"
               className="invert-full"
             />

@@ -4,7 +4,7 @@ import styles from "./Loaders.module.scss";
 const body = document.querySelector("body");
 
 export function Spinner({ color }) {
-  return <div className={`${styles.spinner} ${styles[color]}`}></div>;
+  return <div aria-role="loading spinner" className={`${styles.spinner} ${styles[color]}`}></div>;
 }
 
 export function Backdrop() {

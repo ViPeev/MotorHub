@@ -118,7 +118,7 @@ const SortSelect = memo(function SortSelect({
   return (
     <form>
       <label htmlFor={name}>{label} : </label>
-      <select value={value} name={name} id={name} onChange={handleChange}>
+      <select className="cursor-pointer" value={value} name={name} id={name} onChange={handleChange}>
         {options.map((current) => {
           return (
             <option key={current.value} value={current.value}>

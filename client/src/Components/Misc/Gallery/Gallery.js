@@ -16,7 +16,7 @@ function Gallery({
 
   return (
     <>
-      <div className={styles[styleClass]}>
+      <div className={styles[styleClass]} aria-label="gallery">
         <img src={src} alt="car" />
         {photoCount > 0 && (
           <>
@@ -25,12 +25,14 @@ function Gallery({
                 <button
                   className={"button-backward"}
                   onClick={handleClick.bind(null, index - 1)}
+                  aria-label="previous"
                 >
                   <img src={angleLeft} alt="Prev" className="invert-high" />
                 </button>
                 <button
                   className={"button-forward"}
                   onClick={handleClick.bind(null, index + 1)}
+                  aria-label="next"
                 >
                   <img src={angleRight} alt="Next" className="invert-high" />
                 </button>
@@ -42,6 +44,7 @@ function Gallery({
                 alt="expand"
                 title="Expand"
                 className="invert-high"
+                aria-label="expand"
               />
             </button>
           </>

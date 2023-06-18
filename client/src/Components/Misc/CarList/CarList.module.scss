@@ -35,7 +35,7 @@
   @include flex-box(column, wrap);
 
   & h6,
-  & p {
+  & p, time {
     padding: 0.5rem 0 0.5rem 1rem;
   }
 

@@ -28,7 +28,7 @@ export default function CarCard({
         <p>
           {fuelType}, {mileage} km
         </p>
-        <p>{formatDate(createdAt)}</p>
+        <time dateTime={createdAt}>{formatDate(createdAt)}</time>
       </div>
     </Link>
   );

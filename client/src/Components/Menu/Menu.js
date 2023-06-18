@@ -6,7 +6,7 @@ import styles from "./Menu.module.scss";
 const body = document.querySelector("body");
 
 export default function Menu({ setDisplay }) {
-  
+
   const hideMenu = (e) => {
     if (e.target === e.currentTarget) {
       setDisplay((prev) => !prev);
@@ -15,7 +15,12 @@ export default function Menu({ setDisplay }) {
 
   return createPortal(
     <div className={styles.backdrop} onClick={hideMenu}>
-      <aside className={styles.sidebar}>
+      <aside
+        className={styles.sidebar}
+        id="side-menu"
+        aria-labelledby="side-menu-toggler"
+        tabindex="0"
+      >
         <UserNav />
         <PageNav logo={false} />
       </aside>

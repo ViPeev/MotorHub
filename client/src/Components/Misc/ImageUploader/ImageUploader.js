@@ -46,7 +46,7 @@ export default function ImageUpload({ formData, setFormData }) {
       ))}
       {count < 9 && (
         <div className={styles["add-button-container"]}>
-          <button onClick={handleClick}>
+          <button onClick={handleClick} aria-label="add image input">
             <img src={plus} alt="Add" title="Add" className="invert-full" />
           </button>
         </div>
