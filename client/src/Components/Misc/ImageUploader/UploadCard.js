@@ -48,7 +48,6 @@ export default memo(function UploadCard({
             id={`uploadPhoto-${index}`}
             accept=".jpg,.jpeg,.png"
             hidden
-            aria-hidden="true"
             onChange={handleChange}
           />
           {error && <span >File type not supported!</span>}

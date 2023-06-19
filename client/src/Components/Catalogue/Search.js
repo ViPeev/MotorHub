@@ -59,14 +59,22 @@ export default function CatalogSearch() {
             />
             <div className="input-group">
               <button type="submit">
-                <img src={searchIcon} title="Search" alt="Search" className="invert-low"/>
+                <img
+                  src={searchIcon}
+                  title="Search"
+                  alt="Search"
+                  className="invert-low"
+                />
               </button>
             </div>
           </form>
-          <button onClick={handleDisplay}>
-            {display ? "Hide" : "Show"} <span className="sm-hide">all</span> filters
+          <button onClick={handleDisplay} aria-haspopup="dialog" aria-label="show filters">
+            {display ? "Hide" : "Show"} <span className="sm-hide">all</span>{" "}
+            filters
           </button>
-          <button onClick={handleReset} className="sm-hide">Clear Filters</button>
+          <button onClick={handleReset} className="sm-hide" aria-label="clear filters">
+            Clear Filters
+          </button>
         </div>
       </section>
       {display && (

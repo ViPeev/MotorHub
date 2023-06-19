@@ -10,7 +10,7 @@ export default function Contacts() {
     <main>
       <div className={`${styles.container} fade-in`}>
         <h1>Contact us</h1>
-        <div className={styles["contact-data"]}>
+        <address className={styles["contact-data"]}>
           <section>
             <h2>MotorHub&trade;</h2>
             <div>
@@ -40,7 +40,7 @@ export default function Contacts() {
               loading="lazy"
             ></iframe>
           </section>
-        </div>
+        </address>
       </div>
     </main>
   );

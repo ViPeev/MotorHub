@@ -38,13 +38,12 @@ function Gallery({
                 </button>
               </>
             )}
-            <button className={styles["button-expand"]} onClick={handleDisplay}>
+            <button className={styles["button-expand"]} onClick={handleDisplay} aria-haspopup="true" aria-label="open gallery">
               <img
                 src={resizeIcon}
                 alt="expand"
                 title="Expand"
                 className="invert-high"
-                aria-label="expand"
               />
             </button>
           </>
