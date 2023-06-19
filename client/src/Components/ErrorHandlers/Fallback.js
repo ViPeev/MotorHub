@@ -6,7 +6,7 @@ export default function Fallback() {
   return (
     <main className={styles.main}>
       <div className={styles["message-box"]}>
-        <p>Something went wrong !</p>
+        <p aria-errormessage="Something went wrong">Something went wrong !</p>
       </div>
       <div className={styles["fb-image-box"]}>
         <img src={image} alt="Something went wrong" />

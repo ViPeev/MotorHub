@@ -38,7 +38,7 @@ export default function CardSlider({ images }) {
         {images.map((current) => {
           return (
             <span key={current}>
-              <img src={current} alt="Car" />
+              <img src={current} alt="Car" loading="lazy"/>
             </span>
           );
         })}
